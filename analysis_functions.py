@@ -6,6 +6,10 @@ from data_reader import get_prevalence
 from data_reader import sample_reader, sequence_reader
 
 
+PREC2 = Decimal('1.00')
+PREC3 = Decimal('1.000')
+
+
 def calcfold(left, right):
     fold = -999.0
     if right == 0:
@@ -22,6 +26,41 @@ def calcfold(left, right):
     fold = max(fold, 0.001)
     fold = min(fold, 1000)
     return fold
+
+
+def compare_codons(gene, prev_codon, post_codon):
+    prev_aa = set(prev_codon.aa)
+    post_aa = set(post_codon.aa)
+    if prev_aa == post_aa or post_aa.issubset(prev_aa):
+        return
+    post_aa -= prev_aa
+    if not post_aa or post_aa == {'*'}:
+        return
+    prev_aa = ''.join(prev_aa)
+    post_aa = ''.join(post_aa)
+
+    pos = prev_codon.position
+    if len(prev_aa) == 1 and len(post_aa) == 1:
+        pre_prev = get_prevalence(gene, pos, prev_aa)
+        post_prev = get_prevalence(gene, pos, post_aa)
+        fold = calcfold(pre_prev, post_prev)
+        logfold = math.log10(fold)
+        pre_prev = Decimal(pre_prev).quantize(PREC3)
+        post_prev = Decimal(post_prev).quantize(PREC3)
+        fold = Decimal(fold).quantize(PREC3)
+        logfold = Decimal(logfold).quantize(PREC2)
+    else:
+        pre_prev = post_prev = fold = logfold = 'NA'
+
+    return {
+        'Pos': pos,
+        'PreAA': prev_aa,
+        'PostAA': post_aa,
+        'PrePrev': pre_prev,
+        'PostPrev': post_prev,
+        'Fold': fold,
+        'LogFold': logfold,
+    }
 
 
 def aa_changes_per_person(gene, category, group):
@@ -46,9 +85,6 @@ def aa_changes_per_person(gene, category, group):
     sequences = sorted(sequences, key=sortkeyfunc)
     sequences = {k: list(l) for k, l in groupby(sequences, groupkeyfunc)}
 
-    prec2 = Decimal('1.00')
-    prec3 = Decimal('1.000')
-
     for pid in sorted(sequences.keys()):
         post_spl, prev_spl = samples[pid]
         post_seq, prev_seq = sequences[pid]
@@ -58,38 +94,13 @@ def aa_changes_per_person(gene, category, group):
         post_codons = post_seq.iter_codons(start_aa, end_aa)
 
         for prev_codon, post_codon in zip(prev_codons, post_codons):
-            prev_aa = set(prev_codon.aa)
-            post_aa = set(post_codon.aa)
-            if prev_aa == post_aa or post_aa.issubset(prev_aa):
+            result = compare_codons(gene, prev_codon, post_codon)
+            if not result:
                 continue
-            post_aa -= prev_aa
-            if not post_aa or post_aa == {'*'}:
-                continue
-            prev_aa = ''.join(prev_aa)
-            post_aa = ''.join(post_aa)
-
-            pos = prev_codon.position
-            if len(prev_aa) == 1 and len(post_aa) == 1:
-                pre_prev = get_prevalence(gene, pos, prev_aa)
-                post_prev = get_prevalence(gene, pos, post_aa)
-                fold = calcfold(pre_prev, post_prev)
-                logfold = math.log10(fold)
-                pre_prev = Decimal(pre_prev).quantize(prec3)
-                post_prev = Decimal(post_prev).quantize(prec3)
-                fold = Decimal(fold).quantize(prec3)
-                logfold = Decimal(logfold).quantize(prec2)
-            else:
-                pre_prev = post_prev = fold = logfold = 'NA'
             yield {
                 'PID': pid,
                 'Group': group,
-                'Pos': pos,
-                'PreAA': prev_aa,
-                'PostAA': post_aa,
-                'PrePrev': pre_prev,
-                'PostPrev': post_prev,
-                'Fold': fold,
-                'LogFold': logfold,
+                **result
             }
 
 
