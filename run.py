@@ -19,8 +19,7 @@ def main():
         os.path.join(PWD, 'result_data', 'GagAAChangesByPosWPrev.txt'),
         chain(
             aggregate_aa_changes_by_pos('Gag', 'PIs', 'PIs'),
-            aggregate_aa_changes_by_pos(
-                'Gag', ('None', 'NNRTIs'), 'Controls'),
+            aggregate_aa_changes_by_pos('Gag', 'NNRTIs', 'NNRTIs'),
         ),
         ['Group', 'Pos', 'PreAA', 'PostAA',
          'NumPts', 'PrePrev', 'PostPrev', 'Fold', 'LogFold'])
@@ -29,8 +28,7 @@ def main():
         os.path.join(PWD, 'result_data', 'Gp41AAChangesByPosWPrev.txt'),
         chain(
             aggregate_aa_changes_by_pos('gp41', 'PIs', 'PIs'),
-            aggregate_aa_changes_by_pos(
-                'gp41', ('None', 'NNRTIs'), 'Controls'),
+            aggregate_aa_changes_by_pos('gp41', 'NNRTIs', 'NNRTIs'),
         ),
         ['Group', 'Pos', 'PreAA', 'PostAA',
          'NumPts', 'PrePrev', 'PostPrev', 'Fold', 'LogFold'])
@@ -40,22 +38,30 @@ def main():
 
     save_csv(
         os.path.join(PWD, 'result_data', 'GagCodonChangesByNSS_And_Pt.txt'),
-        sorted(codon_changes_per_person('Gag'), key=cc_keyfunc),
+        sorted(
+            codon_changes_per_person('Gag', ('PIs', 'NNRTIs')),
+            key=cc_keyfunc),
         ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
     save_csv(
         os.path.join(PWD, 'result_data', 'Gp41CodonChangesByNSS_And_Pt.txt'),
-        sorted(codon_changes_per_person('gp41'), key=cc_keyfunc),
+        sorted(
+            codon_changes_per_person('gp41', ('PIs', 'NNRTIs')),
+            key=cc_keyfunc),
         ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
     save_csv(
         os.path.join(PWD, 'result_data', 'PRCodonChangesByNSS_And_Pt.txt'),
-        sorted(codon_changes_per_person('PR'), key=cc_keyfunc),
+        sorted(
+            codon_changes_per_person('PR', ('PIs', 'NNRTIs')),
+            key=cc_keyfunc),
         ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
     save_csv(
         os.path.join(PWD, 'result_data', 'RTCodonChangesByNSS_And_Pt.txt'),
-        sorted(codon_changes_per_person('RT'), key=cc_keyfunc),
+        sorted(
+            codon_changes_per_person('RT', ('PIs', 'NNRTIs')),
+            key=cc_keyfunc),
         ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
 

@@ -136,14 +136,15 @@ def aa_changes_per_person(gene, category, group):
         }
 
 
-def codon_changes_per_person(gene):
-    for pid, category, prev_codon, post_codon in iter_codon_pairs(gene):
+def codon_changes_per_person(gene, category):
+    for pid, rx, prev_codon, post_codon \
+            in iter_codon_pairs(gene, category):
         result = compare_codon_change(gene, prev_codon, post_codon)
         if not result:
             continue
         yield {
             'PID': pid,
-            'Rx': category,
+            'Rx': rx,
             **result
         }
 
