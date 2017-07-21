@@ -28,7 +28,7 @@ def calcfold(left, right):
     return fold
 
 
-def compare_codons(gene, prev_codon, post_codon):
+def compare_aa_change(gene, prev_codon, post_codon):
     prev_aa = set(prev_codon.aa)
     post_aa = set(post_codon.aa)
     if prev_aa == post_aa or post_aa.issubset(prev_aa):
@@ -36,8 +36,8 @@ def compare_codons(gene, prev_codon, post_codon):
     post_aa -= prev_aa
     if not post_aa or post_aa == {'*'}:
         return
-    prev_aa = ''.join(prev_aa)
-    post_aa = ''.join(post_aa)
+    prev_aa = ''.join(sorted(prev_aa))
+    post_aa = ''.join(sorted(post_aa))
 
     pos = prev_codon.position
     if len(prev_aa) == 1 and len(post_aa) == 1:
@@ -63,13 +63,40 @@ def compare_codons(gene, prev_codon, post_codon):
     }
 
 
-def aa_changes_per_person(gene, category, group):
+def compare_codon_change(gene, prev_codon, post_codon):
+    prev_triplet = prev_codon.triplet
+    post_triplet = post_codon.triplet
+    if prev_triplet == post_triplet or \
+            prev_triplet in ('---', '...') or \
+            post_triplet in ('---', '...'):
+        return
+    type_ = 'syn'
+    if prev_codon.aa != post_codon.aa:
+        type_ = 'non'
+    num_changes = len([bp0 != bp1 for bp0, bp1
+                       in zip(prev_triplet, post_triplet)])
+
+    return {
+        'Pos': prev_codon.position,
+        'Type': type_,
+        'Codons': f'{prev_triplet}-->{post_triplet}',
+        'NumNAChanges': num_changes,
+        'AAs': (prev_codon.aa if type_ == 'syn'
+                else f'{prev_codon.aa}-->{post_codon.aa}'),
+    }
+
+
+def iter_codon_pairs(gene, category=None):
+
     if isinstance(category, str):
         samples = list(
             sample_reader(lambda spl: spl.category == category))
-    else:
+    elif hasattr(category, '__contains__'):
         samples = list(
             sample_reader(lambda spl: spl.category in category))
+    else:
+        samples = list(sample_reader())
+
     pids = {spl.pid for spl in samples}
     sequences = sequence_reader(
         lambda seq: seq.gene == gene and seq.pid in pids)
@@ -94,14 +121,31 @@ def aa_changes_per_person(gene, category, group):
         post_codons = post_seq.iter_codons(start_aa, end_aa)
 
         for prev_codon, post_codon in zip(prev_codons, post_codons):
-            result = compare_codons(gene, prev_codon, post_codon)
-            if not result:
-                continue
-            yield {
-                'PID': pid,
-                'Group': group,
-                **result
-            }
+            yield pid, prev_spl.category, prev_codon, post_codon
+
+
+def aa_changes_per_person(gene, category, group):
+    for pid, _, prev_codon, post_codon in iter_codon_pairs(gene, category):
+        result = compare_aa_change(gene, prev_codon, post_codon)
+        if not result:
+            continue
+        yield {
+            'PID': pid,
+            'Group': group,
+            **result
+        }
+
+
+def codon_changes_per_person(gene):
+    for pid, category, prev_codon, post_codon in iter_codon_pairs(gene):
+        result = compare_codon_change(gene, prev_codon, post_codon)
+        if not result:
+            continue
+        yield {
+            'PID': pid,
+            'Rx': category,
+            **result
+        }
 
 
 def aggregate_aa_changes_by_pos(gene, category, group):
