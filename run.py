@@ -9,14 +9,14 @@ PWD = os.path.dirname(__file__)
 
 def save_csv(path, data, headers=None):
     with open(path, 'w') as fp:
-        writer = csv.DictWriter(fp, headers, delimiter='\t')
+        writer = csv.DictWriter(fp, headers)
         writer.writeheader()
         writer.writerows(data)
 
 
 def main():
     save_csv(
-        os.path.join(PWD, 'result_data', 'GagAAChangesByPosWPrev.txt'),
+        os.path.join(PWD, 'result_data', 'GagAAChangesByPosWPrev.csv'),
         chain(
             aggregate_aa_changes_by_pos('Gag', 'PIs', 'PIs'),
             aggregate_aa_changes_by_pos('Gag', 'NNRTIs', 'NNRTIs'),
@@ -25,7 +25,7 @@ def main():
          'NumPts', 'PrePrev', 'PostPrev', 'Fold', 'LogFold'])
 
     save_csv(
-        os.path.join(PWD, 'result_data', 'Gp41AAChangesByPosWPrev.txt'),
+        os.path.join(PWD, 'result_data', 'Gp41AAChangesByPosWPrev.csv'),
         chain(
             aggregate_aa_changes_by_pos('gp41', 'PIs', 'PIs'),
             aggregate_aa_changes_by_pos('gp41', 'NNRTIs', 'NNRTIs'),
@@ -37,28 +37,28 @@ def main():
         return int(c['PID']), c['Rx'], c['Pos']
 
     save_csv(
-        os.path.join(PWD, 'result_data', 'GagCodonChangesByNSS_And_Pt.txt'),
+        os.path.join(PWD, 'result_data', 'GagCodonChangesByPt.csv'),
         sorted(
             codon_changes_per_person('Gag', ('PIs', 'NNRTIs')),
             key=cc_keyfunc),
         ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
     save_csv(
-        os.path.join(PWD, 'result_data', 'Gp41CodonChangesByNSS_And_Pt.txt'),
+        os.path.join(PWD, 'result_data', 'Gp41CodonChangesByPt.csv'),
         sorted(
             codon_changes_per_person('gp41', ('PIs', 'NNRTIs')),
             key=cc_keyfunc),
         ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
     save_csv(
-        os.path.join(PWD, 'result_data', 'PRCodonChangesByNSS_And_Pt.txt'),
+        os.path.join(PWD, 'result_data', 'PRCodonChangesByPt.csv'),
         sorted(
             codon_changes_per_person('PR', ('PIs', 'NNRTIs')),
             key=cc_keyfunc),
         ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
     save_csv(
-        os.path.join(PWD, 'result_data', 'RTCodonChangesByNSS_And_Pt.txt'),
+        os.path.join(PWD, 'result_data', 'RTCodonChangesByPt.csv'),
         sorted(
             codon_changes_per_person('RT', ('PIs', 'NNRTIs')),
             key=cc_keyfunc),
