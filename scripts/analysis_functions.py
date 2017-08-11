@@ -79,10 +79,10 @@ def compare_codon_change(gene, prev_codon, post_codon):
     return {
         'Pos': prev_codon.position,
         'Type': type_,
-        'Codons': f'{prev_triplet}-->{post_triplet}',
+        'Codons': '{}-->{}'.format(prev_triplet, post_triplet),
         'NumNAChanges': num_changes,
         'AAs': (prev_codon.aa if type_ == 'syn'
-                else f'{prev_codon.aa}-->{post_codon.aa}'),
+                else '{}-->{}'.format(prev_codon.aa, post_codon.aa)),
     }
 
 

@@ -5,9 +5,9 @@ from collections import namedtuple
 
 from codonutils import translate_codon
 
-PWD = os.path.dirname(__file__)
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open(os.path.join(PWD, 'data', 'consensus.csv')) as fp:
+with open(os.path.join(ROOT, 'data', 'consensus.csv')) as fp:
     CONSENSUS = {c['Gene']: c for c in csv.DictReader(fp)}
 
 
@@ -41,7 +41,7 @@ class MutPrevalence:
         return int(self._data['PosTotal'])
 
 
-with open(os.path.join(PWD, 'data', 'mut_prevalence.csv')) as fp:
+with open(os.path.join(ROOT, 'data', 'mut_prevalence.csv')) as fp:
     PREVALENCE = {(p['Gene'], int(p['Pos']), p['AA']):
                   MutPrevalence(p) for p in csv.DictReader(fp)}
 
@@ -158,11 +158,11 @@ def data_reader(filepath, decorator, filter_func=None):
 
 def sequence_reader(filter_func=None):
     return data_reader(
-        os.path.join(PWD, 'data', 'sequences.csv'),
+        os.path.join(ROOT, 'data', 'sequences.csv'),
         Sequence, filter_func)
 
 
 def sample_reader(filter_func=None):
     return data_reader(
-        os.path.join(PWD, 'data', 'samples.csv'),
+        os.path.join(ROOT, 'data', 'samples.csv'),
         Sample, filter_func)

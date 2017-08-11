@@ -103,3 +103,10 @@ ENV/
 # vim
 *.swp
 *.swo
+
+.DS_store
+local
+.Rhistory
+
+data/fasta/*.json
+data/fasta/*.fit
