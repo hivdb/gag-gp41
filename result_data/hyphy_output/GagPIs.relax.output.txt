@@ -1,0 +1,133 @@
+
+Analysis Description
+--------------------
+RELAX (a random effects test of selection relaxation) uses a random
+effects branch-site model framework to test whether a set of 'Test'
+branches evolves under relaxed selection relative to a set of
+'Reference' branches (R), as measured by the relaxation parameter (K).
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree, with at least two
+groups of branches defined using the {} notation (one group can be
+defined as all unlabeled branches)
+
+- __Citation__: RELAX: Detecting Relaxed Selection in a Phylogenetic Framework (2015).
+Mol Biol Evol 32 (3): 820-832
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.0
+
+
+
+####Choose Genetic Code
+
+1. [**Universal**] Universal code. (Genebank transl_table=1).
+2. [**Vertebrate mtDNA**] Vertebrate mitochondrial DNA code. (Genebank transl_table=2).
+3. [**Yeast mtDNA**] Yeast mitochondrial DNA code. (Genebank transl_table=3).
+4. [**Mold/Protozoan mtDNA**] Mold, Protozoan and Coelenterate mitochondrial DNA and the Mycloplasma/Spiroplasma code. (Genebank transl_table=4).
+5. [**Invertebrate mtDNA**] Invertebrate mitochondrial DNA code. (Genebank transl_table=5).
+6. [**Ciliate Nuclear**] Ciliate, Dasycladacean and Hexamita Nuclear code. (Genebank transl_table=6).
+7. [**Echinoderm mtDNA**] Echinoderm mitochondrial DNA code. (Genebank transl_table=9).
+8. [**Euplotid Nuclear**] Euplotid Nuclear code. (Genebank transl_table=10).
+9. [**Alt. Yeast Nuclear**] Alternative Yeast Nuclear code. (Genebank transl_table=12).
+10. [**Ascidian mtDNA**] Ascidian mitochondrial DNA code. (Genebank transl_table=13).
+11. [**Flatworm mtDNA**] Flatworm mitochondrial DNA code. (Genebank transl_table=14).
+12. [**Blepharisma Nuclear**] Blepharisma Nuclear code. (Genebank transl_table=15).
+13. [**Chlorophycean mtDNA**] Chlorophycean Mitochondrial Code (transl_table=16).
+14. [**Trematode mtDNA**] Trematode Mitochondrial Code (transl_table=21).
+15. [**Scenedesmus obliquus mtDNA**] Scenedesmus obliquus mitochondrial Code (transl_table=22).
+16. [**Thraustochytrium mtDNA**] Thraustochytrium Mitochondrial Code (transl_table=23).
+17. [**Pterobranchia mtDNA**] Pterobranchia Mitochondrial Code (transl_table=24).
+18. [**SR1 and Gracilibacteria**] Candidate Division SR1 and Gracilibacteria Code (transl_table=25).
+19. [**Pachysolen Nuclear**] Pachysolen tannophilus Nuclear Code (transl_table=26).
+
+>Please choose an option (or press q to cancel selection):
+
+>Select a coding sequence alignment file (`/usr/local/lib/hyphy/TemplateBatchFiles/SelectionAnalyses/`) 
+
+>Please select a tree file for the data: (`/usr/local/lib/hyphy/TemplateBatchFiles/SelectionAnalyses/`) 
+>Loaded a multiple sequence alignment with **48** sequences, **500** codons, and **1** partitions from `/app/data/fasta/GagPIs.aln.fasta.txt`
+
+
+####Choose the set of branches to use as the _test_ set
+
+1. [**Pre**] Set Pre with 24 branches
+2. [**Post**] Set Post with 24 branches
+3. [**Unlabeled branches**] Set of 45 unlabeled branches
+
+>Please choose an option (or press q to cancel selection):
+
+####Choose the set of branches to use as the _reference_ set
+
+1. [**Pre**] Set Pre with 24 branches
+2. [**Unlabeled branches**] Set of 45 unlabeled branches
+
+>Please choose an option (or press q to cancel selection):
+
+### Branch sets for RELAX analysis
+* Selected 24 branches as the _test_ set: `118827_PIs_Post, 118811_PIs_Post, 26307_PIs_Post, 118846_PIs_Post, 118925_PIs_Post, 118973_PIs_Post, 118761_PIs_Post, 118972_PIs_Post, 118849_PIs_Post, 42080_PIs_Post, 118823_PIs_Post, 118853_PIs_Post, 118792_PIs_Post, 39143_PIs_Post, 118986_PIs_Post, 118886_PIs_Post, 56120_PIs_Post, 118956_PIs_Post, 118860_PIs_Post, 118935_PIs_Post, 118954_PIs_Post, 118828_PIs_Post, 118903_PIs_Post, 118745_PIs_Post`
+* Selected 45 branches as the _reference_ set: `Node2, Node5, Node1, Node12, Node15, Node11, Node18, Node10, Node23, Node26, Node22, Node30, Node33, Node29, Node21, Node9, Node38, Node41, Node37, Node45, Node48, Node44, Node36, Node8, Node56, Node59, Node55, Node62, Node54, Node67, Node70, Node66, Node73, Node65, Node53, Node77, Node80, Node76, Node52, Node85, Node88, Node84, Node91, Node83, Node51`
+* 24 branches are in the unclassified (nuisance) set: `118827_PIs_Pre, 118811_PIs_Pre, 26307_PIs_Pre, 118846_PIs_Pre, 118925_PIs_Pre, 118973_PIs_Pre, 118761_PIs_Pre, 118972_PIs_Pre, 118849_PIs_Pre, 42080_PIs_Pre, 118823_PIs_Pre, 118853_PIs_Pre, 118792_PIs_Pre, 39143_PIs_Pre, 118986_PIs_Pre, 118886_PIs_Pre, 56120_PIs_Pre, 118956_PIs_Pre, 118860_PIs_Pre, 118935_PIs_Pre, 118954_PIs_Pre, 118828_PIs_Pre, 118903_PIs_Pre, 118745_PIs_Pre`
+
+
+####RELAX analysis type
+
+1. [**All**] [Default] Fit descriptive models AND run the relax test (4 models)
+2. [**Minimal**] Run only the RELAX test (2 models)
+
+>Please choose an option (or press q to cancel selection):
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+* Log(L) = -11313.16, AIC-c = 22828.61 (101 estimated parameters)
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -10890.54, AIC-c = 22002.10 (110 estimated parameters)
+* non-synonymous/synonymous rate ratio for *Reference* =   0.2802
+* non-synonymous/synonymous rate ratio for *Test* =   0.2272
+* non-synonymous/synonymous rate ratio for *Unclassified* =   0.2993
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -10875.55, AIC-c = 21972.13 (110 estimated parameters)
+* non-synonymous/synonymous rate ratio for *Reference* =   0.2669
+* non-synonymous/synonymous rate ratio for *Test* =   0.1921
+* non-synonymous/synonymous rate ratio for *Unclassified* =   0.3241
+
+### Fitting the alternative model to test K != 1
+* Log(L) = -10739.75, AIC-c = 21726.78 (123 estimated parameters)
+* Relaxation/intensification parameter (K) =     0.00
+* The following rate distribution was inferred for **test** branches
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   77.337    |                                   |
+|         Neutral evolution         |     1.000     |   21.840    |                                   |
+|      Diversifying selection       |     1.000     |    0.823    |       Collapsed rate class        |
+
+* The following rate distribution was inferred for **reference** branches
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   77.337    |                                   |
+|         Neutral evolution         |     1.000     |   21.840    |                                   |
+|      Diversifying selection       |    37.479     |    0.823    |                                   |
+
+
+### Fitting the null (K := 1) model
+* Log(L) = -10745.98, AIC-c = 21737.22 (122 estimated parameters)
+* The following rate distribution for test/reference branches was inferred
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   78.000    |                                   |
+|         Neutral evolution         |     1.000     |   21.230    |                                   |
+|      Diversifying selection       |    28.010     |    0.770    |                                   |
+
+----
+## Test for relaxation (or intensification) of selection [RELAX]
+Likelihood ratio test **p =   0.0004**.
+>Evidence for intensification of selection among **test** branches _relative_ to the **reference** branches at P<=0.05
+----
+

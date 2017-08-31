@@ -1,0 +1,58 @@
+
+
+			+--------------------+
+			|Distance Computation|
+			+--------------------+
+
+
+	(1):[Distance formulae] Use one of the predefined distance measures based on data comparisons. Fast.
+	(2):[Full likelihood] Estimate distances using pairwise MLE. More choices but slow.
+	(3):[Use existing matrix] Load a HyPhy distance matrix for the data file
+
+ Please choose an option (or press q to cancel selection):
+
+			+---------+
+			|Data type|
+			+---------+
+
+
+	(1):[Nucleotide/Protein] Nucleotide or amino-acid (protein).
+	(2):[Codon] Codon (several available genetic codes).
+
+ Please choose an option (or press q to cancel selection):
+Please choose a nucleotide or amino-acid data file: (`/usr/local/lib/hyphy/TemplateBatchFiles/`) 
+
+			+-----------------------+
+			|Negative Branch Lengths|
+			+-----------------------+
+
+
+	(1):[Keep Negative] Negative Branch Lengths are Allowed.
+	(2):[Force Zero] Negative Branch Lengths are Forced to 0.
+
+ Please choose an option (or press q to cancel selection):
+
+			+----------------------------------+
+			|Nucleotide based distance formula.|
+			+----------------------------------+
+
+
+	(1):[JC69] Jukes-Cantor distance formula (equal character frequencies, all rates equal).
+	(2):[K2P] Kimura 2 parameter (equal character frequencies, transition/trasversion bias correction).
+	(3):[K2P_RV] Kimura 2 parameter and rate variation (equal character frequencies, transition/trasversion bias correction, gamma distributed rate variation from site to site).
+	(4):[p_Distance] Number of observed substituions per site.
+	(5):[T3P] Tamura 3-parameter (correction for GC content bias and transition/trasversion bias).
+	(6):[TN84] Tajima-Nei (84) distance (unequal character frequencies).
+	(7):[TN93] Tamura-Nei (93) distance (unequal character frequencies, A->G, C->T and transversional bias corrections).
+	(8):[TN93_RV] Tamura-Nei (93) distance and rate variation (unequal character frequencies, A->G, C->T and transversional bias corrections, gamma distributed rate variation from site to site).
+	(9):[Unaligned_LZ] Distance measure for unaligned sequences based on Lempel Ziv measure of information content.
+	(10):[Unaligned_LZ_FR] Distance measure for unaligned sequences based on Lempel Ziv measure of information content using the best choice forward and reverse string orientations.
+
+ Please choose an option (or press q to cancel selection):
+
+ --------------------- INFERRED TREE --------------------- 
+
+(((((42036_NNRTIs_Pre:0,42036_NNRTIs_Post:0):0.06384619150419356,(35596_NNRTIs_Pre:-0.0003697196430827191,35596_NNRTIs_Post:0.007156663149777834):0.01959746619547192):0.02046869409086953,(61483_NNRTIs_Pre:0,61483_NNRTIs_Post:0):0.01986124809262828):0.00301451594605295,((8349_NNRTIs_Pre:-0.0001325449071403067,8349_NNRTIs_Post:0.003519896066223654):0.02362165283555624,(37879_NNRTIs_Pre:-0.0002257070801947312,37879_NNRTIs_Post:0.003613058239278079):0.03322364702245032):0.005714396661774528):0.0006328602449810665,((42183_NNRTIs_Pre:0.0005942953285090406,42183_NNRTIs_Post:0.002781706599301304):0.005497406696391883,((9918_NNRTIs_Pre:0.006874202537635208,9918_NNRTIs_Post:-5.814145194148711e-05):0.01857765708475166,(61631_NNRTIs_Pre:0,61631_NNRTIs_Post:0):0.02342183148907044):0.004708211243020741):0.0003647751660059021,((55928_NNRTIs_Pre:0.002518973781877771,55928_NNRTIs_Post:0.0008570281459325743):0.02223726685252739,((25036_NNRTIs_Pre:-0.0005078770019210747,25036_NNRTIs_Post:0.007323938087614796):0.03115482350441198,(57448_NNRTIs_Pre:-0.0004114017982700864,57448_NNRTIs_Post:0.007227462883963807):0.03770738279194204):0.002380878188577247):0.001435655469402683)
+
+***********Save this tree to a file (y/n)?
+Write tree string to: (`/usr/local/lib/hyphy/TemplateBatchFiles/`) 
