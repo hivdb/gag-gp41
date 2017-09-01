@@ -79,11 +79,9 @@ def get_codon_changes(gene):
 
 
 def meds_result(gene, rx):
-    print('### {}-{}\n'.format(gene, rx))
     fname = os.path.join(HYPHYOUT, '{}{}.meds.result.csv'.format(gene, rx))
     cchanges = get_codon_changes(gene)
     medsdata = []
-    empty = True
     with open(fname) as fp:
         skip = True
         for line in fp:
@@ -95,24 +93,23 @@ def meds_result(gene, rx):
                 skip = True
             medsdata.append(line)
     reader = csv.DictReader(medsdata)
+    results = []
     for pos, rows in groupby(reader, lambda r: r['Site']):
         aas = [r['AA'] for r in rows]
         r = []
         for c in cchanges:
             if c['Rx'] == rx and c['Type'] == 'non' and \
                     c['Pos'] == pos and set(aas) & set(c['AAs']):
-                r.append((c['AAs'].replace('-->', c['Pos']), c['PID']))
+                r.append((c['AAs'].replace('-->', '=&gt;'), c['PID']))
         if not r:
             continue
         r = groupby(sorted(r, key=lambda i: i[0]), lambda i: i[0])
-        r = [(m, len(list(p))) for m, p in r]
-        print('#### {}{}\n'.format(pos, '/'.join(aas)))
-        print(tabulate(
-            r, ['Mutation', '# patients'], tablefmt='pipe'))
-        print()
-        empty = False
-    if empty:
-        print('None\n')
+        r = [['', '', m, len(list(p))] for m, p in r]
+        r[0][1] = '{}{}'.format(pos, '/'.join(aas))
+        results.extend(r)
+    if results:
+        results[0][0] = '{}-{}'.format(gene, rx)
+    return results
 
 
 if __name__ == '__main__':
@@ -148,6 +145,11 @@ if __name__ == '__main__':
                 os.path.join(CLEANOUT, '{}{}.fel.tsv'.format(gene, rx))
             )
     print('\n## Positions with evidence for directional selection (MEDS)\n')
+    meds = []
     for gene in ('Gag', 'Gp41'):
         for rx in ('PIs', 'NNRTIs'):
-            meds_result(gene, rx)
+            meds.extend(meds_result(gene, rx))
+
+    print(tabulate(
+        meds, ['Group', 'Mutation', 'Detail', '# patients'], tablefmt='pipe'))
+    print()

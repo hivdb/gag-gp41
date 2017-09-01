@@ -75,80 +75,23 @@
 
 ## Positions with evidence for directional selection (MEDS)
 
-### Gag-PIs
-
-#### 219H
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| H219HQ     |            1 |
-| Q219H      |            3 |
-
-#### 370Y
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| F370Y      |            1 |
-
-#### 371N
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| T371N      |            1 |
-
-### Gag-NNRTIs
-
-#### 79F
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| Y79F       |            2 |
-
-#### 110M
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| K110M      |            1 |
-
-#### 116A/Q
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| A116Q      |            1 |
-| Q116A      |            1 |
-
-#### 371T
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| A371T      |            1 |
-| N371T      |            1 |
-
-#### 480L
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| D480L      |            1 |
-
-### Gp41-PIs
-
-#### 307I
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| IT307T     |            1 |
-| T307I      |            2 |
-| T307IT     |            1 |
-
-#### 325F
-
-| Mutation   |   # patients |
-|:-----------|-------------:|
-| FL325F     |            1 |
-| I325F      |            1 |
-| L325F      |            1 |
-
-### Gp41-NNRTIs
-
-None
+| Group      | Mutation   | Detail   |   # patients |
+|:-----------|:-----------|:---------|-------------:|
+| Gag-PIs    | 219H       | H=&gt;HQ |            1 |
+|            |            | Q=&gt;H  |            3 |
+|            | 370Y       | F=&gt;Y  |            1 |
+|            | 371N       | T=&gt;N  |            1 |
+| Gag-NNRTIs | 79F        | Y=&gt;F  |            2 |
+|            | 110M       | K=&gt;M  |            1 |
+|            | 116A/Q     | A=&gt;Q  |            1 |
+|            |            | Q=&gt;A  |            1 |
+|            | 371T       | A=&gt;T  |            1 |
+|            |            | N=&gt;T  |            1 |
+|            | 480L       | D=&gt;L  |            1 |
+| Gp41-PIs   | 307I       | IT=&gt;T |            1 |
+|            |            | T=&gt;I  |            2 |
+|            |            | T=&gt;IT |            1 |
+|            | 325F       | FL=&gt;F |            1 |
+|            |            | I=&gt;F  |            1 |
+|            |            | L=&gt;F  |            1 |
 
