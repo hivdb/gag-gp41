@@ -104,7 +104,7 @@ def meds_result(gene, rx):
         if not r:
             continue
         r = groupby(sorted(r, key=lambda i: i[0]), lambda i: i[0])
-        r = [['', '', m, len(list(p))] for m, p in r]
+        r = [['~', '~', m, len(list(p))] for m, p in r]
         r[0][1] = '{}{}'.format(pos, '/'.join(aas))
         results.extend(r)
     if results:
