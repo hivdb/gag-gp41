@@ -63,7 +63,7 @@ def fel_result(title, fname):
              if one['Selection detected?'].startswith('Pos.')]
         r = [one for one in r if one[1] < 0.05]
     print('### {} (P <= 0.05)\n'.format(title))
-    print(tabulate(r, ['Position', 'P value'], tablefmt='grid'))
+    print(tabulate(r, ['Position', 'P value'], tablefmt='pipe'))
     print()
 
 
