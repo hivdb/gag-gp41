@@ -14,7 +14,7 @@ for GENE in Gag Gp41; do
           echo "$APPDIR/data/fasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
           echo "$APPDIR/result_data/${GENE}${RX}.tre"; # Select tree file
           echo 2; # Choose set of [Post] to test for relaxed selection
-          echo 2; # Choose set of [Pre] as the reference branches
+          echo 1; # Choose set of [Pre] as the reference branches
           echo 2; # Chose [Minimal] analysis type
         ) |
         HYPHYMP LIBPATH=`pwd` TemplateBatchFiles/SelectionAnalyses/RELAX.bf > $HYPHYOUT/${GENE}${RX}.relax.output.txt 2> /dev/null

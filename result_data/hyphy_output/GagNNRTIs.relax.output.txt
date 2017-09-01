@@ -69,8 +69,8 @@ UCSD viral evolution group
 
 ### Branch sets for RELAX analysis
 * Selected 16 branches as the _test_ set: `42036_NNRTIs_Post, 44969_NNRTIs_Post, 35596_NNRTIs_Post, 214046_NNRTIs_Post, 252392_NNRTIs_Post, 37879_NNRTIs_Post, 42183_NNRTIs_Post, 21890_NNRTIs_Post, 55928_NNRTIs_Post, 108149_NNRTIs_Post, 264159_NNRTIs_Post, 232768_NNRTIs_Post, 9918_NNRTIs_Post, 25036_NNRTIs_Post, 122034_NNRTIs_Post, 253540_NNRTIs_Post`
-* Selected 29 branches as the _reference_ set: `Node5, Node8, Node4, Node11, Node3, Node14, Node2, Node18, Node21, Node17, Node1, Node27, Node30, Node26, Node33, Node25, Node39, Node42, Node38, Node45, Node37, Node49, Node52, Node48, Node36, Node24, Node56, Node59, Node55`
-* 16 branches are in the unclassified (nuisance) set: `42036_NNRTIs_Pre, 44969_NNRTIs_Pre, 35596_NNRTIs_Pre, 214046_NNRTIs_Pre, 252392_NNRTIs_Pre, 37879_NNRTIs_Pre, 42183_NNRTIs_Pre, 21890_NNRTIs_Pre, 55928_NNRTIs_Pre, 108149_NNRTIs_Pre, 264159_NNRTIs_Pre, 232768_NNRTIs_Pre, 9918_NNRTIs_Pre, 25036_NNRTIs_Pre, 122034_NNRTIs_Pre, 253540_NNRTIs_Pre`
+* Selected 16 branches as the _reference_ set: `42036_NNRTIs_Pre, 44969_NNRTIs_Pre, 35596_NNRTIs_Pre, 214046_NNRTIs_Pre, 252392_NNRTIs_Pre, 37879_NNRTIs_Pre, 42183_NNRTIs_Pre, 21890_NNRTIs_Pre, 55928_NNRTIs_Pre, 108149_NNRTIs_Pre, 264159_NNRTIs_Pre, 232768_NNRTIs_Pre, 9918_NNRTIs_Pre, 25036_NNRTIs_Pre, 122034_NNRTIs_Pre, 253540_NNRTIs_Pre`
+* 29 branches are in the unclassified (nuisance) set: `Node5, Node8, Node4, Node11, Node3, Node14, Node2, Node18, Node21, Node17, Node1, Node27, Node30, Node26, Node33, Node25, Node39, Node42, Node38, Node45, Node37, Node49, Node52, Node48, Node36, Node24, Node56, Node59, Node55`
 
 
 ####RELAX analysis type
@@ -85,49 +85,49 @@ UCSD viral evolution group
 
 ### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
 * Log(L) = -8897.13, AIC-c = 17951.03 (78 estimated parameters)
-* non-synonymous/synonymous rate ratio for *Reference* =   0.2978
+* non-synonymous/synonymous rate ratio for *Reference* =   0.4005
 * non-synonymous/synonymous rate ratio for *Test* =   0.2596
-* non-synonymous/synonymous rate ratio for *Unclassified* =   0.4005
+* non-synonymous/synonymous rate ratio for *Unclassified* =   0.2978
 
 ### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
 * Log(L) = -8885.20, AIC-c = 17927.18 (78 estimated parameters)
-* non-synonymous/synonymous rate ratio for *Reference* =   0.2792
-* non-synonymous/synonymous rate ratio for *Test* =   0.2240
-* non-synonymous/synonymous rate ratio for *Unclassified* =   0.6045
+* non-synonymous/synonymous rate ratio for *Reference* =   0.6037
+* non-synonymous/synonymous rate ratio for *Test* =   0.2242
+* non-synonymous/synonymous rate ratio for *Unclassified* =   0.2793
 
 ### Fitting the alternative model to test K != 1
-* Log(L) = -8745.96, AIC-c = 17674.96 (91 estimated parameters)
-* Relaxation/intensification parameter (K) =     1.31
+* Log(L) = -8730.29, AIC-c = 17643.63 (91 estimated parameters)
+* Relaxation/intensification parameter (K) =     1.27
 * The following rate distribution was inferred for **test** branches
 
 |          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
 |-----------------------------------|---------------|-------------|-----------------------------------|
-|        Negative selection         |     0.074     |   88.930    |                                   |
-|        Negative selection         |     0.176     |    8.941    |                                   |
-|      Diversifying selection       |    23.534     |    2.129    |                                   |
+|        Negative selection         |     0.201     |    1.953    |                                   |
+|        Negative selection         |     0.204     |   97.833    |       Collapsed rate class        |
+|      Diversifying selection       |    770.435    |    0.214    |                                   |
 
 * The following rate distribution was inferred for **reference** branches
 
 |          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
 |-----------------------------------|---------------|-------------|-----------------------------------|
-|        Negative selection         |     0.138     |   88.930    |                                   |
-|        Negative selection         |     0.266     |    8.941    |                                   |
-|      Diversifying selection       |    11.065     |    2.129    |                                   |
+|        Negative selection         |     0.283     |    1.953    |                                   |
+|        Negative selection         |     0.286     |   97.833    |       Collapsed rate class        |
+|      Diversifying selection       |    186.524    |    0.214    |                                   |
 
 
 ### Fitting the null (K := 1) model
-* Log(L) = -8748.78, AIC-c = 17678.59 (90 estimated parameters)
+* Log(L) = -8731.63, AIC-c = 17644.29 (90 estimated parameters)
 * The following rate distribution for test/reference branches was inferred
 
 |          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
 |-----------------------------------|---------------|-------------|-----------------------------------|
-|        Negative selection         |     0.074     |   88.272    |                                   |
-|         Neutral evolution         |     1.000     |    9.823    |                                   |
-|      Diversifying selection       |    13.389     |    1.905    |                                   |
+|        Negative selection         |     0.003     |    1.566    |                                   |
+|        Negative selection         |     0.253     |   98.254    |                                   |
+|      Diversifying selection       |    428.340    |    0.180    |                                   |
 
 ----
 ## Test for relaxation (or intensification) of selection [RELAX]
-Likelihood ratio test **p =   0.0175**.
->Evidence for relaxation of selection among **test** branches _relative_ to the **reference** branches at P<=0.05
+Likelihood ratio test **p =   0.1017**.
+>No significant evidence for relaxation (or intensification) of selection among **test** branches _relative_ to the **reference** branches at P<=0.05
 ----
 
