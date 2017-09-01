@@ -109,6 +109,8 @@ def meds_result(gene, rx):
         results.extend(r)
     if results:
         results[0][0] = '{}-{}'.format(gene, rx)
+    else:
+        results = [['{}-{}'.format(gene, rx), 'None', '-', '-']]
     return results
 
 

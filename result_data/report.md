@@ -75,23 +75,24 @@
 
 ## Positions with evidence for directional selection (MEDS)
 
-| Group      | Mutation   | Detail   |   # patients |
-|:-----------|:-----------|:---------|-------------:|
-| Gag-PIs    | 219H       | H=&gt;HQ |            1 |
-| ~          | ~          | Q=&gt;H  |            3 |
-| ~          | 370Y       | F=&gt;Y  |            1 |
-| ~          | 371N       | T=&gt;N  |            1 |
-| Gag-NNRTIs | 79F        | Y=&gt;F  |            2 |
-| ~          | 110M       | K=&gt;M  |            1 |
-| ~          | 116A/Q     | A=&gt;Q  |            1 |
-| ~          | ~          | Q=&gt;A  |            1 |
-| ~          | 371T       | A=&gt;T  |            1 |
-| ~          | ~          | N=&gt;T  |            1 |
-| ~          | 480L       | D=&gt;L  |            1 |
-| Gp41-PIs   | 307I       | IT=&gt;T |            1 |
-| ~          | ~          | T=&gt;I  |            2 |
-| ~          | ~          | T=&gt;IT |            1 |
-| ~          | 325F       | FL=&gt;F |            1 |
-| ~          | ~          | I=&gt;F  |            1 |
-| ~          | ~          | L=&gt;F  |            1 |
+| Group       | Mutation   | Detail   | # patients   |
+|:------------|:-----------|:---------|:-------------|
+| Gag-PIs     | 219H       | H=&gt;HQ | 1            |
+| ~           | ~          | Q=&gt;H  | 3            |
+| ~           | 370Y       | F=&gt;Y  | 1            |
+| ~           | 371N       | T=&gt;N  | 1            |
+| Gag-NNRTIs  | 79F        | Y=&gt;F  | 2            |
+| ~           | 110M       | K=&gt;M  | 1            |
+| ~           | 116A/Q     | A=&gt;Q  | 1            |
+| ~           | ~          | Q=&gt;A  | 1            |
+| ~           | 371T       | A=&gt;T  | 1            |
+| ~           | ~          | N=&gt;T  | 1            |
+| ~           | 480L       | D=&gt;L  | 1            |
+| Gp41-PIs    | 307I       | IT=&gt;T | 1            |
+| ~           | ~          | T=&gt;I  | 2            |
+| ~           | ~          | T=&gt;IT | 1            |
+| ~           | 325F       | FL=&gt;F | 1            |
+| ~           | ~          | I=&gt;F  | 1            |
+| ~           | ~          | L=&gt;F  | 1            |
+| Gp41-NNRTIs | None       | -        | -            |
 
