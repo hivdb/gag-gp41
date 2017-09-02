@@ -60,13 +60,14 @@ def pairwise_result(title, leftfname, rightfname):
 def fel_result(title, fname):
     with open(fname) as fp:
         data = csv.DictReader(fp, delimiter='\t')
-        r = [(one['Codon'], float(one['Selection detected?'].split(' = ')[-1]))
+        r = [['~', one['Codon'],
+              float(one['Selection detected?'].split(' = ')[-1])]
              for one in data
              if one['Selection detected?'].startswith('Pos.')]
-        r = [one for one in r if one[1] < 0.05]
-    print('### {} (P <= 0.05)\n'.format(title))
-    print(tabulate(r, ['Position', 'P value'], tablefmt='pipe'))
-    print()
+        r = [one for one in r if one[2] < 0.05]
+    if r:
+        r[0][0] = title
+    return r
 
 
 def get_codon_changes(gene):
@@ -140,13 +141,15 @@ if __name__ == '__main__':
                 os.path.join(CLEANOUT, '{}NNRTIs-CD.pairwise.tsv'.format(gene))
             )
     print('\n## Positions with evidence for diversifying selection (FEL)\n')
+    fel = []
     for gene in ('Gag', 'Gp41'):
         for rx in ('PIs', 'NNRTIs'):
-            fel_result(
+            fel.extend(fel_result(
                 '{} - {}'.format(gene, rx),
                 os.path.join(CLEANOUT, '{}{}.fel.tsv'.format(gene, rx))
-            )
-    print('\n## Positions with evidence for directional selection (MEDS)\n')
+            ))
+    print(tabulate(fel, ['Group', 'Position', 'P value'], tablefmt='pipe'))
+    print('\n\n## Positions with evidence for directional selection (MEDS)\n')
     meds = []
     for gene in ('Gag', 'Gp41'):
         for rx in ('PIs', 'NNRTIs'):
