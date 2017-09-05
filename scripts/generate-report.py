@@ -99,9 +99,15 @@ def meds_result(gene, rx):
         aas = [r['AA'] for r in rows]
         r = []
         for c in cchanges:
-            if c['Rx'] == rx and c['Type'] == 'non' and \
-                    c['Pos'] == pos and set(aas) & set(c['AAs']):
-                r.append((c['AAs'].replace('-->', '=&gt;'), c['PID']))
+            if c['Rx'] != rx or c['Type'] == 'syn' or c['Pos'] != pos:
+                continue
+            aapre, aapost = c['AAs'].split('-->')
+            aapost = set(aapost) - set(aapre)
+            if not aapost:
+                continue
+            aapost = ''.join(sorted(aapost))
+            if set(aas) & set(aapre + aapost):
+                r.append((aapre + '=&gt;' + aapost, c['PID']))
         if not r:
             continue
         r = groupby(sorted(r, key=lambda i: i[0]), lambda i: i[0])
@@ -109,9 +115,9 @@ def meds_result(gene, rx):
         r[0][1] = '{}{}'.format(pos, '/'.join(aas))
         results.extend(r)
     if results:
-        results[0][0] = '{}-{}'.format(gene, rx)
+        results[0][0] = '{} - {}'.format(gene, rx)
     else:
-        results = [['{}-{}'.format(gene, rx), 'None', '-', '-']]
+        results = [['{} - {}'.format(gene, rx), 'None', '-', '-']]
     return results
 
 
