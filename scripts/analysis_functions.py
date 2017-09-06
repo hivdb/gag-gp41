@@ -1,9 +1,13 @@
 import math
 from itertools import groupby
 from decimal import Decimal
+from collections import Counter, OrderedDict
 
 from data_reader import get_prevalence
-from data_reader import sample_reader, sequence_reader
+from data_reader import (
+    CONSENSUS, sample_reader,
+    sequence_reader, naive_sequence_reader
+)
 
 
 PREC2 = Decimal('1.00')
@@ -84,6 +88,39 @@ def compare_codon_change(gene, prev_codon, post_codon):
         'AAs': (prev_codon.aa if type_ == 'syn'
                 else '{}-->{}'.format(prev_codon.aa, post_codon.aa)),
     }
+
+
+def aggregate_mut_prevalence(gene):
+    result = OrderedDict()
+    total = Counter()
+    all_aas = 'ACDEFGHIKLMNPQRSTVWY~X#'
+    consensus = CONSENSUS[gene]['AASeq']
+    sequences = list(naive_sequence_reader(gene))
+    for pos in range(1, len(consensus) + 1):
+        cons = consensus[pos - 1]
+        for aa in all_aas:
+            result[(pos, aa)] = 0
+        for sequence in sequences:
+            aa = sequence['P{}'.format(pos)]
+            if aa == '.':
+                continue
+            aa = (aa
+                  .replace(cons, '')
+                  .replace('d', '~')
+                  .replace('-', cons))
+            if len(aa) == 1:
+                result[(pos, aa)] += 1
+            else:
+                result[(pos, 'X')] += 1
+            total[pos] += 1
+    return [{
+        'Gene': gene,
+        'Pos': pos,
+        'AA': aa,
+        'Pcnt': Decimal(count / total[pos] * 100).quantize(PREC3),
+        'Count': count,
+        'PosTotal': total[pos]
+    } for (pos, aa), count in result.items()]
 
 
 def iter_codon_pairs(gene, category=None):

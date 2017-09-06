@@ -41,12 +41,16 @@ class MutPrevalence:
         return int(self._data['PosTotal'])
 
 
-with open(os.path.join(ROOT, 'data', 'mut_prevalence.csv')) as fp:
-    PREVALENCE = {(p['Gene'], int(p['Pos']), p['AA']):
-                  MutPrevalence(p) for p in csv.DictReader(fp)}
+PREVALENCE = None
 
 
 def get_prevalence(gene, pos, aa):
+    global PREVALENCE
+    if not PREVALENCE:
+        with open(os.path.join(
+                ROOT, 'result_data', 'MutPrevalence.csv')) as fp:
+            PREVALENCE = {(p['Gene'], int(p['Pos']), p['AA']):
+                          MutPrevalence(p) for p in csv.DictReader(fp)}
     prev = PREVALENCE.get((gene, pos, aa))
     if prev:
         return prev.percent
@@ -147,7 +151,7 @@ class Sample:
         return self._data['Category']
 
 
-def data_reader(filepath, decorator, filter_func=None):
+def data_reader(filepath, decorator=dict, filter_func=None):
     with open(filepath) as fp:
         items = csv.DictReader(fp)
         for item in items:
@@ -166,3 +170,10 @@ def sample_reader(filter_func=None):
     return data_reader(
         os.path.join(ROOT, 'data', 'samples.csv'),
         Sample, filter_func)
+
+
+def naive_sequence_reader(gene, filter_func=None):
+    return data_reader(
+        os.path.join(
+            ROOT, 'data', '{}NaiveSequences.csv'.format(gene)),
+        filter_func=filter_func)

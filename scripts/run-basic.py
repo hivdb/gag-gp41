@@ -1,10 +1,11 @@
 import os
-import sys
 import csv
 from itertools import chain
 from data_reader import ROOT
-from analysis_functions import codon_changes_per_person
-from analysis_functions import aggregate_aa_changes_by_pos
+from analysis_functions import (
+    codon_changes_per_person,
+    aggregate_aa_changes_by_pos,
+    aggregate_mut_prevalence)
 
 
 def save_csv(path, data, headers=None):
@@ -16,6 +17,14 @@ def save_csv(path, data, headers=None):
 
 
 def main():
+    save_csv(
+        os.path.join(ROOT, 'result_data', 'MutPrevalence.csv'),
+        chain(
+            aggregate_mut_prevalence('Gag'),
+            aggregate_mut_prevalence('gp41'),
+        ),
+        ['Gene', 'Pos', 'AA', 'Pcnt', 'Count', 'PosTotal'])
+
     save_csv(
         os.path.join(ROOT, 'result_data', 'GagAAChangesByPosWPrev.csv'),
         chain(
