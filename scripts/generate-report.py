@@ -122,6 +122,18 @@ def meds_result(gene, rx):
 
 
 if __name__ == '__main__':
+    print(
+        '## Graphical summary of gag/gp41 sites '
+        'at which amino acid mutations developed during therapy\n'
+    )
+    print(
+        '![Gag sites](https://github.com/hivdb/'
+        'gag-gp41/raw/master/report/gag-mutations.tiff)\n'
+    )
+    print(
+        '![Gp41 sites](https://github.com/hivdb/'
+        'gag-gp41/raw/master/report/gp41-mutations.tiff)\n'
+    )
     print('## Pairwise dN/dS ratio comparison\n')
     for gene in ('Gag', 'Gp41'):
         pairwise_result(

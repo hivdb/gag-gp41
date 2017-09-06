@@ -38,3 +38,4 @@ report:
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/generate-report.sh
 
 all: basic pairwise nj relax fel meds final report
+.PHONY: report

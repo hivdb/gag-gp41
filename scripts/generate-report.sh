@@ -1,3 +1,5 @@
 #! /bin/bash
 
-python3 /app/scripts/generate-report.py > /app/result_data/report.md
+mkdir -p /app/report
+Rscript /app/scripts/make-graphical-summary.r
+python3 /app/scripts/generate-report.py > /app/report/report.md
