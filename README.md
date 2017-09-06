@@ -103,7 +103,7 @@ The `report` folder stores automatical report result:
   figures were lately modified manually to highlight the MEDS, FEL and cleavage
   sites to be represented as the Figure 3 and 4 of the manuscript.
 
-The `scripts` folder stores script files:
+The `scripts` folder stores script files that ran inside of Docker container:
 - `analysis_functions.py`, `codonutils.py`, `data_reader.py`: internal Python
   libraries.
 - `run-basic.sh`, `run-basic.py`: basic analysis. This generated the
