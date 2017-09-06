@@ -155,6 +155,129 @@ If everything goes well, you will see something like this:
 ...
 ```
 
+### Pipeline steps
+
+#### Step 1: basic
+
+This step generated three types of basic files for further analysis:
+
+- `result_data/MutPrevalence.csv`
+- `result_data/*AAChangesByPosWPrev.csv`
+- `result_data/*CodonChangesByPt.csv`
+
+To run this step solely, type this command:
+
+```sh
+make basic
+```
+
+### Step 2: pairwise
+
+This step calculated the pairwise dN/dS ratio with HyPhy. The output files:
+
+- `result_data/hyphy_output/*.pairwise.output.txt`
+
+We analyzed different regions of Gag and Gp41 sequences by using the different
+parameter of codon range. For the Gag MA domain, the parameter was 0-395 (AA
+position 1 - 132). For the Gag CA domain, the parameter was 396-1088 (AA
+position 133 - 363). For the Gp41 CD domain, the parameter was 582-1034 (AA
+position 195 - 345).
+
+To run this step solely:
+
+```sh
+make pairwise
+```
+
+### Step 3: nj
+
+This step calculated the newick tree from the aligned sequences with HyPhy.
+The output files:
+
+- `result_data/*.tre`
+- `result_data/*.meds.tre`
+
+The `*.tre` files were lately used by steps "relax" and "fel". The `*.meds.tre`
+were lately used by "meds".
+
+The parameters we used:
+
+- branch lengths handling: \[Keep Negative\]
+- distance formula: \[TN93\]
+
+To run this step solely:
+
+```sh
+make nj
+```
+
+Noted the difference between our manuscript and the data in this repository was
+mainly caused by this step. In the manuscript we used an old version of HyPhy
+which has a slightly different approach of handling ambiguous DNA codes than
+the newer version of HyPhy (see https://github.com/veg/hyphy/issues/618).
+
+### Step 4a: relax
+
+This step ran the RELAX method analysis with HyPhy. The output files:
+
+- `result_data/hyphy_output/*.relax.output.txt`
+
+This step usually takes an hour or more. To run this step solely:
+
+```sh
+make relax
+```
+
+### Step 4b: fel
+
+This step ran the FEL method analysis with HyPhy. The output files:
+
+- `result_data/hyphy_output/*.fel.output.txt`
+
+This step usually takes an hour or more. To run this step solely:
+
+```sh
+make fel
+```
+
+### Step 4c: meds
+
+This step ran the MEDS method analysis with HyPhy. The output files:
+
+- `result_data/hyphy_output/*.meds.output.txt`
+- `result_data/hyphy_output/*.meds.csv`
+- `result_data/hyphy_output/*.meds.result.csv`
+
+This step usually takes an hour or more. To run this step solely:
+
+```sh
+make meds
+```
+
+### Step 5: final
+
+This step cleaned the output of step 4. The output files:
+
+- `result_data/hyphy_cleaned_output/*`
+
+To run this step solely:
+
+```sh
+make final
+```
+
+### Step 6: report
+
+This step generated the automatical report. The output files:
+
+- `report/*`
+
+To run this step solely:
+
+```sh
+make report
+```
+
 ### For Windows users
 
 You can run the pipeline in Windows since there is a Windows version of Docker.
