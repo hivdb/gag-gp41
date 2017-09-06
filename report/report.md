@@ -1,8 +1,8 @@
 ## Graphical summary of gag/gp41 sites at which amino acid mutations developed during therapy
 
-![Gag sites](https://github.com/hivdb/gag-gp41/raw/master/report/gag-mutations.tiff)
+![Gag sites](https://github.com/hivdb/gag-gp41/raw/master/report/gag-mutations.png)
 
-![Gp41 sites](https://github.com/hivdb/gag-gp41/raw/master/report/gp41-mutations.tiff)
+![Gp41 sites](https://github.com/hivdb/gag-gp41/raw/master/report/gp41-mutations.png)
 
 ## Pairwise dN/dS ratio comparison
 

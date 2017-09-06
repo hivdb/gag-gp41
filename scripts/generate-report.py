@@ -128,11 +128,11 @@ if __name__ == '__main__':
     )
     print(
         '![Gag sites](https://github.com/hivdb/'
-        'gag-gp41/raw/master/report/gag-mutations.tiff)\n'
+        'gag-gp41/raw/master/report/gag-mutations.png)\n'
     )
     print(
         '![Gp41 sites](https://github.com/hivdb/'
-        'gag-gp41/raw/master/report/gp41-mutations.tiff)\n'
+        'gag-gp41/raw/master/report/gp41-mutations.png)\n'
     )
     print('## Pairwise dN/dS ratio comparison\n')
     for gene in ('Gag', 'Gp41'):
