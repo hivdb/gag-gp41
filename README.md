@@ -155,9 +155,7 @@ If everything goes well, you will see something like this:
 ...
 ```
 
-### Pipeline steps
-
-#### Step 1: basic
+### Step 1: basic
 
 This step generated three types of basic files for further analysis:
 
