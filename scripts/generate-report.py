@@ -127,10 +127,12 @@ if __name__ == '__main__':
         'at which amino acid mutations developed during therapy\n'
     )
     print(
+        '### Gag sites\n\n'
         '![Gag sites](https://github.com/hivdb/'
         'gag-gp41/raw/master/report/gag-mutations.png)\n'
     )
     print(
+        '### Gp41 sites\n\n'
         '![Gp41 sites](https://github.com/hivdb/'
         'gag-gp41/raw/master/report/gp41-mutations.png)\n'
     )
