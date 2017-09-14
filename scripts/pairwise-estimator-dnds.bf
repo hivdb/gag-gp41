@@ -27,6 +27,8 @@ lfunction pairwise.name2key (name) {
     parts = regexp.Split (name, '_');
     // remove last
     parts - (Abs (parts) - 1);
+    // remove first
+    parts - {"0": parts["0"]};
     return Join ("_", parts);
 }
 

@@ -22,11 +22,11 @@
 - NNRTIs (treated): 0.73, range 0.00 to inf
 - P value: 0.2
 
-### Gag CA Domain
+### Gag C Terminal Domain
 
-- PIs (treated): 0.00, range 0.00 to inf
-- NNRTIs (treated): 0.04, range 0.00 to inf
-- P value: 0.3
+- PIs (treated): 0.46, range 0.00 to inf
+- NNRTIs (treated): 0.50, range 0.00 to inf
+- P value: 0.9
 
 ### Complete Gp41
 

@@ -31,11 +31,11 @@ for RX in NNRTIs PIs; do
     (
       echo 1; # Select [Universal] code mode
       echo "$APPDIR/data/fasta/Gag${RX}.aln.fasta.txt"; # Select sequence alignment file
-      echo "396-1088"; # CA domain: 133 - 363; (133 - 1) * 3 = 396; 363 * 3 - 1 = 1088
+      echo "1089-1499"; # C-terminal domain: 364 - 500; (364 - 1) * 3 = 1089; 500 * 3 - 1 = 1499
     ) |
-    HYPHYMP LIBPATH=`pwd` $APPDIR/scripts/pairwise-estimator-dnds.bf > $HYPHYOUT/Gag${RX}-CA.pairwise.output.txt 2> /dev/null
-    mv messages.log $HYPHYOUT/Gag${RX}-CA.pairwise.messages.log
-    echo "$HYPHYOUT/Gag${RX}-CA.pairwise.output.txt created"
+    HYPHYMP LIBPATH=`pwd` $APPDIR/scripts/pairwise-estimator-dnds.bf > $HYPHYOUT/Gag${RX}-CTerminal.pairwise.output.txt 2> /dev/null
+    mv messages.log $HYPHYOUT/Gag${RX}-CTerminal.pairwise.messages.log
+    echo "$HYPHYOUT/Gag${RX}-CTerminal.pairwise.output.txt created"
     (
       echo 1; # Select [Universal] code mode
       echo "$APPDIR/data/fasta/Gp41${RX}.aln.fasta.txt"; # Select sequence alignment file

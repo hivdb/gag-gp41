@@ -150,9 +150,11 @@ if __name__ == '__main__':
                 os.path.join(CLEANOUT, '{}NNRTIs-MA.pairwise.tsv'.format(gene))
             )
             pairwise_result(
-                '{} CA Domain'.format(gene),
-                os.path.join(CLEANOUT, '{}PIs-CA.pairwise.tsv'.format(gene)),
-                os.path.join(CLEANOUT, '{}NNRTIs-CA.pairwise.tsv'.format(gene))
+                '{} C Terminal Domain'.format(gene),
+                os.path.join(
+                    CLEANOUT, '{}PIs-CTerminal.pairwise.tsv'.format(gene)),
+                os.path.join(
+                    CLEANOUT, '{}NNRTIs-CTerminal.pairwise.tsv'.format(gene))
             )
         else:
             pairwise_result(
