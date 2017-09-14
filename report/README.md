@@ -8,37 +8,43 @@
 
 ![Gp41 sites](https://github.com/hivdb/gag-gp41/raw/master/report/gp41-mutations.png)
 
-## Pairwise dN/dS ratio comparison
+## Pairwise comparison
 
-### Complete Gag
+### Gag
 
-- PIs (treated): 0.21, range 0.00 to 0.89
-- NNRTIs (treated): 0.35, range 0.05 to inf
-- P value: 0.2
+| Title                      | Value             |
+|:---------------------------|:------------------|
+| NNRTIs NA differences      | 0.8 (0.5-1.3%)    |
+| PIs NA differences         | 1.1 (0.8-1.6%)    |
+| NNRTIs AA differences      | 1.4 (1.1-2.5%)    |
+| PIs AA differences         | 2.0 (1.4-2.9%)    |
+| NNRTIs dN/dS ratio         | 0.3 (0.2-0.6)     |
+| PIs dN/dS ratio            | 0.2 (0.1-0.5)     |
+| P value of dN/dS ratio     | 0.16              |
+| NNRTIs ambiguities (pre)   | 0.13 (0.07-0.13%) |
+| NNRTIs ambiguities (post)  | 0.00 (0.00-0.10%) |
+| NNRTIs ambiguities (delta) | 0.07 (0.00-0.13%) |
+| PIs ambiguities (pre)      | 0.40 (0.07-0.80%) |
+| PIs ambiguities (post)     | 0.03 (0.00-0.55%) |
+| PIs ambiguities (delta)    | 0.20 (0.00-0.48%) |
 
-### Gag MA Domain
+### Gp41
 
-- PIs (treated): 0.24, range 0.00 to inf
-- NNRTIs (treated): 0.73, range 0.00 to inf
-- P value: 0.2
-
-### Gag C Terminal Domain
-
-- PIs (treated): 0.46, range 0.00 to inf
-- NNRTIs (treated): 0.50, range 0.00 to inf
-- P value: 0.9
-
-### Complete Gp41
-
-- PIs (treated): 0.42, range 0.00 to inf
-- NNRTIs (treated): 0.44, range 0.00 to inf
-- P value: 0.4
-
-### Gp41 CD Domain
-
-- PIs (treated): 0.59, range 0.00 to inf
-- NNRTIs (treated): 0.47, range 0.00 to inf
-- P value: 0.9
+| Title                      | Value             |
+|:---------------------------|:------------------|
+| NNRTIs NA differences      | 0.8 (0.6-1.4%)    |
+| PIs NA differences         | 1.1 (0.5-1.5%)    |
+| NNRTIs AA differences      | 1.2 (0.9-2.0%)    |
+| PIs AA differences         | 1.4 (0.9-2.0%)    |
+| NNRTIs dN/dS ratio         | 0.4 (0.3-1.0)     |
+| PIs dN/dS ratio            | 0.4 (0.2-0.7)     |
+| P value of dN/dS ratio     | 0.43              |
+| NNRTIs ambiguities (pre)   | 0.10 (0.00-0.10%) |
+| NNRTIs ambiguities (post)  | 0.00 (0.00-0.10%) |
+| NNRTIs ambiguities (delta) | 0.00 (0.00-0.10%) |
+| PIs ambiguities (pre)      | 0.10 (0.00-0.19%) |
+| PIs ambiguities (post)     | 0.00 (0.00-0.10%) |
+| PIs ambiguities (delta)    | 0.00 (0.00-0.19%) |
 
 
 ## Positions with evidence for diversifying selection (FEL)

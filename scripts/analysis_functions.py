@@ -77,7 +77,7 @@ def compare_codon_change(gene, prev_codon, post_codon):
     type_ = 'syn'
     if prev_codon.aa != post_codon.aa:
         type_ = 'non'
-    num_changes = len([bp0 != bp1 for bp0, bp1
+    num_changes = sum([bp0 != bp1 for bp0, bp1
                        in zip(prev_triplet, post_triplet)])
 
     return {

@@ -6,6 +6,7 @@ RUN apt-get update -q && \
     cd /tmp && tar -xf hyphy-${HYPHYVER}.tar.gz && \
     cd hyphy-${HYPHYVER} && cmake . && \
     make HYPHYMP install && \
-    apt-get remove cmake g++ ocl-icd-opencl-dev mpich -qqy
+    apt-get remove cmake g++ ocl-icd-opencl-dev mpich -qqy && \
+    apt-get autoremove -qqy
 WORKDIR /app
 VOLUME /app

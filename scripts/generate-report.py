@@ -6,12 +6,17 @@ from collections import namedtuple
 
 from numpy import median
 from tabulate import tabulate
+from numpy import percentile
 from scipy.stats import mannwhitneyu
 
+from data_reader import fasta_reader
+
 APPDIR = '/app'
+FASTAS = os.path.join(APPDIR, 'data/fasta')
 HYPHYOUT = os.path.join(APPDIR, 'result_data/hyphy_output')
 CLEANOUT = os.path.join(APPDIR, 'result_data/hyphy_cleaned_output')
 NAN = float('nan')
+GENE_LENGTHS = {'Gag': 500, 'Gp41': 345}
 
 
 PairwiseResult = namedtuple(
@@ -21,7 +26,7 @@ PairwiseResult = namedtuple(
 )
 
 
-def pairwise_result(title, leftfname, rightfname):
+def dnds_result(title, leftfname, rightfname):
     with open(leftfname) as leftfp, open(rightfname) as rightfp:
         left = csv.DictReader(leftfp, delimiter='\t')
         right = csv.DictReader(rightfp, delimiter='\t')
@@ -55,6 +60,66 @@ def pairwise_result(title, leftfname, rightfname):
     ))
     print('- P value: {:.1f}'.format(result.pvalue))
     print()
+
+
+def summarize_dnds(gene, rx, domain=None):
+    if domain:
+        domain = '-' + domain
+    else:
+        domain = ''
+    filename = os.path.join(
+        CLEANOUT, '{}{}{}.pairwise.tsv'.format(gene, rx, domain))
+    with open(filename) as fp:
+        dnds = csv.DictReader(fp, delimiter='\t')
+        dnds = [float(one['dN/dS']) for one in dnds]
+
+        # remove NaNs
+        dnds = [n for n in dnds if not math.isnan(n)]
+
+        q25, q50, q75 = percentile(dnds, (25, 50, 75))
+        return '{:.1f} ({:.1f}-{:.1f})'.format(q50, q25, q75), dnds
+
+
+def summarize_na_diffs(gene, rx):
+    cchanges = get_codon_changes(gene)
+    cchanges = [cc for cc in cchanges if cc['Rx'] == rx]
+    na_length = GENE_LENGTHS[gene] * 3
+    perpt = groupby(cchanges, lambda cc: cc['PID'])
+    perpt = [sum(int(cc['NumNAChanges'])
+                 for cc in ccs) * 100 / na_length for _, ccs in perpt]
+    q25, q50, q75 = percentile(perpt, (25, 50, 75))
+    return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75)
+
+
+def summarize_aa_diffs(gene, rx):
+    cchanges = get_codon_changes(gene)
+    cchanges = [
+        cc for cc in cchanges if cc['Rx'] == rx and cc['Type'] == 'syn']
+    aa_length = GENE_LENGTHS[gene]
+    perpt = groupby(cchanges, lambda cc: cc['PID'])
+    perpt = [len(list(ccs)) * 100 / aa_length for _, ccs in perpt]
+    q25, q50, q75 = percentile(perpt, (25, 50, 75))
+    return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75)
+
+
+def summarize_ambiguities(gene, rx):
+    perpt = {}
+    na_length = GENE_LENGTHS[gene] * 3
+    for header, sequence in fasta_reader(gene, rx):
+        pt = header.split('|', 1)[1].rsplit('_', 1)[0]
+        ts = header.rsplit('_', 1)[1]
+        count = len([na for na in sequence.upper() if na not in 'ACTG-.'])
+        perpt.setdefault(pt, [NAN, NAN])
+        perpt[pt][('Pre', 'Post').index(ts)] = count * 100 / na_length
+    delta = [pre - post for pre, post in perpt.values()]
+    return (
+        '{:.2f} ({:.2f}-{:.2f}%)'.format(
+            *percentile([pre for pre, _ in perpt.values()], (50, 25, 75))),
+        '{:.2f} ({:.2f}-{:.2f}%)'.format(
+            *percentile([post for _, post in perpt.values()], (50, 25, 75))),
+        '{:.2f} ({:.2f}-{:.2f}%)'.format(
+            *percentile(delta, (50, 25, 75)))
+    )
 
 
 def fel_result(title, fname):
@@ -136,32 +201,40 @@ if __name__ == '__main__':
         '![Gp41 sites](https://github.com/hivdb/'
         'gag-gp41/raw/master/report/gp41-mutations.png)\n'
     )
-    print('## Pairwise dN/dS ratio comparison\n')
+    print('## Pairwise comparison\n')
     for gene in ('Gag', 'Gp41'):
-        pairwise_result(
-            'Complete {}'.format(gene),
-            os.path.join(CLEANOUT, '{}PIs.pairwise.tsv'.format(gene)),
-            os.path.join(CLEANOUT, '{}NNRTIs.pairwise.tsv'.format(gene))
-        )
-        if gene == 'Gag':
-            pairwise_result(
-                '{} MA Domain'.format(gene),
-                os.path.join(CLEANOUT, '{}PIs-MA.pairwise.tsv'.format(gene)),
-                os.path.join(CLEANOUT, '{}NNRTIs-MA.pairwise.tsv'.format(gene))
-            )
-            pairwise_result(
-                '{} C Terminal Domain'.format(gene),
-                os.path.join(
-                    CLEANOUT, '{}PIs-CTerminal.pairwise.tsv'.format(gene)),
-                os.path.join(
-                    CLEANOUT, '{}NNRTIs-CTerminal.pairwise.tsv'.format(gene))
-            )
-        else:
-            pairwise_result(
-                '{} CD Domain'.format(gene),
-                os.path.join(CLEANOUT, '{}PIs-CD.pairwise.tsv'.format(gene)),
-                os.path.join(CLEANOUT, '{}NNRTIs-CD.pairwise.tsv'.format(gene))
-            )
+        pairwise = []
+        print('### {}\n'.format(gene))
+
+        for rx in ('NNRTIs', 'PIs'):
+            pairwise.append([
+                '{} NA differences'.format(rx),
+                summarize_na_diffs(gene, rx)])
+
+        for rx in ('NNRTIs', 'PIs'):
+            pairwise.append([
+                '{} AA differences'.format(rx),
+                summarize_aa_diffs(gene, rx)])
+
+        all_dndslist = []
+        for rx in ('NNRTIs', 'PIs'):
+            ratio, dndslist = summarize_dnds(gene, rx)
+            all_dndslist.append(dndslist)
+            pairwise.append(['{} dN/dS ratio'.format(rx), ratio])
+        # perform two-sample Wilcoxon test, aka ‘Mann-Whitney’ test
+        # see: https://stackoverflow.com/a/33890615/2644759
+        pvalue = mannwhitneyu(*all_dndslist).pvalue
+        pairwise.append(['P value of dN/dS ratio', '{:.2f}'.format(pvalue)])
+
+        for rx in ('NNRTIs', 'PIs'):
+            ab_pre, ab_post, ab_delta = summarize_ambiguities(gene, rx)
+            pairwise.append(['{} ambiguities (pre)'.format(rx), ab_pre])
+            pairwise.append(['{} ambiguities (post)'.format(rx), ab_post])
+            pairwise.append(['{} ambiguities (delta)'.format(rx), ab_delta])
+
+        print(tabulate(pairwise, ['Title', 'Value'], tablefmt='pipe'))
+        print()
+
     print('\n## Positions with evidence for diversifying selection (FEL)\n')
     fel = []
     for gene in ('Gag', 'Gp41'):

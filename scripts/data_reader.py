@@ -177,3 +177,23 @@ def naive_sequence_reader(gene, filter_func=None):
         os.path.join(
             ROOT, 'data', '{}NaiveSequences.csv'.format(gene)),
         filter_func=filter_func)
+
+
+def fasta_reader(gene, rx):
+    filename = os.path.join(
+        ROOT, 'data', 'fasta', '{}{}.aln.fasta.txt'.format(gene, rx))
+    with open(filename) as fp:
+        header = None
+        seq = []
+        for line in fp:
+            if line.startswith('#'):
+                continue
+            elif line.startswith('>'):
+                if seq:
+                    yield header, ''.join(seq)
+                header = line[1:].strip()
+                seq = []
+            else:
+                seq.append(line.strip())
+        if seq:
+            yield header, ''.join(seq)
