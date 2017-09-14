@@ -122,6 +122,27 @@ def summarize_ambiguities(gene, rx):
     )
 
 
+def summarize_gag_cleavage_sites():
+
+    sites = (
+        132, 373, 374, 375, 376, 378, 380, 381,
+        429, 436, 451, 453, 484, 485, 490
+    )
+    result = []
+    with open(os.path.join(
+            APPDIR, 'result_data',
+            'GagAAChangesByPosWPrev.csv'.format(gene))
+    ) as fp:
+        reader = csv.DictReader(fp)
+        for row in reader:
+            if int(row['Pos']) in sites:
+                result.append([
+                    row['Group'], row['Pos'],
+                    '{PreAA}=&gt;{PostAA}'.format(**row),
+                    row['NumPts']])
+    return result
+
+
 def fel_result(title, fname):
     with open(fname) as fp:
         data = csv.DictReader(fp, delimiter='\t')
@@ -234,6 +255,11 @@ if __name__ == '__main__':
 
         print(tabulate(pairwise, ['Title', 'Value'], tablefmt='pipe'))
         print()
+
+    print('\n## Gag cleavage sites\n')
+    print(tabulate(
+        summarize_gag_cleavage_sites(),
+        ['Rx', 'Position', 'AA change', '# patients'], tablefmt='pipe'))
 
     print('\n## Positions with evidence for diversifying selection (FEL)\n')
     fel = []

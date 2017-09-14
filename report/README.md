@@ -47,6 +47,33 @@
 | PIs ambiguities (delta)    | 0.00 (0.00-0.19%) |
 
 
+## Gag cleavage sites
+
+| Rx     |   Position | AA change   |   # patients |
+|:-------|-----------:|:------------|-------------:|
+| PIs    |        373 | I=&gt;M     |            1 |
+| PIs    |        373 | S=&gt;P     |            1 |
+| PIs    |        373 | P=&gt;S     |            1 |
+| PIs    |        374 | A=&gt;T     |            1 |
+| PIs    |        375 | N=&gt;A     |            1 |
+| PIs    |        376 | I=&gt;T     |            1 |
+| PIs    |        378 | M=&gt;I     |            2 |
+| PIs    |        380 | K=&gt;R     |            2 |
+| PIs    |        381 | S=&gt;G     |            1 |
+| PIs    |        429 | K=&gt;R     |            1 |
+| PIs    |        436 | K=&gt;R     |            1 |
+| PIs    |        451 | N=&gt;S     |            1 |
+| PIs    |        453 | L=&gt;P     |            1 |
+| PIs    |        490 | R=&gt;K     |            2 |
+| NNRTIs |        132 | Y=&gt;F     |            1 |
+| NNRTIs |        373 | S=&gt;T     |            1 |
+| NNRTIs |        375 | A=&gt;N     |            1 |
+| NNRTIs |        375 | A=&gt;T     |            2 |
+| NNRTIs |        453 | L=&gt;P     |            1 |
+| NNRTIs |        484 | N=&gt;V     |            1 |
+| NNRTIs |        485 | P=&gt;S     |            1 |
+| NNRTIs |        490 | K=&gt;R     |            1 |
+
 ## Positions with evidence for diversifying selection (FEL)
 
 | Group         |   Position |   P value |
