@@ -77,7 +77,7 @@ def summarize_dnds(gene, rx, domain=None):
         dnds = [n for n in dnds if not math.isnan(n)]
 
         q25, q50, q75 = percentile(dnds, (25, 50, 75))
-        return '{:.1f} ({:.1f}-{:.1f})'.format(q50, q25, q75), dnds
+        return '{:.2f} ({:.2f}-{:.2f})'.format(q50, q25, q75), dnds
 
 
 def summarize_na_diffs(gene, rx):
@@ -224,7 +224,7 @@ if __name__ == '__main__':
         # perform two-sample Wilcoxon test, aka ‘Mann-Whitney’ test
         # see: https://stackoverflow.com/a/33890615/2644759
         pvalue = mannwhitneyu(*all_dndslist).pvalue
-        pairwise.append(['P value of dN/dS ratio', '{:.2f}'.format(pvalue)])
+        pairwise.append(['P value of dN/dS ratio', '{:.1f}'.format(pvalue)])
 
         for rx in ('NNRTIs', 'PIs'):
             ab_pre, ab_post, ab_delta = summarize_ambiguities(gene, rx)
