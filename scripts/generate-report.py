@@ -219,6 +219,35 @@ if __name__ == '__main__':
         row.append(pvalue(*all_dndslist))
         pairwise.append(row)
 
+        if gene == 'Gag':
+            row = ['dN/dS ratio (MA)']
+            all_dndslist = []
+            for rx in ('NNRTIs', 'PIs'):
+                ratio, dndslist = summarize_dnds(gene, rx, 'MA')
+                all_dndslist.append(dndslist)
+                row.append(ratio)
+            row.append(pvalue(*all_dndslist))
+            pairwise.append(row)
+
+            row = ['dN/dS ratio (C terminal)']
+            all_dndslist = []
+            for rx in ('NNRTIs', 'PIs'):
+                ratio, dndslist = summarize_dnds(gene, rx, 'CTerminal')
+                all_dndslist.append(dndslist)
+                row.append(ratio)
+            row.append(pvalue(*all_dndslist))
+            pairwise.append(row)
+
+        else:
+            row = ['dN/dS ratio (CD)']
+            all_dndslist = []
+            for rx in ('NNRTIs', 'PIs'):
+                ratio, dndslist = summarize_dnds(gene, rx, 'CD')
+                all_dndslist.append(dndslist)
+                row.append(ratio)
+            row.append(pvalue(*all_dndslist))
+            pairwise.append(row)
+
         row = ['Diversity']
         for rx in ('NNRTIs', 'PIs'):
             row.append(summarize_diversity(gene, rx))
