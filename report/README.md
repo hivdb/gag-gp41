@@ -12,39 +12,21 @@
 
 ### Gag
 
-| Title                     | Value             |
-|:--------------------------|:------------------|
-| NNRTIs NA differences     | 0.8 (0.5-1.3%)    |
-| PIs NA differences        | 1.1 (0.8-1.6%)    |
-| NNRTIs AA differences     | 0.8 (0.6-1.4%)    |
-| PIs AA differences        | 1.4 (0.8-1.8%)    |
-| NNRTIs dN/dS ratio        | 0.35 (0.21-0.57)  |
-| PIs dN/dS ratio           | 0.21 (0.08-0.48)  |
-| P value of dN/dS ratio    | 0.2               |
-| NNRTIs ambiguities (pre)  | 0.13 (0.07-0.13%) |
-| NNRTIs ambiguities (post) | 0.00 (0.00-0.10%) |
-| PIs ambiguities (pre)     | 0.40 (0.07-0.80%) |
-| PIs ambiguities (post)    | 0.03 (0.00-0.55%) |
-| NNRTIs diversity          | 17/106 (16.0%)    |
-| PIs diversity             | 66/174 (37.9%)    |
+| Title          | NNRTIs (16)      | PIs (24)         | P value   |
+|:---------------|:-----------------|:-----------------|:----------|
+| NA differences | 0.8 (0.5-1.3%)   | 1.1 (0.8-1.6%)   | 0.16      |
+| AA differences | 0.8 (0.6-1.4%)   | 1.4 (0.8-1.8%)   | 0.21      |
+| dN/dS ratio    | 0.35 (0.21-0.57) | 0.21 (0.08-0.48) | 0.16      |
+| Diversity      | 17/106 (16.0%)   | 66/174 (37.9%)   | -         |
 
 ### Gp41
 
-| Title                     | Value             |
-|:--------------------------|:------------------|
-| NNRTIs NA differences     | 0.8 (0.6-1.4%)    |
-| PIs NA differences        | 1.1 (0.5-1.5%)    |
-| NNRTIs AA differences     | 1.3 (0.9-2.2%)    |
-| PIs AA differences        | 1.4 (0.6-2.2%)    |
-| NNRTIs dN/dS ratio        | 0.44 (0.29-0.96)  |
-| PIs dN/dS ratio           | 0.42 (0.16-0.74)  |
-| P value of dN/dS ratio    | 0.4               |
-| NNRTIs ambiguities (pre)  | 0.10 (0.00-0.10%) |
-| NNRTIs ambiguities (post) | 0.00 (0.00-0.10%) |
-| PIs ambiguities (pre)     | 0.10 (0.00-0.19%) |
-| PIs ambiguities (post)    | 0.00 (0.00-0.10%) |
-| NNRTIs diversity          | 11/90 (12.2%)     |
-| PIs diversity             | 18/151 (11.9%)    |
+| Title          | NNRTIs (17)      | PIs (28)         | P value   |
+|:---------------|:-----------------|:-----------------|:----------|
+| NA differences | 0.8 (0.6-1.4%)   | 1.1 (0.5-1.5%)   | 0.83      |
+| AA differences | 1.3 (0.9-2.2%)   | 1.4 (0.6-2.2%)   | 0.70      |
+| dN/dS ratio    | 0.44 (0.29-0.96) | 0.42 (0.16-0.74) | 0.43      |
+| Diversity      | 11/90 (12.2%)    | 18/151 (11.9%)   | -         |
 
 
 ## Gag cleavage sites

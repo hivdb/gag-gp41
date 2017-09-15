@@ -2,14 +2,10 @@ import os
 import csv
 import math
 from itertools import groupby
-from collections import namedtuple
 
-from numpy import median
 from tabulate import tabulate
 from numpy import percentile
 from scipy.stats import mannwhitneyu
-
-from data_reader import fasta_reader
 
 APPDIR = '/app'
 FASTAS = os.path.join(APPDIR, 'data/fasta')
@@ -17,49 +13,6 @@ HYPHYOUT = os.path.join(APPDIR, 'result_data/hyphy_output')
 CLEANOUT = os.path.join(APPDIR, 'result_data/hyphy_cleaned_output')
 NAN = float('nan')
 GENE_LENGTHS = {'Gag': 500, 'Gp41': 345}
-
-
-PairwiseResult = namedtuple(
-    'PairwiseResult',
-    ('pvalue', 'leftmin', 'leftmed', 'leftmax',
-     'rightmin', 'rightmed', 'rightmax')
-)
-
-
-def dnds_result(title, leftfname, rightfname):
-    with open(leftfname) as leftfp, open(rightfname) as rightfp:
-        left = csv.DictReader(leftfp, delimiter='\t')
-        right = csv.DictReader(rightfp, delimiter='\t')
-        left = [float(one['dN/dS']) for one in left]
-        right = [float(one['dN/dS']) for one in right]
-
-        # remove NaNs
-        left = [n for n in left if not math.isnan(n)]
-        right = [n for n in right if not math.isnan(n)]
-
-        # perform two-sample Wilcoxon test, aka ‘Mann-Whitney’ test
-        # see: https://stackoverflow.com/a/33890615/2644759
-        pvalue = mannwhitneyu(left, right).pvalue
-
-        result = PairwiseResult(
-            pvalue=pvalue,
-            leftmin=min(left),
-            leftmed=median(left),
-            leftmax=max(left),
-            rightmin=min(right),
-            rightmed=median(right),
-            rightmax=max(right)
-        )
-
-    print('### {}\n'.format(title))
-    print('- PIs (treated): {:.2f}, range {:.2f} to {:.2f}'.format(
-        result.leftmed, result.leftmin, result.leftmax
-    ))
-    print('- NNRTIs (treated): {:.2f}, range {:.2f} to {:.2f}'.format(
-        result.rightmed, result.rightmin, result.rightmax
-    ))
-    print('- P value: {:.1f}'.format(result.pvalue))
-    print()
 
 
 def summarize_dnds(gene, rx, domain=None):
@@ -80,6 +33,14 @@ def summarize_dnds(gene, rx, domain=None):
         return '{:.2f} ({:.2f}-{:.2f})'.format(q50, q25, q75), dnds
 
 
+def get_patients_number(gene):
+    cchanges = get_codon_changes(gene)
+    return (
+        len(set(cc['PID'] for cc in cchanges if cc['Rx'] == 'NNRTIs')),
+        len(set(cc['PID'] for cc in cchanges if cc['Rx'] == 'PIs')),
+    )
+
+
 def summarize_na_diffs(gene, rx):
     cchanges = get_codon_changes(gene)
     cchanges = [cc for cc in cchanges if cc['Rx'] == rx]
@@ -88,7 +49,7 @@ def summarize_na_diffs(gene, rx):
     perpt = [sum(int(cc['NumNAChanges'])
                  for cc in ccs) * 100 / na_length for _, ccs in perpt]
     q25, q50, q75 = percentile(perpt, (25, 50, 75))
-    return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75)
+    return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75), perpt
 
 
 def summarize_aa_diffs(gene, rx):
@@ -100,7 +61,7 @@ def summarize_aa_diffs(gene, rx):
     perpt = groupby(cchanges, lambda cc: cc['PID'])
     perpt = [len(list(ccs)) * 100 / aa_length for _, ccs in perpt]
     q25, q50, q75 = percentile(perpt, (25, 50, 75))
-    return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75)
+    return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75), perpt
 
 
 def summarize_diversity(gene, rx):
@@ -117,23 +78,6 @@ def summarize_diversity(gene, rx):
         shrinks += len([cc for cc in ccs if len(cc[1]) > len(cc[2])])
         total += len(ccs)
     return '{}/{} ({:.1f}%)'.format(shrinks, total, shrinks / total * 100)
-
-
-def summarize_ambiguities(gene, rx):
-    perpt = {}
-    na_length = GENE_LENGTHS[gene] * 3
-    for header, sequence in fasta_reader(gene, rx):
-        pt = header.split('|', 1)[1].rsplit('_', 1)[0]
-        ts = header.rsplit('_', 1)[1]
-        count = len([na for na in sequence.upper() if na not in 'ACTG-.'])
-        perpt.setdefault(pt, [NAN, NAN])
-        perpt[pt][('Pre', 'Post').index(ts)] = count * 100 / na_length
-    return (
-        '{:.2f} ({:.2f}-{:.2f}%)'.format(
-            *percentile([pre for pre, _ in perpt.values()], (50, 25, 75))),
-        '{:.2f} ({:.2f}-{:.2f}%)'.format(
-            *percentile([post for _, post in perpt.values()], (50, 25, 75))),
-    )
 
 
 def summarize_gag_cleavage_sites():
@@ -177,6 +121,13 @@ def get_codon_changes(gene):
     ) as fp:
         reader = csv.DictReader(fp)
         return list(reader)
+
+
+def pvalue(left, right):
+    # perform two-sample Wilcoxon test, aka ‘Mann-Whitney’ test
+    # see: https://stackoverflow.com/a/33890615/2644759
+    p = mannwhitneyu(left, right).pvalue
+    return '{:.2f}'.format(p)
 
 
 def meds_result(gene, rx):
@@ -241,36 +192,45 @@ if __name__ == '__main__':
         pairwise = []
         print('### {}\n'.format(gene))
 
+        row = ['NA differences']
+        all_nadiffs = []
         for rx in ('NNRTIs', 'PIs'):
-            pairwise.append([
-                '{} NA differences'.format(rx),
-                summarize_na_diffs(gene, rx)])
+            num, nadiffs = summarize_na_diffs(gene, rx)
+            all_nadiffs.append(nadiffs)
+            row.append(num)
+        row.append(pvalue(*all_nadiffs))
+        pairwise.append(row)
 
+        row = ['AA differences']
+        all_aadiffs = []
         for rx in ('NNRTIs', 'PIs'):
-            pairwise.append([
-                '{} AA differences'.format(rx),
-                summarize_aa_diffs(gene, rx)])
+            num, aadiffs = summarize_aa_diffs(gene, rx)
+            all_aadiffs.append(aadiffs)
+            row.append(num)
+        row.append(pvalue(*all_aadiffs))
+        pairwise.append(row)
 
+        row = ['dN/dS ratio']
         all_dndslist = []
         for rx in ('NNRTIs', 'PIs'):
             ratio, dndslist = summarize_dnds(gene, rx)
             all_dndslist.append(dndslist)
-            pairwise.append(['{} dN/dS ratio'.format(rx), ratio])
-        # perform two-sample Wilcoxon test, aka ‘Mann-Whitney’ test
-        # see: https://stackoverflow.com/a/33890615/2644759
-        pvalue = mannwhitneyu(*all_dndslist).pvalue
-        pairwise.append(['P value of dN/dS ratio', '{:.1f}'.format(pvalue)])
+            row.append(ratio)
+        row.append(pvalue(*all_dndslist))
+        pairwise.append(row)
 
+        row = ['Diversity']
         for rx in ('NNRTIs', 'PIs'):
-            ab_pre, ab_post = summarize_ambiguities(gene, rx)
-            pairwise.append(['{} ambiguities (pre)'.format(rx), ab_pre])
-            pairwise.append(['{} ambiguities (post)'.format(rx), ab_post])
+            row.append(summarize_diversity(gene, rx))
+        row.append('-')
+        pairwise.append(row)
 
-        for rx in ('NNRTIs', 'PIs'):
-            pairwise.append(
-                ['{} diversity'.format(rx), summarize_diversity(gene, rx)])
-
-        print(tabulate(pairwise, ['Title', 'Value'], tablefmt='pipe'))
+        numpt_nnrtis, numpt_pis = get_patients_number(gene)
+        print(tabulate(
+            pairwise, [
+                'Title', 'NNRTIs ({})'.format(numpt_nnrtis),
+                'PIs ({})'.format(numpt_pis), 'P value'
+            ], tablefmt='pipe'))
         print()
 
     print('\n## Gag cleavage sites\n')
