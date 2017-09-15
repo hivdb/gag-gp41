@@ -93,13 +93,30 @@ def summarize_na_diffs(gene, rx):
 
 def summarize_aa_diffs(gene, rx):
     cchanges = get_codon_changes(gene)
+
     cchanges = [
-        cc for cc in cchanges if cc['Rx'] == rx and cc['Type'] == 'syn']
+        cc for cc in cchanges if cc['Rx'] == rx and cc['Type'] == 'non']
     aa_length = GENE_LENGTHS[gene]
     perpt = groupby(cchanges, lambda cc: cc['PID'])
     perpt = [len(list(ccs)) * 100 / aa_length for _, ccs in perpt]
     q25, q50, q75 = percentile(perpt, (25, 50, 75))
     return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75)
+
+
+def summarize_diversity(gene, rx):
+    cchanges = get_codon_changes(gene)
+    cchanges = [
+        [cc['PID']] + cc['AAs'].split('-->')
+        for cc in cchanges
+        if cc['Rx'] == rx and cc['Type'] == 'non']
+    perpt = groupby(cchanges, lambda cc: cc[0])
+    shrinks = 0
+    total = 0
+    for _, ccs in perpt:
+        ccs = list(ccs)
+        shrinks += len([cc for cc in ccs if len(cc[1]) > len(cc[2])])
+        total += len(ccs)
+    return '{}/{} ({:.1f}%)'.format(shrinks, total, shrinks / total * 100)
 
 
 def summarize_ambiguities(gene, rx):
@@ -111,14 +128,11 @@ def summarize_ambiguities(gene, rx):
         count = len([na for na in sequence.upper() if na not in 'ACTG-.'])
         perpt.setdefault(pt, [NAN, NAN])
         perpt[pt][('Pre', 'Post').index(ts)] = count * 100 / na_length
-    delta = [pre - post for pre, post in perpt.values()]
     return (
         '{:.2f} ({:.2f}-{:.2f}%)'.format(
             *percentile([pre for pre, _ in perpt.values()], (50, 25, 75))),
         '{:.2f} ({:.2f}-{:.2f}%)'.format(
             *percentile([post for _, post in perpt.values()], (50, 25, 75))),
-        '{:.2f} ({:.2f}-{:.2f}%)'.format(
-            *percentile(delta, (50, 25, 75)))
     )
 
 
@@ -248,10 +262,13 @@ if __name__ == '__main__':
         pairwise.append(['P value of dN/dS ratio', '{:.1f}'.format(pvalue)])
 
         for rx in ('NNRTIs', 'PIs'):
-            ab_pre, ab_post, ab_delta = summarize_ambiguities(gene, rx)
+            ab_pre, ab_post = summarize_ambiguities(gene, rx)
             pairwise.append(['{} ambiguities (pre)'.format(rx), ab_pre])
             pairwise.append(['{} ambiguities (post)'.format(rx), ab_post])
-            pairwise.append(['{} ambiguities (delta)'.format(rx), ab_delta])
+
+        for rx in ('NNRTIs', 'PIs'):
+            pairwise.append(
+                ['{} diversity'.format(rx), summarize_diversity(gene, rx)])
 
         print(tabulate(pairwise, ['Title', 'Value'], tablefmt='pipe'))
         print()
