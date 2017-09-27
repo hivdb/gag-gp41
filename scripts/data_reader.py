@@ -151,9 +151,12 @@ class Sample:
         return self._data['Category']
 
 
-def data_reader(filepath, decorator=dict, filter_func=None):
+def data_reader(filepath, decorator=dict, filter_func=None, delimiter=','):
     with open(filepath) as fp:
-        items = csv.DictReader(fp)
+        bom = fp.read(1)
+        if bom != '\ufeff':
+            fp.seek(0)
+        items = csv.DictReader(fp, delimiter=delimiter)
         for item in items:
             item = decorator(item)
             if not filter_func or filter_func(item):

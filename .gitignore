@@ -110,3 +110,6 @@ local
 
 data/fasta/*.json
 data/fasta/*.fit
+
+*.bak
+result_data/*.xlsx

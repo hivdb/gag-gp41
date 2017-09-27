@@ -125,6 +125,22 @@ The `scripts` folder stores script files that ran inside of Docker container:
 - `make-graphical-summary.r`: generate the two figures in `report` folder.
 
 
+## Prevalence data
+
+The prevalence information was calculated based on tens of thousands of
+sequences from Genbank. To get these sequences, we searched a local Genbank
+database with program XXXX. We found 23,802 and 41,970 Genbank sequences
+contained full gene of Gag or gp41, respectively. We then used a script to fetch
+patient information from [LANL HIV Database](https://www.hiv.lanl.gov) and
+created an unique table of accession per each patient.
+
+We used the unique table to filter the previous output of XXXX. We grouped the
+results by PubMedID, added manual information, then created an Excel report for
+each gene.
+
+Each report was manually reviewed to identify treatment naive patients.
+
+
 ## Pipeline
 
 We created an automatical pipeline to analysis the raw data, generate and store
