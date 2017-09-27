@@ -130,9 +130,12 @@ The `scripts` folder stores script files that ran inside of Docker container:
 The prevalence information was calculated based on tens of thousands of
 sequences from Genbank. To get these sequences, we searched a local Genbank
 database with program XXXX. We found 23,802 and 41,970 Genbank sequences
-contained full gene of Gag or gp41, respectively. We then used a script to fetch
-patient information from [LANL HIV Database](https://www.hiv.lanl.gov) and
-created an unique table of accession per each patient.
+contained full gene of Gag or gp41, respectively. All those sequences were
+aligned internally by XXXX with program TFASTX by using 12 as gap opening
+penalty, 2 as gap extension penalty and BLOSUM62 as amino acid scoring matrix.
+We then used a script to fetch patient information from [LANL HIV
+Database](https://www.hiv.lanl.gov) and created an unique table of accession per
+each patient.
 
 We used the unique table to filter the previous output of XXXX. We grouped the
 results by PubMedID, added manual information, then created an Excel report for

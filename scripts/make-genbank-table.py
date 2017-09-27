@@ -131,7 +131,7 @@ def create_naive_sequences_table(gene):
     fact_table = get_fact_table(gene)
     uniq_seqs = get_sequences_per_patients(gene)
     pubids = {pubid for pubid, f in fact_table.items()
-              if f['RxStatus'] == 'Naive'}
+              if f['RxStatus'] in ('Naive', 'PINaive', 'ProbablyNaive')}
     genesize = int(CONSENSUS[gene]['Size'])
     siteheaders = ['P{}'.format(i) for i in range(1, genesize + 1)]
     with open(filename, 'w') as fp:
@@ -224,7 +224,7 @@ def export_excel_table(filename, rows):
     headers = REVIEW_TABLE_HEADERS
     valid_rx_status = sorted([
         'Lab', 'Rx', 'Rx-PI', 'Rx=>Naive', 'Check', 'Naive', 'Unknown',
-        'Mixed', 'ProbablyNaive', 'Unpublished', 'NonM', 'Conflict'
+        'Mixed', 'PINaive', 'ProbablyNaive', 'Unpublished', 'NonM', 'Conflict'
     ])
     fmt = workbook.add_format()
     fmt.set_align('top')
