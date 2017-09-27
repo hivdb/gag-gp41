@@ -93,7 +93,7 @@ def compare_codon_change(gene, prev_codon, post_codon):
 def aggregate_mut_prevalence(gene):
     result = OrderedDict()
     total = Counter()
-    all_aas = 'ACDEFGHIKLMNPQRSTVWY~X#'
+    all_aas = 'ACDEFGHIKLMNPQRSTVWY~X#*'
     consensus = CONSENSUS[gene]['AASeq']
     sequences = list(naive_sequence_reader(gene))
     for pos in range(1, len(consensus) + 1):

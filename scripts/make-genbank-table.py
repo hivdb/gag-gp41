@@ -8,7 +8,8 @@ import hashlib
 import requests
 import xlsxwriter as xw
 from itertools import groupby
-from data_reader import data_reader, ROOT
+from codonutils import translate_codon
+from data_reader import data_reader, ROOT, CONSENSUS as _CONS
 
 SEARCH_INTERFACE = ('https://www.hiv.lanl.gov/components/'
                     'sequence/HIV/search/search.html')
@@ -19,6 +20,16 @@ GENE_RANGE = {
     'gp41': (7758, 8792)
 }
 
+CONSENSUS = {
+    'gag': _CONS['Gag'],
+    'gp41': _CONS['gp41']
+}
+
+REVIEW_TABLE_HEADERS = [
+    'PubID', 'PubMedID', 'PubYear', 'NumPts', 'NumIsolates',
+    'NumLANLIsolates', 'Title', 'Authors', 'RxStatus', 'Notes'
+]
+
 
 def uniq_accessions_filename(gene):
     return os.path.join(
@@ -27,19 +38,19 @@ def uniq_accessions_filename(gene):
     )
 
 
-def get_accessions(gene):
-    seqs = data_reader(
+def genbank_sequences_reader(gene):
+    return data_reader(
         os.path.join(ROOT, 'data', 'genbankSequences',
                      'Comp.{}.txt'.format(gene.lower())),
         delimiter='\t')
+
+
+def get_accessions(gene):
+    seqs = genbank_sequences_reader(gene)
     return [seq['Accession'] for seq in seqs]
 
 
-def create_review_table(gene):
-    seqs = data_reader(
-        os.path.join(ROOT, 'data', 'genbankSequences',
-                     'Comp.{}.txt'.format(gene.lower())),
-        delimiter='\t')
+def get_fact_table(gene):
     fact_table = data_reader(
         os.path.join(ROOT, 'data', '{}GenbankFact.csv'
                      .format(gene.lower())))
@@ -74,20 +85,79 @@ def create_review_table(gene):
             if not old_rx:
                 ff['RxStatus'] = new_rx
 
-    fact_table = fact_table_merged
-    uniq_accs = set(filter_lanl(gene))
+    return fact_table_merged
+
+
+def get_sequences_per_patients(gene):
+    seqs = genbank_sequences_reader(gene)
+    uniq_accs = {acc: subtype for acc, subtype in filter_lanl(gene)}
     uniq_seqs = []
     for seq in seqs:
         hashed = base64.urlsafe_b64encode(
             hashlib.md5((seq['Title'] + seq['Authors'])
                         .encode('utf-8')).digest()
         ).decode('utf-8')
-        if seq['Accession'] in uniq_accs:
+        acc = seq['Accession']
+        if acc in uniq_accs:
+            seq['Subtype'] = uniq_accs[acc]
             seq['_PubID'] = (('PM' + seq['PubMedID'])
                              if seq['PubMedID'] else
                              ('HS' + hashed.rstrip('=')))
             uniq_seqs.append(seq)
-    uniq_seqs = sorted(uniq_seqs, key=lambda s: s['_PubID'])
+    return sorted(uniq_seqs, key=lambda s: s['_PubID'])
+
+
+def iter_aas(consensus, naseq):
+    for i, cons in enumerate(consensus):
+        codon = naseq[i * 3:i * 3 + 3]
+        if codon == '---':
+            aas = 'd'
+        elif '-' in codon:
+            aas = 'X'
+        else:
+            aas = translate_codon(codon)
+            if aas == cons:
+                aas = '-'
+            elif len(aas) > 4:
+                aas = 'X'
+        yield aas
+
+
+def create_naive_sequences_table(gene):
+    filename = os.path.join(
+        ROOT, 'result_data',
+        '{}NaiveSequences.csv'.format(gene.lower())
+    )
+    fact_table = get_fact_table(gene)
+    uniq_seqs = get_sequences_per_patients(gene)
+    pubids = {pubid for pubid, f in fact_table.items()
+              if f['RxStatus'] == 'Naive'}
+    genesize = int(CONSENSUS[gene]['Size'])
+    siteheaders = ['P{}'.format(i) for i in range(1, genesize + 1)]
+    with open(filename, 'w') as fp:
+        writer = csv.DictWriter(
+            fp, ['PMID', 'Accession', 'RxStatus', 'lanlSubtype'] + siteheaders)
+        writer.writeheader()
+        for seq in sorted(uniq_seqs, key=lambda s: s['Accession']):
+            if seq['_PubID'] not in pubids:
+                continue
+            row = {
+                'PMID': seq['PubMedID'],
+                'Accession': seq['Accession'],
+                'RxStatus': 'Naive',
+                'lanlSubtype': seq['Subtype']
+            }
+            naseq = seq['NASeq']
+            aaseq = iter_aas(CONSENSUS[gene]['AASeq'], naseq)
+            for i, aas in enumerate(aaseq):
+                pos = i + 1
+                row['P{}'.format(pos)] = aas
+            writer.writerow(row)
+
+
+def create_review_table(gene):
+    fact_table = get_fact_table(gene)
+    uniq_seqs = get_sequences_per_patients(gene)
     grouped = groupby(uniq_seqs, lambda s: s['_PubID'])
     results = {}
     for pubid, group_seqs in grouped:
@@ -134,9 +204,7 @@ def create_review_table(gene):
         '{}ReviewTable.csv'.format(gene)
     ), 'w') as fp:
         # fp.write('\ufeff')  # BOM for Excel
-        writer = csv.DictWriter(fp, [
-            'PubID', 'PubMedID', 'PubYear', 'NumPts', 'NumIsolates',
-            'NumLANLIsolates', 'Title', 'Authors', 'RxStatus', 'Notes'])
+        writer = csv.DictWriter(fp, REVIEW_TABLE_HEADERS)
         writer.writeheader()
         writer.writerows(results)
     export_excel_table(
@@ -153,10 +221,7 @@ def export_excel_table(filename, rows):
     worksheet_rx_status = workbook.add_worksheet('validRxStatus')
     fontsize = 14
     workbook.formats[0].set_font_size(fontsize)
-    headers = [
-        'PubID', 'PubMedID', 'PubYear', 'NumPts', 'NumIsolates',
-        'NumLANLIsolates', 'Title', 'Authors', 'RxStatus', 'Notes'
-    ]
+    headers = REVIEW_TABLE_HEADERS
     valid_rx_status = sorted([
         'Lab', 'Rx', 'Rx-PI', 'Rx=>Naive', 'Check', 'Naive', 'Unknown',
         'Mixed', 'ProbablyNaive', 'Unpublished', 'NonM', 'Conflict'
@@ -224,7 +289,7 @@ def filter_lanl(gene):
     result_filename = uniq_accessions_filename(gene)
     if os.path.exists(result_filename):
         with open(result_filename) as fp:
-            return [r.strip() for r in fp.readlines()]
+            return list(csv.reader(fp))
     session = requests.Session()
     # fetch cookies first
     session.get(SEARCH_INTERFACE)
@@ -262,13 +327,18 @@ def filter_lanl(gene):
         reader = csv.DictReader(out, delimiter='\t')
         for row in reader:
             uniq_accessions.setdefault(
-                row['PAT id(SSAM)'] or row['Accession'], row['Accession'])
+                row['PAT id(SSAM)'] or row['Accession'],
+                (row['Accession'], row['Subtype']))
     uniq_accessions = list(uniq_accessions.values())
     with open(result_filename, 'w') as fp:
-        fp.write('\n'.join(sorted(uniq_accessions)))
+        writer = csv.writer(fp)
+        uniq_accessions = sorted(uniq_accessions)
+        writer.writerows(uniq_accessions)
     return uniq_accessions
 
 
 if __name__ == '__main__':
     create_review_table('gag')
     create_review_table('gp41')
+    create_naive_sequences_table('gag')
+    create_naive_sequences_table('gp41')

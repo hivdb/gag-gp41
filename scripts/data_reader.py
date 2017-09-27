@@ -178,7 +178,7 @@ def sample_reader(filter_func=None):
 def naive_sequence_reader(gene, filter_func=None):
     return data_reader(
         os.path.join(
-            ROOT, 'data', '{}NaiveSequences.csv'.format(gene)),
+            ROOT, 'result_data', '{}NaiveSequences.csv'.format(gene.lower())),
         filter_func=filter_func)
 
 
