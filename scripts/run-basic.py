@@ -5,6 +5,7 @@ from data_reader import ROOT
 from analysis_functions import (
     codon_changes_per_person,
     aggregate_aa_changes_by_pos,
+    aggregate_naiveseqs_distribution,
     aggregate_mut_prevalence)
 
 
@@ -73,6 +74,23 @@ def main():
             codon_changes_per_person('RT', ('PIs', 'NNRTIs')),
             key=cc_keyfunc),
         ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
+
+    for gene in ('Gag', 'gp41'):
+        diffs, stops = aggregate_naiveseqs_distribution(gene)
+        save_csv(
+            os.path.join(
+                ROOT, 'result_data',
+                '{}NaiveSeqsChangesDistribution.csv'.format(gene)
+            ),
+            diffs,
+            ['NumChanges', 'NumSequences'])
+        save_csv(
+            os.path.join(
+                ROOT, 'result_data',
+                '{}NaiveSeqsStopCodonsDistribution.csv'.format(gene)
+            ),
+            stops,
+            ['NumStopCodons', 'NumSequences'])
 
 
 if __name__ == '__main__':

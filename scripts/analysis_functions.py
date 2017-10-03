@@ -123,6 +123,38 @@ def aggregate_mut_prevalence(gene):
     } for (pos, aa), count in result.items()]
 
 
+def aggregate_naiveseqs_distribution(gene):
+    consensus = CONSENSUS[gene]['AASeq']
+    sequences = list(naive_sequence_reader(gene))
+    diffs_counter = Counter()
+    stops_counter = Counter()
+
+    for sequence in sequences:
+        diffs = 0
+        stopcodons = 0
+        for pos in range(1, len(consensus) + 1):
+            aa = sequence['P{}'.format(pos)]
+            if aa == '.':
+                continue
+            if aa != '-':
+                diffs += 1
+            if '*' in aa:
+                stopcodons += 1
+        diffs_counter[diffs] += 1
+        stops_counter[stopcodons] += 1
+
+    return (
+        [{
+            'NumChanges': d,
+            'NumSequences': c
+        } for d, c in sorted(diffs_counter.items())],
+        [{
+            'NumStopCodons': d,
+            'NumSequences': c
+        } for d, c in sorted(stops_counter.items())]
+    )
+
+
 def iter_codon_pairs(gene, category=None):
 
     if isinstance(category, str):

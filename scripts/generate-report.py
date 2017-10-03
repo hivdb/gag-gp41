@@ -187,6 +187,17 @@ if __name__ == '__main__':
         '![Gp41 sites](https://github.com/hivdb/'
         'gag-gp41/raw/master/report/gp41-mutations.png)\n'
     )
+    print(
+        '### Distribution figures for Naive Sequences\n\n'
+        '![Gag AA changes](https://github.com/hivdb/gag-gp41'
+        '/raw/master/report/gag-naive-aachanges-dist.png)\n'
+        '![Gag stop codons](https://github.com/hivdb/gag-gp41'
+        '/raw/master/report/gag-naive-stopcodons-dist.png)\n'
+        '![Gp41 AA changes](https://github.com/hivdb/gag-gp41'
+        '/raw/master/report/gp41-naive-aachanges-dist.png)\n'
+        '![Gp41 stop codons](https://github.com/hivdb/gag-gp41'
+        '/raw/master/report/gp41-naive-stopcodons-dist.png)\n'
+    )
     print('## Pairwise comparison\n')
     for gene in ('Gag', 'Gp41'):
         pairwise = []

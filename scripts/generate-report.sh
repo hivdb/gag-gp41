@@ -2,4 +2,5 @@
 
 mkdir -p /app/report
 Rscript /app/scripts/make-graphical-summary.r
+Rscript /app/scripts/make-naiveseqs-figures.r
 python3 /app/scripts/generate-report.py > /app/report/README.md
