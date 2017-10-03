@@ -19,7 +19,7 @@ for (gene in genes) {
       width=6, height=4.4, units = "in", res=300)
   print(ggplot(data, aes(x=NumStopCodons, y=NumSequences)) +
           geom_point() + ggtitle(sprintf(
-            "AA Changes Distribution for %s Naive Sequences", gene
+            "Stop Codons Distribution for %s Naive Sequences", gene
           )))
   dev.off()
 }
