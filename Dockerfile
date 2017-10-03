@@ -8,5 +8,6 @@ RUN apt-get update -q && \
     make HYPHYMP install && \
     apt-get remove cmake g++ ocl-icd-opencl-dev mpich -qqy && \
     apt-get autoremove -qqy
+ENV LC_ALL=C.UTF-8
 WORKDIR /app
 VOLUME /app
