@@ -13,13 +13,18 @@ HYPHYOUT = os.path.join(APPDIR, 'result_data/hyphy_output')
 CLEANOUT = os.path.join(APPDIR, 'result_data/hyphy_cleaned_output')
 NAN = float('nan')
 GENE_LENGTHS = {'Gag': 500, 'Gp41': 345}
+DOMAINS = (
+    ('All', None, None),
+    ('MA', (1, 132), 'Gag'),
+    ('CTerminal', (364, 500), 'Gag'),
+    ('CD', (195, 345), 'Gp41'))
 
 
 def summarize_dnds(gene, rx, domain=None):
-    if domain:
-        domain = '-' + domain
-    else:
+    if domain == 'All':
         domain = ''
+    elif domain:
+        domain = '-' + domain
     filename = os.path.join(
         CLEANOUT, '{}{}{}.pairwise.tsv'.format(gene, rx, domain))
     with open(filename) as fp:
@@ -41,8 +46,8 @@ def get_patients_number(gene):
     )
 
 
-def summarize_na_diffs(gene, rx):
-    cchanges = get_codon_changes(gene)
+def summarize_na_diffs(gene, rx, domain_range=None):
+    cchanges = get_codon_changes(gene, domain_range)
     cchanges = [cc for cc in cchanges if cc['Rx'] == rx]
     na_length = GENE_LENGTHS[gene] * 3
     perpt = groupby(cchanges, lambda cc: cc['PID'])
@@ -52,11 +57,11 @@ def summarize_na_diffs(gene, rx):
     return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75), perpt
 
 
-def summarize_aa_diffs(gene, rx):
-    cchanges = get_codon_changes(gene)
-
+def summarize_aa_diffs(gene, rx, domain_range=None):
+    cchanges = get_codon_changes(gene, domain_range)
     cchanges = [
         cc for cc in cchanges if cc['Rx'] == rx and cc['Type'] == 'non']
+
     aa_length = GENE_LENGTHS[gene]
     perpt = groupby(cchanges, lambda cc: cc['PID'])
     perpt = [len(list(ccs)) * 100 / aa_length for _, ccs in perpt]
@@ -64,8 +69,8 @@ def summarize_aa_diffs(gene, rx):
     return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75), perpt
 
 
-def summarize_diversity(gene, rx):
-    cchanges = get_codon_changes(gene)
+def summarize_ambiguity_shrinkage(gene, rx, domain_range=None):
+    cchanges = get_codon_changes(gene, domain_range)
     cchanges = [
         [cc['PID']] + cc['AAs'].split('-->')
         for cc in cchanges
@@ -114,13 +119,17 @@ def fel_result(title, fname):
     return r
 
 
-def get_codon_changes(gene):
+def get_codon_changes(gene, domain_range=None):
     with open(os.path.join(
             APPDIR, 'result_data',
             '{}CodonChangesByPt.csv'.format(gene))
     ) as fp:
         reader = csv.DictReader(fp)
-        return list(reader)
+        cchanges = list(reader)
+    if domain_range:
+        left, right = domain_range
+        cchanges = [cc for cc in cchanges if left <= int(cc['Pos']) <= right]
+    return cchanges
 
 
 def pvalue(left, right):
@@ -203,73 +212,64 @@ if __name__ == '__main__':
         pairwise = []
         print('### {}\n'.format(gene))
 
-        row = ['NA differences']
-        all_nadiffs = []
-        for rx in ('NNRTIs', 'PIs'):
-            num, nadiffs = summarize_na_diffs(gene, rx)
-            all_nadiffs.append(nadiffs)
-            row.append(num)
-        row.append(pvalue(*all_nadiffs))
-        pairwise.append(row)
+        pairwise.append(['NA differences', '', '', ''])
 
-        row = ['AA differences']
-        all_aadiffs = []
-        for rx in ('NNRTIs', 'PIs'):
-            num, aadiffs = summarize_aa_diffs(gene, rx)
-            all_aadiffs.append(aadiffs)
-            row.append(num)
-        row.append(pvalue(*all_aadiffs))
-        pairwise.append(row)
+        for domain, domain_range, geneOnly in DOMAINS:
+            if geneOnly and geneOnly != gene:
+                continue
+            row = ['- {}'.format(domain)]
+            all_nadiffs = []
+            for rx in ('PIs', 'NNRTIs'):
+                num, nadiffs = summarize_na_diffs(gene, rx, domain_range)
+                all_nadiffs.append(nadiffs)
+                row.append(num)
+            row.append(pvalue(*all_nadiffs))
+            pairwise.append(row)
 
-        row = ['dN/dS ratio']
-        all_dndslist = []
-        for rx in ('NNRTIs', 'PIs'):
-            ratio, dndslist = summarize_dnds(gene, rx)
-            all_dndslist.append(dndslist)
-            row.append(ratio)
-        row.append(pvalue(*all_dndslist))
-        pairwise.append(row)
+        pairwise.append(['AA differences', '', '', ''])
 
-        if gene == 'Gag':
-            row = ['dN/dS ratio (MA)']
+        for domain, domain_range, geneOnly in DOMAINS:
+            if geneOnly and geneOnly != gene:
+                continue
+            row = ['- {}'.format(domain)]
+            all_aadiffs = []
+            for rx in ('PIs', 'NNRTIs'):
+                num, aadiffs = summarize_aa_diffs(gene, rx, domain_range)
+                all_aadiffs.append(aadiffs)
+                row.append(num)
+            row.append(pvalue(*all_aadiffs))
+            pairwise.append(row)
+
+        pairwise.append(['dN/dS ratio', '', '', ''])
+
+        for domain, domain_range, geneOnly in DOMAINS:
+            if geneOnly and geneOnly != gene:
+                continue
+            row = ['- {}'.format(domain)]
             all_dndslist = []
-            for rx in ('NNRTIs', 'PIs'):
-                ratio, dndslist = summarize_dnds(gene, rx, 'MA')
+            for rx in ('PIs', 'NNRTIs'):
+                ratio, dndslist = summarize_dnds(gene, rx, domain)
                 all_dndslist.append(dndslist)
                 row.append(ratio)
             row.append(pvalue(*all_dndslist))
             pairwise.append(row)
 
-            row = ['dN/dS ratio (C terminal)']
-            all_dndslist = []
-            for rx in ('NNRTIs', 'PIs'):
-                ratio, dndslist = summarize_dnds(gene, rx, 'CTerminal')
-                all_dndslist.append(dndslist)
-                row.append(ratio)
-            row.append(pvalue(*all_dndslist))
+        pairwise.append(['Ambiguity Shrinkage', '', '', ''])
+        for domain, domain_range, geneOnly in DOMAINS:
+            if geneOnly and geneOnly != gene:
+                continue
+            row = ['- {}'.format(domain)]
+            for rx in ('PIs', 'NNRTIs'):
+                row.append(summarize_ambiguity_shrinkage(
+                    gene, rx, domain_range))
+            row.append('-')
             pairwise.append(row)
-
-        else:
-            row = ['dN/dS ratio (CD)']
-            all_dndslist = []
-            for rx in ('NNRTIs', 'PIs'):
-                ratio, dndslist = summarize_dnds(gene, rx, 'CD')
-                all_dndslist.append(dndslist)
-                row.append(ratio)
-            row.append(pvalue(*all_dndslist))
-            pairwise.append(row)
-
-        row = ['Diversity']
-        for rx in ('NNRTIs', 'PIs'):
-            row.append(summarize_diversity(gene, rx))
-        row.append('-')
-        pairwise.append(row)
 
         numpt_nnrtis, numpt_pis = get_patients_number(gene)
         print(tabulate(
             pairwise, [
-                'Title', 'NNRTIs ({})'.format(numpt_nnrtis),
-                'PIs ({})'.format(numpt_pis), 'P value'
+                '', 'PIs ({})'.format(numpt_pis),
+                'NNRTIs ({})'.format(numpt_nnrtis), 'P value'
             ], tablefmt='pipe'))
         print()
 
