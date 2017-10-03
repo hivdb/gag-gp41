@@ -15,6 +15,7 @@ SEARCH_INTERFACE = ('https://www.hiv.lanl.gov/components/'
                     'sequence/HIV/search/search.html')
 SEARCH_TARGET = ('https://www.hiv.lanl.gov/components/'
                  'sequence/HIV/search/search.comp')
+NAIVES = ('Naive', 'PINaive', 'ProbablyNaive')
 GENE_RANGE = {
     'gag': (790, 2289),
     'gp41': (7758, 8792)
@@ -30,17 +31,21 @@ REVIEW_TABLE_HEADERS = [
     'NumLANLIsolates', 'Title', 'Authors', 'RxStatus', 'Notes'
 ]
 
+CLEAN_TABLE_HEADERS = [
+    'PubMedID', 'PubYear', 'Title', 'Authors', 'NumPatients'
+]
+
 
 def uniq_accessions_filename(gene):
     return os.path.join(
-        ROOT, 'result_data',
+        ROOT, 'internalFiles', 'papersReview',
         '{}AccessionPerPatient.txt'.format(gene)
     )
 
 
 def genbank_sequences_reader(gene):
     return data_reader(
-        os.path.join(ROOT, 'data', 'genbankSequences',
+        os.path.join(ROOT, 'internalFiles', 'genbankSequences',
                      'Comp.{}.txt'.format(gene.lower())),
         delimiter='\t')
 
@@ -131,7 +136,7 @@ def create_naive_sequences_table(gene):
     fact_table = get_fact_table(gene)
     uniq_seqs = get_sequences_per_patients(gene)
     pubids = {pubid for pubid, f in fact_table.items()
-              if f['RxStatus'] in ('Naive', 'PINaive', 'ProbablyNaive')}
+              if f['RxStatus'] in NAIVES}
     genesize = int(CONSENSUS[gene]['Size'])
     siteheaders = ['P{}'.format(i) for i in range(1, genesize + 1)]
     with open(filename, 'w') as fp:
@@ -200,7 +205,7 @@ def create_review_table(gene):
 
     results = sorted(results.values(), key=lambda r: -r['NumLANLIsolates'])
     with open(os.path.join(
-        ROOT, 'result_data',
+        ROOT, 'internalFiles', 'papersReview',
         '{}ReviewTable.csv'.format(gene)
     ), 'w') as fp:
         # fp.write('\ufeff')  # BOM for Excel
@@ -209,10 +214,31 @@ def create_review_table(gene):
         writer.writerows(results)
     export_excel_table(
         os.path.join(
-            ROOT, 'result_data',
+            ROOT, 'internalFiles', 'papersReview',
             '{}ReviewTable.xlsx'.format(gene)
         ),
         results)
+    export_clean_table(
+        os.path.join(
+            ROOT, 'result_data',
+            '{}ReferencesTable.csv'.format(gene)
+        ),
+        results)
+
+
+def export_clean_table(filename, rows):
+    rows = [row for row in rows if row['RxStatus'] in NAIVES]
+    with open(filename, 'w') as fp:
+        writer = csv.DictWriter(fp, CLEAN_TABLE_HEADERS)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({
+                'PubMedID': row['PubMedID'],
+                'PubYear': row['PubYear'],
+                'Title': row['Title'],
+                'Authors': row['Authors'],
+                'NumPatients': row['NumLANLIsolates']
+            })
 
 
 def export_excel_table(filename, rows):
