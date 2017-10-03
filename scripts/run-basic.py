@@ -83,14 +83,14 @@ def main():
                 '{}NaiveSeqsChangesDistribution.csv'.format(gene)
             ),
             diffs,
-            ['NumChanges', 'NumSequences'])
+            ['Subtype', 'NumChanges', 'NumSequences'])
         save_csv(
             os.path.join(
                 ROOT, 'result_data',
                 '{}NaiveSeqsStopCodonsDistribution.csv'.format(gene)
             ),
             stops,
-            ['NumStopCodons', 'NumSequences'])
+            ['Subtype', 'NumStopCodons', 'NumSequences'])
 
 
 if __name__ == '__main__':

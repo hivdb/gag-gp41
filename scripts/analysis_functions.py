@@ -128,30 +128,42 @@ def aggregate_naiveseqs_distribution(gene):
     sequences = list(naive_sequence_reader(gene))
     diffs_counter = Counter()
     stops_counter = Counter()
+    common_subtypes = Counter(
+        s['lanlSubtype'] for s in sequences).most_common(5)
+    common_subtypes = {s for s, _ in common_subtypes}
 
     for sequence in sequences:
-        diffs = 0
-        stopcodons = 0
+        diffs = Counter()
+        stopcodons = Counter()
+        subtype = sequence['lanlSubtype']
         for pos in range(1, len(consensus) + 1):
             aa = sequence['P{}'.format(pos)]
             if aa == '.':
                 continue
             if aa != '-':
-                diffs += 1
+                diffs['All'] += 1
+                if subtype in common_subtypes:
+                    diffs[subtype] += 1
             if '*' in aa:
-                stopcodons += 1
-        diffs_counter[diffs] += 1
-        stops_counter[stopcodons] += 1
+                stopcodons['All'] += 1
+                if subtype in common_subtypes:
+                    stopcodons[subtype] += 1
+        for subtype, num in diffs.items():
+            diffs_counter[(subtype, num)] += 1
+        for subtype, num in stopcodons.items():
+            stops_counter[(subtype, num)] += 1
 
     return (
         [{
-            'NumChanges': d,
-            'NumSequences': c
-        } for d, c in sorted(diffs_counter.items())],
+            'Subtype': subtype,
+            'NumChanges': n,
+            'NumSequences': s
+        } for (subtype, n), s in sorted(diffs_counter.items())],
         [{
-            'NumStopCodons': d,
-            'NumSequences': c
-        } for d, c in sorted(stops_counter.items())]
+            'Subtype': subtype,
+            'NumStopCodons': n,
+            'NumSequences': s
+        } for (subtype, n), s in sorted(stops_counter.items())]
     )
 
 

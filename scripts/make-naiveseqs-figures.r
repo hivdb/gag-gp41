@@ -8,7 +8,7 @@ for (gene in genes) {
   data<-read.table(fileName, sep=",", header=TRUE, as.is=TRUE)
   png(filename=sprintf("/app/report/%s-naive-aachanges-dist.png", tolower(gene)),
       width=6, height=4.4, units = "in", res=300)
-  print(ggplot(data, aes(x=NumChanges, y=NumSequences)) +
+  print(ggplot(data, aes(x=NumChanges, y=NumSequences, colour=Subtype)) +
     geom_point() + ggtitle(sprintf(
       "AA Changes Distribution for %s Naive Sequences", gene
     )))
@@ -17,9 +17,9 @@ for (gene in genes) {
   data<-read.table(fileName, sep=",", header=TRUE, as.is=TRUE)
   png(filename=sprintf("/app/report/%s-naive-stopcodons-dist.png", tolower(gene)),
       width=6, height=4.4, units = "in", res=300)
-  print(ggplot(data, aes(x=NumStopCodons, y=NumSequences)) +
-          geom_point() + ggtitle(sprintf(
-            "Stop Codons Distribution for %s Naive Sequences", gene
-          )))
+  print(ggplot(data, aes(x=NumStopCodons, y=NumSequences, colour=Subtype)) +
+    geom_point() + ggtitle(sprintf(
+      "Stop Codons Distribution for %s Naive Sequences", gene
+    )))
   dev.off()
 }
