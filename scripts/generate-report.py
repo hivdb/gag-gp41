@@ -6,6 +6,7 @@ from itertools import groupby
 from tabulate import tabulate
 from numpy import percentile
 from scipy.stats import mannwhitneyu
+from analysis_functions import iter_sequence_pairs
 
 APPDIR = '/app'
 FASTAS = os.path.join(APPDIR, 'data/fasta')
@@ -69,20 +70,30 @@ def summarize_aa_diffs(gene, rx, domain_range=None):
     return '{:.1f} ({:.1f}-{:.1f}%)'.format(q50, q25, q75), perpt
 
 
-def summarize_ambiguity_shrinkage(gene, rx, domain_range=None):
-    cchanges = get_codon_changes(gene, domain_range)
-    cchanges = [
-        [cc['PID']] + cc['AAs'].split('-->')
-        for cc in cchanges
-        if cc['Rx'] == rx and cc['Type'] == 'non']
-    perpt = groupby(cchanges, lambda cc: cc[0])
-    shrinks = 0
-    total = 0
-    for _, ccs in perpt:
-        ccs = list(ccs)
-        shrinks += len([cc for cc in ccs if len(cc[1]) > len(cc[2])])
-        total += len(ccs)
-    return '{}/{} ({:.1f}%)'.format(shrinks, total, shrinks / total * 100)
+def summarize_ambiguities(gene, rx):
+    baselines = []
+    followups = []
+    deltas = []
+    for pid, _, prev_seq, post_seq in iter_sequence_pairs(gene, rx):
+        baseline = sum([prev_seq.na_sequence.count(na)
+                        for na in 'ACTG-.']) / len(prev_seq.na_sequence)
+        followup = sum([post_seq.na_sequence.count(na)
+                        for na in 'ACTG-.']) / len(post_seq.na_sequence)
+        delta = baseline - followup
+        baselines.append(100 - baseline * 100)
+        followups.append(100 - followup * 100)
+        deltas.append(delta * 100)
+    return (
+        ('{:.1f} ({:.1f}-{:.1f}%)'
+         .format(*percentile(baselines, (50, 25, 75))),
+         baselines),
+        ('{:.1f} ({:.1f}-{:.1f}%)'
+         .format(*percentile(followups, (50, 25, 75))),
+         followups),
+        ('{:.1f} ({:.1f}-{:.1f}%)'
+         .format(*percentile(deltas, (50, 25, 75))),
+         deltas)
+    )
 
 
 def summarize_gag_cleavage_sites():
@@ -254,16 +265,31 @@ if __name__ == '__main__':
             row.append(pvalue(*all_dndslist))
             pairwise.append(row)
 
-        pairwise.append(['Ambiguity Shrinkage', '', '', ''])
-        for domain, domain_range, geneOnly in DOMAINS:
-            if geneOnly and geneOnly != gene:
-                continue
-            row = ['- {}'.format(domain)]
-            for rx in ('PIs', 'NNRTIs'):
-                row.append(summarize_ambiguity_shrinkage(
-                    gene, rx, domain_range))
-            row.append('-')
-            pairwise.append(row)
+        pairwise.append(['% Ambiguities', '', '', ''])
+
+        all_baselines = []
+        all_followups = []
+        all_deltas = []
+
+        baseline_row = ['Baseline']
+        followup_row = ['Follow-up']
+        delta_row = ['Delta']
+
+        for rx in ('PIs', 'NNRTIs'):
+            ((numbl, baselines),
+             (numfu, followups),
+             (numdt, deltas)) = summarize_ambiguities(gene, rx)
+            all_baselines.append(baselines)
+            all_followups.append(followups)
+            all_deltas.append(deltas)
+            baseline_row.append(numbl)
+            followup_row.append(numfu)
+            delta_row.append(numdt)
+        baseline_row.append(pvalue(*all_baselines))
+        followup_row.append(pvalue(*all_followups))
+        delta_row.append(pvalue(*all_deltas))
+
+        pairwise.extend([baseline_row, followup_row, delta_row])
 
         numpt_nnrtis, numpt_pis = get_patients_number(gene)
         print(tabulate(

@@ -123,51 +123,64 @@ def aggregate_mut_prevalence(gene):
     } for (pos, aa), count in result.items()]
 
 
-def aggregate_naiveseqs_distribution(gene):
+def aggregate_naiveseqs_stat(gene):
     consensus = CONSENSUS[gene]['AASeq']
     sequences = list(naive_sequence_reader(gene))
-    diffs_counter = Counter()
-    stops_counter = Counter()
-    common_subtypes = Counter(
-        s['lanlSubtype'] for s in sequences).most_common(5)
-    common_subtypes = {s for s, _ in common_subtypes}
+    result = []
 
     for sequence in sequences:
-        diffs = Counter()
-        stopcodons = Counter()
-        subtype = sequence['lanlSubtype']
+        diffs = 0
+        stopcodons = 0
         for pos in range(1, len(consensus) + 1):
             aa = sequence['P{}'.format(pos)]
             if aa == '.':
                 continue
             if aa != '-':
-                diffs['All'] += 1
-                if subtype in common_subtypes:
-                    diffs[subtype] += 1
+                diffs += 1
             if '*' in aa:
-                stopcodons['All'] += 1
-                if subtype in common_subtypes:
-                    stopcodons[subtype] += 1
-        for subtype, num in diffs.items():
-            diffs_counter[(subtype, num)] += 1
-        for subtype, num in stopcodons.items():
-            stops_counter[(subtype, num)] += 1
+                stopcodons += 1
+        result.append({
+            'Accession': sequence['Accession'],
+            'PMID': sequence['PMID'],
+            'Gene': gene,
+            'Subtype': sequence['lanlSubtype'],
+            'NumAAChanges': diffs,
+            'NumStopCodons': stopcodons
+        })
 
-    return (
-        [{
-            'Subtype': subtype,
-            'NumChanges': n,
-            'NumSequences': s
-        } for (subtype, n), s in sorted(diffs_counter.items())],
-        [{
-            'Subtype': subtype,
-            'NumStopCodons': n,
-            'NumSequences': s
-        } for (subtype, n), s in sorted(stops_counter.items())]
-    )
+    return result
 
 
-def iter_codon_pairs(gene, category=None):
+def aggregate_naiveseqs_posstat(gene):
+    consensus = CONSENSUS[gene]['AASeq']
+    sequences = list(naive_sequence_reader(gene))
+    result = []
+
+    for pos in range(1, len(consensus) + 1):
+        diffs = 0
+        stopcodons = 0
+        for sequence in sequences:
+            aa = sequence['P{}'.format(pos)]
+            if aa == '.':
+                continue
+            if aa != '-':
+                diffs += 1
+            if '*' in aa:
+                stopcodons += 1
+        result.append({
+            'AAPosition': pos,
+            'Gene': gene,
+            'NumAAChanges': diffs,
+            'NumStopCodons': stopcodons
+        })
+
+    return result
+
+
+def iter_sequence_pairs(gene, category=None):
+    if gene == 'Gp41':
+        # a stupid fix
+        gene = 'gp41'
 
     if isinstance(category, str):
         samples = list(
@@ -196,13 +209,19 @@ def iter_codon_pairs(gene, category=None):
     for pid in sorted(sequences.keys()):
         post_spl, prev_spl = samples[pid]
         post_seq, prev_seq = sequences[pid]
+        yield pid, prev_spl.category, prev_seq, post_seq
+
+
+def iter_codon_pairs(gene, category=None):
+
+    for pid, cat, prev_seq, post_seq in iter_sequence_pairs(gene, category):
         start_aa = max(prev_seq.first_aa, post_seq.first_aa)
         end_aa = min(prev_seq.last_aa, post_seq.last_aa)
         prev_codons = prev_seq.iter_codons(start_aa, end_aa)
         post_codons = post_seq.iter_codons(start_aa, end_aa)
 
         for prev_codon, post_codon in zip(prev_codons, post_codons):
-            yield pid, prev_spl.category, prev_codon, post_codon
+            yield pid, cat, prev_codon, post_codon
 
 
 def aa_changes_per_person(gene, category, group):

@@ -5,7 +5,8 @@ from data_reader import ROOT
 from analysis_functions import (
     codon_changes_per_person,
     aggregate_aa_changes_by_pos,
-    aggregate_naiveseqs_distribution,
+    aggregate_naiveseqs_stat,
+    aggregate_naiveseqs_posstat,
     aggregate_mut_prevalence)
 
 
@@ -75,22 +76,27 @@ def main():
             key=cc_keyfunc),
         ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
-    for gene in ('Gag', 'gp41'):
-        diffs, stops = aggregate_naiveseqs_distribution(gene)
-        save_csv(
-            os.path.join(
-                ROOT, 'result_data',
-                '{}NaiveSeqsChangesDistribution.csv'.format(gene)
-            ),
-            diffs,
-            ['Subtype', 'NumChanges', 'NumSequences'])
-        save_csv(
-            os.path.join(
-                ROOT, 'result_data',
-                '{}NaiveSeqsStopCodonsDistribution.csv'.format(gene)
-            ),
-            stops,
-            ['Subtype', 'NumStopCodons', 'NumSequences'])
+    save_csv(
+        os.path.join(ROOT, 'result_data', 'GagNaiveSeqsStat.csv'),
+        aggregate_naiveseqs_stat('Gag'),
+        ['Accession', 'PMID', 'Gene', 'Subtype',
+         'NumAAChanges', 'NumStopCodons'])
+
+    save_csv(
+        os.path.join(ROOT, 'result_data', 'gp41NaiveSeqsStat.csv'),
+        aggregate_naiveseqs_stat('gp41'),
+        ['Accession', 'PMID', 'Gene', 'Subtype',
+         'NumAAChanges', 'NumStopCodons'])
+
+    save_csv(
+        os.path.join(ROOT, 'result_data', 'GagNaiveSeqsPosStat.csv'),
+        aggregate_naiveseqs_posstat('Gag'),
+        ['Gene', 'AAPosition', 'NumAAChanges', 'NumStopCodons'])
+
+    save_csv(
+        os.path.join(ROOT, 'result_data', 'gp41NaiveSeqsPosStat.csv'),
+        aggregate_naiveseqs_posstat('gp41'),
+        ['Gene', 'AAPosition', 'NumAAChanges', 'NumStopCodons'])
 
 
 if __name__ == '__main__':
