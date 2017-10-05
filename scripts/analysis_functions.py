@@ -106,6 +106,7 @@ def aggregate_mut_prevalence(gene):
                 continue
             aa = (aa
                   .replace(cons, '')
+                  .replace('i', '#')
                   .replace('d', '~')
                   .replace('-', cons))
             if len(aa) == 1:

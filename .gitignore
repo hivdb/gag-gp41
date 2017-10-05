@@ -104,6 +104,9 @@ ENV/
 *.swp
 *.swo
 
+# excel
+._*
+
 .DS_store
 local
 .Rhistory
@@ -113,3 +116,4 @@ data/fasta/*.fit
 
 *.bak
 internalFiles/papersReview/*.xlsx
+*.tmp

@@ -18,7 +18,7 @@ for (gene in genes) {
       width=6, height=4.4, units = "in", res=300)
   stopAggs = aggregate(cbind(NumSequences = data$Accession) ~ NumStopCodons, data, FUN = length)
   print(ggplot(stopAggs, aes(NumStopCodons, NumSequences)) +
-    geom_point() + ggtitle(sprintf(
+    geom_point() + scale_y_log10(breaks=c(1,2,3,5,10,20,40,80,160,320,640,1280,2560,5120)) + ggtitle(sprintf(
         "Stop Codons Distribution for %s Naive Sequences", gene
       )))
   dev.off()
