@@ -4,22 +4,28 @@ import os
 import re
 import csv
 import sys
-import json
+# import json
 import base64
 import hashlib
 import requests
 import xlsxwriter as xw
 from itertools import groupby
 import xml.etree.ElementTree as ET
-from collections import OrderedDict
-from subprocess import Popen, PIPE
+# from subprocess import Popen, PIPE
+from collections import OrderedDict, Counter
+from analysis_functions import aggregate_naiveseqs_adindex
 
-from data_reader import data_reader, ROOT, CONSENSUS as _CONS
+from lanl_reader import lanl_reader
+from codonutils import get_codons, compare_codon, translate_codon
+from data_writer import csv_writer, data_writer
+from data_reader import (get_prevalence, data_reader,
+                         possible_apobecs_reader,
+                         ROOT, CONSENSUS)
 
-SEARCH_INTERFACE = ('https://www.hiv.lanl.gov/components/'
-                    'sequence/HIV/search/search.html')
-SEARCH_TARGET = ('https://www.hiv.lanl.gov/components/'
-                 'sequence/HIV/search/search.comp')
+# SEARCH_INTERFACE = ('https://www.hiv.lanl.gov/components/'
+#                     'sequence/HIV/search/search.html')
+# SEARCH_TARGET = ('https://www.hiv.lanl.gov/components/'
+#                  'sequence/HIV/search/search.comp')
 EFETCH_BASE = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi'
 NAIVES = ('Naive', 'PINaive', 'ProbablyNaive')
 GENE_RANGE = {
@@ -27,15 +33,10 @@ GENE_RANGE = {
     'gp41': (7758, 8792)
 }
 
-CONSENSUS = {
-    'gag': _CONS['Gag'],
-    'gp41': _CONS['gp41']
-}
-
 REVIEW_TABLE_HEADERS = [
     'PubID', 'PubMedID', 'PubYear', 'NumPts', 'NumIsolates',
-    'NumLANLIsolates', 'Title', 'Authors', 'Subtypes',
-    'RxStatus', 'Notes'
+    'NumLANLIsolates', 'NumLANLIsolatesQCPassed', 'Title',
+    'Authors', 'Subtypes', 'RxStatus', 'Notes'
 ]
 
 CLEAN_TABLE_HEADERS = [
@@ -85,7 +86,7 @@ def get_fact_table(gene):
     return fact_table_merged
 
 
-def nucamino(gene, sequences):
+"""def nucamino(gene, sequences):
     cmd = os.path.join(ROOT, 'scripts', 'nucamino')
     fasta = '\n'.join(
         '>{Accession}\n{NASequence}'.format(**seq)
@@ -94,10 +95,23 @@ def nucamino(gene, sequences):
     proc = Popen(
         [cmd, 'hiv1b', '-g', gene.upper(), '--output-format', 'json'],
         stdin=PIPE, stdout=PIPE, stderr=sys.stdout)
-    return proc.communicate(fasta.encode('UTF-8'))[0]
+    return proc.communicate(fasta.encode('UTF-8'))[0]"""
 
 
-def attach_alignments(gene, sequences):
+def qc(gene, sequences):
+    results = []
+    for seq in sequences:
+        if ('---' * 10) in seq['AlignedNASequence']:
+            continue
+        if 'NNN' in seq['AlignedNASequence']:
+            continue
+        if seq['NumFrameShifts'] > 3:
+            continue
+        results.append(seq)
+    return results
+
+
+"""def attach_alignments(gene, sequences):
     genesize = int(CONSENSUS[gene]['Size'])
 
     # load cached aligned results first
@@ -124,7 +138,7 @@ def attach_alignments(gene, sequences):
             json.loads(stdout.decode('UTF-8'))[gene.upper()]
         )
         with open(filename, 'w') as fp:
-            json.dump({gene.upper(): aligned_results}, fp)
+            json.dump({gene.upper(): aligned_results}, fp, indent=2)
             print('{} created'.format(filename))
     else:
         aligned_results = cached_aligned_results
@@ -154,6 +168,16 @@ def attach_alignments(gene, sequences):
             aligned_naseq = '...' * firstaa + aligned_naseq
         if lastaa < genesize:
             aligned_naseq += '...' * (genesize - lastaa)
+        unusuals = 0
+        for m in mutations:
+            aas = m['AminoAcidText']
+            aas = aas.replace('i', '#').replace('d', '~')
+            if len(aas) > 4:
+                aas = 'X'
+            for aa in aas:
+                prev = get_prevalence(gene, m['Position'], aa)
+                if prev < 0.1:
+                    unusuals += 1
         sequence.update({
             'TrimedNASequence': trimed_naseq,
             'AlignedNASequence': aligned_naseq,
@@ -164,25 +188,65 @@ def attach_alignments(gene, sequences):
             'NumStopCodons': len([m for m in mutations
                                   if '*' in m['AminoAcidText']]),
             'NumFrameShifts': len(frameshifts),
+            'NumUnusuals': unusuals,
             'Mutations': mutations
         })
-    return list(sequences.values())
+        sequence['Included'] = qc(sequence)
+
+    return list(sequences.values())"""
 
 
-def export_naive_sequences(gene, ptseqs):
-    filename = os.path.join(
-        ROOT, 'result_data',
-        '{}NaiveSequences.csv'.format(gene.lower())
-    )
-    aligned_fasta = os.path.join(
-        ROOT, 'result_data',
-        '{}AlignedNaiveSequences.fasta'.format(gene.lower())
-    )
-    unaligned_fasta = os.path.join(
-        ROOT, 'result_data',
-        '{}UnalignedNaiveSequences.fasta'.format(gene.lower())
-    )
+def attach_numbers(gene, sequences):
+    for sequence in sequences:
+        mutations = sequence['Mutations']
+        unusuals = 0
+        for m in mutations:
+            aas = m['AminoAcidText']
+            aas = aas.replace('i', '#').replace('d', '~')
+            if len(aas) > 4:
+                aas = 'X'
+            for aa in aas:
+                prev = get_prevalence(gene, m['Position'], aa)
+                if prev < 0.1:
+                    unusuals += 1
 
+        sequence.update({
+            'NumInsertions': len([m for m in mutations if m['IsInsertion']]),
+            'NumDeletions': len([m for m in mutations if m['IsDeletion']]),
+            'NumStopCodons': len([m for m in mutations
+                                  if '*' in m['AminoAcidText']]),
+            'NumUnusuals': unusuals
+        })
+    return sequences
+
+
+def attach_apobecs(gene, sequences):
+    apobecs = {}
+    for apobec in possible_apobecs_reader(gene):
+        pos = int(apobec['Position'])
+        apobecs.setdefault(pos, set()).add(
+            apobec['AAChange'].split('=>', 1)[1])
+    apobec_cutoffs = {
+        'gag': 3,
+        'gp41': 2
+    }
+
+    for sequence in sequences:
+        mutations = sequence['Mutations']
+
+        sequence['NumApobecs'] = len([
+            m for m in mutations
+            if set(m['AminoAcidText']) &
+            apobecs.get(m['Position'], set())
+        ])
+        sequence['Included'] = (
+            sequence.get('Included', True) and
+            sequence['NumApobecs'] <= apobec_cutoffs[gene]
+        )
+    return sequences
+
+
+def attach_rxstatus(gene, ptseqs):
     fact_table = get_fact_table(gene).values()
     pmids = {p['PMID'] for p in naive_papers(fact_table)}
     if '' in pmids:
@@ -194,60 +258,122 @@ def export_naive_sequences(gene, ptseqs):
         # only sequences from naive unpublished papers should be included
         if p['PubID'] not in pubids:
             pubids[p['PubID']] = p['PMID']
+    for seq in ptseqs:
+        if seq['_PubID'] in pubids:
+            seq['RxStatus'] = 'Naive'
+            seq['PubMedID'] = pubids[seq['_PubID']]
+        else:
+            seq['RxStatus'] = 'NA'
+            seq['PubMedID'] = ''
+    return ptseqs
+
+
+def export_naive_sequences(gene, ptseqs):
+    filename = os.path.join(
+        ROOT, 'internalFiles', 'naiveSequences',
+        '{}.csv'.format(gene.lower())
+    )
+    aligned_fasta = os.path.join(
+        ROOT, 'resultData', 'naiveSequences', 'fastaFiles',
+        '{}Aligned.fasta'.format(gene.lower())
+    )
+    unaligned_fasta = os.path.join(
+        ROOT, 'resultData', 'naiveSequences', 'fastaFiles',
+        '{}Raw.fasta'.format(gene.lower())
+    )
+    indels_csv = os.path.join(
+        ROOT, 'resultData', 'naiveSequences',
+        '{}Indels.csv'.format(gene.lower()))
+
     # remove non-naive sequences
-    ptseqs = [seq for seq in ptseqs if seq['_PubID'] in pubids]
-    ptseqs = attach_alignments(gene, ptseqs)
+    ptseqs = [seq for seq in ptseqs
+              if seq['RxStatus'] == 'Naive' and seq['Included']]
     genesize = int(CONSENSUS[gene]['Size'])
     siteheaders = ['P{}'.format(i) for i in range(1, genesize + 1)]
 
-    with open(filename, 'w') as fp, \
-            open(aligned_fasta, 'w') as af, \
-            open(unaligned_fasta, 'w') as uf:
-        writer = csv.DictWriter(
-            fp, ['PMID', 'Accession', 'RxStatus', 'lanlSubtype'] + siteheaders)
-        writer.writeheader()
-        ptseqs = sorted(ptseqs, key=lambda s: s['Accession'])
-        af.write('\n'.join(
+    rows = []
+    indels = []
+    ptseqs = sorted(ptseqs, key=lambda s: s['Accession'])
+    for seq in ptseqs:
+        firstaa = seq['FirstAA']
+        lastaa = seq['LastAA']
+        muts = {m['Position']: m for m in seq['Mutations']}
+        row = {
+            'PMID': seq['PubMedID'],
+            'Accession': seq['Accession'],
+            'RxStatus': 'Naive',
+            'lanlSubtype': seq['Subtype'],
+            'NumAAChanges': len(muts),
+            'NumInsertions': seq['NumInsertions'],
+            'NumDeletions': seq['NumDeletions'],
+            'NumStopCodons': seq['NumStopCodons'],
+            'NumApobecs': seq['NumApobecs'],
+            'NumUnusuals': seq['NumUnusuals'],
+            'NumFrameShifts': seq['NumFrameShifts']
+        }
+        for pos in range(1, genesize + 1):
+            pname = 'P{}'.format(pos)
+            if pos < firstaa or pos > lastaa:
+                row[pname] = '.'
+            elif pos not in muts:
+                row[pname] = '-'
+            else:
+                mut = muts[pos]
+                if mut['IsInsertion']:
+                    row[pname] = 'i'
+                elif mut['IsDeletion']:
+                    row[pname] = 'd'
+                elif mut['IsPartial']:
+                    row[pname] = 'X'
+                else:
+                    aas = mut['AminoAcidText']
+                    if len(aas) > 4:
+                        aas = 'X'
+                    row[pname] = aas
+        rows.append(row)
+        for mut in seq['Mutations']:
+            if mut['IsPartial'] or not (mut['IsInsertion'] or
+                                        mut['IsDeletion']):
+                continue
+            isins = mut['IsInsertion']
+            indels.append({
+                'Accession': seq['Accession'],
+                'Gene': gene,
+                'Position': mut['Position'],
+                'IndelType': 'ins' if isins else 'del',
+                'Codon': mut['CodonText'] if isins else '',
+                'InsertedCodons': mut['InsertedCodonsText'] if isins else ''
+            })
+
+    csv_writer(
+        filename, rows,
+        ['PMID', 'Accession', 'RxStatus', 'lanlSubtype',
+         'NumAAChanges', 'NumInsertions', 'NumDeletions',
+         'NumStopCodons', 'NumApobecs', 'NumUnusuals',
+         'NumFrameShifts'] + siteheaders
+    )
+
+    csv_writer(
+        indels_csv, indels,
+        ['Accession', 'Gene', 'Position',
+         'IndelType', 'Codon', 'InsertedCodons']
+    )
+
+    data_writer(
+        aligned_fasta,
+        '\n'.join(
             '>{Accession}|{Subtype}\n{AlignedNASequence}'.format(**s)
             for s in ptseqs
-        ))
-        print('{} created'.format(aligned_fasta))
-        uf.write('\n'.join(
-            '>{Accession}|{Subtype}\n{TrimedNASequence}'.format(**s)
+        )
+    )
+
+    data_writer(
+        unaligned_fasta,
+        '\n'.join(
+            '>{Accession}|{Subtype}\n{NASequence}'.format(**s)
             for s in ptseqs
-        ))
-        print('{} created'.format(unaligned_fasta))
-        for seq in ptseqs:
-            firstaa = seq['FirstAA']
-            lastaa = seq['LastAA']
-            row = {
-                'PMID': pubids[seq['_PubID']],
-                'Accession': seq['Accession'],
-                'RxStatus': 'Naive',
-                'lanlSubtype': seq['Subtype']
-            }
-            muts = {m['Position']: m for m in seq['Mutations']}
-            for pos in range(1, genesize + 1):
-                pname = 'P{}'.format(pos)
-                if pos < firstaa or pos > lastaa:
-                    row[pname] = '.'
-                elif pos not in muts:
-                    row[pname] = '-'
-                else:
-                    mut = muts[pos]
-                    if mut['IsInsertion']:
-                        row[pname] = 'i'
-                    elif mut['IsDeletion']:
-                        row[pname] = 'd'
-                    elif mut['IsPartial']:
-                        row[pname] = 'X'
-                    else:
-                        aas = mut['AminoAcidText']
-                        if len(aas) > 4:
-                            aas = 'X'
-                        row[pname] = aas
-            writer.writerow(row)
-        print('{} created'.format(filename))
+        )
+    )
 
 
 def create_review_table(gene, ptseqs):
@@ -270,6 +396,9 @@ def create_review_table(gene, ptseqs):
                 'NumPts': fact.get('NumPts'),
                 'NumIsolates': fact.get('NumIsolates'),
                 'NumLANLIsolates': len(group_seqs),
+                'NumLANLIsolatesQCPassed':
+                len([s for s in group_seqs
+                     if s['Included']]),
                 'Title': seq['Title'],
                 'Authors': seq['Authors'],
                 'Subtypes': '; '.join(subtypes),
@@ -294,20 +423,21 @@ def create_review_table(gene, ptseqs):
             if num_isos:
                 result['NumIsolates'] = str(num_isos)
             result['NumLANLIsolates'] += len(group_seqs)
+            result['NumLANLIsolatesQCPassed'] += len([
+                s for s in group_seqs if s['Included']
+            ])
             if not result.get('RxStatus'):
                 result['RxStatus'] = fact.get('RxStatus')
 
     results = sorted(
         results.values(), key=lambda r: (-r['NumLANLIsolates'], r['PubID']))
-    with open(os.path.join(
-        ROOT, 'internalFiles', 'papersReview',
-        '{}ReviewTable.csv'.format(gene)
-    ), 'w') as fp:
-        # fp.write('\ufeff')  # BOM for Excel
-        writer = csv.DictWriter(fp, REVIEW_TABLE_HEADERS)
-        writer.writeheader()
-        writer.writerows(results)
-        print('{} created'.format(fp.name))
+    csv_writer(
+        os.path.join(
+            ROOT, 'internalFiles', 'papersReview',
+            '{}ReviewTable.csv'.format(gene)
+        ),
+        results,
+        REVIEW_TABLE_HEADERS)
     export_excel_table(
         os.path.join(
             ROOT, 'internalFiles', 'papersReview',
@@ -316,26 +446,27 @@ def create_review_table(gene, ptseqs):
         results)
     export_naive_papers_table(
         os.path.join(
-            ROOT, 'result_data',
-            '{}NaivePapers.csv'.format(gene)
+            ROOT, 'resultData', 'naiveSequences',
+            '{}Papers.csv'.format(gene)
         ),
         results)
 
 
 def export_naive_papers_table(filename, rows):
     rows = naive_papers(rows)
-    with open(filename, 'w') as fp:
-        writer = csv.DictWriter(fp, CLEAN_TABLE_HEADERS)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow({
-                'PubMedID': row['PubMedID'],
-                'PubYear': row['PubYear'],
-                'Title': row['Title'],
-                'Authors': row['Authors'],
-                'NumPatients': row['NumLANLIsolates']
-            })
-        print('{} created'.format(fp.name))
+    results = []
+    for row in rows:
+        numpt = row['NumLANLIsolatesQCPassed']
+        if not numpt:
+            continue
+        results.append({
+            'PubMedID': row['PubMedID'],
+            'PubYear': row['PubYear'],
+            'Title': row['Title'],
+            'Authors': row['Authors'],
+            'NumPatients': numpt
+        })
+    csv_writer(filename, results, CLEAN_TABLE_HEADERS)
 
 
 def export_excel_table(filename, rows):
@@ -387,11 +518,13 @@ def export_excel_table(filename, rows):
     worksheet.set_column('C:C', width=7, cell_format=numfmt)  # PubYear
     worksheet.set_column('D:D', width=7, cell_format=numfmt)  # NumPts
     worksheet.set_column('E:E', width=11, cell_format=numfmt)  # NumIsolates
-    worksheet.set_column('F:F', width=15, cell_format=numfmt)  # #LANLIsolates
-    worksheet.set_column('G:G', width=60, cell_format=wrapfmt)  # Title
-    worksheet.set_column('H:H', width=60, cell_format=wrapfmt)  # Authors
-    worksheet.set_column('I:I', width=40, cell_format=wrapfmt)  # Subtypes
-    worksheet.set_column('J:J', width=15, cell_format=fmt)  # RxStatus
+    worksheet.set_column('F:F', width=15, cell_format=numfmt)  # LANLIsolates
+    # LANLIsolatesQCPassed
+    worksheet.set_column('G:G', width=15, cell_format=numfmt)
+    worksheet.set_column('H:H', width=60, cell_format=wrapfmt)  # Title
+    worksheet.set_column('I:I', width=60, cell_format=wrapfmt)  # Authors
+    worksheet.set_column('J:J', width=40, cell_format=wrapfmt)  # Subtypes
+    worksheet.set_column('K:K', width=15, cell_format=fmt)  # RxStatus
     worksheet.set_row(0, None, cell_format=headerfmt)  # headers
 
     # add data validation
@@ -412,7 +545,7 @@ def export_excel_table(filename, rows):
     print('{} created'.format(filename))
 
 
-def download_from_lanl(gene):
+"""def download_from_lanl(gene):
     filename = os.path.join(
         ROOT, 'local', 'comp-{}-lanl.txt'.format(gene)
     )
@@ -450,11 +583,19 @@ def download_from_lanl(gene):
     with open(filename, 'wb') as fp:
         fp.write(resp.content)
         print('{} downloaded'.format(filename))
-    return filename
+    return filename"""
 
 
 def get_patient_sequences(gene):
-    filename = download_from_lanl(gene)
+    ptseqs = lanl_reader(gene, os.path.join(
+        ROOT, 'local', 'hiv-db_{}_squeeze.fasta'.format(gene)
+    ))
+    ptseqs = list(attach_references(gene, ptseqs))
+    ptseqs = attach_numbers(gene, ptseqs)
+    ptseqs = attach_rxstatus(gene, ptseqs)
+    return qc(gene, ptseqs)
+
+    """filename = download_from_lanl(gene)
     ptseqs = {}
     with open(filename, 'r') as fp:
         next(fp)  # skip the first line
@@ -479,7 +620,8 @@ def get_patient_sequences(gene):
                     'NASequence': naseq
                 }
     ptseqs = sorted(ptseqs.values(), key=lambda seq: seq['Accession'])
-    return list(attach_references(gene, ptseqs))
+    ptseqs = list(attach_references(gene, ptseqs))
+    return attach_alignments(gene, ptseqs)"""
 
 
 def attach_pubid(seq):
@@ -499,6 +641,9 @@ def attach_references(gene, patient_sequences):
         ROOT, 'internalFiles', 'papersReview',
         '{}PatientSequences.csv'.format(gene)
     )
+    dirname = os.path.dirname(filename)
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
 
     known_sequences = {}
     if os.path.exists(filename):
@@ -522,8 +667,7 @@ def attach_references(gene, patient_sequences):
             for seq in patient_sequences[offset:offset + limit]:
                 acc = seq['Accession']
                 if acc in known_sequences:
-                    partial[acc] = known_sequences[acc]
-                    partial[acc]['NASequence'] = seq['NASequence']
+                    partial[acc] = dict(known_sequences[acc], **seq)
                 else:
                     partial[acc] = seq
                     new_accessions.append(acc)
@@ -612,8 +756,133 @@ def attach_references(gene, patient_sequences):
     print('\n{} created'.format(filename))
 
 
+def find_possible_apobecs(gene, ptseqs):
+    filename = os.path.join(
+        ROOT, 'resultData', 'apobec',
+        '{}PossibleApobecs.csv'.format(gene)
+    )
+    apobecs = Counter()
+    # g2as = {
+    #     'AG': '3G (GG=>AG)',
+    #     'AA': '3F (GA=>AA)'
+    # }
+    for seq in ptseqs:
+        naseq = seq['AlignedNASequence']
+        # search for all positions has GG=>AG or GG=>AA change
+        # deletion gaps should be also considered
+        matches = re.finditer('A-*(?=[AG])', naseq)
+        muts = {m['Position']: m for m in seq['Mutations']}
+        start_codon_apobec_changed = False
+        if 1 in muts:
+            first = muts[1]
+            start_codon_apobec_changed = (
+                first['ReferenceText'] == 'M' and
+                'I' in first['AminoAcidText'])
+        if not start_codon_apobec_changed and not seq['NumStopCodons']:
+            # no M=>I and no W=>* changes
+            continue
+
+        if seq['NumStopCodons']:
+            for mut in seq['Mutations']:
+                if '*' in mut['AminoAcidText']:
+                    cons = mut['ReferenceText']
+                    if cons != 'W':
+                        continue
+                    aa_pos = mut['Position']
+                    cons_prev = get_prevalence(gene, aa_pos, cons)
+                    apobecs[(aa_pos, 'W=>*')] += 1
+
+        for match in matches:
+            start, end = match.span(0)
+            # na2 = naseq[end]
+            aa_pos = start // 3 + 1
+            na_offset = start % 3
+            if aa_pos not in muts:
+                continue
+
+            mut = muts[aa_pos]
+            cons = mut['ReferenceText']
+
+            if mut['IsPartial'] or mut['IsInsertion'] or mut['IsDeletion']:
+                continue
+
+            if '*' in mut['AminoAcidText']:
+                continue
+
+            cons_prev = get_prevalence(gene, aa_pos, cons)
+            if cons_prev < 98.5:
+                # skip non-conserved position
+                continue
+
+            codon = mut['CodonText']
+            for source in get_codons(cons):
+                # find G=>A hypermutation
+                if source[na_offset] != 'G':
+                    continue
+                target = source[:na_offset] + 'A' + source[na_offset + 1:]
+                if compare_codon(target, codon):
+                    target_aa = translate_codon(target)
+                    if target_aa == cons:
+                        # do not add things like "E=>E"
+                        break
+                    apobecs[(
+                        aa_pos,
+                        '{}=>{}'.format(cons, target_aa)
+                    )] += 1
+                    break
+
+    possible_apobecs = []
+    for (pos, mut), count in apobecs.most_common():
+        possible_apobecs.append({
+            'Position': pos,
+            'AAChange': mut,
+            'NumWithSignature': count,
+            'WildTypePrevalence':
+            get_prevalence(gene, pos, mut.split('=>', 1)[0]),
+            'MutationPrevalence':
+            get_prevalence(gene, pos, mut.split('=>', 1)[1]),
+        })
+
+    for seq in ptseqs:
+        muts = {m['Position']: m for m in seq['Mutations']}
+        for apobec in possible_apobecs:
+            pos = apobec['Position']
+            aa = apobec['AAChange'].split('=>', 1)[1]
+            if pos in muts and aa in muts[pos]['AminoAcidText']:
+                apobec['NumTotal'] = apobec.get('NumTotal', 0) + 1
+    for apobec in possible_apobecs:
+        apobec['PcntWithSignature'] = '{:.1f}'.format(
+            apobec['NumWithSignature'] * 100 / apobec['NumTotal']
+        )
+    possible_apobecs = sorted(
+        possible_apobecs,
+        key=lambda a: (
+            -float(a['PcntWithSignature']),
+            a['Position'], a['AAChange']
+        ))
+    possible_apobecs = [a for a in possible_apobecs
+                        if float(a['PcntWithSignature']) > 50]
+
+    csv_writer(
+        filename, possible_apobecs,
+        ['Position', 'AAChange', 'NumWithSignature',
+         'NumTotal', 'PcntWithSignature', 'WildTypePrevalence',
+         'MutationPrevalence']
+    )
+
+
 if __name__ == '__main__':
     for gene in ('gag', 'gp41'):
         ptseqs = get_patient_sequences(gene)
+        find_possible_apobecs(gene, ptseqs)
+        ptseqs = attach_apobecs(gene, ptseqs)
         create_review_table(gene, ptseqs)
         export_naive_sequences(gene, ptseqs)
+
+        csv_writer(
+            os.path.join(
+                ROOT, 'resultData', 'apobec',
+                '{}NaiveADIndex.csv'.format(gene)),
+            aggregate_naiveseqs_adindex(gene, ptseqs),
+            ['Accession', 'QCIssue', 'NumAPOBECs',
+             'NumConservedAPOBECSites', 'ADIndex'])

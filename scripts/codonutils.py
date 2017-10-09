@@ -1,3 +1,5 @@
+import re
+
 CODON_TABLE = {
     'TTT': 'F',
     'TTC': 'F',
@@ -81,7 +83,12 @@ CODON_TABLE = {
     'TAG': '*',
 }
 
-AMBIBUOUS_NAS = {
+REVERSE_CODON_TABLE = {}
+for codon, aa in CODON_TABLE.items():
+    REVERSE_CODON_TABLE.setdefault(aa, []).append(codon)
+
+
+AMBIGUOUS_NAS = {
     'W': 'AT',
     'S': 'CG',
     'M': 'AC',
@@ -101,9 +108,30 @@ def translate_codon(nas):
         return CODON_TABLE[nas]
     nas = nas.replace('-', 'N')[:3]
     aas = set()
-    for na0 in AMBIBUOUS_NAS.get(nas[0], nas[0]):
-        for na1 in AMBIBUOUS_NAS.get(nas[1], nas[1]):
-            for na2 in AMBIBUOUS_NAS.get(nas[2], nas[2]):
+    for na0 in AMBIGUOUS_NAS.get(nas[0], nas[0]):
+        for na1 in AMBIGUOUS_NAS.get(nas[1], nas[1]):
+            for na2 in AMBIGUOUS_NAS.get(nas[2], nas[2]):
                 aas.add(CODON_TABLE[na0 + na1 + na2])
     CODON_TABLE[nas] = aas = ''.join(sorted(aas))
     return aas
+
+
+def get_codons(aa):
+    return REVERSE_CODON_TABLE[aa]
+
+
+def compare_codon(base, target):
+    # we assume that "base" contains only unambiguous NAs
+    if re.search(r'[BDHVN]', target):
+        # false if highly ambiguous NA were found
+        return False
+    for sna, tna in zip(base, target):
+        if tna in 'ACGT':
+            if tna != sna:
+                break
+        else:
+            if sna not in AMBIGUOUS_NAS[tna]:
+                break
+    else:
+        return True
+    return False

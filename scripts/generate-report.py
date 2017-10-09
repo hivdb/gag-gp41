@@ -13,12 +13,12 @@ FASTAS = os.path.join(APPDIR, 'data/fasta')
 HYPHYOUT = os.path.join(APPDIR, 'result_data/hyphy_output')
 CLEANOUT = os.path.join(APPDIR, 'result_data/hyphy_cleaned_output')
 NAN = float('nan')
-GENE_LENGTHS = {'Gag': 500, 'Gp41': 345}
+GENE_LENGTHS = {'gag': 500, 'gp41': 345}
 DOMAINS = (
     ('All', None, None),
-    ('MA', (1, 132), 'Gag'),
-    ('CTerminal', (364, 500), 'Gag'),
-    ('CD', (195, 345), 'Gp41'))
+    ('MA', (1, 132), 'gag'),
+    ('CTerminal', (364, 500), 'gag'),
+    ('CD', (195, 345), 'gp41'))
 
 
 def summarize_dnds(gene, rx, domain=None):
@@ -104,8 +104,8 @@ def summarize_gag_cleavage_sites():
     )
     result = []
     with open(os.path.join(
-            APPDIR, 'result_data',
-            'GagAAChangesByPosWPrev.csv'.format(gene))
+            APPDIR, 'resultData', 'aaChangesByPosWPrev',
+            'gag.csv'.format(gene))
     ) as fp:
         reader = csv.DictReader(fp)
         for row in reader:
@@ -132,8 +132,8 @@ def fel_result(title, fname):
 
 def get_codon_changes(gene, domain_range=None):
     with open(os.path.join(
-            APPDIR, 'result_data',
-            '{}CodonChangesByPt.csv'.format(gene))
+            APPDIR, 'resultData', 'codonChangesByPt',
+            '{}.csv'.format(gene))
     ) as fp:
         reader = csv.DictReader(fp)
         cchanges = list(reader)
@@ -219,7 +219,7 @@ if __name__ == '__main__':
         '/raw/master/report/gp41-naive-stopcodons-dist.png)\n'
     )
     print('## Pairwise comparison\n')
-    for gene in ('Gag', 'Gp41'):
+    for gene in ('gag', 'gp41'):
         pairwise = []
         print('### {}\n'.format(gene))
 
@@ -306,7 +306,7 @@ if __name__ == '__main__':
 
     print('\n## Positions with evidence for diversifying selection (FEL)\n')
     fel = []
-    for gene in ('Gag', 'Gp41'):
+    for gene in ('gag', 'gp41'):
         for rx in ('PIs', 'NNRTIs'):
             fel.extend(fel_result(
                 '{} - {}'.format(gene, rx),
@@ -315,7 +315,7 @@ if __name__ == '__main__':
     print(tabulate(fel, ['Group', 'Position', 'P value'], tablefmt='pipe'))
     print('\n\n## Positions with evidence for directional selection (MEDS)\n')
     meds = []
-    for gene in ('Gag', 'Gp41'):
+    for gene in ('gag', 'gp41'):
         for rx in ('PIs', 'NNRTIs'):
             meds.extend(meds_result(gene, rx))
 

@@ -1,5 +1,5 @@
 #! /usr/bin/env Rscript
-genes<-list("Gag", "Gp41")
+genes<-list("gag", "gp41")
 
 xticksGp41<-seq(50,350,20)
 xticksGag<-seq(0,480,30)
@@ -73,7 +73,7 @@ for (i in 1:length(genes)) {
   xt<-unlist(xticks[i])
 
   #### Read in Fold Changes
-  inputFileAAs = sprintf("/app/result_data/%sAAChangesByPosWPrev.csv", gene)
+  inputFileAAs = sprintf("/app/resultData/aaChangesByPosWPrev/%s.csv", gene)
   foldData = readFile(inputFileAAs)
   
   #### Get PI fold changes
@@ -89,7 +89,7 @@ for (i in 1:length(genes)) {
   Controls<-Controls[complete.cases(Controls),]
   
   #### Remove mutations lower than lowest one in PI group
-  if (gene == 'Gp41') {
+  if (gene == 'gp41') {
     Controls<-Controls[Controls$Pos>50,]
   }
   ControlsLogFolds<-Controls$LogFold
@@ -111,7 +111,7 @@ for (i in 1:length(genes)) {
   abline(h=c(0,0))
   abline(h=c(1,1), lty=2)
   
-  if (gene == 'Gag') {
+  if (gene == 'gag') {
     text(-5, 3.4, pos=4, "A. PI-Treated Individuals", cex = 1.25)
     recttext(MA_rect_coords[1], MA_rect_coords[2], MA_rect_coords[3], MA_rect_coords[4],
              "MA", rectArgs = MA_rect_args, textArgs = rect_text_args)
@@ -146,7 +146,7 @@ for (i in 1:length(genes)) {
   abline(h=c(1,1), lty=2)
   
   
-  if (gene == 'Gag') {
+  if (gene == 'gag') {
     text(-10, 3.3, pos=4, "B. Control Individuals", cex = 1.25)
     recttext(MA_rect_coords[1], MA_rect_coords[2], MA_rect_coords[3], MA_rect_coords[4],
              "MA", rectArgs = MA_rect_args, textArgs = rect_text_args)

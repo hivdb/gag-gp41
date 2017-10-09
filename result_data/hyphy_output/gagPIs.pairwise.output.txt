@@ -1,0 +1,54 @@
+
+
+			+-------------------+
+			|Choose Genetic Code|
+			+-------------------+
+
+
+	(1):[Universal] Universal code. (Genebank transl_table=1).
+	(2):[Vertebrate mtDNA] Vertebrate mitochondrial DNA code. (Genebank transl_table=2).
+	(3):[Yeast mtDNA] Yeast mitochondrial DNA code. (Genebank transl_table=3).
+	(4):[Mold/Protozoan mtDNA] Mold, Protozoan and Coelenterate mitochondrial DNA and the Mycloplasma/Spiroplasma code. (Genebank transl_table=4).
+	(5):[Invertebrate mtDNA] Invertebrate mitochondrial DNA code. (Genebank transl_table=5).
+	(6):[Ciliate Nuclear] Ciliate, Dasycladacean and Hexamita Nuclear code. (Genebank transl_table=6).
+	(7):[Echinoderm mtDNA] Echinoderm mitochondrial DNA code. (Genebank transl_table=9).
+	(8):[Euplotid Nuclear] Euplotid Nuclear code. (Genebank transl_table=10).
+	(9):[Alt. Yeast Nuclear] Alternative Yeast Nuclear code. (Genebank transl_table=12).
+	(10):[Ascidian mtDNA] Ascidian mitochondrial DNA code. (Genebank transl_table=13).
+	(11):[Flatworm mtDNA] Flatworm mitochondrial DNA code. (Genebank transl_table=14).
+	(12):[Blepharisma Nuclear] Blepharisma Nuclear code. (Genebank transl_table=15).
+	(13):[Chlorophycean mtDNA] Chlorophycean Mitochondrial Code (transl_table=16).
+	(14):[Trematode mtDNA] Trematode Mitochondrial Code (transl_table=21).
+	(15):[Scenedesmus obliquus mtDNA] Scenedesmus obliquus mitochondrial Code (transl_table=22).
+	(16):[Thraustochytrium mtDNA] Thraustochytrium Mitochondrial Code (transl_table=23).
+	(17):[Pterobranchia mtDNA] Pterobranchia Mitochondrial Code (transl_table=24).
+	(18):[SR1 and Gracilibacteria] Candidate Division SR1 and Gracilibacteria Code (transl_table=25).
+	(19):[Pachysolen Nuclear] Pachysolen tannophilus Nuclear Code (transl_table=26).
+
+Please choose an option (or press q to cancel selection):
+Select a coding sequence alignment file (`/app/scripts/`) Specify an optional, 0-based, filter string for codons (e.g. 0-100); enter 'all' to include all codons : 
+Pair, dN/dS
+118827_PIs, 0.3402962661882651
+26307_PIs, 0.88968884341789
+39143_PIs, 0.5088252226744362
+42080_PIs, 0.1254495963300694
+56120_PIs, 0.3872632585896658
+118860_PIs, -nan
+118935_PIs, 0.06322995573117762
+118973_PIs, 0.6458272194122676
+118828_PIs, 0.08077928549108193
+118986_PIs, 0.5383054314997493
+118954_PIs, 0.7666561604258771
+118745_PIs, 0
+118972_PIs, 0.1922499850214601
+118823_PIs, 0.07209632943621876
+118853_PIs, 0.4104767478824579
+118886_PIs, 0
+118792_PIs, 0.2518262849119223
+118811_PIs, 0.2074514987690587
+118903_PIs, 0.1010297585005405
+118925_PIs, 0.0268416372865138
+118761_PIs, 0.4435364765362659
+118846_PIs, 0.5605622206173342
+118956_PIs, 0.1875740123958917
+118849_PIs, 0

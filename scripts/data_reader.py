@@ -47,10 +47,15 @@ PREVALENCE = None
 def get_prevalence(gene, pos, aa):
     global PREVALENCE
     if not PREVALENCE:
-        with open(os.path.join(
-                ROOT, 'result_data', 'MutPrevalence.csv')) as fp:
-            PREVALENCE = {(p['Gene'], int(p['Pos']), p['AA']):
-                          MutPrevalence(p) for p in csv.DictReader(fp)}
+        PREVALENCE = {}
+        for _gene in ('gag', 'gp41'):
+            with open(os.path.join(
+                    ROOT, 'resultData', 'aaPrevalence',
+                    '{}All.csv'.format(_gene))) as fp:
+                PREVALENCE.update({
+                    (p['Gene'], int(p['Pos']), p['AA']):
+                    MutPrevalence(p) for p in csv.DictReader(fp)
+                })
     prev = PREVALENCE.get((gene, pos, aa))
     if prev:
         return prev.percent
@@ -169,6 +174,19 @@ def sequence_reader(filter_func=None):
         Sequence, filter_func)
 
 
+def possible_apobecs_reader(gene, filter_func=None):
+    filename = os.path.join(
+        ROOT, 'resultData', 'apobec',
+        '{}PossibleApobecs.csv'.format(gene.lower())
+    )
+    if not os.path.exists(filename):
+        return []
+    return data_reader(
+        filename,
+        filter_func=filter_func
+    )
+
+
 def sample_reader(filter_func=None):
     return data_reader(
         os.path.join(ROOT, 'data', 'samples.csv'),
@@ -178,13 +196,18 @@ def sample_reader(filter_func=None):
 def naive_sequence_reader(gene, filter_func=None):
     return data_reader(
         os.path.join(
-            ROOT, 'result_data', '{}NaiveSequences.csv'.format(gene.lower())),
+            ROOT, 'internalFiles', 'naiveSequences',
+            '{}.csv'.format(gene.lower())),
         filter_func=filter_func)
 
 
 def fasta_reader(gene, rx):
     filename = os.path.join(
         ROOT, 'data', 'fasta', '{}{}.aln.fasta.txt'.format(gene, rx))
+    return any_fasta_reader(filename)
+
+
+def any_fasta_reader(filename):
     with open(filename) as fp:
         header = None
         seq = []

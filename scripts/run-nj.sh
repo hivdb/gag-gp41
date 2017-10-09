@@ -7,7 +7,7 @@ HYPHYOUT="$APPDIR/result_data/hyphy_output"
 cd $(dirname $0)
 
 cd /usr/local/lib/hyphy
-for GENE in Gag Gp41; do
+for GENE in gag gp41; do
     for RX in NNRTIs PIs; do
         (
           echo 1; # Select [Distance formulae] computation

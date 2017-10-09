@@ -1,8 +1,9 @@
 import os
-import csv
 from itertools import chain
 from data_reader import ROOT
+from data_writer import csv_writer
 from analysis_functions import (
+    get_most_common_subtypes,
     codon_changes_per_person,
     aggregate_aa_changes_by_pos,
     aggregate_naiveseqs_stat,
@@ -10,93 +11,55 @@ from analysis_functions import (
     aggregate_mut_prevalence)
 
 
-def save_csv(path, data, headers=None):
-    with open(path, 'w') as fp:
-        writer = csv.DictWriter(fp, headers)
-        writer.writeheader()
-        writer.writerows(data)
-    print('{} created'.format(path))
-
-
 def main():
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'MutPrevalence.csv'),
-        chain(
-            aggregate_mut_prevalence('Gag'),
-            aggregate_mut_prevalence('gp41'),
-        ),
-        ['Gene', 'Pos', 'AA', 'Pcnt', 'Count', 'PosTotal'])
-
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'GagAAChangesByPosWPrev.csv'),
-        chain(
-            aggregate_aa_changes_by_pos('Gag', 'PIs', 'PIs'),
-            aggregate_aa_changes_by_pos('Gag', 'NNRTIs', 'NNRTIs'),
-        ),
-        ['Group', 'Pos', 'PreAA', 'PostAA',
-         'NumPts', 'PrePrev', 'PostPrev', 'Fold', 'LogFold'])
-
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'Gp41AAChangesByPosWPrev.csv'),
-        chain(
-            aggregate_aa_changes_by_pos('gp41', 'PIs', 'PIs'),
-            aggregate_aa_changes_by_pos('gp41', 'NNRTIs', 'NNRTIs'),
-        ),
-        ['Group', 'Pos', 'PreAA', 'PostAA',
-         'NumPts', 'PrePrev', 'PostPrev', 'Fold', 'LogFold'])
-
     def cc_keyfunc(c):
         return int(c['PID']), c['Rx'], c['Pos']
 
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'GagCodonChangesByPt.csv'),
-        sorted(
-            codon_changes_per_person('Gag', ('PIs', 'NNRTIs')),
-            key=cc_keyfunc),
-        ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
+    for gene in ('gag', 'gp41'):
 
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'Gp41CodonChangesByPt.csv'),
-        sorted(
-            codon_changes_per_person('gp41', ('PIs', 'NNRTIs')),
-            key=cc_keyfunc),
-        ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
+        major_subtypes = [None] + get_most_common_subtypes(gene)
+        for subtype in major_subtypes:
+            if subtype:
+                filename = '{}{}.csv'.format(gene, subtype)
+            else:
+                filename = '{}All.csv'.format(gene)
+            csv_writer(
+                os.path.join(ROOT, 'resultData', 'aaPrevalence', filename),
+                aggregate_mut_prevalence(gene, subtype)
+            )
 
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'PRCodonChangesByPt.csv'),
-        sorted(
-            codon_changes_per_person('PR', ('PIs', 'NNRTIs')),
-            key=cc_keyfunc),
-        ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
+        csv_writer(
+            os.path.join(ROOT, 'resultData', 'aaChangesByPosWPrev',
+                         '{}.csv'.format(gene)),
+            chain(
+                aggregate_aa_changes_by_pos(gene, 'PIs', 'PIs'),
+                aggregate_aa_changes_by_pos(gene, 'NNRTIs', 'NNRTIs'),
+            ),
+            ['Group', 'Pos', 'PreAA', 'PostAA',
+             'NumPts', 'PrePrev', 'PostPrev', 'Fold', 'LogFold'])
 
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'RTCodonChangesByPt.csv'),
-        sorted(
-            codon_changes_per_person('RT', ('PIs', 'NNRTIs')),
-            key=cc_keyfunc),
-        ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
+        csv_writer(
+            os.path.join(ROOT, 'resultData', 'codonChangesByPt',
+                         '{}.csv'.format(gene)),
+            sorted(
+                codon_changes_per_person(gene, ('PIs', 'NNRTIs')),
+                key=cc_keyfunc),
+            ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'GagNaiveSeqsStat.csv'),
-        aggregate_naiveseqs_stat('Gag'),
-        ['Accession', 'PMID', 'Gene', 'Subtype',
-         'NumAAChanges', 'NumStopCodons'])
+        csv_writer(
+            os.path.join(ROOT, 'resultData', 'naiveSequences',
+                         '{}StatBySeq.csv'.format(gene)),
+            aggregate_naiveseqs_stat(gene),
+            ['Accession', 'PMID', 'Gene', 'Subtype',
+             'NumAAChanges', 'NumInsertions', 'NumDeletions',
+             'NumStopCodons', 'NumApobecs', 'NumUnusuals', 'NumFrameShifts'])
 
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'gp41NaiveSeqsStat.csv'),
-        aggregate_naiveseqs_stat('gp41'),
-        ['Accession', 'PMID', 'Gene', 'Subtype',
-         'NumAAChanges', 'NumStopCodons'])
-
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'GagNaiveSeqsPosStat.csv'),
-        aggregate_naiveseqs_posstat('Gag'),
-        ['Gene', 'AAPosition', 'NumAAChanges', 'NumStopCodons'])
-
-    save_csv(
-        os.path.join(ROOT, 'result_data', 'gp41NaiveSeqsPosStat.csv'),
-        aggregate_naiveseqs_posstat('gp41'),
-        ['Gene', 'AAPosition', 'NumAAChanges', 'NumStopCodons'])
+        csv_writer(
+            os.path.join(ROOT, 'resultData', 'naiveSequences',
+                         '{}StatByPos.csv'.format(gene)),
+            aggregate_naiveseqs_posstat(gene),
+            ['Gene', 'AAPosition', 'NumAAChanges',
+             'NumStopCodons', 'NumInsertions', 'NumDeletions'])
 
 
 if __name__ == '__main__':
