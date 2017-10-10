@@ -33,9 +33,7 @@ for (gene in genes) {
   png(filename=sprintf("%s/report/%s-adindex.png", ROOT, tolower(gene)),
       width=6, height=2, units = "in", res=300)
   print(ggplot(data, aes(NumAPOBECs)) + geom_histogram(binwidth=1) +
-    scale_y_log10(breaks=c(1,4,16,64,256,1024,4096)) + ggtitle(sprintf(
-      "AD Index in %d Conserved APOBEC Sites for %d %s Sequences", conserved, numseqs, gene
-    )) + theme(plot.title = element_text(size = 10)))
+    scale_y_log10(breaks=c(1,4,16,64,256,1024,4096)))
   dev.off()
 
 }

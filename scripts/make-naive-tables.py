@@ -4,14 +4,13 @@ import os
 import re
 import csv
 import sys
-# import json
 import base64
 import hashlib
 import requests
 import xlsxwriter as xw
+from decimal import Decimal
 from itertools import groupby
 import xml.etree.ElementTree as ET
-# from subprocess import Popen, PIPE
 from collections import OrderedDict, Counter
 from analysis_functions import aggregate_naiveseqs_adindex
 
@@ -22,16 +21,14 @@ from data_reader import (get_prevalence, data_reader,
                          possible_apobecs_reader,
                          ROOT, CONSENSUS)
 
-# SEARCH_INTERFACE = ('https://www.hiv.lanl.gov/components/'
-#                     'sequence/HIV/search/search.html')
-# SEARCH_TARGET = ('https://www.hiv.lanl.gov/components/'
-#                  'sequence/HIV/search/search.comp')
 EFETCH_BASE = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi'
 NAIVES = ('Naive', 'PINaive', 'ProbablyNaive')
 GENE_RANGE = {
     'gag': (790, 2289),
     'gp41': (7758, 8792)
 }
+PREC0 = Decimal('1')
+PREC1 = Decimal('1.0')
 
 REVIEW_TABLE_HEADERS = [
     'PubID', 'PubMedID', 'PubYear', 'NumPts', 'NumIsolates',
@@ -86,18 +83,6 @@ def get_fact_table(gene):
     return fact_table_merged
 
 
-"""def nucamino(gene, sequences):
-    cmd = os.path.join(ROOT, 'scripts', 'nucamino')
-    fasta = '\n'.join(
-        '>{Accession}\n{NASequence}'.format(**seq)
-        for seq in sequences
-    )
-    proc = Popen(
-        [cmd, 'hiv1b', '-g', gene.upper(), '--output-format', 'json'],
-        stdin=PIPE, stdout=PIPE, stderr=sys.stdout)
-    return proc.communicate(fasta.encode('UTF-8'))[0]"""
-
-
 def qc(gene, sequences):
     results = []
     for seq in sequences:
@@ -111,98 +96,12 @@ def qc(gene, sequences):
     return results
 
 
-"""def attach_alignments(gene, sequences):
-    genesize = int(CONSENSUS[gene]['Size'])
-
-    # load cached aligned results first
-    filename = os.path.join(
-        ROOT, 'local',
-        '{}NaiveAlignedSequences.json'.format(gene))
-    cached_aligned_results = []
-    if os.path.exists(filename):
-        print('Local file {} found'.format(filename))
-        with open(filename) as fp:
-            try:
-                cached_aligned_results = json.load(fp)[gene.upper()]
-            except (KeyError, ValueError):
-                pass
-    known_seqs = {r['Name'] for r in cached_aligned_results}
-
-    # align sequences if not aligned before
-    input_sequences = [
-        s for s in sequences if s['Accession'] not in known_seqs]
-    if input_sequences:
-        stdout = nucamino(gene, input_sequences)
-        aligned_results = (
-            cached_aligned_results +
-            json.loads(stdout.decode('UTF-8'))[gene.upper()]
-        )
-        with open(filename, 'w') as fp:
-            json.dump({gene.upper(): aligned_results}, fp, indent=2)
-            print('{} created'.format(filename))
-    else:
-        aligned_results = cached_aligned_results
-
-    sequences = OrderedDict([(seq['Accession'], seq) for seq in sequences])
-    for result in cached_aligned_results + aligned_results:
-        acc = result['Name']
-        if acc not in sequences:
-            continue
-        sequence = sequences[acc]
-        report = result['Report']
-        control = report['ControlLine']
-        naseq = report['NucleicAcidsLine']
-        firstaa = report['FirstAA']
-        lastaa = report['LastAA']
-        firstna = report['FirstNA']
-        lastna = report['LastNA']
-        mutations = report['Mutations']
-        frameshifts = report['FrameShifts']
-        # trim not aligned seq
-        trimed_naseq = sequence['NASequence'][firstna - 1:lastna].upper()
-        # remove insertions
-        aligned_naseq = ''.join(
-            na for na, c in zip(naseq, control) if c != '+')
-        aligned_naseq = aligned_naseq.replace(' ', '-')
-        if firstaa > 1:
-            aligned_naseq = '...' * firstaa + aligned_naseq
-        if lastaa < genesize:
-            aligned_naseq += '...' * (genesize - lastaa)
-        unusuals = 0
-        for m in mutations:
-            aas = m['AminoAcidText']
-            aas = aas.replace('i', '#').replace('d', '~')
-            if len(aas) > 4:
-                aas = 'X'
-            for aa in aas:
-                prev = get_prevalence(gene, m['Position'], aa)
-                if prev < 0.1:
-                    unusuals += 1
-        sequence.update({
-            'TrimedNASequence': trimed_naseq,
-            'AlignedNASequence': aligned_naseq,
-            'FirstAA': firstaa,
-            'LastAA': lastaa,
-            'NumInsertions': len([m for m in mutations if m['IsInsertion']]),
-            'NumDeletions': len([m for m in mutations if m['IsDeletion']]),
-            'NumStopCodons': len([m for m in mutations
-                                  if '*' in m['AminoAcidText']]),
-            'NumFrameShifts': len(frameshifts),
-            'NumUnusuals': unusuals,
-            'Mutations': mutations
-        })
-        sequence['Included'] = qc(sequence)
-
-    return list(sequences.values())"""
-
-
 def attach_numbers(gene, sequences):
     for sequence in sequences:
         mutations = sequence['Mutations']
         unusuals = 0
         for m in mutations:
             aas = m['AminoAcidText']
-            aas = aas.replace('i', '#').replace('d', '~')
             if len(aas) > 4:
                 aas = 'X'
             for aa in aas:
@@ -447,7 +346,7 @@ def create_review_table(gene, ptseqs):
     export_naive_papers_table(
         os.path.join(
             ROOT, 'resultData', 'naiveSequences',
-            '{}Papers.csv'.format(gene)
+            '{}NaiveStudies.csv'.format(gene)
         ),
         results)
 
@@ -545,47 +444,6 @@ def export_excel_table(filename, rows):
     print('{} created'.format(filename))
 
 
-"""def download_from_lanl(gene):
-    filename = os.path.join(
-        ROOT, 'local', 'comp-{}-lanl.txt'.format(gene)
-    )
-    if os.path.exists(filename):
-        print('Local file {} found'.format(filename))
-        return filename
-
-    session = requests.Session()
-    session.get(SEARCH_INTERFACE)  # fetch cookies first
-
-    start, stop = GENE_RANGE[gene.lower()]
-    resp = session.post(
-        SEARCH_TARGET,
-        data={
-            'master': 'HIV-1',  # only HIV-1 seqs
-            'value SequenceMap SM_start 2': start,
-            'value SequenceMap SM_stop 2': stop,
-            'max_rec': 100,
-            'value SEQ_SAMple SSAM_badseq 4': 'on',
-            'action': 'search'
-        },
-        timeout=None
-    )
-    result = resp.text
-    idx, = re.findall(r'<input .*\bname="id" value="([^"]+)"', result)
-    resp = session.post(
-        SEARCH_TARGET,
-        data={
-            'incl_seq': 'on',
-            'save_tbl': 'OK',
-            'id': idx
-        },
-        timeout=None
-    )
-    with open(filename, 'wb') as fp:
-        fp.write(resp.content)
-        print('{} downloaded'.format(filename))
-    return filename"""
-
-
 def get_patient_sequences(gene):
     ptseqs = lanl_reader(gene, os.path.join(
         ROOT, 'local', 'hiv-db_{}_squeeze.fasta'.format(gene)
@@ -594,34 +452,6 @@ def get_patient_sequences(gene):
     ptseqs = attach_numbers(gene, ptseqs)
     ptseqs = attach_rxstatus(gene, ptseqs)
     return qc(gene, ptseqs)
-
-    """filename = download_from_lanl(gene)
-    ptseqs = {}
-    with open(filename, 'r') as fp:
-        next(fp)  # skip the first line
-        sequences = csv.DictReader(fp, delimiter='\t')
-        for seq in sequences:
-            patid = seq['PAT id(SSAM)']
-            accession = seq['Accession']
-            subtype = seq['Subtype']
-            sampyear = seq['Sampling Year']
-            naseq = seq['Sequence']
-            if subtype in ('O', 'N', 'P'):
-                continue
-            if not patid:
-                continue
-            if patid not in ptseqs or \
-                    accession < ptseqs[patid]['Accession']:
-                # always use the first accession to be consistent
-                ptseqs[patid] = {
-                    'Accession': accession,
-                    'Subtype': subtype,
-                    'SamplingYear': sampyear,
-                    'NASequence': naseq
-                }
-    ptseqs = sorted(ptseqs.values(), key=lambda seq: seq['Accession'])
-    ptseqs = list(attach_references(gene, ptseqs))
-    return attach_alignments(gene, ptseqs)"""
 
 
 def attach_pubid(seq):
@@ -836,11 +666,10 @@ def find_possible_apobecs(gene, ptseqs):
         possible_apobecs.append({
             'Position': pos,
             'AAChange': mut,
-            'NumWithSignature': count,
-            'WildTypePrevalence':
-            get_prevalence(gene, pos, mut.split('=>', 1)[0]),
-            'MutationPrevalence':
-            get_prevalence(gene, pos, mut.split('=>', 1)[1]),
+            'Consensus %': Decimal(
+                get_prevalence(gene, pos, mut.split('=>', 1)[0])
+            ).quantize(PREC1),
+            '# with Stop': count
         })
 
     for seq in ptseqs:
@@ -849,25 +678,24 @@ def find_possible_apobecs(gene, ptseqs):
             pos = apobec['Position']
             aa = apobec['AAChange'].split('=>', 1)[1]
             if pos in muts and aa in muts[pos]['AminoAcidText']:
-                apobec['NumTotal'] = apobec.get('NumTotal', 0) + 1
+                apobec['# Sequence'] = apobec.get('# Sequence', 0) + 1
     for apobec in possible_apobecs:
-        apobec['PcntWithSignature'] = '{:.1f}'.format(
-            apobec['NumWithSignature'] * 100 / apobec['NumTotal']
-        )
+        apobec['% with Stop'] = Decimal(
+            apobec['# with Stop'] * 100 / apobec['# Sequence']
+        ).quantize(PREC0)
     possible_apobecs = sorted(
         possible_apobecs,
-        key=lambda a: (
-            -float(a['PcntWithSignature']),
-            a['Position'], a['AAChange']
-        ))
+        key=lambda a: (a['Position'], a['AAChange']))
     possible_apobecs = [a for a in possible_apobecs
-                        if float(a['PcntWithSignature']) > 50]
+                        if a['% with Stop'] > 50]
 
     csv_writer(
         filename, possible_apobecs,
-        ['Position', 'AAChange', 'NumWithSignature',
-         'NumTotal', 'PcntWithSignature', 'WildTypePrevalence',
-         'MutationPrevalence']
+        ['Position', 'AAChange', 'Consensus %',
+         '% with Stop', '# Sequence'],
+        writer_options={
+            'extrasaction': 'ignore'
+        }
     )
 
 

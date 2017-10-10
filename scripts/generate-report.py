@@ -130,29 +130,6 @@ def fel_result(title, fname):
     return r
 
 
-def insertions_table():
-    rows = []
-    with open(os.path.join(APPDIR, 'data', 'insertions.csv')) as fp, \
-            open(os.path.join(APPDIR, 'data', 'accessions.csv')) as fp2:
-        insertions = csv.DictReader(fp)
-        accessions = csv.DictReader(fp2)
-        accessions = {
-            (int(a['PID']), a['Gene'], a['Timepoint']): a['Accession']
-            for a in accessions
-        }
-        for ins in insertions:
-            ptid = int(ins['PID'])
-            key = (ptid, ins['Gene'], ins['Timepoint'])
-            if key not in accessions:
-                continue
-            accession = accessions[key]
-            rows.append([
-                accession, ins['Gene'], ptid, ins['Timepoint'],
-                int(ins['Pos']), ins['AA'], ins['NA']
-            ])
-    return rows
-
-
 def get_codon_changes(gene, domain_range=None):
     with open(os.path.join(
             APPDIR, 'resultData', 'codonChangesByPt',

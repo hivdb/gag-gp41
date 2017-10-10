@@ -91,11 +91,6 @@ def compare_codon_change(gene, prev_codon, post_codon):
     }
 
 
-def aggregate_mut_prevalence(gene, subtype):
-    sequences = list(naive_sequence_reader(gene))
-    return aggregate_any_mut_prevalence(gene, sequences, subtype)
-
-
 def get_most_common_subtypes(gene, at_least=100):
     subtypes = Counter()
     sequences = naive_sequence_reader(gene)
@@ -105,10 +100,15 @@ def get_most_common_subtypes(gene, at_least=100):
             if count > at_least]
 
 
+def aggregate_mut_prevalence(gene, subtype):
+    sequences = list(naive_sequence_reader(gene))
+    return aggregate_any_mut_prevalence(gene, sequences, subtype)
+
+
 def aggregate_any_mut_prevalence(gene, sequences, subtype=None):
     result = OrderedDict()
     total = Counter()
-    all_aas = 'ACDEFGHIKLMNPQRSTVWY~X#*'
+    all_aas = list('ACDEFGHIKLMNPQRSTVWY') + ['del', 'X', 'ins', '*']
     consensus = CONSENSUS[gene]['AASeq']
     for pos in range(1, len(consensus) + 1):
         cons = consensus[pos - 1]
@@ -124,8 +124,8 @@ def aggregate_any_mut_prevalence(gene, sequences, subtype=None):
                 continue
             aa = (aa
                   .replace(cons, '')
-                  .replace('i', '#')
-                  .replace('d', '~')
+                  .replace('i', 'ins')
+                  .replace('d', 'del')
                   .replace('-', cons))
             if len(aa) == 1:
                 result[(pos, aa)] += 1

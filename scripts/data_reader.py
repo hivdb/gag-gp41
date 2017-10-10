@@ -52,10 +52,12 @@ def get_prevalence(gene, pos, aa):
             with open(os.path.join(
                     ROOT, 'resultData', 'aaPrevalence',
                     '{}All.csv'.format(_gene))) as fp:
-                PREVALENCE.update({
-                    (p['Gene'], int(p['Pos']), p['AA']):
-                    MutPrevalence(p) for p in csv.DictReader(fp)
-                })
+                for p in csv.DictReader(fp):
+                    aa = (p['AA']
+                          .replace('ins', 'i')
+                          .replace('del', 'd'))
+                    PREVALENCE[
+                        (p['Gene'], int(p['Pos']), aa)] = MutPrevalence(p)
     prev = PREVALENCE.get((gene, pos, aa))
     if prev:
         return prev.percent
