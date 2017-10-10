@@ -117,3 +117,5 @@ data/fasta/*.fit
 *.bak
 internalFiles/papersReview/*.xlsx
 *.tmp
+
+scripts/onetime.py

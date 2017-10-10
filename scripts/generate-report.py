@@ -344,12 +344,12 @@ if __name__ == '__main__':
 
     print(tabulate(
         meds, ['Group', 'Mutation', 'Detail', '# patients'], tablefmt='pipe'))
-    print('\n\n## Insertion table\n')
-    insertions = insertions_table()
-    print(tabulate(
-        insertions,
-        ['Accession', 'Gene', 'PID', 'Timepoint',
-         'Position', 'AminoAcid', 'NucleicAcid'],
-        tablefmt='pipe'
-    ))
+    # print('\n\n## Insertion table\n')
+    # insertions = insertions_table()
+    # print(tabulate(
+    #     insertions,
+    #     ['Accession', 'Gene', 'PID', 'Timepoint',
+    #      'Position', 'AminoAcid', 'NucleicAcid'],
+    #     tablefmt='pipe'
+    # ))
     print()
