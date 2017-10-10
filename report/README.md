@@ -36,7 +36,7 @@
 | % Ambiguities  |                  |                  |           |
 | Baseline       | 0.4 (0.1-0.8%)   | 0.1 (0.1-0.1%)   | 0.06      |
 | Follow-up      | 0.0 (0.0-0.6%)   | 0.0 (0.0-0.1%)   | 0.18      |
-| Delta          | -0.2 (-0.5-0.0%) | -0.1 (-0.1-0.0%) | 0.14      |
+| P value        | 0.02             | 0.02             | -         |
 
 ### gp41
 
@@ -54,35 +54,36 @@
 | % Ambiguities  |                  |                  |           |
 | Baseline       | 0.1 (0.0-0.2%)   | 0.1 (0.0-0.1%)   | 0.81      |
 | Follow-up      | 0.0 (0.0-0.1%)   | 0.0 (0.0-0.1%)   | 0.43      |
-| Delta          | 0.0 (-0.2-0.0%)  | -0.0 (-0.1-0.0%) | 0.37      |
+| P value        | 0.07             | 0.29             | -         |
 
 
 ## Gag cleavage sites
 
-| Rx     |   Position | AA change   |   # patients |
-|:-------|-----------:|:------------|-------------:|
-| PIs    |        373 | I=&gt;M     |            1 |
-| PIs    |        373 | S=&gt;P     |            1 |
-| PIs    |        373 | P=&gt;S     |            1 |
-| PIs    |        374 | A=&gt;T     |            1 |
-| PIs    |        375 | N=&gt;A     |            1 |
-| PIs    |        376 | I=&gt;T     |            1 |
-| PIs    |        378 | M=&gt;I     |            2 |
-| PIs    |        380 | K=&gt;R     |            2 |
-| PIs    |        381 | S=&gt;G     |            1 |
-| PIs    |        429 | K=&gt;R     |            1 |
-| PIs    |        436 | K=&gt;R     |            1 |
-| PIs    |        451 | N=&gt;S     |            1 |
-| PIs    |        453 | L=&gt;P     |            1 |
-| PIs    |        490 | R=&gt;K     |            2 |
-| NNRTIs |        132 | Y=&gt;F     |            1 |
-| NNRTIs |        373 | S=&gt;T     |            1 |
-| NNRTIs |        375 | A=&gt;N     |            1 |
-| NNRTIs |        375 | A=&gt;T     |            2 |
-| NNRTIs |        453 | L=&gt;P     |            1 |
-| NNRTIs |        484 | N=&gt;V     |            1 |
-| NNRTIs |        485 | P=&gt;S     |            1 |
-| NNRTIs |        490 | K=&gt;R     |            1 |
+| Rx     | Cleavage site   |   Position | AA change   |   # patients |
+|:-------|:----------------|-----------:|:------------|-------------:|
+| PIs    | SP1/NC          |        373 | I=&gt;M     |            1 |
+| PIs    | SP1/NC          |        373 | S=&gt;P     |            1 |
+| PIs    | SP1/NC          |        373 | P=&gt;S     |            1 |
+| PIs    | SP1/NC          |        374 | A=&gt;T     |            1 |
+| PIs    | SP1/NC          |        375 | N=&gt;A     |            1 |
+| PIs    | SP1/NC          |        376 | I=&gt;T     |            1 |
+| PIs    | SP1/NC          |        378 | M=&gt;I     |            2 |
+| PIs    | SP1/NC          |        380 | K=&gt;R     |            2 |
+| PIs    | SP1/NC          |        381 | S=&gt;G     |            1 |
+| PIs    | NC/SP2          |        429 | K=&gt;R     |            1 |
+| PIs    | NC/SP2          |        436 | K=&gt;R     |            1 |
+| PIs    | SP2/p6          |        451 | N=&gt;S     |            1 |
+| PIs    | SP2/p6          |        453 | L=&gt;P     |            1 |
+| PIs    | p6/PR           |        490 | R=&gt;K     |            2 |
+| NNRTIs | MA/CA           |        132 | Y=&gt;F     |            1 |
+| NNRTIs | SP1/NC          |        373 | S=&gt;T     |            1 |
+| NNRTIs | SP1/NC          |        375 | A=&gt;N     |            1 |
+| NNRTIs | SP1/NC          |        375 | A=&gt;T     |            2 |
+| NNRTIs | SP2/p6          |        453 | L=&gt;P     |            1 |
+| NNRTIs | p6/PR           |        484 | N=&gt;V     |            1 |
+| NNRTIs | p6/PR           |        485 | P=&gt;S     |            1 |
+| NNRTIs | p6/PR           |        487 | A=&gt;T     |            1 |
+| NNRTIs | p6/PR           |        490 | K=&gt;R     |            1 |
 
 ## Positions with evidence for diversifying selection (FEL)
 

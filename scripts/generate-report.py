@@ -20,6 +20,15 @@ DOMAINS = (
     ('CTerminal', (364, 500), 'gag'),
     ('CD', (195, 345), 'gp41'))
 
+GAG_CLEAVAGE_SITES_DEFINE = [
+    ('MA/CA', list(range(128, 138))),   # 132/133+-5
+    ('CA/SP1', list(range(359, 369))),  # 363/364+-5
+    ('SP1/NC', list(range(373, 383))),  # 377/378+-5
+    ('NC/SP2', list(range(428, 438))),  # 432/433+-5
+    ('SP2/p6', list(range(444, 454))),  # 448/449+-5
+    ('p6/PR', list(range(484, 494)))    # 488/489+-5
+]
+
 
 def summarize_dnds(gene, rx, domain=None):
     if domain == 'All':
@@ -73,26 +82,20 @@ def summarize_aa_diffs(gene, rx, domain_range=None):
 def summarize_ambiguities(gene, rx):
     baselines = []
     followups = []
-    deltas = []
     for pid, _, prev_seq, post_seq in iter_sequence_pairs(gene, rx):
         baseline = sum([prev_seq.na_sequence.count(na)
                         for na in 'ACTG-.']) / len(prev_seq.na_sequence)
         followup = sum([post_seq.na_sequence.count(na)
                         for na in 'ACTG-.']) / len(post_seq.na_sequence)
-        delta = baseline - followup
         baselines.append(100 - baseline * 100)
         followups.append(100 - followup * 100)
-        deltas.append(delta * 100)
     return (
         ('{:.1f} ({:.1f}-{:.1f}%)'
          .format(*percentile(baselines, (50, 25, 75))),
          baselines),
         ('{:.1f} ({:.1f}-{:.1f}%)'
          .format(*percentile(followups, (50, 25, 75))),
-         followups),
-        ('{:.1f} ({:.1f}-{:.1f}%)'
-         .format(*percentile(deltas, (50, 25, 75))),
-         deltas)
+         followups)
     )
 
 
@@ -102,6 +105,10 @@ def summarize_gag_cleavage_sites():
         132, 373, 374, 375, 376, 378, 380, 381,
         429, 436, 451, 453, 484, 485, 490
     )
+    allsites = {}
+    for name, sites in GAG_CLEAVAGE_SITES_DEFINE:
+        for site in sites:
+            allsites[site] = name
     result = []
     with open(os.path.join(
             APPDIR, 'resultData', 'aaChangesByPosWPrev',
@@ -109,9 +116,10 @@ def summarize_gag_cleavage_sites():
     ) as fp:
         reader = csv.DictReader(fp)
         for row in reader:
-            if int(row['Pos']) in sites:
+            pos = int(row['Pos'])
+            if pos in allsites:
                 result.append([
-                    row['Group'], row['Pos'],
+                    row['Group'], allsites[pos], pos,
                     '{PreAA}=&gt;{PostAA}'.format(**row),
                     row['NumPts']])
     return result
@@ -273,23 +281,21 @@ if __name__ == '__main__':
 
         baseline_row = ['Baseline']
         followup_row = ['Follow-up']
-        delta_row = ['Delta']
+        pvalue_row = ['P value']
 
         for rx in ('PIs', 'NNRTIs'):
             ((numbl, baselines),
-             (numfu, followups),
-             (numdt, deltas)) = summarize_ambiguities(gene, rx)
+             (numfu, followups)) = summarize_ambiguities(gene, rx)
             all_baselines.append(baselines)
             all_followups.append(followups)
-            all_deltas.append(deltas)
             baseline_row.append(numbl)
             followup_row.append(numfu)
-            delta_row.append(numdt)
+            pvalue_row.append(pvalue(baselines, followups))
         baseline_row.append(pvalue(*all_baselines))
         followup_row.append(pvalue(*all_followups))
-        delta_row.append(pvalue(*all_deltas))
+        pvalue_row.append('-')
 
-        pairwise.extend([baseline_row, followup_row, delta_row])
+        pairwise.extend([baseline_row, followup_row, pvalue_row])
 
         numpt_nnrtis, numpt_pis = get_patients_number(gene)
         print(tabulate(
@@ -302,7 +308,8 @@ if __name__ == '__main__':
     print('\n## Gag cleavage sites\n')
     print(tabulate(
         summarize_gag_cleavage_sites(),
-        ['Rx', 'Position', 'AA change', '# patients'], tablefmt='pipe'))
+        ['Rx', 'Cleavage site', 'Position',
+         'AA change', '# patients'], tablefmt='pipe'))
 
     print('\n## Positions with evidence for diversifying selection (FEL)\n')
     fel = []
