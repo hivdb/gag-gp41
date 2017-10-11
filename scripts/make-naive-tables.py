@@ -85,14 +85,25 @@ def get_fact_table(gene):
 
 def qc(gene, sequences):
     results = []
+    print('In {} one-per-person aligned {} sequences:'
+          .format(len(sequences), gene))
+    longgaps = 0
+    toomanyfs = 0
     for seq in sequences:
         if ('---' * 10) in seq['AlignedNASequence']:
+            longgaps += 1
             continue
         if 'NNN' in seq['AlignedNASequence']:
+            longgaps += 1
             continue
         if seq['NumFrameShifts'] > 3:
+            toomanyfs += 1
             continue
         results.append(seq)
+    print('- {} contained large deletions or '
+          'missing nucleotides'.format(longgaps))
+    print('- {} contained more than 3 frameshifts'
+          .format(toomanyfs))
     return results
 
 
@@ -126,10 +137,11 @@ def attach_apobecs(gene, sequences):
         apobecs.setdefault(pos, set()).add(
             apobec['AAChange'].split('=>', 1)[1])
     apobec_cutoffs = {
-        'gag': 3,
+        'gag': 2,
         'gp41': 2
     }
 
+    toomanyapobecs = 0
     for sequence in sequences:
         mutations = sequence['Mutations']
 
@@ -138,10 +150,15 @@ def attach_apobecs(gene, sequences):
             if set(m['AminoAcidText']) &
             apobecs.get(m['Position'], set())
         ])
+        valid_apobecs = sequence['NumApobecs'] <= apobec_cutoffs[gene]
         sequence['Included'] = (
             sequence.get('Included', True) and
-            sequence['NumApobecs'] <= apobec_cutoffs[gene]
+            valid_apobecs
         )
+        if not valid_apobecs:
+            toomanyapobecs += 1
+    print('- {} contained {} or more APOBEC mutations'
+          .format(toomanyapobecs, apobec_cutoffs[gene]))
     return sequences
 
 
@@ -173,11 +190,11 @@ def export_naive_sequences(gene, ptseqs):
         '{}.csv'.format(gene.lower())
     )
     aligned_fasta = os.path.join(
-        ROOT, 'resultData', 'naiveSequences', 'fastaFiles',
+        ROOT, 'resultData', 'naiveSequences', 'fasta',
         '{}Aligned.fasta'.format(gene.lower())
     )
     unaligned_fasta = os.path.join(
-        ROOT, 'resultData', 'naiveSequences', 'fastaFiles',
+        ROOT, 'resultData', 'naiveSequences', 'fasta',
         '{}Raw.fasta'.format(gene.lower())
     )
     indels_csv = os.path.join(
