@@ -120,14 +120,15 @@ class Sequence:
     def na_sequence(self):
         return self._data['NASequence']
 
-    def iter_codons(self, start_aa=None, end_aa=None):
+    def iter_codons(self, start_aa=None, end_aa=None, frameshift=0):
         cons = CONSENSUS[self.gene]['AASeq']
+        fs = frameshift
         for i in range(0, self.last_aa - self.first_aa + 1):
             aa_pos = i + self.first_aa
             if (start_aa and aa_pos < start_aa) or \
                     (end_aa and aa_pos > end_aa):
                 continue
-            triplet = self.na_sequence[i * 3:i * 3 + 3]
+            triplet = self.na_sequence[i * 3 + fs:i * 3 + 3 + fs]
             cons_aa = cons[aa_pos - 1]
             yield Codon(
                 position=aa_pos,

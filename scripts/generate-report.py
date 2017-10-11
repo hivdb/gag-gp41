@@ -21,12 +21,13 @@ DOMAINS = (
     ('CD', (195, 345), 'gp41'))
 
 GAG_CLEAVAGE_SITES_DEFINE = [
-    ('MA/CA', (132, 133)),   # 132/133+-5
-    ('CA/SP1', (363, 364)),  # 363/364+-5
-    ('SP1/NC', (377, 378)),  # 377/378+-5
-    ('NC/SP2', (432, 433)),  # 432/433+-5
-    ('SP2/p6', (448, 449)),  # 448/449+-5
-    ('p6/PR', (488, 489))    # 488/489+-5
+    # name, boundary, frameshift
+    ('MA/CA', (132, 133), 0),   # 132/133+-5
+    ('CA/SP1', (363, 364), 0),  # 363/364+-5
+    ('SP1/NC', (377, 378), 0),  # 377/378+-5
+    ('NC/SP2', (432, 433), 0),  # 432/433+-5
+    ('SP2/p6', (448, 449), 0),  # 448/449+-5
+    ('p6/PR', (488, 489), -1)   # 488/489+-5
 ]
 
 
@@ -103,11 +104,11 @@ def summarize_gag_cleavage_sites():
     result = []
     for cat in ('PIs', 'NNRTIs'):
         for pid, cat, prev_seq, post_seq in iter_sequence_pairs('gag', cat):
-            for name, (start, end) in GAG_CLEAVAGE_SITES_DEFINE:
+            for name, (start, end), fs in GAG_CLEAVAGE_SITES_DEFINE:
                 start -= 4
                 end += 4
-                prev_codons = list(prev_seq.iter_codons(start, end))
-                post_codons = list(post_seq.iter_codons(start, end))
+                prev_codons = list(prev_seq.iter_codons(start, end, fs))
+                post_codons = list(post_seq.iter_codons(start, end, fs))
                 if not prev_codons or not post_codons:
                     continue
                 pos = []

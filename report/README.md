@@ -59,35 +59,35 @@
 
 ## Gag cleavage sites
 
-| Rx     | Cleavage site   | Position      | Baseline AAs   | Follow-up AAs   |   # patients |
-|:-------|:----------------|:--------------|:---------------|:----------------|-------------:|
-| PIs    | SP1/NC          | 373           | IPAAMMQRGN     | MPAAMMQRGN      |            1 |
-| PIs    | SP1/NC          | 373           | PTAIMMQKGN     | STAIMMQKGN      |            1 |
-| PIs    | SP1/NC          | 373, 375      | STAIMMQKGN     | PTTIMMQKGN      |            1 |
-| PIs    | SP1/NC          | 374, 380      | PXAIMMQKGN     | PPAIMMQRGN      |            1 |
-| PIs    | SP1/NC          | 374, 381      | SAAMMMQRSN     | STAMMMQRGN      |            1 |
-| PIs    | SP1/NC          | 374           | SXAIMMQKGN     | STAIMMQKGN      |            1 |
-| PIs    | SP1/NC          | 375, 378      | SANIMMQRGN     | SAAIMIQRGN      |            1 |
-| PIs    | SP1/NC          | 376, 380      | SATIMMQKGN     | SATTMMQRGN      |            1 |
-| PIs    | SP1/NC          | 378           | SASVMMQRGN     | SASVMIQRGN      |            1 |
-| PIs    | NC/SP2          | 429, 436      | EKQANFLGRI     | ERQANFLGKI      |            1 |
-| PIs    | NC/SP2          | 436           | ERQANFLGKL     | ERQANFLGRL      |            1 |
-| PIs    | NC/SP2          | 436           | ERQANFLGXI     | ERQANFLGKI      |            1 |
-| PIs    | NC/SP2          | 437           | ERQANFLGKX     | ERQANFLGKL      |            1 |
-| PIs    | SP2/p6          | 453           | RPGNFLQSRL     | RPGNFLQSRP      |            2 |
-| PIs    | p6/PR           | 485, 487, 490 | YSLTSLXSLF     | YPLASLKSLF      |            1 |
-| PIs    | p6/PR           | 490           | YPLASLRSLF     | YPLASLKSLF      |            2 |
-| NNRTIs | MA/CA           | 132           | VSHNYPIVQN     | VSHNFPIVQN      |            1 |
-| NNRTIs | SP1/NC          | 373           | STAMMQ-RGN     | TTAMMQ-RGN      |            1 |
-| NNRTIs | SP1/NC          | 374           | PTTIMMQRGN     | PATIMMQRGN      |            1 |
-| NNRTIs | SP1/NC          | 375           | PAAIMMQRGN     | PATIMMQRGN      |            1 |
-| NNRTIs | SP1/NC          | 375           | SAAIMMQKGN     | SANIMMQKGN      |            1 |
-| NNRTIs | SP1/NC          | 375           | STAIMMQRGN     | STTIMMQRGN      |            1 |
-| NNRTIs | NC/SP2          | 429           | EKQANFLGRL     | ERQANFLGRL      |            1 |
-| NNRTIs | SP2/p6          | 453           | RPGNFPQSRL     | RPGNFPQSRP      |            1 |
-| NNRTIs | p6/PR           | 484, 485      | NPL            | VSL             |            1 |
-| NNRTIs | p6/PR           | 487           | YPLASLRSLF     | YPLTSLRSLF      |            1 |
-| NNRTIs | p6/PR           | 490           | YPLASLKSLF     | YPLASLRSLF      |            1 |
+| Rx     | Cleavage site   | Position           | Baseline AAs   | Follow-up AAs   |   # patients |
+|:-------|:----------------|:-------------------|:---------------|:----------------|-------------:|
+| PIs    | SP1/NC          | 373                | IPAAMMQRGN     | MPAAMMQRGN      |            1 |
+| PIs    | SP1/NC          | 373                | PTAIMMQKGN     | STAIMMQKGN      |            1 |
+| PIs    | SP1/NC          | 373, 375           | STAIMMQKGN     | PTTIMMQKGN      |            1 |
+| PIs    | SP1/NC          | 374, 380           | PXAIMMQKGN     | PPAIMMQRGN      |            1 |
+| PIs    | SP1/NC          | 374, 381           | SAAMMMQRSN     | STAMMMQRGN      |            1 |
+| PIs    | SP1/NC          | 374                | SXAIMMQKGN     | STAIMMQKGN      |            1 |
+| PIs    | SP1/NC          | 375, 378           | SANIMMQRGN     | SAAIMIQRGN      |            1 |
+| PIs    | SP1/NC          | 376, 380           | SATIMMQKGN     | SATTMMQRGN      |            1 |
+| PIs    | SP1/NC          | 378                | SASVMMQRGN     | SASVMIQRGN      |            1 |
+| PIs    | NC/SP2          | 429, 436           | EKQANFLGRI     | ERQANFLGKI      |            1 |
+| PIs    | NC/SP2          | 436                | ERQANFLGKL     | ERQANFLGRL      |            1 |
+| PIs    | NC/SP2          | 436                | ERQANFLGXI     | ERQANFLGKI      |            1 |
+| PIs    | NC/SP2          | 437                | ERQANFLGKX     | ERQANFLGKL      |            1 |
+| PIs    | SP2/p6          | 453                | RPGNFLQSRL     | RPGNFLQSRP      |            2 |
+| PIs    | p6/PR           | 485, 486, 487, 490 | VXLXFPXITL     | VSFSFPQITL      |            1 |
+| PIs    | p6/PR           | 486                | VSVNFPQITL     | VSLNFPQITL      |            1 |
+| NNRTIs | MA/CA           | 132                | VSHNYPIVQN     | VSHNFPIVQN      |            1 |
+| NNRTIs | SP1/NC          | 373                | STAMMQ-RGN     | TTAMMQ-RGN      |            1 |
+| NNRTIs | SP1/NC          | 374                | PTTIMMQRGN     | PATIMMQRGN      |            1 |
+| NNRTIs | SP1/NC          | 375                | PAAIMMQRGN     | PATIMMQRGN      |            1 |
+| NNRTIs | SP1/NC          | 375                | SAAIMMQKGN     | SANIMMQKGN      |            1 |
+| NNRTIs | SP1/NC          | 375                | STAIMMQRGN     | STTIMMQRGN      |            1 |
+| NNRTIs | NC/SP2          | 429                | EKQANFLGRL     | ERQANFLGRL      |            1 |
+| NNRTIs | SP2/p6          | 453                | RPGNFPQSRL     | RPGNFPQSRP      |            1 |
+| NNRTIs | p6/PR           | 484, 485, 486      | ESF            | SFP             |            1 |
+| NNRTIs | p6/PR           | 487                | VSFSFPQITL     | VSFNFPQITL      |            1 |
+| NNRTIs | p6/PR           | 488                | VSFDLPQITL     | VSFDFPQITL      |            1 |
 
 ## Positions with evidence for diversifying selection (FEL)
 
