@@ -21,12 +21,12 @@ DOMAINS = (
     ('CD', (195, 345), 'gp41'))
 
 GAG_CLEAVAGE_SITES_DEFINE = [
-    ('MA/CA', list(range(128, 138))),   # 132/133+-5
-    ('CA/SP1', list(range(359, 369))),  # 363/364+-5
-    ('SP1/NC', list(range(373, 383))),  # 377/378+-5
-    ('NC/SP2', list(range(428, 438))),  # 432/433+-5
-    ('SP2/p6', list(range(444, 454))),  # 448/449+-5
-    ('p6/PR', list(range(484, 494)))    # 488/489+-5
+    ('MA/CA', (132, 133)),   # 132/133+-5
+    ('CA/SP1', (363, 364)),  # 363/364+-5
+    ('SP1/NC', (377, 378)),  # 377/378+-5
+    ('NC/SP2', (432, 433)),  # 432/433+-5
+    ('SP2/p6', (448, 449)),  # 448/449+-5
+    ('p6/PR', (488, 489))    # 488/489+-5
 ]
 
 
@@ -100,29 +100,52 @@ def summarize_ambiguities(gene, rx):
 
 
 def summarize_gag_cleavage_sites():
-
-    sites = (
-        132, 373, 374, 375, 376, 378, 380, 381,
-        429, 436, 451, 453, 484, 485, 490
-    )
-    allsites = {}
-    for name, sites in GAG_CLEAVAGE_SITES_DEFINE:
-        for site in sites:
-            allsites[site] = name
     result = []
-    with open(os.path.join(
-            APPDIR, 'resultData', 'aaChangesByPosWPrev',
-            'gag.csv'.format(gene))
-    ) as fp:
-        reader = csv.DictReader(fp)
-        for row in reader:
-            pos = int(row['Pos'])
-            if pos in allsites:
-                result.append([
-                    row['Group'], allsites[pos], pos,
-                    '{PreAA}=&gt;{PostAA}'.format(**row),
-                    row['NumPts']])
-    return result
+    for cat in ('PIs', 'NNRTIs'):
+        for pid, cat, prev_seq, post_seq in iter_sequence_pairs('gag', cat):
+            for name, (start, end) in GAG_CLEAVAGE_SITES_DEFINE:
+                start -= 4
+                end += 4
+                prev_codons = list(prev_seq.iter_codons(start, end))
+                post_codons = list(post_seq.iter_codons(start, end))
+                if not prev_codons or not post_codons:
+                    continue
+                pos = []
+                prev_aas = []
+                post_aas = []
+                for i, (codon0, codon1) in \
+                        enumerate(zip(prev_codons, post_codons)):
+                    aa0, aa1 = [codon0.aa, codon1.aa]
+                    if len(aa0) > 1:
+                        aa0 = aa0.replace(codon0.cons_aa, '')
+                    if len(aa1) > 1:
+                        aa1 = aa1.replace(codon1.cons_aa, '')
+                    prev_aas.append(aa0 if len(aa0) == 1 else 'X')
+                    post_aas.append(aa1 if len(aa1) == 1 else 'X')
+                    if aa0 != aa1:
+                        pos.append(str(start + i))
+                prev_aas = ''.join(prev_aas)
+                post_aas = ''.join(post_aas)
+                if prev_aas == post_aas:
+                    continue
+                result.append([cat, name, ', '.join(pos),
+                               prev_aas, post_aas])
+
+    def sortkey(r):
+        return (r[0], r[1], r[3], r[4])
+
+    result = sorted(result, key=sortkey)
+    result = groupby(result, sortkey)
+
+    agg_result = []
+    for _, rows in result:
+        rows = list(rows)
+        agg_result.append(rows[0] + [len(rows)])
+
+    return sorted(
+        agg_result, key=lambda r: ({'PIs': 0, 'NNRTIs': 1}[r[0]],
+                                   int(r[2].split(', ', 1)[0]),
+                                   r[5], r[3], r[4]))
 
 
 def fel_result(title, fname):
@@ -309,7 +332,7 @@ if __name__ == '__main__':
     print(tabulate(
         summarize_gag_cleavage_sites(),
         ['Rx', 'Cleavage site', 'Position',
-         'AA change', '# patients'], tablefmt='pipe'))
+         'Baseline AAs', 'Follow-up AAs', '# patients'], tablefmt='pipe'))
 
     print('\n## Positions with evidence for diversifying selection (FEL)\n')
     fel = []
