@@ -186,24 +186,25 @@ def attach_rxstatus(gene, ptseqs):
 
 def export_naive_sequences(gene, ptseqs):
     filename = os.path.join(
-        ROOT, 'internalFiles', 'naiveSequences',
+        ROOT, 'internalFiles', 'naiveStudies',
         '{}.csv'.format(gene.lower())
     )
     aligned_fasta = os.path.join(
-        ROOT, 'resultData', 'naiveSequences', 'fasta',
-        '{}Aligned.fasta'.format(gene.lower())
+        ROOT, 'data', 'naiveStudies',
+        '{}NaiveAligned.fas'.format(gene.lower())
     )
     unaligned_fasta = os.path.join(
-        ROOT, 'resultData', 'naiveSequences', 'fasta',
-        '{}Raw.fasta'.format(gene.lower())
+        ROOT, 'data', 'naiveStudies',
+        '{}NaiveOriginal.fas'.format(gene.lower())
     )
     indels_csv = os.path.join(
-        ROOT, 'resultData', 'naiveSequences',
-        '{}Indels.csv'.format(gene.lower()))
+        ROOT, 'data', 'naiveStudies',
+        '{}NaiveIndels.csv'.format(gene.lower()))
 
     # remove non-naive sequences
     ptseqs = [seq for seq in ptseqs
               if seq['RxStatus'] == 'Naive' and seq['Included']]
+    print('- {} naive {} sequences were found'.format(len(ptseqs), gene))
     genesize = int(CONSENSUS[gene]['Size'])
     siteheaders = ['P{}'.format(i) for i in range(1, genesize + 1)]
 
@@ -362,7 +363,7 @@ def create_review_table(gene, ptseqs):
         results)
     export_naive_papers_table(
         os.path.join(
-            ROOT, 'resultData', 'naiveSequences',
+            ROOT, 'data', 'naiveStudies',
             '{}NaiveStudies.csv'.format(gene)
         ),
         results)
@@ -605,7 +606,7 @@ def attach_references(gene, patient_sequences):
 
 def find_possible_apobecs(gene, ptseqs):
     filename = os.path.join(
-        ROOT, 'resultData', 'apobec',
+        ROOT, 'data', 'naiveStudies', 'apobec',
         '{}PossibleApobecs.csv'.format(gene)
     )
     apobecs = Counter()
@@ -726,7 +727,7 @@ if __name__ == '__main__':
 
         csv_writer(
             os.path.join(
-                ROOT, 'resultData', 'apobec',
+                ROOT, 'data', 'naiveStudies', 'apobec',
                 '{}NaiveADIndex.csv'.format(gene)),
             aggregate_naiveseqs_adindex(gene, ptseqs),
             ['Accession', 'QCIssue', 'NumAPOBECs',

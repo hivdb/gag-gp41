@@ -18,15 +18,16 @@ def main():
     for gene in ('gag', 'gp41'):
 
         major_subtypes = [None] + get_most_common_subtypes(gene)
+        header = None
+        all_prevalence = []
         for subtype in major_subtypes:
-            if subtype:
-                filename = '{}{}.csv'.format(gene, subtype)
-            else:
-                filename = '{}All.csv'.format(gene)
-            csv_writer(
-                os.path.join(ROOT, 'resultData', 'aaPrevalence', filename),
-                aggregate_mut_prevalence(gene, subtype)
-            )
+            header, prevs = aggregate_mut_prevalence(gene, subtype)
+            all_prevalence.append(prevs)
+        csv_writer(
+            os.path.join(ROOT, 'data', 'naiveStudies',
+                         '{}AAPrevalence.csv'.format(gene)),
+            chain(*all_prevalence),
+            header)
 
         csv_writer(
             os.path.join(ROOT, 'resultData', 'aaChangesByPosWPrev',
@@ -47,7 +48,7 @@ def main():
             ['PID', 'Rx', 'Pos', 'Type', 'Codons', 'NumNAChanges', 'AAs'])
 
         csv_writer(
-            os.path.join(ROOT, 'resultData', 'naiveSequences',
+            os.path.join(ROOT, 'data', 'naiveStudies',
                          '{}StatBySeq.csv'.format(gene)),
             aggregate_naiveseqs_stat(gene),
             ['Accession', 'PMID', 'Gene', 'Subtype',
@@ -55,7 +56,7 @@ def main():
              'NumStopCodons', 'NumApobecs', 'NumUnusuals', 'NumFrameShifts'])
 
         csv_writer(
-            os.path.join(ROOT, 'resultData', 'naiveSequences',
+            os.path.join(ROOT, 'data', 'naiveStudies',
                          '{}StatByPos.csv'.format(gene)),
             aggregate_naiveseqs_posstat(gene),
             ['Gene', 'AAPosition', 'NumAAChanges',

@@ -6,7 +6,7 @@ ROOT = "/app"
 genes<-list("gag", "gp41")
 
 for (gene in genes) {
-  fileName = sprintf("%s/resultData/naiveSequences/%sStatBySeq.csv", ROOT, gene)
+  fileName = sprintf("%s/data/naiveStudies/%sStatBySeq.csv", ROOT, gene)
   data<-read.table(fileName, sep=",", header=TRUE, as.is=TRUE)
   png(filename=sprintf("%s/report/%s-naive-aachanges-dist.png", ROOT, tolower(gene)),
       width=6, height=4, units = "in", res=300)
@@ -26,7 +26,7 @@ for (gene in genes) {
     )))
   dev.off()
 
-  adIndexFName = sprintf("%s/resultData/apobec/%sNaiveADIndex.csv", ROOT, tolower(gene))
+  adIndexFName = sprintf("%s/data/naiveStudies/apobec/%sNaiveADIndex.csv", ROOT, tolower(gene))
   data<-read.table(adIndexFName, sep=",", header=TRUE, as.is=TRUE)
   conserved <- data[1,]$NumConservedAPOBECSites
   numseqs <- nrow(data)

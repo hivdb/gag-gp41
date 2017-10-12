@@ -50,9 +50,11 @@ def get_prevalence(gene, pos, aa):
         PREVALENCE = {}
         for _gene in ('gag', 'gp41'):
             with open(os.path.join(
-                    ROOT, 'resultData', 'aaPrevalence',
-                    '{}All.csv'.format(_gene))) as fp:
+                    ROOT, 'data', 'naiveStudies',
+                    '{}AAPrevalence.csv'.format(_gene))) as fp:
                 for p in csv.DictReader(fp):
+                    if p['Subtype']:
+                        continue
                     aa = (p['AA']
                           .replace('ins', 'i')
                           .replace('del', 'd'))
@@ -179,7 +181,7 @@ def sequence_reader(filter_func=None):
 
 def possible_apobecs_reader(gene, filter_func=None):
     filename = os.path.join(
-        ROOT, 'resultData', 'apobec',
+        ROOT, 'data', 'naiveStudies', 'apobec',
         '{}PossibleApobecs.csv'.format(gene.lower())
     )
     if not os.path.exists(filename):
@@ -199,7 +201,7 @@ def sample_reader(filter_func=None):
 def naive_sequence_reader(gene, filter_func=None):
     return data_reader(
         os.path.join(
-            ROOT, 'internalFiles', 'naiveSequences',
+            ROOT, 'internalFiles', 'naiveStudies',
             '{}.csv'.format(gene.lower())),
         filter_func=filter_func)
 
