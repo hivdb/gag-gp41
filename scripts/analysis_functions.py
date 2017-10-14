@@ -127,7 +127,7 @@ def aggregate_any_mut_prevalence(gene, sequences, subtype=None):
                   .replace('i', 'ins')
                   .replace('d', 'del')
                   .replace('-', cons))
-            if len(aa) == 1:
+            if len(aa) == 1 or aa in ('ins', 'del'):
                 result[(pos, aa)] += 1
             else:
                 result[(pos, 'X')] += 1

@@ -10,9 +10,6 @@ build:
 shell:
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime /bin/bash
 
-conda:
-	@docker run -it --rm --volume `pwd`:/app continuumio/miniconda /bin/bash
-
 basic:
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-basic.sh
 
@@ -22,8 +19,8 @@ nj:
 pairwise: basic
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-pairwise.sh
 
-relax: basic nj
-	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-relax.sh
+# relax: basic nj
+# 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-relax.sh
 
 fel: basic nj
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-fel.sh
@@ -37,5 +34,5 @@ final:
 report:
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/generate-report.sh
 
-all: basic pairwise nj relax fel meds final report
+all: basic pairwise nj fel meds final report
 .PHONY: report

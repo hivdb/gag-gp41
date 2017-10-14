@@ -3,8 +3,8 @@
 set -e
 
 APPDIR="/app"
-HYPHYOUT="$APPDIR/result_data/hyphy_output"
-CLEANOUT="$APPDIR/result_data/hyphy_cleaned_output"
+HYPHYOUT="$APPDIR/internalFiles/hyphyOutput"
+CLEANOUT="$APPDIR/internalFiles/hyphyCleanedOutput"
 cd $(dirname $0)
 mkdir -p $CLEANOUT
 

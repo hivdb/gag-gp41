@@ -3,8 +3,11 @@
 set -e
 
 APPDIR="/app"
-HYPHYOUT="$APPDIR/result_data/hyphy_output"
+HYPHYOUT="$APPDIR/internalFiles/hyphyOutput"
+INTERNAL_PHYLO="$APPDIR/internalFiles/phylo"
+HYPHY="HYPHYMP"
 cd $(dirname $0)
+mkdir -p $INTERNAL_PHYLO
 
 cd /usr/local/lib/hyphy
 for GENE in gag gp41; do
@@ -12,13 +15,12 @@ for GENE in gag gp41; do
         (
           echo 1; # Select [Universal] code mode
           echo "$APPDIR/data/fasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
-          echo "$APPDIR/result_data/${GENE}${RX}.tre"; # Select tree file
+          echo "$INTERNAL_PHYLO/${GENE}${RX}.tre"; # Select tree file
           echo 5; # Choose set of [Post] to test for selection
           echo 1; # Use synonymous rate variation
           echo 0.1;
         ) |
-        HYPHYMP LIBPATH=`pwd` TemplateBatchFiles/SelectionAnalyses/FEL.bf > $HYPHYOUT/${GENE}${RX}.fel.output.txt 2> /dev/null
-        mv messages.log $HYPHYOUT/${GENE}${RX}.fel.messages.log
+        $HYPHY LIBPATH=`pwd` TemplateBatchFiles/SelectionAnalyses/FEL.bf > $HYPHYOUT/${GENE}${RX}.fel.output.txt 2> /dev/null
         echo "$HYPHYOUT/${GENE}${RX}.fel.output.txt created"
     done
 done

@@ -10,8 +10,8 @@ from analysis_functions import iter_sequence_pairs
 
 APPDIR = '/app'
 FASTAS = os.path.join(APPDIR, 'data/fasta')
-HYPHYOUT = os.path.join(APPDIR, 'result_data/hyphy_output')
-CLEANOUT = os.path.join(APPDIR, 'result_data/hyphy_cleaned_output')
+HYPHYOUT = os.path.join(APPDIR, 'internalFiles/hyphyOutput')
+CLEANOUT = os.path.join(APPDIR, 'internalFiles/hyphyCleanedOutput')
 NAN = float('nan')
 GENE_LENGTHS = {'gag': 500, 'gp41': 345}
 DOMAINS = (

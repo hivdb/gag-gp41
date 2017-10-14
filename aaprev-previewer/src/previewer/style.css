@@ -1,0 +1,109 @@
+:local .prevalence-viewer {
+  position: relative;
+  width: 90%;
+  margin: 10px auto;
+}
+
+:local .prevalence-viewer_bar {
+  margin-bottom: 2px;
+}
+
+:local .prevalence-viewer_bar .prevalence-viewer_cell {
+  border-bottom: 1px solid black;
+}
+
+:local .prevalence-viewer_plabel:not([data-visible="true"]) {
+  visibility: hidden;
+}
+
+:local .prevalence-viewer_bar,
+:local .prevalence-viewer_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+:local .prevalence-viewer_cell {
+  flex-grow: 1;
+}
+
+:local .prevalence-viewer_plabel {
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+:local .prevalence-viewer_value {
+  text-align: center;
+}
+
+:local .prevalence-viewer_value sup.percent {
+  display: none;
+  position: absolute;
+  font-size: 0.7rem;
+  margin-left: 3px;
+}
+
+/* :local .prevalence-viewer_value:hover sup.percent {
+  display: inline;
+} */
+
+:local .prevalence-viewer_value[data-is-wild-type="true"] {
+  text-decoration: underline;
+}
+
+:local .prevalence-viewer_value[data-pcnt-lg="50"] {
+  font-weight: 800;
+  color: #0b0b0b;
+}
+
+:local .prevalence-viewer_value[data-pcnt-lg="10"] {
+  font-weight: 400;
+  color: #e53935;
+}
+
+:local .prevalence-viewer_value[data-pcnt-lg="1"] {
+  font-weight: 300;
+  color: #1e88e5;
+}
+
+:local .prevalence-viewer_value[data-pcnt-lg="0"] {
+  font-weight: 100;
+  color: #66bb6a;
+}
+
+:local [data-cells-per-row="50"] .prevalence-viewer_cell {
+  flex-basis: 2%;
+  max-width: 2%;
+}
+
+:local [data-cells-per-row="40"] .prevalence-viewer_cell {
+  flex-basis: 2.5%;
+  max-width: 2.5%;
+}
+
+:local [data-cells-per-row="30"] .prevalence-viewer_cell {
+  flex-basis: 3.3333333333%;
+  max-width: 3.3333333333%;
+}
+
+:local [data-cells-per-row="20"] .prevalence-viewer_cell {
+  flex-basis: 5%;
+  max-width: 5%;
+}
+
+@media print {
+  :local .prevalence-data-loader {
+    display: none;
+  }
+
+  :local .prevalence-viewer_plabel {
+    font-size: 0.5rem;
+    line-height: 1.1em;
+  }
+  
+  :local .prevalence-viewer_value {
+    font-size: 0.6rem;
+    line-height: 1.2em;
+  }
+}

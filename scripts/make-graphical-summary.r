@@ -98,7 +98,7 @@ for (i in 1:length(genes)) {
   ####                               FOLD DATA - PIs
   ############################################################################################
   ## tiff(filename=sprintf("/app/report/%s-mutations.tiff", tolower(gene)), width=9, height=6.6, units = "in", res=300, compression="lzw")
-  png(filename=sprintf("/app/report/%s-mutations.png", tolower(gene)), width=9, height=6.6, units = "in", res=300)
+  png(filename=sprintf("/app/report/%s-mutations.png", tolower(gene)), width=12, height=8.8, units = "in", res=300)
   par(fig=c(0, 1.0, 0.5, 1.0))
   par(mar=c(2, 4, 1, 1))
 
