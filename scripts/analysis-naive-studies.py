@@ -112,13 +112,22 @@ def attach_numbers(gene, sequences):
         mutations = sequence['Mutations']
         unusuals = 0
         for m in mutations:
-            aas = m['AminoAcidText']
-            if len(aas) > 4:
-                aas = 'X'
-            for aa in aas:
-                prev = get_prevalence(gene, m['Position'], aa)
-                if prev < 0.1:
-                    unusuals += 1
+            isins = m['IsInsertion']
+            isdel = m['IsDeletion']
+            if isins:
+                aa = 'i'
+            elif isdel:
+                aa = 'd'
+            else:
+                aa = m['AminoAcidText']
+                cons = m['ReferenceText']
+                if len(aa) > 1:
+                    aa = aa.replace(cons, '')
+                if len(aa) > 1:
+                    continue
+            prev = get_prevalence(gene, m['Position'], aa)
+            if prev < 0.1:
+                unusuals += 1
 
         sequence.update({
             'NumInsertions': len([m for m in mutations if m['IsInsertion']]),
@@ -396,7 +405,7 @@ def export_excel_table(filename, rows):
     valid_rx_status = sorted([
         'Lab', 'Rx', 'Rx-PI', 'Rx=>Naive', 'Check', 'Naive', 'Unknown',
         'Mixed', 'PINaive', 'ProbablyNaive', 'Unpublished', 'NonM',
-        'Entry-Naive', 'Conflict'
+        'Entry-Naive', 'Conflict', 'Problem'
     ])
     fmt = workbook.add_format()
     fmt.set_align('top')
@@ -466,6 +475,7 @@ def get_patient_sequences(gene):
     ptseqs = lanl_reader(gene, os.path.join(
         ROOT, 'local', 'hiv-db_{}_squeeze.fasta'.format(gene)
     ))
+    ptseqs = [s for s in ptseqs if s['Subtype'] not in 'ONP']
     ptseqs = list(attach_references(gene, ptseqs))
     ptseqs = attach_numbers(gene, ptseqs)
     ptseqs = attach_rxstatus(gene, ptseqs)
@@ -638,6 +648,9 @@ def find_possible_apobecs(gene, ptseqs):
                         continue
                     aa_pos = mut['Position']
                     cons_prev = get_prevalence(gene, aa_pos, cons)
+                    if cons_prev < 98.5:
+                        # skip non-conserved position
+                        continue
                     apobecs[(aa_pos, 'W=>*')] += 1
 
         for match in matches:

@@ -6,8 +6,9 @@ RUN apt-get update -q && \
     curl -L https://github.com/veg/hyphy/archive/${HYPHYVER}.tar.gz -o /tmp/hyphy-${HYPHYVER}.tar.gz && \ 
     cd /tmp && tar -xf hyphy-${HYPHYVER}.tar.gz && \
     cd hyphy-${HYPHYVER} && cmake . && \
-    make HYPHYMP install && \
+    make HYPHYMP HYPHYMPI install && \
     echo "install.packages('ggplot2', repos='http://cran.us.r-project.org')" | R --no-save && \
-    apt-get remove cmake g++ ocl-icd-opencl-dev mpich -qqy
+    rm -rf /tmp/hyphy-${HYPHYVER}* && \
+    apt-get remove cmake g++ ocl-icd-opencl-dev -qqy
 WORKDIR /app
 VOLUME /app

@@ -16,6 +16,9 @@ basic:
 nj:
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-nj.sh
 
+naive-dist:
+	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-naive-dist.sh
+
 pairwise: basic
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-pairwise.sh
 

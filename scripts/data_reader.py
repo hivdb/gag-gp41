@@ -55,16 +55,16 @@ def get_prevalence(gene, pos, aa):
                 for p in csv.DictReader(fp):
                     if p['Subtype']:
                         continue
-                    aa = (p['AA']
-                          .replace('ins', 'i')
-                          .replace('del', 'd'))
+                    _aa = (p['AA']
+                           .replace('ins', 'i')
+                           .replace('del', 'd'))
                     PREVALENCE[
-                        (p['Gene'], int(p['Pos']), aa)] = MutPrevalence(p)
+                        (p['Gene'], int(p['Pos']), _aa)] = MutPrevalence(p)
     prev = PREVALENCE.get((gene, pos, aa))
-    if prev:
-        return prev.percent
-    else:
+    if prev is None:
         return .0
+    else:
+        return prev.percent
 
 
 class Codon(namedtuple('Codon', ['position', 'gene',

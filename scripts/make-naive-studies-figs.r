@@ -1,9 +1,19 @@
 #! /usr/bin/env Rscript
+library("scales")
 library("ggplot2")
 
 ROOT = "/app"
 
 genes<-list("gag", "gp41")
+
+mylog_trans <- 
+  function (base = exp(1), from = -0.3) 
+  {
+    trans <- function(x) log(x, base) - from
+    inv <- function(x) base^(x + from)
+    trans_new("mylog", trans, inv, log_breaks(base = base), domain = c(base^from, Inf))
+  }
+
 
 for (gene in genes) {
   fileName = sprintf("%s/data/naiveStudies/%sStatBySeq.csv", ROOT, gene)
@@ -21,7 +31,8 @@ for (gene in genes) {
       width=6, height=4.4, units = "in", res=300)
   stopAggs = aggregate(cbind(NumSequences = data$Accession) ~ NumStopCodons, data, FUN = length)
   print(ggplot(stopAggs, aes(NumStopCodons, NumSequences)) +
-    geom_point() + scale_y_log10(breaks=c(1,2,3,5,10,20,40,80,160,320,640,1280,2560,5120)) + ggtitle(sprintf(
+    geom_point() + scale_y_continuous(trans=mylog_trans(base=10), breaks=c(0,1,2,3,5,10,20,40,80,160,320,640,1280,2560,5120)) +
+    ggtitle(sprintf(
       "Stop Codons Distribution for %s Naive Sequences", gene
     )))
   dev.off()
@@ -32,8 +43,36 @@ for (gene in genes) {
   numseqs <- nrow(data)
   png(filename=sprintf("%s/report/%s-adindex.png", ROOT, tolower(gene)),
       width=6, height=2, units = "in", res=300)
-  print(ggplot(data, aes(NumAPOBECs)) + geom_histogram(binwidth=1) +
-    scale_y_log10(breaks=c(1,4,16,64,256,1024,4096)) + ylab('# Sequences') + xlab('# APOBEC Signature Mutations'))
+  print(ggplot(data, aes(NumAPOBECs)) + geom_histogram(binwidth=0.5) +
+    scale_y_continuous(trans=mylog_trans(base=10), breaks=c(0,1,4,16,64,256,1024,4096)) + ylab('# Sequences') + xlab('# APOBEC Signature Mutations'))
   dev.off()
+}
 
+for (gene in genes) {
+  pdf(sprintf("%s/report/%s-naive-unusual-dist.pdf", ROOT, tolower(gene)), width=6, height=4)
+  fileName = sprintf("%s/data/naiveStudies/%sStatBySeq.csv", ROOT, gene)
+  data<-read.table(fileName, sep=",", header=TRUE, as.is=TRUE)
+  aggs = aggregate(cbind(All = data$Accession) ~ NumUnusuals, data, FUN=length)
+  print(ggplot(data, aes(NumUnusuals)) + geom_histogram(binwidth=0.5) + xlim(-1, 40) +
+    scale_y_continuous(trans=mylog_trans(base=10), breaks=c(0,1,4,16,64,256,1024,4096)) + 
+    ylab('# Sequences') + xlab('# Unusual Mutations') +
+    ggtitle(sprintf("Unusual Mutations for %s Naive Sequences (All, n=%d)", gene, nrow(data))))
+
+  for (stype in unique(data$Subtype)) {
+    partial <- data[data$Subtype == stype,]
+    len = nrow(partial)
+    n = 5
+    if (len <= 5) {
+        n = len
+    }
+    partialAggs = aggregate(cbind(NumSequence = partial$Accession) ~ NumUnusuals, partial, FUN=length)
+    colnames(partialAggs)[2] <- stype
+
+    aggs = merge(x=aggs, y=partialAggs, by="NumUnusuals", all=TRUE)
+    print(ggplot(partial, aes(NumUnusuals)) + geom_histogram(binwidth=0.5) + xlim(-1, 40) +
+      ylab('# Sequences') + xlab('# Unusual Mutations') + scale_y_continuous(breaks= pretty_breaks(n)) +
+      ggtitle(sprintf("Unusual Mutations for %s Naive Sequences (%s, n=%d)", gene, stype, nrow(partial))))
+  }
+  dev.off()
+  write.csv(aggs, sprintf("%s/report/%s-naive-unusual-dist.csv", ROOT, tolower(gene)), row.names=FALSE)
 }
