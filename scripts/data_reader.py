@@ -208,7 +208,7 @@ def naive_sequence_reader(gene, filter_func=None):
 
 def fasta_reader(gene, rx):
     filename = os.path.join(
-        ROOT, 'data', 'fasta', '{}{}.aln.fasta.txt'.format(gene, rx))
+        ROOT, 'internalFiles', 'fasta', '{}{}.aln.fasta.txt'.format(gene, rx))
     return any_fasta_reader(filename)
 
 

@@ -14,7 +14,7 @@ for GENE in gag gp41; do
     for RX in NNRTIs PIs; do
         (
           echo 1; # Select [Universal] code mode
-          echo "$APPDIR/data/fasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
+          echo "$APPDIR/internalFiles/fasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
           echo "$INTERNAL_PHYLO/${GENE}${RX}.tre"; # Select tree file
           echo 5; # Choose set of [Post] to test for selection
           echo 1; # Use synonymous rate variation

@@ -13,7 +13,7 @@ cd /usr/local/lib/hyphy
 for GENE in gag gp41; do
     for RX in NNRTIs PIs; do
         (
-          echo "$APPDIR/data/fasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
+          echo "$APPDIR/internalFiles/fasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
           echo "$INTERNAL_PHYLO/${GENE}${RX}.meds.tre"; # Select tree file
           echo "$HYPHYOUT/${GENE}${RX}.meds.csv"; # Specify output (.csv) file
           echo "1"; # Select [Universal] code mode

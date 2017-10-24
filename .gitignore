@@ -114,6 +114,9 @@ local
 data/fasta/*.json
 data/fasta/*.fit
 
+internalFiles/fasta/*.json
+internalFiles/fasta/*.fit
+
 *.bak
 internalFiles/papersReview/*.xlsx
 *.tmp

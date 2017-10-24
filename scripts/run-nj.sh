@@ -17,8 +17,7 @@ for GENE in gag gp41; do
         (
           echo 1; # Select [Distance formulae] computation
           echo 1; # Select [Nucleotide/Protein] data type
-          echo "$APPDIR/data/fasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
-          # echo "$APPDIR/local/dotfasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
+          echo "$APPDIR/internalFiles/fasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
           echo 1; # Select [Keep Negative] branch lengths
           echo 7; # Select [TN93] distance formula
           echo "y"; # Save the tree to a file
@@ -37,7 +36,6 @@ for GENE in gag gp41; do
       echo 1; # Select [Distance formulae] computation
       echo 1; # Select [Nucleotide/Protein] data type
       echo "$APPDIR/data/fasta/${GENE}Aligned.fas"; # Select sequence alignment file
-      # echo "$APPDIR/local/dotfasta/${GENE}${RX}.aln.fasta.txt"; # Select sequence alignment file
       echo 1; # Select [Keep Negative] branch lengths
       echo 7; # Select [TN93] distance formula
       echo "y"; # Save the tree to a file
