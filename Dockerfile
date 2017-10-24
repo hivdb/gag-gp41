@@ -8,6 +8,7 @@ RUN apt-get update -q && \
     cd hyphy-${HYPHYVER} && cmake . && \
     make HYPHYMP HYPHYMPI install && \
     echo "install.packages('ggplot2', repos='http://cran.us.r-project.org')" | R --no-save && \
+    echo "install.packages('gridExtra', repos='http://cran.us.r-project.org')" | R --no-save && \
     rm -rf /tmp/hyphy-${HYPHYVER}* && \
     apt-get remove cmake g++ ocl-icd-opencl-dev -qqy
 WORKDIR /app
