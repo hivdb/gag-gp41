@@ -7,7 +7,7 @@ from codonutils import translate_codon
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open(os.path.join(ROOT, 'data', 'consensus.csv')) as fp:
+with open(os.path.join(ROOT, 'internalFiles', 'consensus.csv')) as fp:
     CONSENSUS = {c['Gene']: c for c in csv.DictReader(fp)}
 
 
@@ -179,7 +179,7 @@ def data_reader(filepath, decorator=dict, filter_func=None, delimiter=','):
 
 def sequence_reader(filter_func=None):
     return data_reader(
-        os.path.join(ROOT, 'data', 'sequences.csv'),
+        os.path.join(ROOT, 'internalFiles', 'sequences.csv'),
         Sequence, filter_func)
 
 
@@ -198,7 +198,7 @@ def possible_apobecs_reader(gene, filter_func=None):
 
 def sample_reader(filter_func=None):
     return data_reader(
-        os.path.join(ROOT, 'data', 'samples.csv'),
+        os.path.join(ROOT, 'internalFiles', 'samples.csv'),
         Sample, filter_func)
 
 
