@@ -19,7 +19,7 @@ def main():
     for gene in ('gag', 'gp41'):
 
         csv_writer(
-            os.path.join(ROOT, 'resultData', 'aaChangesByPosWPrev',
+            os.path.join(ROOT, 'internalFiles', 'aaChangesByPosWPrev',
                          '{}.csv'.format(gene)),
             chain(
                 aggregate_aa_changes_by_pos(gene, 'PIs', 'PIs'),
@@ -29,7 +29,7 @@ def main():
              'NumPts', 'PrePrev', 'PostPrev', 'Fold', 'LogFold'])
 
         csv_writer(
-            os.path.join(ROOT, 'resultData', 'codonChangesByPt',
+            os.path.join(ROOT, 'internalFiles', 'codonChangesByPt',
                          '{}.csv'.format(gene)),
             sorted(
                 codon_changes_per_person(gene, ('PIs', 'NNRTIs')),

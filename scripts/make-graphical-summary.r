@@ -73,7 +73,7 @@ for (i in 1:length(genes)) {
   xt<-unlist(xticks[i])
 
   #### Read in Fold Changes
-  inputFileAAs = sprintf("/app/resultData/aaChangesByPosWPrev/%s.csv", gene)
+  inputFileAAs = sprintf("/app/internalFiles/aaChangesByPosWPrev/%s.csv", gene)
   foldData = readFile(inputFileAAs)
   
   #### Get PI fold changes

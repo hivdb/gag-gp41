@@ -164,7 +164,7 @@ def fel_result(title, fname):
 
 def get_codon_changes(gene, domain_range=None):
     with open(os.path.join(
-            APPDIR, 'resultData', 'codonChangesByPt',
+            APPDIR, 'internalFiles', 'codonChangesByPt',
             '{}.csv'.format(gene))
     ) as fp:
         reader = csv.DictReader(fp)
