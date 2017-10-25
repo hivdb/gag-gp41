@@ -44,22 +44,26 @@ class MutPrevalence:
 PREVALENCE = None
 
 
-def get_prevalence(gene, pos, aa):
+def refresh_prevalence():
     global PREVALENCE
+    PREVALENCE = {}
+    for _gene in ('gag', 'gp41'):
+        with open(os.path.join(
+                ROOT, 'data', 'naiveStudies',
+                '{}AAPrevalence.csv'.format(_gene))) as fp:
+            for p in csv.DictReader(fp):
+                if p['Subtype']:
+                    continue
+                _aa = (p['AA']
+                       .replace('ins', 'i')
+                       .replace('del', 'd'))
+                PREVALENCE[
+                    (p['Gene'], int(p['Pos']), _aa)] = MutPrevalence(p)
+
+
+def get_prevalence(gene, pos, aa):
     if not PREVALENCE:
-        PREVALENCE = {}
-        for _gene in ('gag', 'gp41'):
-            with open(os.path.join(
-                    ROOT, 'data', 'naiveStudies',
-                    '{}AAPrevalence.csv'.format(_gene))) as fp:
-                for p in csv.DictReader(fp):
-                    if p['Subtype']:
-                        continue
-                    _aa = (p['AA']
-                           .replace('ins', 'i')
-                           .replace('del', 'd'))
-                    PREVALENCE[
-                        (p['Gene'], int(p['Pos']), _aa)] = MutPrevalence(p)
+        refresh_prevalence()
     prev = PREVALENCE.get((gene, pos, aa))
     if prev is None:
         return .0

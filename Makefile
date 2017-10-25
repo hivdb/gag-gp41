@@ -16,6 +16,9 @@ basic:
 nj:
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-nj.sh
 
+naive:
+	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime python3 scripts/analyze-naive-studies.py
+
 naive-dist:
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-naive-dist.sh
 

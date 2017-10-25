@@ -7,8 +7,7 @@ from data_reader import get_prevalence
 from data_reader import (
     CONSENSUS, sample_reader,
     sequence_reader,
-    naive_sequence_reader,
-    possible_apobecs_reader
+    naive_sequence_reader
 )
 
 PREC2 = Decimal('1.00')
@@ -100,8 +99,10 @@ def get_most_common_subtypes(gene, at_least=100):
             if count > at_least]
 
 
-def aggregate_mut_prevalence(gene, subtype):
+def aggregate_mut_prevalence(gene, subtype, excludes=None):
     sequences = list(naive_sequence_reader(gene))
+    if excludes:
+        sequences = [s for s in sequences if s['Accession'] in excludes]
     return aggregate_any_mut_prevalence(gene, sequences, subtype)
 
 
@@ -145,91 +146,6 @@ def aggregate_any_mut_prevalence(gene, sequences, subtype=None):
             'PosTotal': total[pos]
         } for (pos, aa), count in result.items()]
     )
-
-
-def aggregate_naiveseqs_stat(gene):
-    sequences = list(naive_sequence_reader(gene))
-    result = []
-
-    for sequence in sequences:
-        result.append({
-            'Accession': sequence['Accession'],
-            'PMID': sequence['PMID'],
-            'Gene': gene,
-            'Subtype': sequence['lanlSubtype'],
-            'NumAAChanges': sequence['NumAAChanges'],
-            'NumInsertions': sequence['NumInsertions'],
-            'NumDeletions': sequence['NumDeletions'],
-            'NumStopCodons': sequence['NumStopCodons'],
-            'NumApobecs': sequence['NumApobecs'],
-            'NumUnusuals': sequence['NumUnusuals'],
-            'NumFrameShifts': sequence['NumFrameShifts'],
-        })
-
-    return result
-
-
-def aggregate_naiveseqs_posstat(gene):
-    sequences = list(naive_sequence_reader(gene))
-    return aggregate_any_naiveseqs_posstat(gene, sequences)
-
-
-def aggregate_any_naiveseqs_posstat(gene, sequences):
-    consensus = CONSENSUS[gene]['AASeq']
-    result = []
-
-    for pos in range(1, len(consensus) + 1):
-        diffs = 0
-        stopcodons = 0
-        inss = 0
-        dels = 0
-        for sequence in sequences:
-            aa = sequence.get('P{}'.format(pos))
-            if aa is None:
-                continue
-            if aa == '.':
-                continue
-            elif aa == 'i':
-                inss += 1
-            elif aa == 'd':
-                dels += 1
-            if aa != '-':
-                diffs += 1
-            if '*' in aa:
-                stopcodons += 1
-        result.append({
-            'AAPosition': pos,
-            'Gene': gene,
-            'NumAAChanges': diffs,
-            'NumStopCodons': stopcodons,
-            'NumInsertions': inss,
-            'NumDeletions': dels
-        })
-
-    return result
-
-
-def aggregate_naiveseqs_adindex(gene, sequences):
-    apobecs = {}
-    for apobec in possible_apobecs_reader(gene):
-        pos = int(apobec['Position'])
-        apobecs.setdefault(pos, set()).add(
-            apobec['AAChange'].split('=>', 1)[1])
-    conserveds = len(apobecs)
-
-    result = []
-    for sequence in sequences:
-        num_apobecs = sequence['NumApobecs']
-        index = num_apobecs / conserveds
-        result.append({
-            'Accession': sequence['Accession'],
-            'QCIssue': sequence['Included'],
-            'NumAPOBECs': num_apobecs,
-            'NumConservedAPOBECSites': conserveds,
-            'ADIndex': index  # APOBEC-mediated defectives index
-        })
-
-    return result
 
 
 def iter_sequence_pairs(gene, category=None):
