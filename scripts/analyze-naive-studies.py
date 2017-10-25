@@ -843,11 +843,26 @@ def export_adindex(gene, sequences):
 
     csv_writer(
         os.path.join(
-            ROOT, 'data', 'naiveStudies', 'apobec',
+            ROOT, 'internalFiles', 'naiveStudies', 'apobec',
             '{}NaiveADIndex.csv'.format(gene)),
         result,
         ['Accession', 'NumAPOBECs',
          'NumConservedAPOBECSites', 'ADIndex'])
+
+
+def export_unusuals(gene, sequences):
+    result = []
+    for seq in sequences:
+        result.append({
+            'Accession': seq['Accession'],
+            'NumUnusuals': seq['NumUnusuals']
+        })
+    csv_writer(
+        os.path.join(
+            ROOT, 'internalFiles', 'naiveStudies',
+            '{}Unusuals.csv'.format(gene)),
+        result,
+        ['Accession', 'NumUnusuals'])
 
 
 def export_naiveseqs_stat(gene, sequences):
@@ -887,6 +902,7 @@ if __name__ == '__main__':
         create_review_table(gene, ptseqs)
         naive_ptseqs = filter_naive_sequences(gene, ptseqs)
         naive_ptseqs = attach_unusuals(gene, naive_ptseqs)
+        export_unusuals(gene, naive_ptseqs)
         naive_ptseqs = filter_excluded_sequences(
             gene, naive_ptseqs, 'excess of unusual mutations')
 
