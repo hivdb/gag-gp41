@@ -29,6 +29,8 @@ for (gene in genes) {
   # fileName = sprintf("%s/local/%sNaiveDiversifyMatrix.csv", ROOT, gene)
   # write.csv(aggs, fileName, row.names=FALSE)
 
+  x9999 = quantile(data$Distance, 0.9999)
+  print(x9999)
   xmax = max(data$Distance) * 100
   xlimmax = ceiling(xmax / 5) * 5
   filtered = filtered[filtered$Subtype == filtered$Subtype2,]
@@ -37,7 +39,8 @@ for (gene in genes) {
       geom_histogram(
         aes(y=(..count..)/sum(..count..)),
         binwidth=1, size=0.5) +
-      geom_vline(xintercept=xmax, linetype="dashed") + scale_y_continuous(labels=percent, breaks=pretty_breaks(4)) +
+      # geom_vline(xintercept=xmax, linetype="dashed") +
+      scale_y_continuous(labels=percent, breaks=pretty_breaks(4)) +
       ylab('% Sequence Pairs') + xlab('% Distance') + xlim(0, xlimmax) +
       ggtitle("M") +
       theme(
@@ -50,12 +53,15 @@ for (gene in genes) {
 
   for (subtype in subtypes) {
       partial = filtered[filtered$Subtype == subtype & filtered$Subtype2 == subtype,]
+      x9999 = quantile(partial$Distance, 0.9999)
+      print(x9999)
       xmax = max(partial$Distance) * 100
       plot = ggplot(partial, aes(Distance * 100)) +
         geom_histogram(
           aes(y=(..count..)/sum(..count..)),
           binwidth=1, size=0.5) +
-        geom_vline(xintercept=xmax, linetype="dashed") + scale_y_continuous(labels=percent, breaks=pretty_breaks(4)) +
+        # geom_vline(xintercept=xmax, linetype="dashed") +
+        scale_y_continuous(labels=percent, breaks=pretty_breaks(4)) +
         ylab('% Sequence Pairs') + xlab('% Distance') + xlim(0, xlimmax) +
         ggtitle(subtype) + theme(plot.title = element_text(hjust=0.02, margin=margin(10, 0, -22, unit = "pt")))
       if (subtype != '01_AE') {
