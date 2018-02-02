@@ -1,6 +1,7 @@
 #! /usr/bin/env Rscript
 library("scales")
 library("ggplot2")
+library("LocFDRPois")
 
 ROOT = "/app"
 
@@ -41,11 +42,26 @@ for (gene in genes) {
   data<-read.table(adIndexFName, sep=",", header=TRUE, as.is=TRUE)
   conserved <- data[1,]$NumConservedAPOBECSites
   numseqs <- nrow(data)
+  locfdrResult <- SummarizeLocfdr(data$NumAPOBECs)
+  lambda0 <- locfdrResult$lambda0
+  apobecCutoff = 0
+  for (i in 1:length(locfdrResult$locfdr_res$fdr)) {
+    print(sprintf("%s APOBEC: %d (fdr=%.3f)", gene, i - 1, locfdrResult$locfdr_res$fdr[[i]]))
+    if (locfdrResult$locfdr_res$fdr[[i]] < 0.05) {  # <1%
+        apobecCutoff = i - 1
+        break
+    }
+  }
+  png(filename=sprintf("%s/report/%s-adindex-fdr.png", ROOT, tolower(gene)),
+      width=6, height=2, units = "in", res=300)
+  print(locfdrResult$locfdr_fig)
+  dev.off()
   png(filename=sprintf("%s/report/%s-adindex.png", ROOT, tolower(gene)),
       width=6, height=2, units = "in", res=300)
-  print(ggplot(data, aes(NumAPOBECs, fill=NumAPOBECs >= 3)) + geom_histogram(binwidth=0.5, color="#595959", size=0.18) +
+  print(ggplot(data, aes(NumAPOBECs, fill=NumAPOBECs >= apobecCutoff)) + geom_histogram(binwidth=0.5, color="#595959", size=0.18) +
     scale_y_continuous(trans=mylog_trans(base=10), breaks=c(0,1,4,16,64,256,1024,4096)) +
     scale_fill_manual(values=c("white", "#595959")) + theme(legend.position="none") +
+    ggtitle(sprintf("Distribution of %s APOBEC Signature Mutations (λ=%.3f)", gene, lambda0)) +
     ylab('# Sequences') + xlab('# APOBEC Signature Mutations'))
   dev.off()
 # }
