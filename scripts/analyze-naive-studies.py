@@ -122,8 +122,8 @@ def attach_numbers(gene, sequences):
 
 def attach_unusuals(gene, sequences):
     unusuals_cutoffs = {
-        'gag': 15,
-        'gp41': 10
+        'gag': 11,
+        'gp41': 8
     }
     toomanyunusuals = 0
     profile = aggregate_aa_prevalence(gene, sequences)

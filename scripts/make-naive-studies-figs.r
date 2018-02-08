@@ -47,7 +47,7 @@ for (gene in genes) {
   apobecCutoff = 0
   for (i in 1:length(locfdrResult$locfdr_res$fdr)) {
     print(sprintf("%s APOBEC: %d (fdr=%.3f)", gene, i - 1, locfdrResult$locfdr_res$fdr[[i]]))
-    if (locfdrResult$locfdr_res$fdr[[i]] < 0.05) {  # <1%
+    if (locfdrResult$locfdr_res$fdr[[i]] < 0.05) {  # <5%
         apobecCutoff = i - 1
         break
     }
@@ -66,15 +66,31 @@ for (gene in genes) {
   dev.off()
 # }
 
-  png(sprintf("%s/report/%s-naive-unusual-dist.png", ROOT, tolower(gene)), width=6, height=2, units="in", res=300)
   fileName = sprintf("%s/internalFiles/naiveStudies/%sUnusuals.csv", ROOT, tolower(gene))
   data<-read.table(fileName, sep=",", header=TRUE, as.is=TRUE)
-  aggs = aggregate(cbind(All = data$Accession) ~ NumUnusuals, data, FUN=length)
-  cutoff = 15
+  # locfdrResult <- SummarizeLocfdr(data$NumUnusuals)
+  # lambda0 <- locfdrResult$lambda0
+  # unusualCutoff = 0
+  # for (i in 1:length(locfdrResult$locfdr_res$fdr)) {
+  #   print(sprintf("%s Unusuals: %d (fdr=%.3f)", gene, i - 1, locfdrResult$locfdr_res$fdr[[i]]))
+  #   if (locfdrResult$locfdr_res$fdr[[i]] < 0.01) {  # <1%
+  #       unusualCutoff = i - 1
+  #       break
+  #   }
+  # }
+  # print(sprintf("%s Unusuals lambda0 = %.3f", gene, lambda0))
+  # png(filename=sprintf("%s/report/%s-naive-unusual-dist-fdr.png", ROOT, tolower(gene)),
+  #     width=6, height=2, units = "in", res=300)
+  # print(locfdrResult$locfdr_fig)
+  # dev.off()
+
+  png(sprintf("%s/report/%s-naive-unusual-dist.png", ROOT, tolower(gene)), width=6, height=2, units="in", res=300)
+  unusualCutoff = 11
   if (identical(gene, 'gp41')) {
-      cutoff = 10
+      unusualCutoff = 8
   }
-  print(ggplot(data, aes(NumUnusuals, fill=NumUnusuals >= cutoff)) + geom_histogram(binwidth=0.5, color="#595959", size=0.18) +
+  aggs = aggregate(cbind(All = data$Accession) ~ NumUnusuals, data, FUN=length)
+  print(ggplot(data, aes(NumUnusuals, fill=NumUnusuals >= unusualCutoff)) + geom_histogram(binwidth=0.5, color="#595959", size=0.18) +
     scale_fill_manual(values=c("white", "#595959")) + theme(legend.position="none") +
     scale_y_continuous(trans=mylog_trans(base=10), breaks=c(0,1,4,16,64,256,1024,4096)) + 
     ylab('# Sequences') + xlab('# Unusual Mutations'))

@@ -7,8 +7,8 @@ from analysis_functions import (
     aggregate_aa_changes_by_pos)
 
 MAX_UNUSUALS = {
-    'gag': 15,
-    'gp41': 10
+    'gag': 11,
+    'gp41': 8
 }
 
 
