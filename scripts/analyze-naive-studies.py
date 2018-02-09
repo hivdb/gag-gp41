@@ -375,9 +375,9 @@ def create_review_table(gene, ptseqs):
             subtypes = sorted(set(origsubtypes + subtypes))
             result['Subtypes'] = '; '.join(subtypes)
             if not result.get('PubYear'):
-                result['PubYear'] = fact.get('PubYr')
+                result['PubYear'] = fact.get('PubYr') or seq['PubYear']
             if not result.get('PubMedID'):
-                result['PubMedID'] = fact.get('PMID')
+                result['PubMedID'] = fact.get('PMID') or seq['PubMedID']
             num_pts = int(result['NumPts'] or 0)
             num_pts += int(fact.get('NumPts') or 0)
             if num_pts:
