@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+from __future__ import print_function
 
 import os
 import re
@@ -354,8 +355,8 @@ def create_review_table(gene, ptseqs):
         if pubid not in results:
             results[pubid] = {
                 'PubID': pubid,
-                'PubMedID': fact.get('PMID', seq['PubMedID']),
-                'PubYear': fact.get('PubYr', seq['PubYear']),
+                'PubMedID': fact.get('PMID') or seq['PubMedID'],
+                'PubYear': fact.get('PubYr') or seq['PubYear'],
                 'NumPts': fact.get('NumPts'),
                 'NumIsolates': fact.get('NumIsolates'),
                 'NumLANLIsolates': len(group_seqs),
