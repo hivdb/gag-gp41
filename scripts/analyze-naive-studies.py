@@ -23,7 +23,7 @@ from data_reader import (data_reader,
                          ROOT, CONSENSUS)
 
 EFETCH_BASE = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi'
-NAIVES = ('Naive', 'PINaive', 'ProbablyNaive')
+NAIVES = ('Naive', 'RxRTI')
 GENE_RANGE = {
     'gag': (790, 2289),
     'gp41': (7758, 8792)
@@ -39,7 +39,8 @@ REVIEW_TABLE_HEADERS = [
 ]
 
 CLEAN_TABLE_HEADERS = [
-    'PubMedID', 'PubYear', 'Title', 'Authors', 'NumPatients'
+    'PubMedID', 'PubYear', 'NumPatients', 'RxStatus',
+    'Title', 'Subtypes', 'Authors'
 ]
 
 
@@ -408,16 +409,15 @@ def create_review_table(gene, ptseqs):
             '{}ReviewTable.xlsx'.format(gene)
         ),
         results)
-    export_naive_papers_table(
+    export_papers_table(
         os.path.join(
             ROOT, 'data', 'naiveStudies',
-            '{}NaiveStudies.csv'.format(gene)
+            '{}Studies.csv'.format(gene)
         ),
         results)
 
 
-def export_naive_papers_table(filename, rows):
-    rows = naive_papers(rows)
+def export_papers_table(filename, rows):
     results = []
     for row in rows:
         numpt = row['NumLANLIsolatesQCPassed']
@@ -426,9 +426,11 @@ def export_naive_papers_table(filename, rows):
         results.append({
             'PubMedID': row['PubMedID'],
             'PubYear': row['PubYear'],
+            'NumPatients': numpt,
+            'RxStatus': row['RxStatus'],
             'Title': row['Title'],
+            'Subtypes': row['Subtypes'],
             'Authors': row['Authors'],
-            'NumPatients': numpt
         })
     csv_writer(filename, results, CLEAN_TABLE_HEADERS)
 
@@ -437,14 +439,23 @@ def export_excel_table(filename, rows):
     workbook = xw.Workbook(filename)
     worksheet = workbook.add_worksheet('main')
     worksheet_rx_status = workbook.add_worksheet('validRxStatus')
+    worksheet_stat = workbook.add_worksheet('stat')
     fontsize = 14
     workbook.formats[0].set_font_size(fontsize)
     headers = REVIEW_TABLE_HEADERS
     valid_rx_status = sorted([
-        'Lab', 'Rx', 'Rx-PI', 'Rx=>Naive', 'Check', 'Naive', 'Unknown',
-        'Mixed', 'PINaive', 'ProbablyNaive', 'Unpublished', 'NonM',
-        'Entry-Naive', 'Conflict', 'Problem'
+
+        'RxUnspecified', 'Unpublished', 'Unknown', 'Naive', 'RxSuppressed',
+        'RxRTI+PI', 'RxRTI', 'RxPIPrePost', 'RxVariable', 'RxPI',
+        'RxRTI+EntryInhibitor', 'RxEntryInhibitor', 'RxFI', 'LabStrains',
+
+        # old ones
+        'Mixed', 'NonM', 'Rx', 'Entry-Naive', 'ProbablyNaive'
+        # 'Lab', 'Rx', 'Rx-PI', 'Rx=>Naive', 'Check', 'Naive', 'Unknown',
+        # 'Mixed', 'PINaive', 'ProbablyNaive', 'Unpublished', 'NonM',
+        # 'Entry-Naive', 'Conflict', 'Problem'
     ])
+
     fmt = workbook.add_format()
     fmt.set_align('top')
     fmt.set_font_size(fontsize)
@@ -494,8 +505,30 @@ def export_excel_table(filename, rows):
     # add data validation
     for idx, rx_status in enumerate(valid_rx_status):
         worksheet_rx_status.write(idx, 0, rx_status)
-
     worksheet_rx_status.set_column('A:A', width=15, cell_format=fmt)
+
+    # add stat
+    rowends = len(rows) + 1
+    worksheet_stat.write(0, 0, 'RxStatus')
+    worksheet_stat.write(0, 1, 'NumStudies')
+    worksheet_stat.write(0, 2, 'NumSequences')
+    worksheet_stat.write(1, 0, '(empty)')
+    worksheet_stat.write_formula(
+        1, 1, '=COUNTIF(main!K2:K{0},"")'.format(rowends))
+    worksheet_stat.write_formula(
+        1, 2, '=SUMIFS(main!G2:G{0},main!K2:K{0},"")'.format(rowends))
+    for idx, rx_status in enumerate(valid_rx_status):
+        idx2 = idx + 2
+        worksheet_stat.write(idx2, 0, rx_status)
+        worksheet_stat.write_formula(
+            idx2, 1, '=COUNTIF(main!K2:K{0},A{1})'.format(rowends, idx2 + 1))
+        worksheet_stat.write_formula(
+            idx2, 2, '=SUMIFS(main!G2:G{0},main!K2:K{0},A{1})'
+            .format(rowends, idx2 + 1))
+    worksheet_stat.set_column('A:A', width=15, cell_format=fmt)
+    worksheet_stat.set_column('B:B', width=12, cell_format=numfmt)
+    worksheet_stat.set_column('C:C', width=14, cell_format=numfmt)
+    worksheet_stat.set_row(0, None, cell_format=headerfmt)  # headers
 
     rx_status_col = headers.index('RxStatus')
     worksheet.data_validation(
