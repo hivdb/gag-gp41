@@ -1,5 +1,6 @@
 library("scales")
 library("ggplot2")
+library("gridExtra")
 
 # data = aggregate(
 #   cbind(Number=Accession) ~ Gene + Position + IndelType + InsLen,
@@ -39,12 +40,12 @@ plot_patterns <- function(pdfpath, genelen, data) {
 
 
 
-plot_histogram <- function(pdfpath, genelen, data) {
+plot_histogram <- function(title, genelen, data) {
   plot = ggplot(data, aes(x=Position, y=Count)) +
     geom_col() +
     scale_x_continuous(expand = c(0, 0), limits = c(1, genelen), breaks = seq(0, genelen, 5)) +
     scale_y_continuous(expand = c(0, 0), trans = mylog_trans(base=10), breaks=c(1, 10, 100, 1000, 10000)) +
-    theme_bw() +
+    theme_bw() + ggtitle(title) +
     theme(#axis.title.y=element_blank(),
           #axis.text.y=element_blank(),
           #axis.ticks.y=element_blank(),
@@ -54,9 +55,7 @@ plot_histogram <- function(pdfpath, genelen, data) {
           panel.grid.minor = element_blank(),
           plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in"),
           axis.line = element_line(colour = "black"))
-  pdf(pdfpath, width=24, height=8)
-  print(plot)
-  dev.off()
+  plot
 }
 
 plot_gene <- function(gene, genelen) {
@@ -67,8 +66,15 @@ plot_gene <- function(gene, genelen) {
     cbind(Count=Accession) ~ Position + IndelTypeInt,
     data, FUN=length)
   # aggdata$Count = aggdata$Count * aggdata$IndelTypeInt
-  plot_histogram(sprintf("/app/report/%s-ins-histogram.pdf", gene), genelen, aggdata[aggdata$IndelTypeInt == 1,])
-  plot_histogram(sprintf("/app/report/%s-del-histogram.pdf", gene), genelen, aggdata[aggdata$IndelTypeInt == -1,])
+
+  pdf(sprintf("/app/report/%s-naive-indels.pdf", gene), width=24, height=16)
+  plots = list(
+    plot_histogram(sprintf("Insertions of naive %s sequences", gene), genelen, aggdata[aggdata$IndelTypeInt == 1,]),
+    plot_histogram(sprintf("Deletions of naive %s sequences", gene), genelen, aggdata[aggdata$IndelTypeInt == -1,])
+  )
+  grid.arrange(grobs=plots, nrow=2, ncol=1)
+  dev.off()
+
   patterndata = data[data$IndelTypeInt == 1,]
   patterndata = aggregate(
     cbind(Pattern=sprintf('%s:%s', Position, InsLen)) ~ Accession,
