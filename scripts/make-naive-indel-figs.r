@@ -32,7 +32,7 @@ plot_patterns <- function(pdfpath, genelen, data) {
       panel.grid.minor = element_blank(),
       plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in"),
       axis.line = element_line(colour = "black"))
-  pdf(pdfpath, width=8, height=2.67)
+  pdf(pdfpath, width=24, height=8)
   print(plot)
   dev.off()
 }
@@ -54,7 +54,7 @@ plot_histogram <- function(pdfpath, genelen, data) {
           panel.grid.minor = element_blank(),
           plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in"),
           axis.line = element_line(colour = "black"))
-  pdf(pdfpath, width=8, height=2.67)
+  pdf(pdfpath, width=24, height=8)
   print(plot)
   dev.off()
 }
