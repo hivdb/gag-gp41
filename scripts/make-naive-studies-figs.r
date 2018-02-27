@@ -19,8 +19,9 @@ mylog_trans <-
 for (gene in genes) {
   fileName = sprintf("%s/data/naiveStudies/%sStatBySeq.csv", ROOT, gene)
   data<-read.table(fileName, sep=",", header=TRUE, as.is=TRUE)
-  png(filename=sprintf("%s/report/%s-naive-aachanges-dist.png", ROOT, tolower(gene)),
-      width=6, height=4, units = "in", res=300)
+  pdf(
+    sprintf("%s/report/%s-naive-aachanges-dist.pdf", ROOT, tolower(gene)),
+    width=6, height=4)
   diffAggs = aggregate(cbind(NumSequences = data$Accession) ~ NumAAChanges, data, FUN = length)
   print(ggplot(diffAggs, aes(NumAAChanges, NumSequences)) +
     geom_point() + ggtitle(sprintf(
@@ -28,8 +29,8 @@ for (gene in genes) {
     )))
   dev.off()
 
-  png(filename=sprintf("%s/report/%s-naive-stopcodons-dist.png", ROOT, tolower(gene)),
-      width=6, height=4.4, units = "in", res=300)
+  pdf(sprintf("%s/report/%s-naive-stopcodons-dist.pdf", ROOT, tolower(gene)),
+      width=6, height=4.4)
   stopAggs = aggregate(cbind(NumSequences = data$Accession) ~ NumStopCodons, data, FUN = length)
   print(ggplot(stopAggs, aes(NumStopCodons, NumSequences)) +
     geom_point() + scale_y_continuous(trans=mylog_trans(base=10), breaks=c(0,1,2,3,5,10,20,40,80,160,320,640,1280,2560,5120)) +
@@ -52,16 +53,16 @@ for (gene in genes) {
         break
     }
   }
-  png(filename=sprintf("%s/report/%s-adindex-fdr.png", ROOT, tolower(gene)),
-      width=6, height=2, units = "in", res=300)
+  pdf(sprintf("%s/report/%s-adindex-fdr.pdf", ROOT, tolower(gene)),
+      width=6, height=2)
   print(locfdrResult$locfdr_fig)
   dev.off()
-  png(filename=sprintf("%s/report/%s-adindex.png", ROOT, tolower(gene)),
-      width=6, height=2, units = "in", res=300)
+  pdf(sprintf("%s/report/%s-adindex.pdf", ROOT, tolower(gene)),
+      width=6, height=2)
   print(ggplot(data, aes(NumAPOBECs, fill=NumAPOBECs >= apobecCutoff)) + geom_histogram(binwidth=0.5, color="#595959", size=0.18) +
     scale_y_continuous(trans=mylog_trans(base=10), breaks=c(0,1,4,16,64,256,1024,4096)) +
     scale_fill_manual(values=c("white", "#595959")) + theme(legend.position="none") +
-    ggtitle(sprintf("Distribution of %s APOBEC Signature Mutations (λ=%.3f)", gene, lambda0)) +
+    # ggtitle(sprintf("Distribution of %s APOBEC Signature Mutations (λ=%.3f)", gene, lambda0)) +
     ylab('# Sequences') + xlab('# APOBEC Signature Mutations'))
   dev.off()
 # }
@@ -79,12 +80,12 @@ for (gene in genes) {
   #   }
   # }
   # print(sprintf("%s Unusuals lambda0 = %.3f", gene, lambda0))
-  # png(filename=sprintf("%s/report/%s-naive-unusual-dist-fdr.png", ROOT, tolower(gene)),
-  #     width=6, height=2, units = "in", res=300)
+  # pdf(sprintf("%s/report/%s-naive-unusual-dist-fdr.pdf", ROOT, tolower(gene)),
+  #     width=6, height=2)
   # print(locfdrResult$locfdr_fig)
   # dev.off()
 
-  png(sprintf("%s/report/%s-naive-unusual-dist.png", ROOT, tolower(gene)), width=6, height=2, units="in", res=300)
+  pdf(sprintf("%s/report/%s-naive-unusual-dist.pdf", ROOT, tolower(gene)), width=6, height=2)
   unusualCutoff = 11
   if (identical(gene, 'gp41')) {
       unusualCutoff = 8

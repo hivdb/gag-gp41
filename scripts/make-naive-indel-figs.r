@@ -16,7 +16,7 @@ mylog_trans <-
     trans_new("mylog", trans, inv, log_breaks(base = base), domain = c(base^from, Inf))
   }
 
-plot_patterns <- function(pngpath, genelen, data) {
+plot_patterns <- function(pdfpath, genelen, data) {
   plot = ggplot(data, mapping=aes(y=Position, x=reorder(Pattern, -Count),
                                   ymin=Position, ymax=Position + InsLen)) +
     geom_linerange(size=2) + # position=position_dodge(.5)) +
@@ -32,14 +32,14 @@ plot_patterns <- function(pngpath, genelen, data) {
       panel.grid.minor = element_blank(),
       plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in"),
       axis.line = element_line(colour = "black"))
-  png(pngpath, width=6000, height=2000, res=300)
+  pdf(pdfpath, width=8, height=2.67)
   print(plot)
   dev.off()
 }
 
 
 
-plot_histogram <- function(pngpath, genelen, data) {
+plot_histogram <- function(pdfpath, genelen, data) {
   plot = ggplot(data, aes(x=Position, y=Count)) +
     geom_col() +
     scale_x_continuous(expand = c(0, 0), limits = c(1, genelen), breaks = seq(0, genelen, 5)) +
@@ -54,7 +54,7 @@ plot_histogram <- function(pngpath, genelen, data) {
           panel.grid.minor = element_blank(),
           plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in"),
           axis.line = element_line(colour = "black"))
-  png(pngpath, width=6000, height=800, res=300)
+  pdf(pdfpath, width=8, height=2.67)
   print(plot)
   dev.off()
 }
@@ -67,8 +67,8 @@ plot_gene <- function(gene, genelen) {
     cbind(Count=Accession) ~ Position + IndelTypeInt,
     data, FUN=length)
   # aggdata$Count = aggdata$Count * aggdata$IndelTypeInt
-  plot_histogram(sprintf("/app/report/%s-ins-histogram.png", gene), genelen, aggdata[aggdata$IndelTypeInt == 1,])
-  plot_histogram(sprintf("/app/report/%s-del-histogram.png", gene), genelen, aggdata[aggdata$IndelTypeInt == -1,])
+  plot_histogram(sprintf("/app/report/%s-ins-histogram.pdf", gene), genelen, aggdata[aggdata$IndelTypeInt == 1,])
+  plot_histogram(sprintf("/app/report/%s-del-histogram.pdf", gene), genelen, aggdata[aggdata$IndelTypeInt == -1,])
   patterndata = data[data$IndelTypeInt == 1,]
   patterndata = aggregate(
     cbind(Pattern=sprintf('%s:%s', Position, InsLen)) ~ Accession,
@@ -79,7 +79,7 @@ plot_gene <- function(gene, genelen) {
     cbind(Count=Accession) ~ Pattern + Position + InsLen,
     data, FUN=length)
   patternaggs = patternaggs[patternaggs$Count > 1,]
-  plot_patterns(sprintf("/app/report/%s-ins-pattern.png", gene), genelen, patternaggs)
+  plot_patterns(sprintf("/app/report/%s-ins-pattern.pdf", gene), genelen, patternaggs)
 }
 
 pdata = plot_gene('gag', 500)

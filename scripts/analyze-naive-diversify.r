@@ -76,7 +76,7 @@ for (gene in genes) {
       }
       plots = append(plots, list(plot))
   }
-  png(sprintf("%s/report/%s-naive-diversify.png", ROOT, tolower(gene)), width=6, height=8, units="in", res=300)
+  pdf(sprintf("%s/report/%s-naive-diversify.pdf", ROOT, tolower(gene)), width=6, height=8)
   ph = 457 / 300  # plot height
   bh = 115 / 300  # height of bottom x label
   grid.arrange(grobs=plots, nrow=length(plots), heights=unit(c(ph, ph, ph, ph, ph + bh), c('in', 'in', 'in', 'in', 'in')))

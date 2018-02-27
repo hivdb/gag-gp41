@@ -232,23 +232,23 @@ if __name__ == '__main__':
     print(
         '### Gag sites\n\n'
         '![Gag sites](https://github.com/hivdb/'
-        'gag-gp41/raw/master/report/gag-mutations.png)\n'
+        'gag-gp41/raw/master/report/gag-mutations.pdf)\n'
     )
     print(
         '### Gp41 sites\n\n'
         '![Gp41 sites](https://github.com/hivdb/'
-        'gag-gp41/raw/master/report/gp41-mutations.png)\n'
+        'gag-gp41/raw/master/report/gp41-mutations.pdf)\n'
     )
     print(
         '### Distribution figures for Naive Sequences\n\n'
         '![Gag AA changes](https://github.com/hivdb/gag-gp41'
-        '/raw/master/report/gag-naive-aachanges-dist.png)\n'
+        '/raw/master/report/gag-naive-aachanges-dist.pdf)\n'
         '![Gag stop codons](https://github.com/hivdb/gag-gp41'
-        '/raw/master/report/gag-naive-stopcodons-dist.png)\n'
+        '/raw/master/report/gag-naive-stopcodons-dist.pdf)\n'
         '![Gp41 AA changes](https://github.com/hivdb/gag-gp41'
-        '/raw/master/report/gp41-naive-aachanges-dist.png)\n'
+        '/raw/master/report/gp41-naive-aachanges-dist.pdf)\n'
         '![Gp41 stop codons](https://github.com/hivdb/gag-gp41'
-        '/raw/master/report/gp41-naive-stopcodons-dist.png)\n'
+        '/raw/master/report/gp41-naive-stopcodons-dist.pdf)\n'
     )
     print('## Pairwise comparison\n')
     for gene in ('gag', 'gp41'):
