@@ -2,18 +2,18 @@
 
 ### Gag sites
 
-![Gag sites](https://github.com/hivdb/gag-gp41/raw/master/report/gag-mutations.pdf)
+[Figure of gag sites](https://github.com/hivdb/gag-gp41/raw/master/report/gag-mutations.pdf)
 
 ### Gp41 sites
 
-![Gp41 sites](https://github.com/hivdb/gag-gp41/raw/master/report/gp41-mutations.pdf)
+[Figure of gp41 sites](https://github.com/hivdb/gag-gp41/raw/master/report/gp41-mutations.pdf)
 
 ### Distribution figures for Naive Sequences
 
-![Gag AA changes](https://github.com/hivdb/gag-gp41/raw/master/report/gag-naive-aachanges-dist.pdf)
-![Gag stop codons](https://github.com/hivdb/gag-gp41/raw/master/report/gag-naive-stopcodons-dist.pdf)
-![Gp41 AA changes](https://github.com/hivdb/gag-gp41/raw/master/report/gp41-naive-aachanges-dist.pdf)
-![Gp41 stop codons](https://github.com/hivdb/gag-gp41/raw/master/report/gp41-naive-stopcodons-dist.pdf)
+[Figure of gag AA changes](https://github.com/hivdb/gag-gp41/raw/master/report/gag-naive-aachanges-dist.pdf)
+[Figure of gag stop codons](https://github.com/hivdb/gag-gp41/raw/master/report/gag-naive-stopcodons-dist.pdf)
+[Figure of gp41 AA changes](https://github.com/hivdb/gag-gp41/raw/master/report/gp41-naive-aachanges-dist.pdf)
+[Figure of gp41 stop codons](https://github.com/hivdb/gag-gp41/raw/master/report/gp41-naive-stopcodons-dist.pdf)
 
 ## Pairwise comparison
 
