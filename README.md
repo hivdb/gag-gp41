@@ -24,7 +24,7 @@ make
 
 The HIV virus samples from patients were sequenced by using Sanger sequencing
 method. Once the sequencing results were obtained, we used Geneious R11 to align
-the sequences, apply manual adjustments and output a FASTA file for each gene
+the sequences, apply manual adjustment and output a FASTA file for each gene
 containing Multiple Sequence Alignment (MSA).
 
 The steps we took to align the raw sequences were:
@@ -45,13 +45,18 @@ The steps we took to align the raw sequences were:
    - Custom ClustalW Executable: unchecked
 4. Click "OK" to align the sequence.
  
-Once the sequences were aligned by ClustalW, manual adjustments were applied
-to the alignments. Following are examples.
+Once the sequences were aligned by ClustalW, manual adjustment was applied
+to the alignments to correct the misplaced gaps. The knowledge of known gag
+cleavage sites was considered when we apply the adjustment.
 
-TODO
+The Geneious working folder was saved into a file. You can download it from
+[this link](https://github.com/hivdb/gag-gp41/raw/master/internalFiles/gaggp41.geneious).
+The file includes the original raw sequences, the translation alignments made
+by ClustalW and the manually adjusted alignments. Manual adjustment was not
+performed for gp41 sequences since all the gaps were placed properly already.
 
-After finished the manual adjustments, the final alignments were exported into
-a single FASTA file using dash "-" to represent gap.
+After finished the whole aligment process, the final alignments were exported
+into a single FASTA file using dashes "-" to represent gaps.
 
 The exported FASTA files were saved as `data/fasta/gagMSA.fas` and
 `data/fasta/gp41MSA.fas`. Following command will generate the trimed sequence
