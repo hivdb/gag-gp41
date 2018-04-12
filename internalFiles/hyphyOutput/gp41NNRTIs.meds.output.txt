@@ -1,7 +1,7 @@
 
 [RUNNING MEDS (Models for Episodic Directional Selection). For help please refer to http://www.hyphy.org/wiki/MEDS ]
 
-Load a coding alignment (`/usr/local/lib/hyphy/TemplateBatchFiles/`) Loaded 34 sequences with 1035 sites from /app/data/fasta/gp41NNRTIs.aln.fasta.txt
+Load a coding alignment (`/usr/local/lib/hyphy/TemplateBatchFiles/`) Loaded 34 sequences with 1035 sites from /app/internalFiles/fasta/gp41NNRTIs.aln.fasta.txt
 
 Load an annotated tree file (`/usr/local/lib/hyphy/TemplateBatchFiles/`) 
 Specify the output (.csv) file (`/usr/local/lib/hyphy/TemplateBatchFiles/`) 
@@ -34,32 +34,32 @@ Specify the output (.csv) file (`/usr/local/lib/hyphy/TemplateBatchFiles/`)
 Please choose an option (or press q to cancel selection):
 
 [PHASE 1. Estimating Branch Lengths using a Nucleotide Model]
-Log Likelihood = -7225.39797229733;
+Log Likelihood = -7225.39813971881;
 Shared Parameters:
-GT=0.2274959816811834
-CT=0.960805426188086
-AC=0.5428240176527156
-CG=0.2198146086609358
-AT=0.267803614927704
+GT=0.2276099513621199
+CT=0.9612770719790482
+AC=0.5435191864583082
+CG=0.2198692804930722
+AT=0.2680788068966425
 
-Tree givenTree=((((((KY579886_42036_NNRTIs_Pre:0.00206902,KY579887_42036_NNRTIs_Post:0)Node5:0.121175,(KY579910_35596_NNRTIs_Pre:0.00591594,KY579911_35596_NNRTIs_Post:0.0134907)Node8:0.0626099)Node4:0.0226286,(((KY579894_122034_NNRTIs_Pre:0,KY579895_122034_NNRTIs_Post:0.00528957)Node13:0.0720565,(KY579912_37879_NNRTIs_Pre:0.00607823,KY579913_37879_NNRTIs_Post:0.00299697)Node16:0.0375891)Node12:0.0145954,(KY579914_57448_NNRTIs_Pre:0.00204643,KY579915_57448_NNRTIs_Post:0.00104328)Node19:0.057603)Node11:0.00307827)Node3:0.00837878,(((KY579888_42183_NNRTIs_Pre:0.00263952,KY579889_42183_NNRTIs_Post:0.00584527)Node24:0.0372632,(KY579900_253540_NNRTIs_Pre:0,KY579901_253540_NNRTIs_Post:0.00105574)Node27:0.0715754)Node23:0.0180856,(KY579902_264159_NNRTIs_Pre:0.00205706,KY579903_264159_NNRTIs_Post:0.00972322)Node30:0.0571159)Node22:0.00850428)Node2:0.00748583,((KY579890_55928_NNRTIs_Pre:0.00542362,KY579891_55928_NNRTIs_Post:0.00219202)Node34:0.0472637,(KY579892_21890_NNRTIs_Pre:0,KY579893_21890_NNRTIs_Post:0.0043101)Node37:0.0537718)Node33:0.0146857)Node1:0.00612334,(((KY579896_214046_NNRTIs_Pre:0,KY579897_214046_NNRTIs_Post:0.0010026)Node42:0.0460119,(KY579906_9918_NNRTIs_Pre:0.00207877,KY579907_9918_NNRTIs_Post:0.00307154)Node45:0.0558773)Node41:0.0175788,((KY579898_252392_NNRTIs_Pre:0,KY579899_252392_NNRTIs_Post:0.0062263)Node49:0.0385096,(KY579918_61631_NNRTIs_Pre:0.00109822,KY579919_61631_NNRTIs_Post:0.0041074)Node52:0.0516415)Node48:0.0138192)Node40:0.00485765,((KY579904_8349_NNRTIs_Pre:0.00783163,KY579905_8349_NNRTIs_Post:0.00977006)Node56:0.0454418,((KY579908_25036_NNRTIs_Pre:0.00405837,KY579909_25036_NNRTIs_Post:0.0111812)Node60:0.0324685,(KY579916_61483_NNRTIs_Pre:0.00498313,KY579917_61483_NNRTIs_Post:0.00313172)Node63:0.0422939)Node59:0.00661015)Node55:0.00355778);
+Tree givenTree=((((((KY579886_42036_NNRTIs_Pre:0.00206855,KY579887_42036_NNRTIs_Post:0)Node5:0.121223,(KY579910_35596_NNRTIs_Pre:0.00591354,KY579911_35596_NNRTIs_Post:0.0134941)Node8:0.0626285)Node4:0.0226238,(((KY579894_122034_NNRTIs_Pre:0,KY579895_122034_NNRTIs_Post:0.00529046)Node13:0.0721036,(KY579912_37879_NNRTIs_Pre:0.00607668,KY579913_37879_NNRTIs_Post:0.00299826)Node16:0.0375958)Node12:0.0145893,(KY579914_57448_NNRTIs_Pre:0.00204641,KY579915_57448_NNRTIs_Post:0.00104309)Node19:0.0576015)Node11:0.0030772)Node3:0.0083775,(((KY579888_42183_NNRTIs_Pre:0.00263999,KY579889_42183_NNRTIs_Post:0.00584346)Node24:0.0372446,(KY579900_253540_NNRTIs_Pre:0,KY579901_253540_NNRTIs_Post:0.00105589)Node27:0.0716038)Node23:0.0180896,(KY579902_264159_NNRTIs_Pre:0.00205725,KY579903_264159_NNRTIs_Post:0.00972356)Node30:0.057102)Node22:0.00850219)Node2:0.00748531,((KY579890_55928_NNRTIs_Pre:0.00542168,KY579891_55928_NNRTIs_Post:0.00219245)Node34:0.0472413,(KY579892_21890_NNRTIs_Pre:0,KY579893_21890_NNRTIs_Post:0.00430973)Node37:0.0537707)Node33:0.0146869)Node1:0.00612313,(((KY579896_214046_NNRTIs_Pre:0,KY579897_214046_NNRTIs_Post:0.0010026)Node42:0.0459856,(KY579906_9918_NNRTIs_Pre:0.00207914,KY579907_9918_NNRTIs_Post:0.0030717)Node45:0.0558839)Node41:0.017574,((KY579898_252392_NNRTIs_Pre:0,KY579899_252392_NNRTIs_Post:0.00622526)Node49:0.0385185,(KY579918_61631_NNRTIs_Pre:0.00109822,KY579919_61631_NNRTIs_Post:0.00410681)Node52:0.0516118)Node48:0.0138221)Node40:0.00485598,((KY579904_8349_NNRTIs_Pre:0.00783143,KY579905_8349_NNRTIs_Post:0.00976725)Node56:0.0454525,((KY579908_25036_NNRTIs_Pre:0.00405842,KY579909_25036_NNRTIs_Post:0.011175)Node60:0.0324489,(KY579916_61483_NNRTIs_Pre:0.00498307,KY579917_61483_NNRTIs_Post:0.00313215)Node63:0.0422932)Node59:0.00661018)Node55:0.00355837);
 The following branches were labeled as foreground: 
 ((((((KY579886_42036_NNRTIs_Pre:0.006194903504917382,KY579887_42036_NNRTIs_Post{FG}:0.0008721637687434895):0.1104628178950982,(KY579910_35596_NNRTIs_Pre:0.008431997787626511,KY579911_35596_NNRTIs_Post{FG}:0.01095541280372399):0.06085100948703057):0.01198764689769174,(((KY579894_122034_NNRTIs_Pre:0.00112140622827782,KY579895_122034_NNRTIs_Post{FG}:0.005207947159562415):0.0621642974345063,(KY579912_37879_NNRTIs_Pre:0.004526902763378966,KY579913_37879_NNRTIs_Post{FG}:0.004572519419614176):0.04323328863689684):0.006161214126612323,(KY579914_57448_NNRTIs_Pre:0.003264133337299795,KY579915_57448_NNRTIs_Post{FG}:0.001792229225451135):0.0468492452167477):0.001427933961173944):0.003033183613123687,(((KY579888_42183_NNRTIs_Pre:0.004640864522994326,KY579889_42183_NNRTIs_Post{FG}:0.007556864064439061):0.04140582040271577,(KY579900_253540_NNRTIs_Pre:-0.001967397113959852,KY579901_253540_NNRTIs_Post{FG}:0.003024885613379072):0.06583811122311227):0.007495593880707946,(KY579902_264159_NNRTIs_Pre:-0.0004829406353277447,KY579903_264159_NNRTIs_Post{FG}:0.01137873141320795):0.05237597622646632):0.00211477572719966):0.002455780408431173,((KY579890_55928_NNRTIs_Pre:0.008329131357877547,KY579891_55928_NNRTIs_Post{FG}:0.0039121070614335):0.03911491415640619,(KY579892_21890_NNRTIs_Pre:0.0009695070139012266,KY579893_21890_NNRTIs_Post{FG}:0.005392049801716307):0.05375051435460983):0.003569645693718597):0.0004990686605420964,(((KY579896_214046_NNRTIs_Pre:0.0004516507968970794,KY579897_214046_NNRTIs_Post{FG}:0.000551125977913926):0.04674842205808372,(KY579906_9918_NNRTIs_Pre:0.004011200149703721,KY579907_9918_NNRTIs_Post{FG}:0.001333745737178342):0.05855638633005589):0.004003800713348923,((KY579898_252392_NNRTIs_Pre:0.0002381917987887882,KY579899_252392_NNRTIs_Post{FG}:0.005992567765995993):0.03732882580825355,(KY579918_61631_NNRTIs_Pre:0.002079755581202281,KY579919_61631_NNRTIs_Post{FG}:0.004095760175017786):0.04590513470391413):0.006568090764279909):0.003387738980819505,((KY579904_8349_NNRTIs_Pre:0.008886545186814629,KY579905_8349_NNRTIs_Post{FG}:0.008518691411147451):0.03754776726243812,((KY579908_25036_NNRTIs_Pre:0.004563452731790083,KY579909_25036_NNRTIs_Post{FG}:0.01076021546985644):0.03138559785745177,(KY579916_61483_NNRTIs_Pre:0.005848887314149824,KY579917_61483_NNRTIs_Post{FG}:0.004273602534833369):0.04102075470083199):0.002885972543922991):0.004228984209824043);
 
 [PHASE 2. Estimating Substitution Parameters using the Global Codon Model]
 
-Log Likelihood = -7079.62752250134;
+Log Likelihood = -7079.62608564559;
 Shared Parameters:
-AC=0.5453043635425033
-AT=0.3041244787972048
-CG=0.2390470338290585
-CT=0.9140627180528961
-GT=0.2726788057219773
-syn=1.614935906715656
-nonsyn=0.8432446479868314
-nonsynFG=0.7200415772085059
+AC=0.5453007742089296
+AT=0.3041269898948918
+CG=0.2390519921768741
+CT=0.9140763631637155
+GT=0.2726847530556712
+syn=1.615669319123894
+nonsyn=0.8436165569947507
+nonsynFG=0.7204322019806547
 
-Tree myTreeFG=((((((KY579886_42036_NNRTIs_Pre:0.00216302,KY579887_42036_NNRTIs_Post:0)Node5:0.126681,(KY579910_35596_NNRTIs_Pre:0.00618473,KY579911_35596_NNRTIs_Post:0.012936)Node8:0.0654545)Node4:0.0236568,(((KY579894_122034_NNRTIs_Pre:0,KY579895_122034_NNRTIs_Post:0.00507206)Node13:0.0753304,(KY579912_37879_NNRTIs_Pre:0.0063544,KY579913_37879_NNRTIs_Post:0.00287374)Node16:0.039297)Node12:0.0152586,(KY579914_57448_NNRTIs_Pre:0.0021394,KY579915_57448_NNRTIs_Post:0.00100038)Node19:0.0602201)Node11:0.00321812)Node3:0.00875947,(((KY579888_42183_NNRTIs_Pre:0.00275944,KY579889_42183_NNRTIs_Post:0.00560492)Node24:0.0389562,(KY579900_253540_NNRTIs_Pre:0,KY579901_253540_NNRTIs_Post:0.00101233)Node27:0.0748274)Node23:0.0189073,(KY579902_264159_NNRTIs_Pre:0.00215052,KY579903_264159_NNRTIs_Post:0.0093234)Node30:0.0597109)Node22:0.00889066)Node2:0.00782594,((KY579890_55928_NNRTIs_Pre:0.00567004,KY579891_55928_NNRTIs_Post:0.00210189)Node34:0.0494111,(KY579892_21890_NNRTIs_Pre:0,KY579893_21890_NNRTIs_Post:0.00413287)Node37:0.0562149)Node33:0.015353)Node1:0.00640155,(((KY579896_214046_NNRTIs_Pre:0,KY579897_214046_NNRTIs_Post:0.000961377)Node42:0.0481025,(KY579906_9918_NNRTIs_Pre:0.00217322,KY579907_9918_NNRTIs_Post:0.00294524)Node45:0.0584161)Node41:0.0183775,((KY579898_252392_NNRTIs_Pre:0,KY579899_252392_NNRTIs_Post:0.00597028)Node49:0.0402592,(KY579918_61631_NNRTIs_Pre:0.00114812,KY579919_61631_NNRTIs_Post:0.00393851)Node52:0.0539878)Node48:0.0144471)Node40:0.00507836,((KY579904_8349_NNRTIs_Pre:0.00818746,KY579905_8349_NNRTIs_Post:0.00936832)Node56:0.0475064,((KY579908_25036_NNRTIs_Pre:0.00424276,KY579909_25036_NNRTIs_Post:0.0107214)Node60:0.0339437,(KY579916_61483_NNRTIs_Pre:0.00520954,KY579917_61483_NNRTIs_Post:0.00300295)Node63:0.0442154)Node59:0.00691048)Node55:0.00371942);
+Tree myTreeFG=((((((KY579886_42036_NNRTIs_Pre:0.00216253,KY579887_42036_NNRTIs_Post:0)Node5:0.12673,(KY579910_35596_NNRTIs_Pre:0.0061822,KY579911_35596_NNRTIs_Post:0.0129399)Node8:0.0654737)Node4:0.0236516,(((KY579894_122034_NNRTIs_Pre:0,KY579895_122034_NNRTIs_Post:0.00507317)Node13:0.0753793,(KY579912_37879_NNRTIs_Pre:0.00635275,KY579913_37879_NNRTIs_Post:0.00287511)Node16:0.0393038)Node12:0.0152521,(KY579914_57448_NNRTIs_Pre:0.00213938,KY579915_57448_NNRTIs_Post:0.00100024)Node19:0.0602183)Node11:0.003217)Node3:0.0087581,(((KY579888_42183_NNRTIs_Pre:0.00275992,KY579889_42183_NNRTIs_Post:0.00560346)Node24:0.0389366,(KY579900_253540_NNRTIs_Pre:0,KY579901_253540_NNRTIs_Post:0.00101253)Node27:0.0748568)Node23:0.0189114,(KY579902_264159_NNRTIs_Pre:0.00215072,KY579903_264159_NNRTIs_Post:0.0093242)Node30:0.0596961)Node22:0.00888844)Node2:0.00782537,((KY579890_55928_NNRTIs_Pre:0.00566799,KY579891_55928_NNRTIs_Post:0.0021024)Node34:0.0493875,(KY579892_21890_NNRTIs_Pre:0,KY579893_21890_NNRTIs_Post:0.00413272)Node37:0.0562135)Node33:0.0153541)Node1:0.00640131,(((KY579896_214046_NNRTIs_Pre:0,KY579897_214046_NNRTIs_Post:0.000961426)Node42:0.0480747,(KY579906_9918_NNRTIs_Pre:0.0021736,KY579907_9918_NNRTIs_Post:0.00294554)Node45:0.0584227)Node41:0.0183724,((KY579898_252392_NNRTIs_Pre:0,KY579899_252392_NNRTIs_Post:0.00596958)Node49:0.0402684,(KY579918_61631_NNRTIs_Pre:0.00114811,KY579919_61631_NNRTIs_Post:0.00393814)Node52:0.0539565)Node48:0.01445)Node40:0.00507659,((KY579904_8349_NNRTIs_Pre:0.00818722,KY579905_8349_NNRTIs_Post:0.00936609)Node56:0.0475174,((KY579908_25036_NNRTIs_Pre:0.0042428,KY579909_25036_NNRTIs_Post:0.010716)Node60:0.0339231,(KY579916_61483_NNRTIs_Pre:0.00520945,KY579917_61483_NNRTIs_Post:0.00300351)Node63:0.0442146)Node59:0.00691049)Node55:0.00372002);
 
 
 
@@ -122,10 +122,10 @@ Working on site 18
 	Skipping unobserved target residue G
 
 Tests for site 18
-	Likelihood Ratio Test for diversifying selection: 0.02050224594323424  p-value: 0.8861432439560091
+	Likelihood Ratio Test for diversifying selection: 0.02026075724788967  p-value: 0.8868112262131905
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: T  : 2.329695656378476  p-value: 0.1269266909521592
-	Likelihood Ratio Test for: A  : 2.07828093692639  p-value: 0.1494083587203227
+	Likelihood Ratio Test for: T  : 2.33007316035544  p-value: 0.1268959132324654
+	Likelihood Ratio Test for: A  : 2.079232863417118  p-value: 0.1493152017593922
 Working on site 19
 Skipped site 19 because it is invariable
 Working on site 20
@@ -158,10 +158,10 @@ Working on site 23
 	Skipping unobserved target residue G
 
 Tests for site 23
-	Likelihood Ratio Test for diversifying selection: 1.204332892405354  p-value: 0.2724573894323902
+	Likelihood Ratio Test for diversifying selection: 1.204694846652963  p-value: 0.2723853449077593
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.534191111141439  p-value: 0.4648501394442011
-	Likelihood Ratio Test for: A  : 7.52416831349241  p-value: 0.0060876653367955
+	Likelihood Ratio Test for: S  : 0.533808580500434  p-value: 0.4650100396950633
+	Likelihood Ratio Test for: A  : 7.52473385263383  p-value: 0.006085754509079777
 Working on site 24
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -186,12 +186,12 @@ Working on site 24
 	Skipping unobserved target residue G
 
 Tests for site 24
-	Likelihood Ratio Test for diversifying selection: 6.423021395466051  p-value: 0.01126503447168015
+	Likelihood Ratio Test for diversifying selection: 6.423593458019042  p-value: 0.0112614064426948
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.8338874975461863  p-value: 0.3611508220007386
-	Likelihood Ratio Test for: I  : 1.176323948356497  p-value: 0.2781056392250488
-	Likelihood Ratio Test for: M  : 1.606866668649005  p-value: 0.2049328118724085
-	Likelihood Ratio Test for: V  : 1.14459760280252  p-value: 0.2846829229140985
+	Likelihood Ratio Test for: L  : 0.8339077603080085  p-value: 0.3611449879021144
+	Likelihood Ratio Test for: I  : 1.176435208773768  p-value: 0.2780829128885774
+	Likelihood Ratio Test for: M  : 1.60699408499957  p-value: 0.2049148564262921
+	Likelihood Ratio Test for: V  : 1.144687079843621  p-value: 0.2846640980933137
 Working on site 25
 Skipped site 25 because it is invariable
 Working on site 26
@@ -224,10 +224,10 @@ Working on site 29
 	Skipping unobserved target residue G
 
 Tests for site 29
-	Likelihood Ratio Test for diversifying selection: -7.105427357601002e-15  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -3.552713678800501e-15  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: H  : 1.06581410364015e-14  p-value: 0.9999999176277758
-	Likelihood Ratio Test for: Q  : 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for: H  : -3.552713678800501e-15  p-value: 1
+	Likelihood Ratio Test for: Q  : 7.105427357601002e-15  p-value: 0.9999999327433606
 Working on site 30
 Skipped site 30 because it is invariable
 Working on site 31
@@ -256,11 +256,11 @@ Working on site 32
 	Skipping unobserved target residue G
 
 Tests for site 32
-	Likelihood Ratio Test for diversifying selection: 0.738616405603743  p-value: 0.3901044535521649
+	Likelihood Ratio Test for diversifying selection: 0.7385952454513145  p-value: 0.3901112430284566
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.1362470421542952  p-value: 0.7120408387464205
-	Likelihood Ratio Test for: T  : 0.01746715944236854  p-value: 0.8948550642366419
-	Likelihood Ratio Test for: Q  : 0.2338320772739237  p-value: 0.6286968445323662
+	Likelihood Ratio Test for: L  : 0.136184436874494  p-value: 0.7121040549646447
+	Likelihood Ratio Test for: T  : 0.01746979675037608  p-value: 0.8948471729075914
+	Likelihood Ratio Test for: Q  : 0.23384557768847  p-value: 0.6286869357246353
 Working on site 33
 Skipped site 33 because it is invariable
 Working on site 34
@@ -287,10 +287,10 @@ Working on site 34
 	Skipping unobserved target residue G
 
 Tests for site 34
-	Likelihood Ratio Test for diversifying selection: 0.1433461809739747  p-value: 0.7049768587462835
+	Likelihood Ratio Test for diversifying selection: 0.1433378927253131  p-value: 0.7049849881693326
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.1500901656550084  p-value: 0.6984492076987016
-	Likelihood Ratio Test for: M  : 3.80346421025024e-10  p-value: 0.9999844392785545
+	Likelihood Ratio Test for: L  : 0.1500774901582957  p-value: 0.6984613169645753
+	Likelihood Ratio Test for: M  : 3.787583580106002e-10  p-value: 0.9999844717979279
 Working on site 35
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -315,10 +315,10 @@ Working on site 35
 	Skipping unobserved target residue G
 
 Tests for site 35
-	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 3.552713678800501e-15  p-value: 0.9999999524423742
 	Testing for directional selection againts null allowing positive selection in foreground
 	Likelihood Ratio Test for: S  : 0  p-value: 1
-	Likelihood Ratio Test for: T  : -7.105427357601002e-15  p-value: 1
+	Likelihood Ratio Test for: T  : -3.552713678800501e-15  p-value: 1
 Working on site 36
 Skipped site 36 because it is invariable
 Working on site 37
@@ -355,10 +355,10 @@ Working on site 42
 	Skipping unobserved target residue G
 
 Tests for site 42
-	Likelihood Ratio Test for diversifying selection: 0.7174249169138207  p-value: 0.3969898843117673
+	Likelihood Ratio Test for diversifying selection: 0.7173626448442931  p-value: 0.3970103744307928
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.02022241035949435  p-value: 0.8869176705584918
-	Likelihood Ratio Test for: N  : 0.1292740091483182  p-value: 0.7191859617154011
+	Likelihood Ratio Test for: S  : 0.02022323176796448  p-value: 0.8869153893916862
+	Likelihood Ratio Test for: N  : 0.1292595956794429  p-value: 0.7192009539078363
 Working on site 43
 Skipped site 43 because it is invariable
 Working on site 44
@@ -389,11 +389,11 @@ Working on site 46
 	Skipping unobserved target residue G
 
 Tests for site 46
-	Likelihood Ratio Test for diversifying selection: 2.453253698480552  p-value: 0.1172815378130677
+	Likelihood Ratio Test for diversifying selection: 2.453185779581744  p-value: 0.1172866114872992
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: M  : -8.313350008393172e-12  p-value: 1
-	Likelihood Ratio Test for: K  : 0.04248592742306556  p-value: 0.8366962801872908
-	Likelihood Ratio Test for: R  : 0.4236422214222557  p-value: 0.5151252189996649
+	Likelihood Ratio Test for: M  : -8.633094239485217e-12  p-value: 1
+	Likelihood Ratio Test for: K  : 0.04248772158642566  p-value: 0.8366928806562106
+	Likelihood Ratio Test for: R  : 0.4237922468782074  p-value: 0.5150508267091507
 Working on site 47
 Skipped site 47 because it is invariable
 Working on site 48
@@ -430,10 +430,10 @@ Working on site 53
 	Skipping unobserved target residue G
 
 Tests for site 53
-	Likelihood Ratio Test for diversifying selection: 1.508479659135205  p-value: 0.2193712236025586
+	Likelihood Ratio Test for diversifying selection: 1.508378708244138  p-value: 0.2193866479402256
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: H  : 0.3307155407108837  p-value: 0.5652380552880036
-	Likelihood Ratio Test for: Q  : 0.01786358240102714  p-value: 0.8936756172820016
+	Likelihood Ratio Test for: H  : 0.3306909748042912  p-value: 0.56525250011436
+	Likelihood Ratio Test for: Q  : 0.01786427971739357  p-value: 0.8936735544098932
 Working on site 54
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -458,11 +458,11 @@ Working on site 54
 	Skipping unobserved target residue G
 
 Tests for site 54
-	Likelihood Ratio Test for diversifying selection: 1.254674446503898  p-value: 0.2626615577949382
+	Likelihood Ratio Test for diversifying selection: 1.254800144240605  p-value: 0.2626376522648278
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.4189008142282731  p-value: 0.5174860267776065
-	Likelihood Ratio Test for: I  : 0.2558347328584603  p-value: 0.6129963000846181
-	Likelihood Ratio Test for: M  : 3.063155918613369  p-value: 0.08008598309742465
+	Likelihood Ratio Test for: L  : 0.4188742488763637  p-value: 0.517499307345632
+	Likelihood Ratio Test for: I  : 0.2558097256098648  p-value: 0.6130136563286028
+	Likelihood Ratio Test for: M  : 3.061509774530734  p-value: 0.08016714918463241
 Working on site 55
 Skipped site 55 because it is invariable
 Working on site 56
@@ -515,10 +515,10 @@ Working on site 69
 	Skipping unobserved target residue G
 
 Tests for site 69
-	Likelihood Ratio Test for diversifying selection: 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : -4.851791857163334e-09  p-value: 1
-	Likelihood Ratio Test for: V  : -1.349412919182669e-07  p-value: 1
+	Likelihood Ratio Test for: I  : -7.516553779396418e-08  p-value: 1
+	Likelihood Ratio Test for: V  : -3.267143107166248e-07  p-value: 1
 Working on site 70
 Skipped site 70 because it is invariable
 Working on site 71
@@ -547,10 +547,10 @@ Working on site 72
 	Skipping unobserved target residue G
 
 Tests for site 72
-	Likelihood Ratio Test for diversifying selection: 0.489658322324992  p-value: 0.4840797586586151
+	Likelihood Ratio Test for diversifying selection: 0.4896062352928325  p-value: 0.4841030064853341
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.0233324172310887  p-value: 0.8785958041129326
-	Likelihood Ratio Test for: V  : 0.3116615994694243  p-value: 0.5766623470072245
+	Likelihood Ratio Test for: L  : 0.02332937580446526  p-value: 0.8786036556639284
+	Likelihood Ratio Test for: V  : 0.3116264178076662  p-value: 0.5766838611668854
 Working on site 73
 Skipped site 73 because it is invariable
 Working on site 74
@@ -577,11 +577,11 @@ Working on site 74
 	Skipping unobserved target residue G
 
 Tests for site 74
-	Likelihood Ratio Test for diversifying selection: -7.176481631177012e-13  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -6.181721801112872e-13  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 7.105427357601002e-13  p-value: 0.9999993274336058
-	Likelihood Ratio Test for: T  : 5.755396159656812e-13  p-value: 0.9999993946902452
-	Likelihood Ratio Test for: R  : 7.034373084024992e-13  p-value: 0.9999993308048871
+	Likelihood Ratio Test for: S  : 6.181721801112872e-13  p-value: 0.9999993726718303
+	Likelihood Ratio Test for: T  : 5.186961971048731e-13  p-value: 0.9999994253590209
+	Likelihood Ratio Test for: R  : 6.110667527536862e-13  p-value: 0.9999993762875847
 Working on site 75
 Skipped site 75 because it is invariable
 Working on site 76
@@ -610,12 +610,12 @@ Working on site 77
 	Skipping unobserved target residue G
 
 Tests for site 77
-	Likelihood Ratio Test for diversifying selection: 1.114905000745935  p-value: 0.2910181902414232
+	Likelihood Ratio Test for diversifying selection: 1.115075318306182  p-value: 0.2909813419852645
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: Q  : 0.1722250395383185  p-value: 0.6781418682774709
-	Likelihood Ratio Test for: N  : 0.1621501075766218  p-value: 0.687184630783864
-	Likelihood Ratio Test for: K  : 0.2323422838410352  p-value: 0.6297924730794957
-	Likelihood Ratio Test for: R  : 2.235722909075463  p-value: 0.1348535406359489
+	Likelihood Ratio Test for: Q  : 0.1722193857602718  p-value: 0.678146854901901
+	Likelihood Ratio Test for: N  : 0.1621463640796748  p-value: 0.6871880507467503
+	Likelihood Ratio Test for: K  : 0.2323649486091881  p-value: 0.6297757724945762
+	Likelihood Ratio Test for: R  : 2.235814978015554  p-value: 0.1348455087285583
 Working on site 78
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -640,10 +640,10 @@ Working on site 78
 	Skipping unobserved target residue G
 
 Tests for site 78
-	Likelihood Ratio Test for diversifying selection: -3.552713678800501e-15  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: Y  : 3.552713678800501e-15  p-value: 0.9999999524423742
-	Likelihood Ratio Test for: D  : -1.06581410364015e-14  p-value: 1
+	Likelihood Ratio Test for: Y  : -7.105427357601002e-15  p-value: 1
+	Likelihood Ratio Test for: D  : -2.486899575160351e-14  p-value: 1
 Working on site 79
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -668,10 +668,10 @@ Working on site 79
 	Skipping unobserved target residue G
 
 Tests for site 79
-	Likelihood Ratio Test for diversifying selection: 0.4622079430526007  p-value: 0.4965938919810531
+	Likelihood Ratio Test for diversifying selection: 0.4622487916276512  p-value: 0.4965748686281271
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: Q  : 0.1782442523149541  p-value: 0.6728864643234262
-	Likelihood Ratio Test for: R  : 0.02035720490362891  p-value: 0.886543957609023
+	Likelihood Ratio Test for: Q  : 0.1782633302678676  p-value: 0.6728699745331661
+	Likelihood Ratio Test for: R  : 0.02035874585748942  p-value: 0.8865396926807617
 Working on site 80
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -696,11 +696,11 @@ Working on site 80
 	Skipping unobserved target residue G
 
 Tests for site 80
-	Likelihood Ratio Test for diversifying selection: -2.401634446869139e-12  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -2.525979425627156e-12  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: T  : -3.552713678800501e-15  p-value: 1
-	Likelihood Ratio Test for: Q  : 2.355449169044732e-12  p-value: 0.9999987754488522
-	Likelihood Ratio Test for: K  : 2.383870878475136e-12  p-value: 0.9999987680830645
+	Likelihood Ratio Test for: T  : 1.77635683940025e-14  p-value: 0.9999998936579159
+	Likelihood Ratio Test for: Q  : 2.472688720445149e-12  p-value: 0.9999987453436605
+	Likelihood Ratio Test for: K  : 2.522426711948356e-12  p-value: 0.9999987327878161
 Working on site 81
 	Testing target residue F
 	Testing target residue L
@@ -725,9 +725,9 @@ Working on site 81
 	Skipping unobserved target residue G
 
 Tests for site 81
-	Likelihood Ratio Test for diversifying selection: -3.552713678800501e-15  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for: F  : 0  p-value: 1
 	Likelihood Ratio Test for: L  : -2.842170943040401e-14  p-value: 1
 Working on site 82
 Skipped site 82 because it is invariable
@@ -757,11 +757,11 @@ Working on site 84
 	Skipping unobserved target residue G
 
 Tests for site 84
-	Likelihood Ratio Test for diversifying selection: 1.335250497147413  p-value: 0.2478732925485962
+	Likelihood Ratio Test for diversifying selection: 1.335154087846959  p-value: 0.2478903659467794
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 8.106721080736179e-05  p-value: 0.992816157385515
-	Likelihood Ratio Test for: I  : 6.84610915493699  p-value: 0.00888345292161874
-	Likelihood Ratio Test for: M  : 8.106187022605127e-05  p-value: 0.9928163940131873
+	Likelihood Ratio Test for: L  : 3.948302051526298e-06  p-value: 0.9984145777077488
+	Likelihood Ratio Test for: I  : 6.846579575420982  p-value: 0.008881114072898155
+	Likelihood Ratio Test for: M  : 3.943095180147793e-06  p-value: 0.9984156234487296
 Working on site 85
 Skipped site 85 because it is invariable
 Working on site 86
@@ -796,10 +796,10 @@ Working on site 90
 	Skipping unobserved target residue G
 
 Tests for site 90
-	Likelihood Ratio Test for diversifying selection: 0.4679554514087396  p-value: 0.4939292632258657
+	Likelihood Ratio Test for diversifying selection: 0.4679250929456984  p-value: 0.49394327466343
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: K  : 0.1549619284779009  p-value: 0.6938379547345519
-	Likelihood Ratio Test for: R  : 3.186699615298494e-08  p-value: 0.9998575669995466
+	Likelihood Ratio Test for: K  : 0.1549499736014734  p-value: 0.693849167242659
+	Likelihood Ratio Test for: R  : 1.618182352558506e-07  p-value: 0.9996790378799296
 Working on site 91
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -824,11 +824,11 @@ Working on site 91
 	Skipping unobserved target residue G
 
 Tests for site 91
-	Likelihood Ratio Test for diversifying selection: 0.5247143490864445  p-value: 0.4688375737029603
+	Likelihood Ratio Test for diversifying selection: 0.5246882316306696  p-value: 0.468848638601352
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.2367054336325296  p-value: 0.6265958164965011
-	Likelihood Ratio Test for: I  : 0.01285349989944251  p-value: 0.9097346250994863
-	Likelihood Ratio Test for: H  : 7.65957998148199  p-value: 0.005647164998125676
+	Likelihood Ratio Test for: L  : 0.2366689472184333  p-value: 0.6266223966755043
+	Likelihood Ratio Test for: I  : 0.01285148896342747  p-value: 0.9097416562067345
+	Likelihood Ratio Test for: H  : 7.67119441206053  p-value: 0.005610930349036369
 Working on site 92
 Skipped site 92 because it is invariable
 Working on site 93
@@ -857,9 +857,9 @@ Working on site 94
 	Skipping unobserved target residue G
 
 Tests for site 94
-	Likelihood Ratio Test for diversifying selection: 1.27542421068938e-12  p-value: 0.9999990989116189
+	Likelihood Ratio Test for diversifying selection: 1.20792265079217e-12  p-value: 0.999999123080709
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: P  : 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for: P  : 0  p-value: 1
 	Likelihood Ratio Test for: T  : 0  p-value: 1
 Working on site 95
 Skipped site 95 because it is invariable
@@ -887,11 +887,11 @@ Working on site 96
 	Skipping unobserved target residue G
 
 Tests for site 96
-	Likelihood Ratio Test for diversifying selection: -2.415845301584341e-13  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -2.557953848736361e-13  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: T  : -4.263256414560601e-14  p-value: 1
+	Likelihood Ratio Test for: T  : -8.526512829121202e-14  p-value: 1
 	Likelihood Ratio Test for: A  : 4.263256414560601e-14  p-value: 0.9999998352555516
-	Likelihood Ratio Test for: N  : -2.842170943040401e-14  p-value: 1
+	Likelihood Ratio Test for: N  : -4.263256414560601e-14  p-value: 1
 Working on site 97
 Skipped site 97 because it is invariable
 Working on site 98
@@ -924,12 +924,12 @@ Working on site 101
 	Skipping unobserved target residue G
 
 Tests for site 101
-	Likelihood Ratio Test for diversifying selection: 0.1961262906187358  p-value: 0.6578659307387309
+	Likelihood Ratio Test for diversifying selection: 0.1960879849450379  p-value: 0.6578972161844563
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 2.63632492001669  p-value: 0.1044448991152682
-	Likelihood Ratio Test for: T  : 0.2849920413241165  p-value: 0.5934477678773734
-	Likelihood Ratio Test for: A  : 0.3741739398366377  p-value: 0.5407378576885129
-	Likelihood Ratio Test for: N  : 0.171060125816112  p-value: 0.6791713539244901
+	Likelihood Ratio Test for: S  : 2.636225085941675  p-value: 0.1044514640991658
+	Likelihood Ratio Test for: T  : 0.2849650726292623  p-value: 0.5934652454693534
+	Likelihood Ratio Test for: A  : 0.3741226510659601  p-value: 0.5407656014409352
+	Likelihood Ratio Test for: N  : 0.1710394288691504  p-value: 0.6791896817992672
 Working on site 102
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -954,10 +954,10 @@ Working on site 102
 	Skipping unobserved target residue G
 
 Tests for site 102
-	Likelihood Ratio Test for diversifying selection: 1.963670970940719  p-value: 0.1611212583627348
+	Likelihood Ratio Test for diversifying selection: 1.963587448962627  p-value: 0.1611301664493302
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.4087145160681303  p-value: 0.5226226883588556
-	Likelihood Ratio Test for: T  : 0.03994752742535468  p-value: 0.8415832112344153
+	Likelihood Ratio Test for: S  : 0.4086944121082396  p-value: 0.5226329151158752
+	Likelihood Ratio Test for: T  : 0.03995007522711802  p-value: 0.8415782264193435
 Working on site 103
 Skipped site 103 because it is invariable
 Working on site 104
@@ -986,11 +986,11 @@ Working on site 105
 	Skipping unobserved target residue G
 
 Tests for site 105
-	Likelihood Ratio Test for diversifying selection: 0.6901462368098805  p-value: 0.4061146446599798
+	Likelihood Ratio Test for diversifying selection: 0.6900897065885871  p-value: 0.4061338699043768
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.001767526566290201  p-value: 0.9664652468597085
-	Likelihood Ratio Test for: T  : 0.01003271038057818  p-value: 0.9202145878325243
-	Likelihood Ratio Test for: N  : 0.1407545519933393  p-value: 0.7075320348952358
+	Likelihood Ratio Test for: S  : 0.001765808780469058  p-value: 0.9664815367452995
+	Likelihood Ratio Test for: T  : 0.01003562985867035  p-value: 0.9202030188366731
+	Likelihood Ratio Test for: N  : 0.1407372709586951  p-value: 0.7075491626062422
 Working on site 106
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1015,10 +1015,10 @@ Working on site 106
 	Skipping unobserved target residue G
 
 Tests for site 106
-	Likelihood Ratio Test for diversifying selection: 6.469491609095712e-12  p-value: 0.9999979705650356
+	Likelihood Ratio Test for diversifying selection: -4.581708630269077e-07  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: K  : -8.137352907056083e-07  p-value: 1
-	Likelihood Ratio Test for: R  : -7.139609330408803e-07  p-value: 1
+	Likelihood Ratio Test for: K  : 1.937734808166169e-07  p-value: 0.999648773547038
+	Likelihood Ratio Test for: R  : 4.581773822565083e-07  p-value: 0.9994599215462538
 Working on site 107
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1043,11 +1043,11 @@ Working on site 107
 	Skipping unobserved target residue G
 
 Tests for site 107
-	Likelihood Ratio Test for diversifying selection: 0.7585566943401005  p-value: 0.3837805792398866
+	Likelihood Ratio Test for diversifying selection: 0.7585593070163128  p-value: 0.3837797602425614
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.239447639165661  p-value: 0.6246053437844621
-	Likelihood Ratio Test for: T  : 1.347593156165601  p-value: 0.245699325636472
-	Likelihood Ratio Test for: N  : 0.005869095388078449  p-value: 0.9389337864188919
+	Likelihood Ratio Test for: S  : 0.239423970454979  p-value: 0.6246224635296099
+	Likelihood Ratio Test for: T  : 1.34864278047128  p-value: 0.2455155280012343
+	Likelihood Ratio Test for: N  : 0.0058719495857531  p-value: 0.9389189687129734
 Working on site 108
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -1072,14 +1072,14 @@ Working on site 108
 	Skipping unobserved target residue G
 
 Tests for site 108
-	Likelihood Ratio Test for diversifying selection: 1.966456322496555  p-value: 0.1608245063167798
+	Likelihood Ratio Test for diversifying selection: 1.966254527316039  p-value: 0.1608459846803962
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 1.381840322019769  p-value: 0.2397879222196816
-	Likelihood Ratio Test for: M  : 3.581135388230905e-12  p-value: 0.9999984900921898
-	Likelihood Ratio Test for: Y  : 0.05266828667495815  p-value: 0.818483644837305
-	Likelihood Ratio Test for: H  : 0.007655508183717075  p-value: 0.9302774547906925
-	Likelihood Ratio Test for: Q  : 0.07995337218295617  p-value: 0.7773606093025315
-	Likelihood Ratio Test for: R  : 0.01923423388808487  p-value: 0.8896970642005306
+	Likelihood Ratio Test for: L  : 1.381687857846032  p-value: 0.239813852944717
+	Likelihood Ratio Test for: M  : 2.899014361901209e-12  p-value: 0.9999986414824761
+	Likelihood Ratio Test for: Y  : 0.05266408238082931  p-value: 0.8184907635409311
+	Likelihood Ratio Test for: H  : 0.007653902393343515  p-value: 0.9302847489035894
+	Likelihood Ratio Test for: Q  : 0.07994945156326594  p-value: 0.7773659241460857
+	Likelihood Ratio Test for: R  : 0.01923634452873557  p-value: 0.8896910511048544
 Working on site 109
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1104,15 +1104,15 @@ Working on site 109
 	Testing target residue G
 
 Tests for site 109
-	Likelihood Ratio Test for diversifying selection: 0.06089431356458874  p-value: 0.805087984449542
+	Likelihood Ratio Test for diversifying selection: 0.06088980608906525  p-value: 0.8050950531660972
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.09875810773895921  p-value: 0.7533250738737618
-	Likelihood Ratio Test for: T  : 0.07291210431492345  p-value: 0.7871430096559078
-	Likelihood Ratio Test for: N  : 0.2940698979422933  p-value: 0.5876241708967658
-	Likelihood Ratio Test for: K  : 2.38241911931226  p-value: 0.1227073973537648
-	Likelihood Ratio Test for: D  : 0.3060669682392358  p-value: 0.5801037392087296
-	Likelihood Ratio Test for: E  : 0.4040373068777257  p-value: 0.5250115547355654
-	Likelihood Ratio Test for: G  : 0.3593809748572312  p-value: 0.5488502273710926
+	Likelihood Ratio Test for: S  : 0.0987623523642327  p-value: 0.7533199451080135
+	Likelihood Ratio Test for: T  : 0.07293459809251601  p-value: 0.7871109688043361
+	Likelihood Ratio Test for: N  : 0.2940121327680743  p-value: 0.5876608587248096
+	Likelihood Ratio Test for: K  : 2.382165080409223  p-value: 0.1227273501897833
+	Likelihood Ratio Test for: D  : 0.3060628869615982  p-value: 0.5801062646557824
+	Likelihood Ratio Test for: E  : 0.4040785523609145  p-value: 0.5249904040436157
+	Likelihood Ratio Test for: G  : 0.3593803441039682  p-value: 0.5488505780855766
 Working on site 110
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1137,17 +1137,17 @@ Working on site 110
 	Skipping unobserved target residue G
 
 Tests for site 110
-	Likelihood Ratio Test for diversifying selection: 0.1480521191621165  p-value: 0.7004038162004895
+	Likelihood Ratio Test for diversifying selection: 0.148218504133439  p-value: 0.7002436659180351
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0.06078374839754019  p-value: 0.8052614552039075
-	Likelihood Ratio Test for: S  : 3.136443821821587  p-value: 0.07656056923686561
-	Likelihood Ratio Test for: T  : 0.1921048693824048  p-value: 0.6611704967001393
-	Likelihood Ratio Test for: A  : 0.1463885957740274  p-value: 0.7020107147694654
-	Likelihood Ratio Test for: Q  : 0.2659332389142719  p-value: 0.6060729294053622
-	Likelihood Ratio Test for: N  : 0.5352835717075664  p-value: 0.4643939671308792
-	Likelihood Ratio Test for: K  : 0.3224540913902842  p-value: 0.5701365450808792
-	Likelihood Ratio Test for: D  : -0.2780452744792967  p-value: 1
-	Likelihood Ratio Test for: E  : 0.0002728556115698666  p-value: 0.9868208695474838
+	Likelihood Ratio Test for: I  : 0.06074472181336432  p-value: 0.8053227257581612
+	Likelihood Ratio Test for: S  : 3.136389621001911  p-value: 0.07656311392639248
+	Likelihood Ratio Test for: T  : 0.1920829296279294  p-value: 0.6611886381662748
+	Likelihood Ratio Test for: A  : 0.1465991429747078  p-value: 0.7018067575400919
+	Likelihood Ratio Test for: Q  : 0.265880404010062  p-value: 0.6061087164074662
+	Likelihood Ratio Test for: N  : 0.5352695147046518  p-value: 0.4643998322909605
+	Likelihood Ratio Test for: K  : 0.322308225556327  p-value: 0.5702237768426384
+	Likelihood Ratio Test for: D  : -0.2773840519908788  p-value: 1
+	Likelihood Ratio Test for: E  : 0.0002752699934092107  p-value: 0.9867626950666994
 Working on site 111
 Skipped site 111 because it is invariable
 Working on site 112
@@ -1176,12 +1176,12 @@ Working on site 113
 	Testing target residue G
 
 Tests for site 113
-	Likelihood Ratio Test for diversifying selection: 0.2833565323809353  p-value: 0.5945096186419885
+	Likelihood Ratio Test for diversifying selection: 0.2833119340775738  p-value: 0.5945386290362665
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: N  : 0.440869190801763  p-value: 0.5067032321217428
-	Likelihood Ratio Test for: D  : 0.2421631389344725  p-value: 0.6226481287397063
-	Likelihood Ratio Test for: E  : 0.4837460897111328  p-value: 0.4867303738987837
-	Likelihood Ratio Test for: G  : 1.639295514441429  p-value: 0.2004221538194301
+	Likelihood Ratio Test for: N  : 0.4408922938205819  p-value: 0.5066920973274978
+	Likelihood Ratio Test for: D  : 0.2421800979114721  p-value: 0.6226359483496468
+	Likelihood Ratio Test for: E  : 0.4837622205675274  p-value: 0.4867231093397645
+	Likelihood Ratio Test for: G  : 1.639245643415606  p-value: 0.2004290003407012
 Working on site 114
 Skipped site 114 because it is invariable
 Working on site 115
@@ -1208,10 +1208,10 @@ Working on site 115
 	Skipping unobserved target residue G
 
 Tests for site 115
-	Likelihood Ratio Test for diversifying selection: 0.0002115579195383077  p-value: 0.9883951537128715
+	Likelihood Ratio Test for diversifying selection: 0.000211454191102689  p-value: 0.9883979988327266
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 1.254107928616577e-12  p-value: 0.9999991064733335
-	Likelihood Ratio Test for: M  : 0  p-value: 1
+	Likelihood Ratio Test for: L  : 1.268318783331779e-12  p-value: 0.9999991014251199
+	Likelihood Ratio Test for: M  : -3.552713678800501e-15  p-value: 1
 Working on site 116
 Skipped site 116 because it is invariable
 Working on site 117
@@ -1240,10 +1240,10 @@ Working on site 118
 	Skipping unobserved target residue G
 
 Tests for site 118
-	Likelihood Ratio Test for diversifying selection: 3.133830142092343  p-value: 0.07668338324053281
+	Likelihood Ratio Test for diversifying selection: 3.133210832591146  p-value: 0.07671251496639331
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: M  : 0.0003121936625838373  p-value: 0.9859029089102623
-	Likelihood Ratio Test for: T  : -1.883293521132146e-11  p-value: 1
+	Likelihood Ratio Test for: M  : 0.0003119774466497915  p-value: 0.9859077908584551
+	Likelihood Ratio Test for: T  : -9.340084261566517e-12  p-value: 1
 Working on site 119
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1268,12 +1268,12 @@ Working on site 119
 	Skipping unobserved target residue G
 
 Tests for site 119
-	Likelihood Ratio Test for diversifying selection: 2.059157549008077  p-value: 0.1512937950070629
+	Likelihood Ratio Test for diversifying selection: 2.059013670496284  p-value: 0.1513080821056746
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: H  : 2.915803065661748e-08  p-value: 0.9998637554454084
-	Likelihood Ratio Test for: Q  : 0.3272588484616392  p-value: 0.567277652943345
-	Likelihood Ratio Test for: D  : 2.464079784658679e-08  p-value: 0.9998747529681603
-	Likelihood Ratio Test for: E  : 5.505279058947764  p-value: 0.0189591547191803
+	Likelihood Ratio Test for: H  : 2.918314123689925e-08  p-value: 0.9998636967918666
+	Likelihood Ratio Test for: Q  : 0.3272290007071774  p-value: 0.5672953265757466
+	Likelihood Ratio Test for: D  : 2.538966725751379e-08  p-value: 0.9998728639938863
+	Likelihood Ratio Test for: E  : 5.505753792794479  p-value: 0.01895400891174215
 Working on site 120
 Skipped site 120 because it is invariable
 Working on site 121
@@ -1302,10 +1302,10 @@ Working on site 122
 	Skipping unobserved target residue G
 
 Tests for site 122
-	Likelihood Ratio Test for diversifying selection: 0.4546506859377786  p-value: 0.5001346519494501
+	Likelihood Ratio Test for diversifying selection: 0.4547097302936152  p-value: 0.5001068226113409
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: K  : 1.801071176411909  p-value: 0.1795830488691599
-	Likelihood Ratio Test for: R  : 0.3907634791046632  p-value: 0.5318983575958418
+	Likelihood Ratio Test for: K  : 1.801112653207511  p-value: 0.1795780387831233
+	Likelihood Ratio Test for: R  : 0.3907485661400329  p-value: 0.5319061859347889
 Working on site 123
 Skipped site 123 because it is invariable
 Working on site 124
@@ -1334,12 +1334,12 @@ Working on site 125
 	Skipping unobserved target residue G
 
 Tests for site 125
-	Likelihood Ratio Test for diversifying selection: 0.4324271116842766  p-value: 0.5108003985172644
+	Likelihood Ratio Test for diversifying selection: 0.4325519919338348  p-value: 0.5107393743162032
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.04188183122752775  p-value: 0.8378451892592043
-	Likelihood Ratio Test for: N  : 1.691091711109038e-11  p-value: 0.9999967188684574
-	Likelihood Ratio Test for: D  : 2.2752335766464  p-value: 0.131455318815172
-	Likelihood Ratio Test for: E  : 0.0602868948967199  p-value: 0.8060430647717519
+	Likelihood Ratio Test for: S  : 0.04186786425242417  p-value: 0.8378718543335096
+	Likelihood Ratio Test for: N  : 2.303579549334245e-11  p-value: 0.9999961705035735
+	Likelihood Ratio Test for: D  : 2.276142755399832  p-value: 0.1313782562305096
+	Likelihood Ratio Test for: E  : 0.06028043248991821  p-value: 0.806053253362276
 Working on site 126
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1364,10 +1364,10 @@ Working on site 126
 	Skipping unobserved target residue G
 
 Tests for site 126
-	Likelihood Ratio Test for diversifying selection: -3.552713678800501e-15  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: N  : 7.105427357601002e-15  p-value: 0.9999999327433606
-	Likelihood Ratio Test for: K  : 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for: N  : -3.552713678800501e-15  p-value: 1
+	Likelihood Ratio Test for: K  : -3.552713678800501e-15  p-value: 1
 Working on site 127
 Skipped site 127 because it is invariable
 Working on site 128
@@ -1396,13 +1396,13 @@ Working on site 129
 	Testing target residue G
 
 Tests for site 129
-	Likelihood Ratio Test for diversifying selection: 3.193822469023914  p-value: 0.07391698462877416
+	Likelihood Ratio Test for diversifying selection: 3.194276849377488  p-value: 0.07389644560915409
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: V  : 0.3613685140127529  p-value: 0.5477471785527455
-	Likelihood Ratio Test for: Q  : 0.004760894762910084  p-value: 0.9449902265189168
-	Likelihood Ratio Test for: N  : 0.330452091868608  p-value: 0.5653930012322586
-	Likelihood Ratio Test for: D  : 5.242166396539204  p-value: 0.02204580446861193
-	Likelihood Ratio Test for: G  : 0.3413944392779626  p-value: 0.5590254289803309
+	Likelihood Ratio Test for: V  : 0.3613804353418715  p-value: 0.5477405748952979
+	Likelihood Ratio Test for: Q  : 0.004759310694026908  p-value: 0.9449993643331401
+	Likelihood Ratio Test for: N  : 0.3304595500163714  p-value: 0.5653886136347989
+	Likelihood Ratio Test for: D  : 5.242225208545179  p-value: 0.02204505923731681
+	Likelihood Ratio Test for: G  : 0.3414057709686062  p-value: 0.5590189061082851
 Working on site 130
 	Testing target residue F
 	Testing target residue L
@@ -1427,13 +1427,13 @@ Working on site 130
 	Skipping unobserved target residue G
 
 Tests for site 130
-	Likelihood Ratio Test for diversifying selection: 2.830080452165433  p-value: 0.09251372492376286
+	Likelihood Ratio Test for diversifying selection: 2.830463621055358  p-value: 0.09249165501926737
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 1.163275892356737  p-value: 0.2807871838852123
-	Likelihood Ratio Test for: L  : 0.2201294416744872  p-value: 0.6389413080431907
-	Likelihood Ratio Test for: I  : 0.7371371807874283  p-value: 0.3905794873451649
-	Likelihood Ratio Test for: T  : 3.959844764117364  p-value: 0.0465980004392802
-	Likelihood Ratio Test for: Q  : 5.970820140752295  p-value: 0.0145445147208384
+	Likelihood Ratio Test for: F  : 1.163280850243922  p-value: 0.2807861587947552
+	Likelihood Ratio Test for: L  : 0.2202923377615207  p-value: 0.6388172619349088
+	Likelihood Ratio Test for: I  : 0.7370293308513425  p-value: 0.3906141543315752
+	Likelihood Ratio Test for: T  : 3.959764435596256  p-value: 0.04660022417061505
+	Likelihood Ratio Test for: Q  : 5.97054710546837  p-value: 0.01454676688132761
 Working on site 131
 Skipped site 131 because it is invariable
 Working on site 132
@@ -1462,13 +1462,13 @@ Working on site 133
 	Skipping unobserved target residue G
 
 Tests for site 133
-	Likelihood Ratio Test for diversifying selection: 1.242545378511082  p-value: 0.2649810607060664
+	Likelihood Ratio Test for diversifying selection: 1.242886135062435  p-value: 0.2649155494265039
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.2119986856383491  p-value: 0.6452053448369182
-	Likelihood Ratio Test for: T  : 0.1975759379045172  p-value: 0.6566846349939184
-	Likelihood Ratio Test for: A  : -1.69011116213369e-09  p-value: 1
-	Likelihood Ratio Test for: H  : 0.01873799878593729  p-value: 0.8911202646955584
-	Likelihood Ratio Test for: N  : 0.05529132900021239  p-value: 0.8140992327233738
+	Likelihood Ratio Test for: S  : 0.2120211546789648  p-value: 0.6451878351195992
+	Likelihood Ratio Test for: T  : 0.1975678780904104  p-value: 0.6566911884485825
+	Likelihood Ratio Test for: A  : -1.689727469056379e-09  p-value: 1
+	Likelihood Ratio Test for: H  : 0.01873603843492333  p-value: 0.8911259248068637
+	Likelihood Ratio Test for: N  : 0.05439819984704286  p-value: 0.8155795373239533
 Working on site 134
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -1493,10 +1493,10 @@ Working on site 134
 	Skipping unobserved target residue G
 
 Tests for site 134
-	Likelihood Ratio Test for diversifying selection: 0.5029619199323179  p-value: 0.4782015634271342
+	Likelihood Ratio Test for diversifying selection: 0.5029417803587748  p-value: 0.4782103735613434
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 1.491423874097535  p-value: 0.2219956691749165
-	Likelihood Ratio Test for: I  : -3.877956444853226e-07  p-value: 1
+	Likelihood Ratio Test for: L  : 1.491483505754935  p-value: 0.2219864282167145
+	Likelihood Ratio Test for: I  : -3.908665107132947e-07  p-value: 1
 Working on site 135
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -1521,7 +1521,7 @@ Working on site 135
 	Skipping unobserved target residue G
 
 Tests for site 135
-	Likelihood Ratio Test for diversifying selection: -7.815970093361102e-14  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -7.105427357601002e-14  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
 	Likelihood Ratio Test for: L  : -5.897504706808832e-13  p-value: 1
 	Likelihood Ratio Test for: I  : -5.897504706808832e-13  p-value: 1
@@ -1549,10 +1549,10 @@ Working on site 136
 	Skipping unobserved target residue G
 
 Tests for site 136
-	Likelihood Ratio Test for diversifying selection: 0.5168695312683909  p-value: 0.4721801143334462
+	Likelihood Ratio Test for diversifying selection: 0.5168939866908531  p-value: 0.4721696346012519
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: T  : 5.684341886080801e-14  p-value: 0.9999998097694968
-	Likelihood Ratio Test for: E  : 0.3389104288438247  p-value: 0.5604588192212119
+	Likelihood Ratio Test for: T  : -5.684341886080801e-14  p-value: 1
+	Likelihood Ratio Test for: E  : 0.3397393160759634  p-value: 0.5599797323043748
 Working on site 137
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1577,12 +1577,12 @@ Working on site 137
 	Skipping unobserved target residue G
 
 Tests for site 137
-	Likelihood Ratio Test for diversifying selection: -1.314504061156185e-12  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.286082351725781e-12  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
 	Likelihood Ratio Test for: V  : 4.689582056016661e-13  p-value: 0.9999994536044784
-	Likelihood Ratio Test for: Q  : 3.410605131648481e-13  p-value: 0.9999995340323335
-	Likelihood Ratio Test for: N  : 4.902744876744691e-13  p-value: 0.999999441324394
-	Likelihood Ratio Test for: K  : 8.952838470577262e-13  p-value: 0.9999992450460949
+	Likelihood Ratio Test for: Q  : 3.339550858072471e-13  p-value: 0.9999995389117106
+	Likelihood Ratio Test for: N  : 4.760636329592671e-13  p-value: 0.9999994494806801
+	Likelihood Ratio Test for: K  : 9.023892744153272e-13  p-value: 0.9999992420561667
 	Likelihood Ratio Test for: E  : 1.165290086646564e-12  p-value: 0.999999138694764
 Working on site 138
 	Skipping unobserved target residue F
@@ -1608,10 +1608,10 @@ Working on site 138
 	Skipping unobserved target residue G
 
 Tests for site 138
-	Likelihood Ratio Test for diversifying selection: 0.2286728441328734  p-value: 0.6325096453806627
+	Likelihood Ratio Test for diversifying selection: 0.22865816567721  p-value: 0.6325205682319408
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.1312088175240085  p-value: 0.7171819734093343
-	Likelihood Ratio Test for: A  : 0.01658149012371268  p-value: 0.8975403288826802
+	Likelihood Ratio Test for: S  : 0.1311960863381536  p-value: 0.7171951050109298
+	Likelihood Ratio Test for: A  : 0.01658191769723771  p-value: 0.8975390151541764
 Working on site 139
 Skipped site 139 because it is invariable
 Working on site 140
@@ -1638,14 +1638,14 @@ Working on site 140
 	Skipping unobserved target residue G
 
 Tests for site 140
-	Likelihood Ratio Test for diversifying selection: 1.56319401867222e-13  p-value: 0.9999996845383985
+	Likelihood Ratio Test for diversifying selection: 1.70530256582424e-13  p-value: 0.9999996705111032
 	Testing for directional selection againts null allowing positive selection in foreground
 	Likelihood Ratio Test for: F  : 0  p-value: 1
 	Likelihood Ratio Test for: T  : -2.842170943040401e-14  p-value: 1
-	Likelihood Ratio Test for: Y  : 1.4210854715202e-14  p-value: 0.9999999048847483
-	Likelihood Ratio Test for: H  : 1.4210854715202e-14  p-value: 0.9999999048847483
-	Likelihood Ratio Test for: N  : 1.4210854715202e-14  p-value: 0.9999999048847483
-	Likelihood Ratio Test for: D  : 1.4210854715202e-14  p-value: 0.9999999048847483
+	Likelihood Ratio Test for: Y  : -1.4210854715202e-14  p-value: 1
+	Likelihood Ratio Test for: H  : 0  p-value: 1
+	Likelihood Ratio Test for: N  : 0  p-value: 1
+	Likelihood Ratio Test for: D  : 0  p-value: 1
 Working on site 141
 Skipped site 141 because it is invariable
 Working on site 142
@@ -1674,11 +1674,11 @@ Working on site 143
 	Skipping unobserved target residue G
 
 Tests for site 143
-	Likelihood Ratio Test for diversifying selection: -6.057376822354854e-12  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 1.598721155460225e-13  p-value: 0.9999996809737475
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: A  : 6.117772954894463e-12  p-value: 0.9999980265017797
-	Likelihood Ratio Test for: D  : 6.110667527536862e-12  p-value: 0.9999980276481628
-	Likelihood Ratio Test for: E  : 6.110667527536862e-12  p-value: 0.9999980276481628
+	Likelihood Ratio Test for: A  : 0  p-value: 1
+	Likelihood Ratio Test for: D  : 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for: E  : 3.552713678800501e-15  p-value: 0.9999999524423742
 Working on site 144
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1703,12 +1703,12 @@ Working on site 144
 	Skipping unobserved target residue G
 
 Tests for site 144
-	Likelihood Ratio Test for diversifying selection: 0.6153949157404526  p-value: 0.4327637298607316
+	Likelihood Ratio Test for diversifying selection: 0.6153983030984165  p-value: 0.4327624634868813
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0.009555335960996558  p-value: 0.922129700645179
-	Likelihood Ratio Test for: Q  : 0.01596026003048223  p-value: 0.8994676049277601
-	Likelihood Ratio Test for: N  : 0.008933864241100764  p-value: 0.9246967940580698
-	Likelihood Ratio Test for: K  : 4.465643197893861  p-value: 0.03458306711931058
+	Likelihood Ratio Test for: I  : 0.009554403161388336  p-value: 0.9221334895284538
+	Likelihood Ratio Test for: Q  : 0.01596319895656961  p-value: 0.8994583984668949
+	Likelihood Ratio Test for: N  : 0.0089361342986507  p-value: 0.924687256010963
+	Likelihood Ratio Test for: K  : 4.465634401934139  p-value: 0.03458324517274591
 Working on site 145
 Skipped site 145 because it is invariable
 Working on site 146
@@ -1737,12 +1737,12 @@ Working on site 147
 	Skipping unobserved target residue G
 
 Tests for site 147
-	Likelihood Ratio Test for diversifying selection: 0.8394249463427315  p-value: 0.3595612882957289
+	Likelihood Ratio Test for diversifying selection: 0.8395691314640175  p-value: 0.359520028557954
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.1762331976425031  p-value: 0.6746305575949094
-	Likelihood Ratio Test for: H  : 0.2892682103388182  p-value: 0.5906898603389041
-	Likelihood Ratio Test for: Q  : 0.1593756535666557  p-value: 0.6897319888819924
-	Likelihood Ratio Test for: K  : 2.76297245382294  p-value: 0.09646884470862505
+	Likelihood Ratio Test for: L  : 0.1762312395743635  p-value: 0.6746322614273086
+	Likelihood Ratio Test for: H  : 0.2892574811591828  p-value: 0.5906967471413707
+	Likelihood Ratio Test for: Q  : 0.1593665710189924  p-value: 0.6897403700771285
+	Likelihood Ratio Test for: K  : 2.763093616825387  p-value: 0.09646154001418816
 Working on site 148
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1767,10 +1767,10 @@ Working on site 148
 	Skipping unobserved target residue G
 
 Tests for site 148
-	Likelihood Ratio Test for diversifying selection: 0.07274922723283339  p-value: 0.7873751753246816
+	Likelihood Ratio Test for diversifying selection: 0.07279868368959796  p-value: 0.7873046504347289
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: D  : 3.806217178927042  p-value: 0.0510626501125403
-	Likelihood Ratio Test for: E  : 0.4287179894571551  p-value: 0.512618682688016
+	Likelihood Ratio Test for: D  : 3.806783880254102  p-value: 0.05104537462697611
+	Likelihood Ratio Test for: E  : 0.4287008990935561  p-value: 0.5126270867020666
 Working on site 149
 Skipped site 149 because it is invariable
 Working on site 150
@@ -1799,12 +1799,12 @@ Working on site 151
 	Skipping unobserved target residue G
 
 Tests for site 151
-	Likelihood Ratio Test for diversifying selection: 0.311965828971438  p-value: 0.5764763721155572
+	Likelihood Ratio Test for diversifying selection: 0.3120107178288407  p-value: 0.576448941718817
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.008744969961881566  p-value: 0.9254947957955593
-	Likelihood Ratio Test for: A  : 0.06324529232075804  p-value: 0.8014382555669304
-	Likelihood Ratio Test for: Q  : 0.01761299366549451  p-value: 0.8944196065650962
-	Likelihood Ratio Test for: E  : 0.04964189616639203  p-value: 0.8236875765769165
+	Likelihood Ratio Test for: S  : 0.008748519473073202  p-value: 0.9254797208392994
+	Likelihood Ratio Test for: A  : 0.06324588010066634  p-value: 0.8014373521752497
+	Likelihood Ratio Test for: Q  : 0.01762965837131958  p-value: 0.8943699631083726
+	Likelihood Ratio Test for: E  : 0.04964996663802879  p-value: 0.8236734808760984
 Working on site 152
 Skipped site 152 because it is invariable
 Working on site 153
@@ -1831,11 +1831,11 @@ Working on site 153
 	Testing target residue G
 
 Tests for site 153
-	Likelihood Ratio Test for diversifying selection: 0.5956913598043769  p-value: 0.4402267057743836
+	Likelihood Ratio Test for diversifying selection: 0.5958119552346801  p-value: 0.4401804311971483
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: N  : 0.3316286844721787  p-value: 0.5647016298530044
-	Likelihood Ratio Test for: D  : 0.290577818774473  p-value: 0.5898504882200754
-	Likelihood Ratio Test for: G  : 0.6944556722693207  p-value: 0.4046529636931945
+	Likelihood Ratio Test for: N  : 0.331639005460282  p-value: 0.5646955724210291
+	Likelihood Ratio Test for: D  : 0.2905557249947179  p-value: 0.5898646286084944
+	Likelihood Ratio Test for: G  : 0.6944735159901683  p-value: 0.4046469274134128
 Working on site 154
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1860,13 +1860,13 @@ Working on site 154
 	Skipping unobserved target residue G
 
 Tests for site 154
-	Likelihood Ratio Test for diversifying selection: 2.271122141023611  p-value: 0.1318044372159193
+	Likelihood Ratio Test for diversifying selection: 2.27119483364082  p-value: 0.1317982556166031
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: T  : 0.1490216749369893  p-value: 0.6994720392736503
-	Likelihood Ratio Test for: H  : 0.07245428928506215  p-value: 0.7877962916852336
-	Likelihood Ratio Test for: Q  : 0.02914868742314525  p-value: 0.8644361772996314
-	Likelihood Ratio Test for: K  : 0.1206840395078643  p-value: 0.7282937745569897
-	Likelihood Ratio Test for: E  : 3.221020577370837e-06  p-value: 0.9985680212345195
+	Likelihood Ratio Test for: T  : 0.1490494169694614  p-value: 0.6994454295261832
+	Likelihood Ratio Test for: H  : 0.07242663511746628  p-value: 0.7878358237779777
+	Likelihood Ratio Test for: Q  : 0.02915445379061055  p-value: 0.864422898732344
+	Likelihood Ratio Test for: K  : 0.1211451070134899  p-value: 0.7277958320447806
+	Likelihood Ratio Test for: E  : 3.206597838811831e-06  p-value: 0.99857123080803
 Working on site 155
 Skipped site 155 because it is invariable
 Working on site 156
@@ -1893,11 +1893,11 @@ Working on site 156
 	Testing target residue G
 
 Tests for site 156
-	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -3.552713678800501e-15  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : -3.35516734395469e-07  p-value: 1
-	Likelihood Ratio Test for: A  : 0  p-value: 1
-	Likelihood Ratio Test for: G  : -2.653442798816741e-07  p-value: 1
+	Likelihood Ratio Test for: S  : 0  p-value: 1
+	Likelihood Ratio Test for: A  : 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for: G  : 0  p-value: 1
 Working on site 157
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -1922,10 +1922,10 @@ Working on site 157
 	Skipping unobserved target residue G
 
 Tests for site 157
-	Likelihood Ratio Test for diversifying selection: 0.6805287594049929  p-value: 0.4094047072385901
+	Likelihood Ratio Test for diversifying selection: 0.6804748447313216  p-value: 0.4094232610577043
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.09661032124309799  p-value: 0.755935937156565
-	Likelihood Ratio Test for: N  : 0.05078286959902556  p-value: 0.821706578974664
+	Likelihood Ratio Test for: S  : 0.09660506287936244  p-value: 0.7559423681304012
+	Likelihood Ratio Test for: N  : 0.05077396367088483  p-value: 0.8217219507235944
 Working on site 158
 Skipped site 158 because it is invariable
 Working on site 159
@@ -1954,10 +1954,10 @@ Working on site 160
 	Skipping unobserved target residue G
 
 Tests for site 160
-	Likelihood Ratio Test for diversifying selection: -1.185865095010286e-06  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.661967985455703e-08  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 1.185865102115713e-06  p-value: 0.9991311243628553
-	Likelihood Ratio Test for: N  : 1.185865095010286e-06  p-value: 0.9991311243654584
+	Likelihood Ratio Test for: S  : -1.849356188188267e-06  p-value: 1
+	Likelihood Ratio Test for: N  : -3.491939466471194e-07  p-value: 1
 Working on site 161
 Skipped site 161 because it is invariable
 Working on site 162
@@ -1986,12 +1986,12 @@ Working on site 163
 	Skipping unobserved target residue G
 
 Tests for site 163
-	Likelihood Ratio Test for diversifying selection: 0.03712392421397226  p-value: 0.8472129577958185
+	Likelihood Ratio Test for diversifying selection: 0.03714404951394101  p-value: 0.8471720596989132
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.1533429917895859  p-value: 0.6953609290604158
-	Likelihood Ratio Test for: T  : 0.09182884336617292  p-value: 0.7618649087132769
-	Likelihood Ratio Test for: N  : 0.6164697563197592  p-value: 0.4323621798204247
-	Likelihood Ratio Test for: D  : 5.37987894488316  p-value: 0.02037029144731828
+	Likelihood Ratio Test for: S  : 0.1533326803001813  p-value: 0.6953706589948253
+	Likelihood Ratio Test for: T  : 0.09181951055991533  p-value: 0.7618766442897378
+	Likelihood Ratio Test for: N  : 0.6164763076704958  p-value: 0.4323597340344116
+	Likelihood Ratio Test for: D  : 5.380095278916684  p-value: 0.02036776567070042
 Working on site 164
 Skipped site 164 because it is invariable
 Working on site 165
@@ -2018,10 +2018,10 @@ Working on site 165
 	Skipping unobserved target residue G
 
 Tests for site 165
-	Likelihood Ratio Test for diversifying selection: -1.992361831071321e-11  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 1.042366193360067e-11  p-value: 0.9999974239741294
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 1.992361831071321e-11  p-value: 0.9999964385720067
-	Likelihood Ratio Test for: T  : 1.993072373807081e-11  p-value: 0.9999964379370012
+	Likelihood Ratio Test for: S  : 4.405364961712621e-13  p-value: 0.9999994704206916
+	Likelihood Ratio Test for: T  : 4.476419235288631e-13  p-value: 0.9999994661669742
 Working on site 166
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2046,11 +2046,11 @@ Working on site 166
 	Skipping unobserved target residue G
 
 Tests for site 166
-	Likelihood Ratio Test for diversifying selection: 3.395521878963834  p-value: 0.06537367274367256
+	Likelihood Ratio Test for diversifying selection: 3.395221934184335  p-value: 0.06538556357057501
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: Q  : 0.1843377343010673  p-value: 0.6676716602098902
-	Likelihood Ratio Test for: N  : 0.3614107647409384  p-value: 0.5477237750074083
-	Likelihood Ratio Test for: K  : 0.5630127987811591  p-value: 0.4530488808778562
+	Likelihood Ratio Test for: Q  : 0.1843207255188304  p-value: 0.6676860733828676
+	Likelihood Ratio Test for: N  : 0.3613803958678403  p-value: 0.5477405967611536
+	Likelihood Ratio Test for: K  : 0.5629486138814599  p-value: 0.4530746349833336
 Working on site 167
 Skipped site 167 because it is invariable
 Working on site 168
@@ -2085,10 +2085,10 @@ Working on site 172
 	Skipping unobserved target residue G
 
 Tests for site 172
-	Likelihood Ratio Test for diversifying selection: 0.4431830262201331  p-value: 0.5055901317565505
+	Likelihood Ratio Test for diversifying selection: 0.4431475692624858  p-value: 0.5056071571258143
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: K  : 0.122161583117574  p-value: 0.7267018012354247
-	Likelihood Ratio Test for: R  : 0.03207110669111302  p-value: 0.8578716844906653
+	Likelihood Ratio Test for: K  : 0.1221446122920042  p-value: 0.7267200248946305
+	Likelihood Ratio Test for: R  : 0.03207830762359976  p-value: 0.8578558992022448
 Working on site 173
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -2113,10 +2113,10 @@ Working on site 173
 	Skipping unobserved target residue G
 
 Tests for site 173
-	Likelihood Ratio Test for diversifying selection: 4.994303495209351e-07  p-value: 0.9994361319458926
+	Likelihood Ratio Test for diversifying selection: -8.986415167555606e-08  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : -9.209171309976227e-07  p-value: 1
-	Likelihood Ratio Test for: I  : -4.175166878894743e-08  p-value: 1
+	Likelihood Ratio Test for: L  : -1.050264692992187e-06  p-value: 1
+	Likelihood Ratio Test for: I  : -2.846950621915312e-07  p-value: 1
 Working on site 174
 Skipped site 174 because it is invariable
 Working on site 175
@@ -2147,10 +2147,10 @@ Working on site 177
 	Skipping unobserved target residue G
 
 Tests for site 177
-	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -3.552713678800501e-15  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : -7.105427357601002e-15  p-value: 1
-	Likelihood Ratio Test for: V  : 0  p-value: 1
+	Likelihood Ratio Test for: I  : 0  p-value: 1
+	Likelihood Ratio Test for: V  : -1.172395514004165e-13  p-value: 1
 Working on site 178
 Skipped site 178 because it is invariable
 Working on site 179
@@ -2181,10 +2181,10 @@ Working on site 181
 	Skipping unobserved target residue G
 
 Tests for site 181
-	Likelihood Ratio Test for diversifying selection: 0.9043465415420968  p-value: 0.3416189110598928
+	Likelihood Ratio Test for diversifying selection: 0.9042967251310188  p-value: 0.3416322079504619
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.8459073635350052  p-value: 0.3577127090119432
-	Likelihood Ratio Test for: I  : 0.02632638474284477  p-value: 0.8711057784981553
+	Likelihood Ratio Test for: L  : 0.8458580488378615  p-value: 0.3577267226297034
+	Likelihood Ratio Test for: I  : 0.02632483464629587  p-value: 0.871109540015447
 Working on site 182
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2209,10 +2209,10 @@ Working on site 182
 	Skipping unobserved target residue G
 
 Tests for site 182
-	Likelihood Ratio Test for diversifying selection: 7.292976533790352e-08  p-value: 0.9997845271955165
+	Likelihood Ratio Test for diversifying selection: -8.705217879878546e-08  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 1.425526363618701e-09  p-value: 0.999969874956124
-	Likelihood Ratio Test for: V  : -1.197237370575976e-06  p-value: 1
+	Likelihood Ratio Test for: I  : 8.705217879878546e-08  p-value: 0.9997645873057079
+	Likelihood Ratio Test for: V  : -4.915404865357687e-07  p-value: 1
 Working on site 183
 Skipped site 183 because it is invariable
 Working on site 184
@@ -2241,10 +2241,10 @@ Working on site 185
 	Skipping unobserved target residue G
 
 Tests for site 185
-	Likelihood Ratio Test for diversifying selection: 0.001045632975856137  p-value: 0.9742039020811645
+	Likelihood Ratio Test for diversifying selection: 0.001045153475097038  p-value: 0.974209815416703
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: K  : -1.4210854715202e-14  p-value: 1
-	Likelihood Ratio Test for: R  : -1.4210854715202e-14  p-value: 1
+	Likelihood Ratio Test for: K  : 0  p-value: 1
+	Likelihood Ratio Test for: R  : 0  p-value: 1
 Working on site 186
 Skipped site 186 because it is invariable
 Working on site 187
@@ -2271,10 +2271,10 @@ Working on site 187
 	Skipping unobserved target residue G
 
 Tests for site 187
-	Likelihood Ratio Test for diversifying selection: 4.132998909141278  p-value: 0.04205476159984856
+	Likelihood Ratio Test for diversifying selection: 4.133142361779882  p-value: 0.04205119711061012
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 1.824528702127097  p-value: 0.1767751573128622
-	Likelihood Ratio Test for: V  : 0.06386939993929275  p-value: 0.8004815314184912
+	Likelihood Ratio Test for: I  : 1.824388271856037  p-value: 0.1767918154978462
+	Likelihood Ratio Test for: V  : 0.06388768849161863  p-value: 0.8004535711819294
 Working on site 188
 	Testing target residue F
 	Skipping unobserved target residue L
@@ -2299,10 +2299,10 @@ Working on site 188
 	Skipping unobserved target residue G
 
 Tests for site 188
-	Likelihood Ratio Test for diversifying selection: 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
 	Likelihood Ratio Test for: F  : 0  p-value: 1
-	Likelihood Ratio Test for: C  : -3.552713678800501e-15  p-value: 1
+	Likelihood Ratio Test for: C  : 0  p-value: 1
 Working on site 189
 	Testing target residue F
 	Skipping unobserved target residue L
@@ -2327,13 +2327,13 @@ Working on site 189
 	Skipping unobserved target residue G
 
 Tests for site 189
-	Likelihood Ratio Test for diversifying selection: 1.137427861135919  p-value: 0.286196490218961
+	Likelihood Ratio Test for diversifying selection: 1.137560867298532  p-value: 0.2861683191426327
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 0.0353298089409293  p-value: 0.850906240671089
-	Likelihood Ratio Test for: V  : 0.4443541749016333  p-value: 0.5050283329450529
-	Likelihood Ratio Test for: S  : 0.16933484862885  p-value: 0.6807036264876879
-	Likelihood Ratio Test for: T  : 2.117079486899414  p-value: 0.1456640780534427
-	Likelihood Ratio Test for: A  : 0.2549255731497624  p-value: 0.6136279868596219
+	Likelihood Ratio Test for: F  : 0.0353285954484619  p-value: 0.8509087711842287
+	Likelihood Ratio Test for: V  : 0.4443485458135541  p-value: 0.5050310306545511
+	Likelihood Ratio Test for: S  : 0.1693415152965798  p-value: 0.6806976880786214
+	Likelihood Ratio Test for: T  : 2.117323171725516  p-value: 0.1456408980739485
+	Likelihood Ratio Test for: A  : 0.2549237799545523  p-value: 0.6136292341727901
 Working on site 190
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2358,10 +2358,10 @@ Working on site 190
 	Skipping unobserved target residue G
 
 Tests for site 190
-	Likelihood Ratio Test for diversifying selection: 0.8325649382809317  p-value: 0.3615318975037015
+	Likelihood Ratio Test for diversifying selection: 0.832585640024945  p-value: 0.3615259283355319
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0.007414825149410831  p-value: 0.9313794679726527
-	Likelihood Ratio Test for: V  : 0.5407917827118141  p-value: 0.4621047712144142
+	Likelihood Ratio Test for: I  : 0.007418570527271129  p-value: 0.931362182156096
+	Likelihood Ratio Test for: V  : 0.5407829067425283  p-value: 0.462108445577901
 Working on site 191
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -2386,11 +2386,11 @@ Working on site 191
 	Skipping unobserved target residue G
 
 Tests for site 191
-	Likelihood Ratio Test for diversifying selection: -1.044497821567347e-12  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.030286966852145e-12  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 1.044497821567347e-12  p-value: 0.9999991845565837
+	Likelihood Ratio Test for: L  : 8.668621376273222e-13  p-value: 0.9999992571261368
 	Likelihood Ratio Test for: I  : 1.84741111297626e-13  p-value: 0.9999996570570832
-	Likelihood Ratio Test for: M  : 7.105427357601002e-15  p-value: 0.9999999327433606
+	Likelihood Ratio Test for: M  : -1.4210854715202e-14  p-value: 1
 Working on site 192
 Skipped site 192 because it is invariable
 Working on site 193
@@ -2417,11 +2417,11 @@ Working on site 193
 	Skipping unobserved target residue G
 
 Tests for site 193
-	Likelihood Ratio Test for diversifying selection: -2.710844455577899e-07  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.33776567423638e-06  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : -6.283103246573774e-07  p-value: 1
-	Likelihood Ratio Test for: I  : 2.602642652504983e-07  p-value: 0.9995929504171506
-	Likelihood Ratio Test for: V  : 2.710844952957814e-07  p-value: 0.999584575236577
+	Likelihood Ratio Test for: L  : 1.242244906052292e-06  p-value: 0.9991107096415031
+	Likelihood Ratio Test for: I  : 1.053558825958589e-06  p-value: 0.9991810273848888
+	Likelihood Ratio Test for: V  : 1.275700611813591e-07  p-value: 0.9997150199658862
 Working on site 194
 Skipped site 194 because it is invariable
 Working on site 195
@@ -2448,7 +2448,7 @@ Working on site 195
 	Skipping unobserved target residue G
 
 Tests for site 195
-	Likelihood Ratio Test for diversifying selection: 7.105427357601002e-15  p-value: 0.9999999327433606
+	Likelihood Ratio Test for diversifying selection: -7.105427357601002e-15  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
 	Likelihood Ratio Test for: N  : -7.105427357601002e-15  p-value: 1
 	Likelihood Ratio Test for: R  : 0  p-value: 1
@@ -2476,10 +2476,10 @@ Working on site 196
 	Skipping unobserved target residue G
 
 Tests for site 196
-	Likelihood Ratio Test for diversifying selection: 0.3057794133757454  p-value: 0.5802817286422814
+	Likelihood Ratio Test for diversifying selection: 0.3057563205034803  p-value: 0.5802960273058799
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: K  : 0.007137450293438263  p-value: 0.9326720750467047
-	Likelihood Ratio Test for: R  : 0.1400293413278071  p-value: 0.7082518448108526
+	Likelihood Ratio Test for: K  : 0.007135650554268125  p-value: 0.9326805439228985
+	Likelihood Ratio Test for: R  : 0.1400211240179452  p-value: 0.708260013088384
 Working on site 197
 Skipped site 197 because it is invariable
 Working on site 198
@@ -2508,10 +2508,10 @@ Working on site 199
 	Skipping unobserved target residue G
 
 Tests for site 199
-	Likelihood Ratio Test for diversifying selection: -1.886490963443066e-12  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.943334382303874e-12  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: Q  : 1.900701818158268e-12  p-value: 0.999998899988928
-	Likelihood Ratio Test for: K  : 1.904254531837068e-12  p-value: 0.9999988989613602
+	Likelihood Ratio Test for: Q  : 1.936228954946273e-12  p-value: 0.9999988897560464
+	Likelihood Ratio Test for: K  : -0.0007185475141930908  p-value: 1
 Working on site 200
 Skipped site 200 because it is invariable
 Working on site 201
@@ -2544,10 +2544,10 @@ Working on site 204
 	Skipping unobserved target residue G
 
 Tests for site 204
-	Likelihood Ratio Test for diversifying selection: 1.192117685369986  p-value: 0.2749028099631389
+	Likelihood Ratio Test for diversifying selection: 1.192072743979331  p-value: 0.2749118577198403
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 1.078420879349267  p-value: 0.2990510848542519
-	Likelihood Ratio Test for: V  : 0.1213936294134399  p-value: 0.7275278739999109
+	Likelihood Ratio Test for: L  : 1.078435720467077  p-value: 0.2990477597649741
+	Likelihood Ratio Test for: V  : 0.1213616508499342  p-value: 0.7275623361884023
 Working on site 205
 Skipped site 205 because it is invariable
 Working on site 206
@@ -2574,10 +2574,10 @@ Working on site 206
 	Skipping unobserved target residue G
 
 Tests for site 206
-	Likelihood Ratio Test for diversifying selection: 1.601671802130667  p-value: 0.205666452898185
+	Likelihood Ratio Test for diversifying selection: 1.600975276584421  p-value: 0.2057650546408157
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 0.5695604486205639  p-value: 0.4504336353061378
-	Likelihood Ratio Test for: L  : 0.2590773970846811  p-value: 0.6107547049335637
+	Likelihood Ratio Test for: F  : 0.5695137567438593  p-value: 0.4504522012475102
+	Likelihood Ratio Test for: L  : 0.258919876973664  p-value: 0.6108631866385354
 Working on site 207
 Skipped site 207 because it is invariable
 Working on site 208
@@ -2606,13 +2606,13 @@ Working on site 209
 	Skipping unobserved target residue G
 
 Tests for site 209
-	Likelihood Ratio Test for diversifying selection: 0.7071499141563038  p-value: 0.4003915981209405
+	Likelihood Ratio Test for diversifying selection: 0.7070828087793046  p-value: 0.4004139530644393
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.1854144330737313  p-value: 0.6667608684176534
-	Likelihood Ratio Test for: P  : 7.841407523301314e-10  p-value: 0.9999776572269617
-	Likelihood Ratio Test for: H  : 0.1159243422393956  p-value: 0.7334976118627112
-	Likelihood Ratio Test for: Q  : 0.02008853340105077  p-value: 0.8872900994114583
-	Likelihood Ratio Test for: R  : 0.03583458130448491  p-value: 0.8498575063327165
+	Likelihood Ratio Test for: L  : 0.1854421058412044  p-value: 0.6667375010683677
+	Likelihood Ratio Test for: P  : 3.802384185291885e-09  p-value: 0.9999507996651329
+	Likelihood Ratio Test for: H  : 0.115903891704491  p-value: 0.7335202257978346
+	Likelihood Ratio Test for: Q  : 0.02009211581031423  p-value: 0.887280117143354
+	Likelihood Ratio Test for: R  : 0.03582415801464833  p-value: 0.84987908452449
 Working on site 210
 	Testing target residue F
 	Testing target residue L
@@ -2637,13 +2637,13 @@ Working on site 210
 	Skipping unobserved target residue G
 
 Tests for site 210
-	Likelihood Ratio Test for diversifying selection: 3.108112060082476  p-value: 0.07790321331512673
+	Likelihood Ratio Test for diversifying selection: 3.10759654487326  p-value: 0.07792787707244753
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 0.2767600178820544  p-value: 0.5988327221417211
-	Likelihood Ratio Test for: L  : 0.3243233892508925  p-value: 0.5690209573694969
-	Likelihood Ratio Test for: P  : 4.077712093074581  p-value: 0.04345245741854742
-	Likelihood Ratio Test for: T  : 0.02566782759188868  p-value: 0.8727142178666039
-	Likelihood Ratio Test for: H  : 0.1454094391585272  p-value: 0.7029614402871774
+	Likelihood Ratio Test for: F  : 0.2767859577431153  p-value: 0.5988155937979888
+	Likelihood Ratio Test for: L  : 0.3242452905510049  p-value: 0.5690674809823431
+	Likelihood Ratio Test for: P  : 4.071770458860129  p-value: 0.04360554762176017
+	Likelihood Ratio Test for: T  : 0.02566202531704675  p-value: 0.8727284826533368
+	Likelihood Ratio Test for: H  : 0.1454141972899805  p-value: 0.7029568114609785
 Working on site 211
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2668,10 +2668,10 @@ Working on site 211
 	Skipping unobserved target residue G
 
 Tests for site 211
-	Likelihood Ratio Test for diversifying selection: 0.01090128487658149  p-value: 0.9168446074881923
+	Likelihood Ratio Test for diversifying selection: 0.01091572901293603  p-value: 0.9167897355550223
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: P  : 0.03277774379147758  p-value: 0.8563312754062256
-	Likelihood Ratio Test for: H  : -4.598634259167511e-06  p-value: 1
+	Likelihood Ratio Test for: P  : 0.0327826198954142  p-value: 0.8563207057900881
+	Likelihood Ratio Test for: H  : -4.04005005094632e-06  p-value: 1
 Working on site 212
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2696,16 +2696,16 @@ Working on site 212
 	Testing target residue G
 
 Tests for site 212
-	Likelihood Ratio Test for diversifying selection: 0.3904778475157542  p-value: 0.5320483317789964
+	Likelihood Ratio Test for diversifying selection: 0.3905192239521398  p-value: 0.5320266018771265
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0.2839801321815969  p-value: 0.5941042847770375
-	Likelihood Ratio Test for: V  : 2.259908572578411  p-value: 0.1327618988779717
-	Likelihood Ratio Test for: T  : 0.3479410091491388  p-value: 0.5552809953694843
-	Likelihood Ratio Test for: A  : 0.3309182455911213  p-value: 0.5651188914556189
-	Likelihood Ratio Test for: H  : 0.001802171912615336  p-value: 0.9661383793545433
-	Likelihood Ratio Test for: Q  : 0.006630702698345203  p-value: 0.935100686152799
-	Likelihood Ratio Test for: N  : 0.1295889616058901  p-value: 0.7188585987866489
-	Likelihood Ratio Test for: G  : 4.953124143364491  p-value: 0.02604356511415795
+	Likelihood Ratio Test for: I  : 0.2840144693232389  p-value: 0.5940819825686467
+	Likelihood Ratio Test for: V  : 2.259906007365259  p-value: 0.1327621187933395
+	Likelihood Ratio Test for: T  : 0.3478449373013035  p-value: 0.5553356012460837
+	Likelihood Ratio Test for: A  : 0.3309124110031689  p-value: 0.5651223207475997
+	Likelihood Ratio Test for: H  : 0.001802121611433449  p-value: 0.9661388516370353
+	Likelihood Ratio Test for: Q  : 0.006630106388428203  p-value: 0.935103598025
+	Likelihood Ratio Test for: N  : 0.1296088054575932  p-value: 0.718837988056897
+	Likelihood Ratio Test for: G  : 4.952812619872958  p-value: 0.02604825805059308
 Working on site 213
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2730,13 +2730,13 @@ Working on site 213
 	Skipping unobserved target residue G
 
 Tests for site 213
-	Likelihood Ratio Test for diversifying selection: 0.6815579058996377  p-value: 0.409050780591914
+	Likelihood Ratio Test for diversifying selection: 0.6815118693593973  p-value: 0.4090666030982119
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.07208976960053803  p-value: 0.7883180298631428
-	Likelihood Ratio Test for: P  : 0.24815631207575  p-value: 0.6183762770321575
-	Likelihood Ratio Test for: T  : 0.004674235784207781  p-value: 0.9454923896934923
-	Likelihood Ratio Test for: Q  : 0.0424023447585995  p-value: 0.8368547333292693
-	Likelihood Ratio Test for: R  : 0.004799680518459581  p-value: 0.9447669627885338
+	Likelihood Ratio Test for: S  : 0.07207095519618179  p-value: 0.7883449973209411
+	Likelihood Ratio Test for: P  : 0.2481509863525702  p-value: 0.6183800444382993
+	Likelihood Ratio Test for: T  : 0.004673268599148628  p-value: 0.9454980205169617
+	Likelihood Ratio Test for: Q  : 0.04239541877730346  p-value: 0.8368678706674315
+	Likelihood Ratio Test for: R  : 0.004800272889497137  p-value: 0.9447635599447186
 Working on site 214
 Skipped site 214 because it is invariable
 Working on site 215
@@ -2763,10 +2763,10 @@ Working on site 215
 	Testing target residue G
 
 Tests for site 215
-	Likelihood Ratio Test for diversifying selection: 2.202682480856311e-13  p-value: 0.9999996255308798
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: E  : 3.552713678800501e-15  p-value: 0.9999999524423742
-	Likelihood Ratio Test for: G  : 0.0007619224815620385  p-value: 0.9779788341094843
+	Likelihood Ratio Test for: E  : 0  p-value: 1
+	Likelihood Ratio Test for: G  : 0.0007612237962391077  p-value: 0.9779889306017062
 Working on site 216
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -2791,10 +2791,10 @@ Working on site 216
 	Skipping unobserved target residue G
 
 Tests for site 216
-	Likelihood Ratio Test for diversifying selection: 0.9479780712197865  p-value: 0.3302344964614845
+	Likelihood Ratio Test for diversifying selection: 0.9478952878646254  p-value: 0.3302556129446947
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : -1.293187779083382e-12  p-value: 1
-	Likelihood Ratio Test for: P  : 1.58944714884074  p-value: 0.2074051386695914
+	Likelihood Ratio Test for: L  : -1.918465386552271e-12  p-value: 1
+	Likelihood Ratio Test for: P  : 1.589610181058298  p-value: 0.2073818369723099
 Working on site 217
 Skipped site 217 because it is invariable
 Working on site 218
@@ -2821,10 +2821,10 @@ Working on site 218
 	Testing target residue G
 
 Tests for site 218
-	Likelihood Ratio Test for diversifying selection: 2.501110429875553e-12  p-value: 0.9999987381535941
+	Likelihood Ratio Test for diversifying selection: 2.511768570911954e-12  p-value: 0.999998735467859
 	Testing for directional selection againts null allowing positive selection in foreground
 	Likelihood Ratio Test for: R  : 0  p-value: 1
-	Likelihood Ratio Test for: G  : 0  p-value: 1
+	Likelihood Ratio Test for: G  : -9.237055564881302e-14  p-value: 1
 Working on site 219
 Skipped site 219 because it is invariable
 Working on site 220
@@ -2851,11 +2851,11 @@ Working on site 220
 	Testing target residue G
 
 Tests for site 220
-	Likelihood Ratio Test for diversifying selection: 0.0008074125258836773  p-value: 0.9773311565413404
+	Likelihood Ratio Test for diversifying selection: 1.637801005927031e-12  p-value: 0.99999897889447
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: D  : 0  p-value: 1
-	Likelihood Ratio Test for: E  : 0  p-value: 1
-	Likelihood Ratio Test for: G  : 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for: D  : 3.907985046680551e-14  p-value: 0.9999998422691992
+	Likelihood Ratio Test for: E  : 3.907985046680551e-14  p-value: 0.9999998422691992
+	Likelihood Ratio Test for: G  : 4.263256414560601e-14  p-value: 0.9999998352555516
 Working on site 221
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2880,11 +2880,11 @@ Working on site 221
 	Testing target residue G
 
 Tests for site 221
-	Likelihood Ratio Test for diversifying selection: -7.105427357601002e-15  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: E  : 0  p-value: 1
-	Likelihood Ratio Test for: R  : -3.552713678800501e-15  p-value: 1
-	Likelihood Ratio Test for: G  : -1.627142864890629e-12  p-value: 1
+	Likelihood Ratio Test for: E  : -3.552713678800501e-15  p-value: 1
+	Likelihood Ratio Test for: R  : -7.105427357601002e-15  p-value: 1
+	Likelihood Ratio Test for: G  : -1.602273869139026e-12  p-value: 1
 Working on site 222
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2909,10 +2909,10 @@ Working on site 222
 	Skipping unobserved target residue G
 
 Tests for site 222
-	Likelihood Ratio Test for diversifying selection: 1.921094500491705  p-value: 0.1657360535517379
+	Likelihood Ratio Test for diversifying selection: 1.920961087218018  p-value: 0.1657507494588267
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0.7716359813138638  p-value: 0.3797114238251745
-	Likelihood Ratio Test for: T  : 2.477678881392407  p-value: 0.1154725511130805
+	Likelihood Ratio Test for: I  : 0.7715678341090921  p-value: 0.3797324669504702
+	Likelihood Ratio Test for: T  : 2.477710721609668  p-value: 0.1154702131502985
 Working on site 223
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2937,11 +2937,11 @@ Working on site 223
 	Testing target residue G
 
 Tests for site 223
-	Likelihood Ratio Test for diversifying selection: -2.661569098449945e-08  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -3.647546833462911e-07  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: A  : -6.543174890794035e-08  p-value: 1
-	Likelihood Ratio Test for: E  : -2.203205085038462e-08  p-value: 1
-	Likelihood Ratio Test for: G  : -1.150364184354657e-06  p-value: 1
+	Likelihood Ratio Test for: A  : -1.890572818297187e-07  p-value: 1
+	Likelihood Ratio Test for: E  : -7.085822062435909e-08  p-value: 1
+	Likelihood Ratio Test for: G  : 3.647548041385562e-07  p-value: 0.9995181181761992
 Working on site 224
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2966,10 +2966,10 @@ Working on site 224
 	Testing target residue G
 
 Tests for site 224
-	Likelihood Ratio Test for diversifying selection: -5.651490901925627e-07  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.003855807368836e-07  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: E  : 6.482492409531915e-08  p-value: 0.9997968526950146
-	Likelihood Ratio Test for: G  : 5.19020854738983e-07  p-value: 0.9994251792617004
+	Likelihood Ratio Test for: E  : 2.5462146169275e-08  p-value: 0.9998726826580624
+	Likelihood Ratio Test for: G  : -3.215370192322098e-07  p-value: 1
 Working on site 225
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -2994,10 +2994,10 @@ Working on site 225
 	Skipping unobserved target residue G
 
 Tests for site 225
-	Likelihood Ratio Test for diversifying selection: -2.593480985524366e-13  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -2.664535259100376e-13  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: D  : -1.538325022920617e-12  p-value: 1
-	Likelihood Ratio Test for: E  : 2.593480985524366e-13  p-value: 0.9999995936674669
+	Likelihood Ratio Test for: D  : -1.531219595563016e-12  p-value: 1
+	Likelihood Ratio Test for: E  : 2.629008122312371e-13  p-value: 0.9999995908938338
 Working on site 226
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3022,10 +3022,10 @@ Working on site 226
 	Testing target residue G
 
 Tests for site 226
-	Likelihood Ratio Test for diversifying selection: -1.06581410364015e-14  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.392663762089796e-12  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : -1.06581410364015e-14  p-value: 1
-	Likelihood Ratio Test for: G  : 0.0007048774346962716  p-value: 0.9788190299094188
+	Likelihood Ratio Test for: S  : 6.45528075438051e-12  p-value: 0.9999979727951845
+	Likelihood Ratio Test for: G  : 0.0007041520708703786  p-value: 0.9788299284399264
 Working on site 227
 Skipped site 227 because it is invariable
 Working on site 228
@@ -3052,10 +3052,10 @@ Working on site 228
 	Skipping unobserved target residue G
 
 Tests for site 228
-	Likelihood Ratio Test for diversifying selection: 0.7430642932120435  p-value: 0.3886810405157525
+	Likelihood Ratio Test for diversifying selection: 0.7430064968428738  p-value: 0.3886994888766223
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: D  : 2.067679361061892e-12  p-value: 0.9999988526876781
-	Likelihood Ratio Test for: E  : 0.3103475817619739  p-value: 0.5774669736249434
+	Likelihood Ratio Test for: D  : 2.081890215777094e-12  p-value: 0.9999988487517752
+	Likelihood Ratio Test for: E  : 0.3103221156212967  p-value: 0.5774825896166653
 Working on site 229
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3080,11 +3080,11 @@ Working on site 229
 	Testing target residue G
 
 Tests for site 229
-	Likelihood Ratio Test for diversifying selection: 0.1985216443136011  p-value: 0.6559167876153007
+	Likelihood Ratio Test for diversifying selection: 0.1985239450731342  p-value: 0.6559149222348171
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: Q  : 0.2258776167324612  p-value: 0.6345975053487249
-	Likelihood Ratio Test for: R  : 0.7215258927061967  p-value: 0.3956438444391894
-	Likelihood Ratio Test for: G  : 1.913720781868477  p-value: 0.1665505333638557
+	Likelihood Ratio Test for: Q  : 0.2259139650660131  p-value: 0.634570254009255
+	Likelihood Ratio Test for: R  : 0.7215643504814295  p-value: 0.3956312528384921
+	Likelihood Ratio Test for: G  : 1.91370697113075  p-value: 0.1665520631501035
 Working on site 230
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3111,7 +3111,7 @@ Working on site 230
 Tests for site 230
 	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: D  : -1.202610803829884e-06  p-value: 1
+	Likelihood Ratio Test for: D  : 7.105427357601002e-15  p-value: 0.9999999327433606
 	Likelihood Ratio Test for: G  : 0  p-value: 1
 Working on site 231
 	Skipping unobserved target residue F
@@ -3137,10 +3137,10 @@ Working on site 231
 	Skipping unobserved target residue G
 
 Tests for site 231
-	Likelihood Ratio Test for diversifying selection: -1.06581410364015e-14  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.06581410364015e-13  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 7.105427357601002e-15  p-value: 0.9999999327433606
-	Likelihood Ratio Test for: R  : -1.4210854715202e-14  p-value: 1
+	Likelihood Ratio Test for: S  : 9.947598300641403e-14  p-value: 0.9999997483486983
+	Likelihood Ratio Test for: R  : 7.815970093361102e-14  p-value: 0.9999997769349623
 Working on site 232
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3165,12 +3165,12 @@ Working on site 232
 	Testing target residue G
 
 Tests for site 232
-	Likelihood Ratio Test for diversifying selection: 1.914146704372058  p-value: 0.1665033627233404
+	Likelihood Ratio Test for diversifying selection: 1.91406806119106  p-value: 0.1665120712533219
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: N  : 0.005336116800549462  p-value: 0.941767340970711
-	Likelihood Ratio Test for: D  : 1.86184178167737  p-value: 0.172412382745682
-	Likelihood Ratio Test for: E  : 0.02226131917267082  p-value: 0.881394024094263
-	Likelihood Ratio Test for: G  : 0.2433346114917185  p-value: 0.6218079886730187
+	Likelihood Ratio Test for: N  : 0.005337128288601889  p-value: 0.9417618318949171
+	Likelihood Ratio Test for: D  : 1.862813372728255  p-value: 0.1723004476558854
+	Likelihood Ratio Test for: E  : 0.02226308491188433  p-value: 0.8813893551531967
+	Likelihood Ratio Test for: G  : 0.2433321989099966  p-value: 0.6218097163082608
 Working on site 233
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3195,13 +3195,13 @@ Working on site 233
 	Testing target residue G
 
 Tests for site 233
-	Likelihood Ratio Test for diversifying selection: 0.3112245927233204  p-value: 0.5769296968155608
+	Likelihood Ratio Test for diversifying selection: 0.3112094696921872  p-value: 0.5769389531132763
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.02216145923901536  p-value: 0.8816583809723233
-	Likelihood Ratio Test for: T  : 0.00601843684101766  p-value: 0.938163277780347
-	Likelihood Ratio Test for: E  : 0.003783234701444371  p-value: 0.950954639270111
-	Likelihood Ratio Test for: R  : 0.08860021544789731  p-value: 0.7659642913844127
-	Likelihood Ratio Test for: G  : 0.01954580833019293  p-value: 0.8888130162708053
+	Likelihood Ratio Test for: S  : 0.02216729591033584  p-value: 0.8816429129567367
+	Likelihood Ratio Test for: T  : 0.006021952208968173  p-value: 0.9381452572184499
+	Likelihood Ratio Test for: E  : 0.003785155942139795  p-value: 0.9509422031947055
+	Likelihood Ratio Test for: R  : 0.08857887124710828  p-value: 0.7659916605626547
+	Likelihood Ratio Test for: G  : 0.01954674640522569  p-value: 0.8888103655060096
 Working on site 234
 Skipped site 234 because it is invariable
 Working on site 235
@@ -3228,14 +3228,14 @@ Working on site 235
 	Testing target residue G
 
 Tests for site 235
-	Likelihood Ratio Test for diversifying selection: -1.70530256582424e-12  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.193711796076968e-12  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 1.648459146963432e-12  p-value: 0.9999989755773886
-	Likelihood Ratio Test for: V  : 1.165290086646564e-12  p-value: 0.999999138694764
-	Likelihood Ratio Test for: T  : 1.477928890381008e-12  p-value: 0.9999990300109518
-	Likelihood Ratio Test for: H  : -1.989519660128281e-13  p-value: 1
-	Likelihood Ratio Test for: R  : 0.0001413621242534191  p-value: 0.990513710793391
-	Likelihood Ratio Test for: G  : 3.410605131648481e-13  p-value: 0.9999995340323335
+	Likelihood Ratio Test for: I  : 1.222133505507372e-12  p-value: 0.9999991179374433
+	Likelihood Ratio Test for: V  : 7.958078640513122e-13  p-value: 0.9999992882226323
+	Likelihood Ratio Test for: T  : 1.080024958355352e-12  p-value: 0.9999991708044603
+	Likelihood Ratio Test for: H  : -1.70530256582424e-13  p-value: 1
+	Likelihood Ratio Test for: R  : 0.0001335109311639826  p-value: 0.9907808939646027
+	Likelihood Ratio Test for: G  : -5.684341886080801e-14  p-value: 1
 Working on site 236
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3260,12 +3260,12 @@ Working on site 236
 	Testing target residue G
 
 Tests for site 236
-	Likelihood Ratio Test for diversifying selection: 0.007447444041034146  p-value: 0.931229071270161
+	Likelihood Ratio Test for diversifying selection: 0.007449737323000249  p-value: 0.9312185100759903
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: P  : 0.1683980355480656  p-value: 0.6815394660472778
-	Likelihood Ratio Test for: H  : 4.441170837634019  p-value: 0.03508218027557075
-	Likelihood Ratio Test for: R  : 1.324072310179773  p-value: 0.2498625041039063
-	Likelihood Ratio Test for: G  : 0.384442101035475  p-value: 0.5352354346205099
+	Likelihood Ratio Test for: P  : 0.1683918797685351  p-value: 0.6815449673061378
+	Likelihood Ratio Test for: H  : 4.440118378147133  p-value: 0.03510381337407187
+	Likelihood Ratio Test for: R  : 1.324012850474631  p-value: 0.2498731374426149
+	Likelihood Ratio Test for: G  : 0.3844441707077522  p-value: 0.5352343358301861
 Working on site 237
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -3290,11 +3290,11 @@ Working on site 237
 	Skipping unobserved target residue G
 
 Tests for site 237
-	Likelihood Ratio Test for diversifying selection: 0.1631582431775556  p-value: 0.6862652888155188
+	Likelihood Ratio Test for diversifying selection: 0.1631470250662801  p-value: 0.686275500670062
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.1463287876730703  p-value: 0.7020686815840651
-	Likelihood Ratio Test for: I  : 0.002043975405690901  p-value: 0.9639396475927836
-	Likelihood Ratio Test for: S  : 0.005406250042916838  p-value: 0.9413865952980459
+	Likelihood Ratio Test for: L  : 0.1463161184668067  p-value: 0.7020809624918134
+	Likelihood Ratio Test for: I  : 0.002044045200612743  p-value: 0.9639390323472076
+	Likelihood Ratio Test for: S  : 0.005406896626205082  p-value: 0.9413830966563312
 Working on site 238
 Skipped site 238 because it is invariable
 Working on site 239
@@ -3321,13 +3321,13 @@ Working on site 239
 	Skipping unobserved target residue G
 
 Tests for site 239
-	Likelihood Ratio Test for diversifying selection: 6.476899636477825  p-value: 0.01092854462261272
+	Likelihood Ratio Test for diversifying selection: 6.477177197449706  p-value: 0.01092683811115913
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.2901730050521394  p-value: 0.5901096859447219
-	Likelihood Ratio Test for: T  : 0.0402962274261256  p-value: 0.840902504434764
-	Likelihood Ratio Test for: H  : 0.1847156379839561  p-value: 0.6673516290962763
-	Likelihood Ratio Test for: N  : 0.5116886326113246  p-value: 0.4744087722904666
-	Likelihood Ratio Test for: D  : 0.3852425822205703  p-value: 0.5348107638266428
+	Likelihood Ratio Test for: S  : 0.2901770701760853  p-value: 0.5901070819318655
+	Likelihood Ratio Test for: T  : 0.04076290148351802  p-value: 0.8399962738354088
+	Likelihood Ratio Test for: H  : 0.1847448702832253  p-value: 0.6673268896278655
+	Likelihood Ratio Test for: N  : 0.5118004270601233  p-value: 0.4743605020137535
+	Likelihood Ratio Test for: D  : 0.38525258453258  p-value: 0.534805461273227
 Working on site 240
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3352,10 +3352,10 @@ Working on site 240
 	Testing target residue G
 
 Tests for site 240
-	Likelihood Ratio Test for diversifying selection: 0.9404971749826885  p-value: 0.3321500138244937
+	Likelihood Ratio Test for diversifying selection: 0.9405839867343815  p-value: 0.3321277005132092
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: R  : 1.363715894695318  p-value: 0.2428945214098583
-	Likelihood Ratio Test for: G  : 0.3186685663358091  p-value: 0.5724088885666681
+	Likelihood Ratio Test for: R  : 1.363796115346858  p-value: 0.2428806636810181
+	Likelihood Ratio Test for: G  : 0.3186316046775914  p-value: 0.5724311631970516
 Working on site 241
 Skipped site 241 because it is invariable
 Working on site 242
@@ -3382,10 +3382,10 @@ Working on site 242
 	Skipping unobserved target residue G
 
 Tests for site 242
-	Likelihood Ratio Test for diversifying selection: 0.5424563910266613  p-value: 0.4614164975514937
+	Likelihood Ratio Test for diversifying selection: 0.5424179190848477  p-value: 0.461432386337896
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.4536428128945005  p-value: 0.5006100979171599
-	Likelihood Ratio Test for: S  : 0.07759635585572511  p-value: 0.780581573487291
+	Likelihood Ratio Test for: L  : 0.4535276594841307  p-value: 0.5006644683303954
+	Likelihood Ratio Test for: S  : 0.07761319694762392  p-value: 0.780558373677559
 Working on site 243
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3410,11 +3410,11 @@ Working on site 243
 	Skipping unobserved target residue G
 
 Tests for site 243
-	Likelihood Ratio Test for diversifying selection: 1.374104037097666  p-value: 0.2411080030722792
+	Likelihood Ratio Test for diversifying selection: 1.374052984331797  p-value: 0.2411167437721917
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: P  : 0.2233277669934353  p-value: 0.6365159415518482
-	Likelihood Ratio Test for: T  : 0.008512217412246059  p-value: 0.9264901341990701
-	Likelihood Ratio Test for: A  : 0.4890170466537143  p-value: 0.4843661053722551
+	Likelihood Ratio Test for: P  : 0.2232635873046434  p-value: 0.6365644011129032
+	Likelihood Ratio Test for: T  : 0.008512408700127594  p-value: 0.926489310582066
+	Likelihood Ratio Test for: A  : 0.4890497823681272  p-value: 0.4843514812312719
 Working on site 244
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -3439,10 +3439,10 @@ Working on site 244
 	Skipping unobserved target residue G
 
 Tests for site 244
-	Likelihood Ratio Test for diversifying selection: 1.914406482954263  p-value: 0.1664745999218754
+	Likelihood Ratio Test for diversifying selection: 1.914268146555457  p-value: 0.1664899158822246
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 1.050466887849332  p-value: 0.3053995829667028
-	Likelihood Ratio Test for: I  : 0.07805419899165145  p-value: 0.7799518246340302
+	Likelihood Ratio Test for: L  : 1.050359768271711  p-value: 0.3054242436127464
+	Likelihood Ratio Test for: I  : 0.07806770883647118  p-value: 0.779933272546745
 Working on site 245
 	Testing target residue F
 	Skipping unobserved target residue L
@@ -3467,11 +3467,11 @@ Working on site 245
 	Skipping unobserved target residue G
 
 Tests for site 245
-	Likelihood Ratio Test for diversifying selection: -2.060573933704291e-13  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.70530256582424e-13  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 2.486899575160351e-13  p-value: 0.9999996021043552
+	Likelihood Ratio Test for: F  : 2.344791028008331e-13  p-value: 0.9999996136400214
 	Likelihood Ratio Test for: I  : 1.27897692436818e-13  p-value: 0.9999997146542451
-	Likelihood Ratio Test for: V  : 2.060573933704291e-13  p-value: 0.9999996378119124
+	Likelihood Ratio Test for: V  : 1.63424829224823e-13  p-value: 0.9999996774484885
 Working on site 246
 Skipped site 246 because it is invariable
 Working on site 247
@@ -3498,9 +3498,9 @@ Working on site 247
 	Skipping unobserved target residue G
 
 Tests for site 247
-	Likelihood Ratio Test for diversifying selection: 1.222133505507372e-12  p-value: 0.9999991179374433
+	Likelihood Ratio Test for diversifying selection: 1.250555214937776e-12  p-value: 0.9999991077398496
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : -1.4210854715202e-14  p-value: 1
+	Likelihood Ratio Test for: I  : 1.4210854715202e-14  p-value: 0.9999999048847483
 	Likelihood Ratio Test for: V  : 0  p-value: 1
 	Likelihood Ratio Test for: D  : 0  p-value: 1
 	Likelihood Ratio Test for: E  : 0  p-value: 1
@@ -3532,10 +3532,10 @@ Working on site 250
 	Skipping unobserved target residue G
 
 Tests for site 250
-	Likelihood Ratio Test for diversifying selection: 2.606377286027744  p-value: 0.1064346547814335
+	Likelihood Ratio Test for diversifying selection: 2.606498408921169  p-value: 0.1064265240085741
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: Q  : 1.727383502516261  p-value: 0.1887453937219569
-	Likelihood Ratio Test for: R  : 0.1701216037698146  p-value: 0.6800037572088067
+	Likelihood Ratio Test for: Q  : 1.72737953121878  p-value: 0.1887459019425065
+	Likelihood Ratio Test for: R  : 0.1700910159072393  p-value: 0.6800309316654485
 Working on site 251
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3560,10 +3560,10 @@ Working on site 251
 	Skipping unobserved target residue G
 
 Tests for site 251
-	Likelihood Ratio Test for diversifying selection: 2.445022966750685  p-value: 0.1178981596958272
+	Likelihood Ratio Test for diversifying selection: 2.445148624662103  p-value: 0.1178887188867019
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 0.1065388840213402  p-value: 0.7441195079145413
-	Likelihood Ratio Test for: N  : 3.332555781041314  p-value: 0.06792125344347522
+	Likelihood Ratio Test for: S  : 0.1065565121889236  p-value: 0.7440990807229497
+	Likelihood Ratio Test for: N  : 3.372565637930997  p-value: 0.06629044509892212
 Working on site 252
 Skipped site 252 because it is invariable
 Working on site 253
@@ -3590,12 +3590,12 @@ Working on site 253
 	Skipping unobserved target residue G
 
 Tests for site 253
-	Likelihood Ratio Test for diversifying selection: 0.553876127985518  p-value: 0.456738221355839
+	Likelihood Ratio Test for diversifying selection: 0.553829736786696  p-value: 0.4567570743700793
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 0.01883361976122444  p-value: 0.8908445440099169
-	Likelihood Ratio Test for: I  : 0.002691691033788857  p-value: 0.9586231076714777
-	Likelihood Ratio Test for: S  : 0.001691836469419172  p-value: 0.967190711888381
-	Likelihood Ratio Test for: C  : 0.123727022838402  p-value: 0.7250268676690682
+	Likelihood Ratio Test for: F  : 0.0188316800250945  p-value: 0.8908501300950058
+	Likelihood Ratio Test for: I  : 0.002692025012485999  p-value: 0.9586205430798062
+	Likelihood Ratio Test for: S  : 0.001691799546406969  p-value: 0.9671910697070487
+	Likelihood Ratio Test for: C  : 0.1237151662222047  p-value: 0.7250395087221996
 Working on site 254
 Skipped site 254 because it is invariable
 Working on site 255
@@ -3622,7 +3622,7 @@ Working on site 255
 	Skipping unobserved target residue G
 
 Tests for site 255
-	Likelihood Ratio Test for diversifying selection: 1.918465386552271e-13  p-value: 0.9999996505242501
+	Likelihood Ratio Test for diversifying selection: 1.84741111297626e-13  p-value: 0.9999996570570832
 	Testing for directional selection againts null allowing positive selection in foreground
 	Likelihood Ratio Test for: F  : 0  p-value: 1
 	Likelihood Ratio Test for: Y  : 0  p-value: 1
@@ -3650,12 +3650,12 @@ Working on site 256
 	Skipping unobserved target residue G
 
 Tests for site 256
-	Likelihood Ratio Test for diversifying selection: 0.7047676582354967  p-value: 0.4011863143048268
+	Likelihood Ratio Test for diversifying selection: 0.704692246802324  p-value: 0.4012115088040518
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.004047886681149748  p-value: 0.9492704140390354
-	Likelihood Ratio Test for: I  : 0.003584140166864813  p-value: 0.9522610142932875
-	Likelihood Ratio Test for: S  : 3.620661460956853e-05  p-value: 0.9951990033780579
-	Likelihood Ratio Test for: C  : 0.007133195844701845  p-value: 0.9326920965705696
+	Likelihood Ratio Test for: L  : 0.00404752866361946  p-value: 0.9492726544662514
+	Likelihood Ratio Test for: I  : 0.003583189182720048  p-value: 0.9522673404723028
+	Likelihood Ratio Test for: S  : 4.759121472375227e-05  p-value: 0.9944957264191546
+	Likelihood Ratio Test for: C  : 0.007131816755901355  p-value: 0.9326985878814963
 Working on site 257
 Skipped site 257 because it is invariable
 Working on site 258
@@ -3682,10 +3682,10 @@ Working on site 258
 	Skipping unobserved target residue G
 
 Tests for site 258
-	Likelihood Ratio Test for diversifying selection: -1.011096291136937e-06  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -8.980106649403297e-07  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: H  : -1.788665322521865e-07  p-value: 1
-	Likelihood Ratio Test for: R  : 9.771546878312165e-07  p-value: 0.9992112821846743
+	Likelihood Ratio Test for: H  : -1.497337542843979e-07  p-value: 1
+	Likelihood Ratio Test for: R  : 8.881749451461474e-07  p-value: 0.9992480494937104
 Working on site 259
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -3710,11 +3710,11 @@ Working on site 259
 	Skipping unobserved target residue G
 
 Tests for site 259
-	Likelihood Ratio Test for diversifying selection: 0.5108773721714996  p-value: 0.4747592949050424
+	Likelihood Ratio Test for diversifying selection: 0.5108510748311019  p-value: 0.4747706642748389
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.05362720994416748  p-value: 0.8168677422352379
-	Likelihood Ratio Test for: H  : 0.01447355416457441  p-value: 0.9042406837480624
-	Likelihood Ratio Test for: R  : 0.2306731118215808  p-value: 0.6310251748302385
+	Likelihood Ratio Test for: L  : 0.05359560559222132  p-value: 0.8169207557727685
+	Likelihood Ratio Test for: H  : 0.014474066413527  p-value: 0.9042389973629524
+	Likelihood Ratio Test for: R  : 0.2306708743412216  p-value: 0.6310268309131526
 Working on site 260
 Skipped site 260 because it is invariable
 Working on site 261
@@ -3741,10 +3741,10 @@ Working on site 261
 	Skipping unobserved target residue G
 
 Tests for site 261
-	Likelihood Ratio Test for diversifying selection: -7.105427357601002e-15  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: T  : -1.20792265079217e-13  p-value: 1
-	Likelihood Ratio Test for: R  : -2.842170943040401e-14  p-value: 1
+	Likelihood Ratio Test for: T  : -1.06581410364015e-13  p-value: 1
+	Likelihood Ratio Test for: R  : -3.552713678800501e-14  p-value: 1
 Working on site 262
 Skipped site 262 because it is invariable
 Working on site 263
@@ -3771,10 +3771,10 @@ Working on site 263
 	Skipping unobserved target residue G
 
 Tests for site 263
-	Likelihood Ratio Test for diversifying selection: -4.618527782440651e-14  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -5.329070518200751e-14  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : -3.552713678800501e-14  p-value: 1
-	Likelihood Ratio Test for: L  : 0  p-value: 1
+	Likelihood Ratio Test for: F  : -2.842170943040401e-14  p-value: 1
+	Likelihood Ratio Test for: L  : 7.105427357601002e-15  p-value: 0.9999999327433606
 Working on site 264
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -3799,10 +3799,10 @@ Working on site 264
 	Skipping unobserved target residue G
 
 Tests for site 264
-	Likelihood Ratio Test for diversifying selection: 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : -3.552713678800501e-15  p-value: 1
-	Likelihood Ratio Test for: V  : -3.552713678800501e-15  p-value: 1
+	Likelihood Ratio Test for: L  : -6.394884621840902e-14  p-value: 1
+	Likelihood Ratio Test for: V  : 0  p-value: 1
 Working on site 265
 Skipped site 265 because it is invariable
 Working on site 266
@@ -3831,10 +3831,10 @@ Working on site 267
 	Skipping unobserved target residue G
 
 Tests for site 267
-	Likelihood Ratio Test for diversifying selection: -3.133493464702042e-12  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -3.183231456205249e-12  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: V  : 2.47979414780275e-12  p-value: 0.9999987435422866
-	Likelihood Ratio Test for: A  : 2.962963208119618e-12  p-value: 0.9999986265805583
+	Likelihood Ratio Test for: V  : 2.55084842137876e-12  p-value: 0.9999987256685906
+	Likelihood Ratio Test for: A  : 2.998490344907623e-12  p-value: 0.999998618371164
 Working on site 268
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -3859,10 +3859,10 @@ Working on site 268
 	Skipping unobserved target residue G
 
 Tests for site 268
-	Likelihood Ratio Test for diversifying selection: 0.5900016643870032  p-value: 0.4424184751557266
+	Likelihood Ratio Test for diversifying selection: 0.5899590164053379  p-value: 0.4424349673019049
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: T  : 0.1829701076059749  p-value: 0.6688331046616438
-	Likelihood Ratio Test for: A  : 0.1159241861155351  p-value: 0.7334977844940105
+	Likelihood Ratio Test for: T  : 0.1829320995077524  p-value: 0.6688654559337166
+	Likelihood Ratio Test for: A  : 0.1159383962248839  p-value: 0.7334820724390539
 Working on site 269
 Skipped site 269 because it is invariable
 Working on site 270
@@ -3889,11 +3889,11 @@ Working on site 270
 	Skipping unobserved target residue G
 
 Tests for site 270
-	Likelihood Ratio Test for diversifying selection: 3.583312389958941  p-value: 0.05836266817724622
+	Likelihood Ratio Test for diversifying selection: 3.583465356345631  p-value: 0.05835729493900954
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0.0717599322976703  p-value: 0.7887913471513874
-	Likelihood Ratio Test for: V  : 2.308500429744218  p-value: 0.128668127893061
-	Likelihood Ratio Test for: T  : 0.3436051546450081  p-value: 0.5577556136457287
+	Likelihood Ratio Test for: I  : 0.0717892128987927  p-value: 0.7887492823252098
+	Likelihood Ratio Test for: V  : 2.308656871993939  p-value: 0.1286551772809257
+	Likelihood Ratio Test for: T  : 0.3435960207523081  p-value: 0.5577608487712925
 Working on site 271
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -3946,10 +3946,10 @@ Working on site 272
 	Testing target residue G
 
 Tests for site 272
-	Likelihood Ratio Test for diversifying selection: 0.509911186170303  p-value: 0.4751773054787723
+	Likelihood Ratio Test for diversifying selection: 0.5099444212529889  p-value: 0.4751629167287506
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: E  : 0.4613617621945068  p-value: 0.4969882386503575
-	Likelihood Ratio Test for: G  : 0.03193749072979557  p-value: 0.8581649188422309
+	Likelihood Ratio Test for: E  : 0.4622582132803572  p-value: 0.4965704810993351
+	Likelihood Ratio Test for: G  : 0.0319316024054892  p-value: 0.8581778559415363
 Working on site 273
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -3974,11 +3974,11 @@ Working on site 273
 	Skipping unobserved target residue G
 
 Tests for site 273
-	Likelihood Ratio Test for diversifying selection: 0.2815593538319519  p-value: 0.5956809778621941
+	Likelihood Ratio Test for diversifying selection: 0.2815367249081788  p-value: 0.5956957573822693
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 6.004459713470141  p-value: 0.01426976297136073
-	Likelihood Ratio Test for: I  : 0.01823971936684643  p-value: 0.8925687801564042
-	Likelihood Ratio Test for: R  : 0.01908482198921746  p-value: 0.8901235879772647
+	Likelihood Ratio Test for: L  : 6.004264431137727  p-value: 0.01427134243242856
+	Likelihood Ratio Test for: I  : 0.01824466341824404  p-value: 0.8925543093311787
+	Likelihood Ratio Test for: R  : 0.01907326540824528  p-value: 0.8901566491438848
 Working on site 274
 Skipped site 274 because it is invariable
 Working on site 275
@@ -4007,11 +4007,11 @@ Working on site 276
 	Skipping unobserved target residue G
 
 Tests for site 276
-	Likelihood Ratio Test for diversifying selection: 3.375936606867924  p-value: 0.06615496768756013
+	Likelihood Ratio Test for diversifying selection: 3.376080663014733  p-value: 0.06614918474171638
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.2058630033729472  p-value: 0.6500294458985411
-	Likelihood Ratio Test for: H  : 2.591975128889651  p-value: 0.1074063227456553
-	Likelihood Ratio Test for: R  : 0.07618573213115809  p-value: 0.7825345251927502
+	Likelihood Ratio Test for: L  : 0.2058711655271708  p-value: 0.6500229712241035
+	Likelihood Ratio Test for: H  : 2.583329219905956  p-value: 0.1079943087602739
+	Likelihood Ratio Test for: R  : 0.0761555000278733  p-value: 0.7825765924751963
 Working on site 277
 Skipped site 277 because it is invariable
 Working on site 278
@@ -4040,10 +4040,10 @@ Working on site 279
 	Skipping unobserved target residue G
 
 Tests for site 279
-	Likelihood Ratio Test for diversifying selection: -2.486899575160351e-14  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.77635683940025e-14  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: W  : 3.779488034916376  p-value: 0.05188453361903511
-	Likelihood Ratio Test for: R  : 1.360689338980592e-12  p-value: 0.9999990692789155
+	Likelihood Ratio Test for: W  : 3.779932380264288  p-value: 0.05187075683628117
+	Likelihood Ratio Test for: R  : 1.364242052659392e-12  p-value: 0.999999068064667
 Working on site 280
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4068,11 +4068,11 @@ Working on site 280
 	Testing target residue G
 
 Tests for site 280
-	Likelihood Ratio Test for diversifying selection: 2.078802327305716  p-value: 0.1493573265383292
+	Likelihood Ratio Test for diversifying selection: 2.078793181152122  p-value: 0.1493582215676024
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: T  : 0.05992311817278306  p-value: 0.806617496646143
-	Likelihood Ratio Test for: E  : 0.679823925319873  p-value: 0.4096473614370061
-	Likelihood Ratio Test for: G  : 0.08640842013667793  p-value: 0.7687937479417942
+	Likelihood Ratio Test for: T  : 0.0599222612389454  p-value: 0.8066188519905304
+	Likelihood Ratio Test for: E  : 0.679825456312571  p-value: 0.4096468341310677
+	Likelihood Ratio Test for: G  : 0.08640022935288272  p-value: 0.7688043944042603
 Working on site 281
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -4097,12 +4097,12 @@ Working on site 281
 	Testing target residue G
 
 Tests for site 281
-	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -1.4210854715202e-14  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 1.4210854715202e-14  p-value: 0.9999999048847483
-	Likelihood Ratio Test for: I  : -1.4210854715202e-14  p-value: 1
+	Likelihood Ratio Test for: L  : -1.4210854715202e-14  p-value: 1
+	Likelihood Ratio Test for: I  : 0  p-value: 1
 	Likelihood Ratio Test for: V  : 0  p-value: 1
-	Likelihood Ratio Test for: A  : 0  p-value: 1
+	Likelihood Ratio Test for: A  : -1.4210854715202e-14  p-value: 1
 	Likelihood Ratio Test for: G  : 0  p-value: 1
 Working on site 282
 Skipped site 282 because it is invariable
@@ -4136,9 +4136,9 @@ Working on site 285
 Tests for site 285
 	Likelihood Ratio Test for diversifying selection: -1.4210854715202e-14  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 1.4210854715202e-14  p-value: 0.9999999048847483
-	Likelihood Ratio Test for: C  : 1.4210854715202e-14  p-value: 0.9999999048847483
-	Likelihood Ratio Test for: W  : 0  p-value: 1
+	Likelihood Ratio Test for: L  : 0  p-value: 1
+	Likelihood Ratio Test for: C  : 0  p-value: 1
+	Likelihood Ratio Test for: W  : -1.4210854715202e-14  p-value: 1
 Working on site 286
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4163,10 +4163,10 @@ Working on site 286
 	Testing target residue G
 
 Tests for site 286
-	Likelihood Ratio Test for diversifying selection: 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
 	Likelihood Ratio Test for: W  : 0  p-value: 1
-	Likelihood Ratio Test for: G  : -7.673861546209082e-12  p-value: 1
+	Likelihood Ratio Test for: G  : -7.364775456153438e-12  p-value: 1
 Working on site 287
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4191,10 +4191,10 @@ Working on site 287
 	Skipping unobserved target residue G
 
 Tests for site 287
-	Likelihood Ratio Test for diversifying selection: 0.02241125938767397  p-value: 0.880998226600892
+	Likelihood Ratio Test for diversifying selection: 0.02242792854372055  p-value: 0.8809543087114432
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: S  : 2.374817018022554  p-value: 0.1233060454831839
-	Likelihood Ratio Test for: N  : 5.3025557714545  p-value: 0.02129415751554364
+	Likelihood Ratio Test for: S  : 2.375372199644417  p-value: 0.1232622166961053
+	Likelihood Ratio Test for: N  : 5.302938714395758  p-value: 0.02128947675161053
 Working on site 288
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -4219,11 +4219,11 @@ Working on site 288
 	Skipping unobserved target residue G
 
 Tests for site 288
-	Likelihood Ratio Test for diversifying selection: 0.2319646145651362  p-value: 0.6300709073652553
+	Likelihood Ratio Test for diversifying selection: 0.2319490915784144  p-value: 0.6300823575622128
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.1406038948134736  p-value: 0.7076813957637298
-	Likelihood Ratio Test for: I  : 0.001469101145119112  p-value: 0.9694254845208703
-	Likelihood Ratio Test for: T  : 0.007414665658735942  p-value: 0.9313802041579645
+	Likelihood Ratio Test for: L  : 0.1405919690622852  p-value: 0.7076932227989687
+	Likelihood Ratio Test for: I  : 0.001465508301627949  p-value: 0.9694628757436199
+	Likelihood Ratio Test for: T  : 0.007413365357400892  p-value: 0.9313862064537982
 Working on site 289
 Skipped site 289 because it is invariable
 Working on site 290
@@ -4250,11 +4250,11 @@ Working on site 290
 	Testing target residue G
 
 Tests for site 290
-	Likelihood Ratio Test for diversifying selection: 1.464268512493419  p-value: 0.2262521751486056
+	Likelihood Ratio Test for diversifying selection: 1.464157137855977  p-value: 0.2262698332697037
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.01650786625689449  p-value: 0.8977667970510627
-	Likelihood Ratio Test for: Q  : 0.81566008750805  p-value: 0.366452117660474
-	Likelihood Ratio Test for: G  : -4.618527782440651e-13  p-value: 1
+	Likelihood Ratio Test for: L  : 0.01651019544710408  p-value: 0.8977596245711285
+	Likelihood Ratio Test for: Q  : 0.8158248968767552  p-value: 0.3664037027438364
+	Likelihood Ratio Test for: G  : -2.273736754432321e-13  p-value: 1
 Working on site 291
 Skipped site 291 because it is invariable
 Working on site 292
@@ -4283,12 +4283,12 @@ Working on site 293
 	Testing target residue G
 
 Tests for site 293
-	Likelihood Ratio Test for diversifying selection: 0.05217571402202736  p-value: 0.8193197126737434
+	Likelihood Ratio Test for diversifying selection: 0.05210862460316434  p-value: 0.8194339076617073
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0.9119487030407072  p-value: 0.339597898698685
-	Likelihood Ratio Test for: S  : 0.6118401403594191  p-value: 0.4340958049197253
-	Likelihood Ratio Test for: T  : 0.3483791981630162  p-value: 0.5550320637465125
-	Likelihood Ratio Test for: G  : 0.7119193730142399  p-value: 0.3988073620911182
+	Likelihood Ratio Test for: I  : 0.9121306084843042  p-value: 0.3395497369766742
+	Likelihood Ratio Test for: S  : 0.6118104567615177  p-value: 0.4341069544536901
+	Likelihood Ratio Test for: T  : 0.3484029041256349  p-value: 0.5550186026012758
+	Likelihood Ratio Test for: G  : 0.7119149211699067  p-value: 0.3988088365900589
 Working on site 294
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4313,10 +4313,10 @@ Working on site 294
 	Skipping unobserved target residue G
 
 Tests for site 294
-	Likelihood Ratio Test for diversifying selection: -2.131628207280301e-14  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: Q  : 2.131628207280301e-14  p-value: 0.9999998835080833
-	Likelihood Ratio Test for: R  : 0.6357730250441094  p-value: 0.42524560383715
+	Likelihood Ratio Test for: Q  : 0  p-value: 1
+	Likelihood Ratio Test for: R  : 0.6252395074131201  p-value: 0.4291068898767056
 Working on site 295
 Skipped site 295 because it is invariable
 Working on site 296
@@ -4347,11 +4347,11 @@ Working on site 298
 	Skipping unobserved target residue G
 
 Tests for site 298
-	Likelihood Ratio Test for diversifying selection: -7.105427357601002e-15  p-value: 1
+	Likelihood Ratio Test for diversifying selection: 0  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0  p-value: 1
+	Likelihood Ratio Test for: I  : -7.105427357601002e-15  p-value: 1
 	Likelihood Ratio Test for: S  : 0  p-value: 1
-	Likelihood Ratio Test for: N  : 0  p-value: 1
+	Likelihood Ratio Test for: N  : -7.105427357601002e-15  p-value: 1
 	Likelihood Ratio Test for: K  : 0  p-value: 1
 Working on site 299
 Skipped site 299 because it is invariable
@@ -4381,10 +4381,10 @@ Working on site 301
 	Skipping unobserved target residue G
 
 Tests for site 301
-	Likelihood Ratio Test for diversifying selection: -5.542233338928781e-13  p-value: 1
+	Likelihood Ratio Test for diversifying selection: -5.400124791776761e-13  p-value: 1
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 2.984279490192421e-13  p-value: 0.9999995641271596
-	Likelihood Ratio Test for: V  : 5.400124791776761e-13  p-value: 0.9999994136702109
+	Likelihood Ratio Test for: I  : 3.126388037344441e-13  p-value: 0.9999995538699248
+	Likelihood Ratio Test for: V  : 5.329070518200751e-13  p-value: 0.9999994175404169
 Working on site 302
 Skipped site 302 because it is invariable
 Working on site 303
@@ -4413,11 +4413,11 @@ Working on site 304
 	Skipping unobserved target residue G
 
 Tests for site 304
-	Likelihood Ratio Test for diversifying selection: 0.05921260573931875  p-value: 0.8077448050763281
+	Likelihood Ratio Test for diversifying selection: 0.05922280141473379  p-value: 0.8077285779609011
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 4.909537013950043  p-value: 0.02670879934189385
-	Likelihood Ratio Test for: L  : 0.002899382281398744  p-value: 0.957057929757964
-	Likelihood Ratio Test for: V  : 0.3417648818493717  p-value: 0.5588122659458503
+	Likelihood Ratio Test for: F  : 4.90905482576666  p-value: 0.02671625656198728
+	Likelihood Ratio Test for: L  : 0.002918226514495359  p-value: 0.9569187422669884
+	Likelihood Ratio Test for: V  : 0.3417830737565737  p-value: 0.5588018018062475
 Working on site 305
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4442,10 +4442,10 @@ Working on site 305
 	Skipping unobserved target residue G
 
 Tests for site 305
-	Likelihood Ratio Test for diversifying selection: 3.675121521440779  p-value: 0.05523022745733819
+	Likelihood Ratio Test for diversifying selection: 3.674648697718951  p-value: 0.05524589483381748
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: N  : 0.7377234176684979  p-value: 0.3903911260042359
-	Likelihood Ratio Test for: D  : 0.1019039402038473  p-value: 0.7495566850302352
+	Likelihood Ratio Test for: N  : 0.7380382651204869  p-value: 0.3902900173460546
+	Likelihood Ratio Test for: D  : 0.1018946967228942  p-value: 0.7495676632727684
 Working on site 306
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4470,10 +4470,10 @@ Working on site 306
 	Skipping unobserved target residue G
 
 Tests for site 306
-	Likelihood Ratio Test for diversifying selection: 0.8990487674884449  p-value: 0.3430368996850235
+	Likelihood Ratio Test for diversifying selection: 0.8989937169370066  p-value: 0.3430516760217892
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: T  : 0.08886954546768067  p-value: 0.7656192436002545
-	Likelihood Ratio Test for: A  : 2.118838826165238  p-value: 0.1454968181197379
+	Likelihood Ratio Test for: T  : 0.08889475046558459  p-value: 0.7655869817739474
+	Likelihood Ratio Test for: A  : 2.119123896512768  p-value: 0.1454697369395163
 Working on site 307
 	Testing target residue F
 	Testing target residue L
@@ -4498,12 +4498,12 @@ Working on site 307
 	Skipping unobserved target residue G
 
 Tests for site 307
-	Likelihood Ratio Test for diversifying selection: 1.685293197259981  p-value: 0.1942225933192628
+	Likelihood Ratio Test for diversifying selection: 1.685071962912275  p-value: 0.1942518689588805
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 8.772960796749416  p-value: 0.003057287650954144
-	Likelihood Ratio Test for: L  : 0.3900380006210042  p-value: 0.5322794277224556
-	Likelihood Ratio Test for: I  : 1.404189520478027  p-value: 0.2360233660262681
-	Likelihood Ratio Test for: T  : 1.375367525711511  p-value: 0.2408918050447972
+	Likelihood Ratio Test for: F  : 8.773637355053836  p-value: 0.003056153851765164
+	Likelihood Ratio Test for: L  : 0.3899704481276842  p-value: 0.5323149359057162
+	Likelihood Ratio Test for: I  : 1.40418856607242  p-value: 0.2360235252524499
+	Likelihood Ratio Test for: T  : 1.375276356754995  p-value: 0.2409073972484758
 Working on site 308
 Skipped site 308 because it is invariable
 Working on site 309
@@ -4532,11 +4532,11 @@ Working on site 310
 	Skipping unobserved target residue G
 
 Tests for site 310
-	Likelihood Ratio Test for diversifying selection: 4.172064337178973  p-value: 0.04109569928978452
+	Likelihood Ratio Test for diversifying selection: 4.172208748654192  p-value: 0.04109219689921673
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: V  : 0.4822645722653789  p-value: 0.4873983451593576
-	Likelihood Ratio Test for: T  : 2.841783988859156  p-value: 0.09184219449874031
-	Likelihood Ratio Test for: A  : 0.1475488026604168  p-value: 0.7008889025489948
+	Likelihood Ratio Test for: V  : 0.4822646570705373  p-value: 0.4873983068797741
+	Likelihood Ratio Test for: T  : 2.842148547062436  p-value: 0.09182136195277169
+	Likelihood Ratio Test for: A  : 0.1475435489283896  p-value: 0.7008939709942421
 Working on site 311
 Skipped site 311 because it is invariable
 Working on site 312
@@ -4563,10 +4563,10 @@ Working on site 312
 	Testing target residue G
 
 Tests for site 312
-	Likelihood Ratio Test for diversifying selection: 0.3613021420322866  p-value: 0.5477839471160919
+	Likelihood Ratio Test for diversifying selection: 0.3612808049258831  p-value: 0.5477957683629335
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: A  : 0.1517746132067614  p-value: 0.6968452103117644
-	Likelihood Ratio Test for: G  : 0.00538801295337521  p-value: 0.941485362392942
+	Likelihood Ratio Test for: A  : 0.1517629687240643  p-value: 0.6968562633800817
+	Likelihood Ratio Test for: G  : 0.005390404349100208  p-value: 0.9414724016837529
 Working on site 313
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4591,10 +4591,10 @@ Working on site 313
 	Testing target residue G
 
 Tests for site 313
-	Likelihood Ratio Test for diversifying selection: 0.3504496080670769  p-value: 0.5538587281833114
+	Likelihood Ratio Test for diversifying selection: 0.3504256377456976  p-value: 0.5538722857577263
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: E  : 0.1320686871552645  p-value: 0.7162967223822532
-	Likelihood Ratio Test for: G  : 0.02184527979384754  p-value: 0.8824994351564108
+	Likelihood Ratio Test for: E  : 0.1320562993164742  p-value: 0.7163094526887174
+	Likelihood Ratio Test for: G  : 0.02184599629473283  p-value: 0.8824975222192216
 Working on site 314
 Skipped site 314 because it is invariable
 Working on site 315
@@ -4627,10 +4627,10 @@ Working on site 318
 	Skipping unobserved target residue G
 
 Tests for site 318
-	Likelihood Ratio Test for diversifying selection: 0.5007928309431691  p-value: 0.4791519662087025
+	Likelihood Ratio Test for diversifying selection: 0.5008666110967397  p-value: 0.4791195881517845
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0.4158060165711532  p-value: 0.5190372139112669
-	Likelihood Ratio Test for: V  : 1.468651432175051  p-value: 0.2255585879625173
+	Likelihood Ratio Test for: I  : 0.4157437104904602  p-value: 0.5190685270801347
+	Likelihood Ratio Test for: V  : 1.468705845709266  p-value: 0.2255499931957274
 Working on site 319
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4655,10 +4655,10 @@ Working on site 319
 	Skipping unobserved target residue G
 
 Tests for site 319
-	Likelihood Ratio Test for diversifying selection: 0.3783360497544237  p-value: 0.5384951023667468
+	Likelihood Ratio Test for diversifying selection: 0.3784025831942763  p-value: 0.5384593890458967
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 0.1398272569191263  p-value: 0.7084528027105854
-	Likelihood Ratio Test for: V  : 2.118253246944516  p-value: 0.1455524649392943
+	Likelihood Ratio Test for: I  : 0.1398131354860901  p-value: 0.7084668516103342
+	Likelihood Ratio Test for: V  : 2.118414831885545  p-value: 0.1455371073398685
 Working on site 320
 Skipped site 320 because it is invariable
 Working on site 321
@@ -4685,12 +4685,12 @@ Working on site 321
 	Testing target residue G
 
 Tests for site 321
-	Likelihood Ratio Test for diversifying selection: 1.234513594637079  p-value: 0.2665310438565492
+	Likelihood Ratio Test for diversifying selection: 1.234610134640363  p-value: 0.2665123465415943
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: I  : 2.782088782060754  p-value: 0.09532377352347365
-	Likelihood Ratio Test for: V  : 0.457074985086507  p-value: 0.4989941649184187
-	Likelihood Ratio Test for: A  : 0.1478723984491381  p-value: 0.7005769186239719
-	Likelihood Ratio Test for: G  : 0.07276587100372467  p-value: 0.7873514384430662
+	Likelihood Ratio Test for: I  : 2.782119514897175  p-value: 0.09532194458212562
+	Likelihood Ratio Test for: V  : 0.4570708478560164  p-value: 0.4989961074805384
+	Likelihood Ratio Test for: A  : 0.147866545475182  p-value: 0.7005825580895293
+	Likelihood Ratio Test for: G  : 0.07276311573588146  p-value: 0.7873553677280224
 Working on site 322
 	Testing target residue F
 	Testing target residue L
@@ -4715,12 +4715,12 @@ Working on site 322
 	Skipping unobserved target residue G
 
 Tests for site 322
-	Likelihood Ratio Test for diversifying selection: 1.633927731686995  p-value: 0.2011606477291288
+	Likelihood Ratio Test for diversifying selection: 1.633951287082795  p-value: 0.2011574000207306
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 0.02449541521578169  p-value: 0.8756309491075082
-	Likelihood Ratio Test for: L  : 0.0001288875718756799  p-value: 0.9909419178860007
-	Likelihood Ratio Test for: V  : 0.6332957438672651  p-value: 0.4261489843528791
-	Likelihood Ratio Test for: A  : 0.05961860328322643  p-value: 0.8070997720715651
+	Likelihood Ratio Test for: F  : 0.0244936509231195  p-value: 0.8756353916049963
+	Likelihood Ratio Test for: L  : 0.0001250162673045452  p-value: 0.9910789848600958
+	Likelihood Ratio Test for: V  : 0.6333881777104438  p-value: 0.4261152250487491
+	Likelihood Ratio Test for: A  : 0.05962434340736422  p-value: 0.8070906690963517
 Working on site 323
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4745,10 +4745,10 @@ Working on site 323
 	Skipping unobserved target residue G
 
 Tests for site 323
-	Likelihood Ratio Test for diversifying selection: 1.4210854715202e-14  p-value: 0.9999999048847483
+	Likelihood Ratio Test for diversifying selection: 7.105427357601002e-15  p-value: 0.9999999327433606
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: Q  : -7.105427357601002e-15  p-value: 1
-	Likelihood Ratio Test for: R  : 3.552713678800501e-15  p-value: 0.9999999524423742
+	Likelihood Ratio Test for: Q  : 7.105427357601002e-15  p-value: 0.9999999327433606
+	Likelihood Ratio Test for: R  : 0  p-value: 1
 Working on site 324
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4773,10 +4773,10 @@ Working on site 324
 	Testing target residue G
 
 Tests for site 324
-	Likelihood Ratio Test for diversifying selection: 0.4854817904965998  p-value: 0.4859497270006046
+	Likelihood Ratio Test for diversifying selection: 0.4854545121969238  p-value: 0.4859619796193609
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: R  : 0.225084161802485  p-value: 0.6351930510612127
-	Likelihood Ratio Test for: G  : 0.02749266065267619  p-value: 0.8683071773612149
+	Likelihood Ratio Test for: R  : 0.2250606626253315  p-value: 0.6352107085010492
+	Likelihood Ratio Test for: G  : 0.02749611865676371  p-value: 0.8682989711404581
 Working on site 325
 	Testing target residue F
 	Skipping unobserved target residue L
@@ -4803,10 +4803,10 @@ Working on site 325
 Tests for site 325
 	Likelihood Ratio Test for diversifying selection: 4.263256414560601e-14  p-value: 0.9999998352555516
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 0  p-value: 1
-	Likelihood Ratio Test for: I  : 2.842170943040401e-14  p-value: 0.9999998654867212
+	Likelihood Ratio Test for: F  : -1.4210854715202e-14  p-value: 1
+	Likelihood Ratio Test for: I  : 0  p-value: 1
 	Likelihood Ratio Test for: V  : 0  p-value: 1
-	Likelihood Ratio Test for: T  : 1.4210854715202e-14  p-value: 0.9999999048847483
+	Likelihood Ratio Test for: T  : 0  p-value: 1
 	Likelihood Ratio Test for: A  : 0  p-value: 1
 Working on site 326
 	Testing target residue F
@@ -4832,15 +4832,15 @@ Working on site 326
 	Testing target residue G
 
 Tests for site 326
-	Likelihood Ratio Test for diversifying selection: 0.1357486317906194  p-value: 0.7125445710174891
+	Likelihood Ratio Test for diversifying selection: 0.1354348947981521  p-value: 0.7128621968694213
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 8.825219432484758  p-value: 0.002970956655031665
-	Likelihood Ratio Test for: L  : 0.01339553545956562  p-value: 0.907859330200707
-	Likelihood Ratio Test for: V  : -8.547871743758151e-09  p-value: 1
-	Likelihood Ratio Test for: Y  : 1.777323476913196  p-value: 0.1824783318758196
-	Likelihood Ratio Test for: C  : 0.02453197063324808  p-value: 0.8755389392426391
-	Likelihood Ratio Test for: W  : -1.440923824702622e-09  p-value: 1
-	Likelihood Ratio Test for: G  : 0.08859228071052883  p-value: 0.7659744654966997
+	Likelihood Ratio Test for: F  : 8.82518486909909  p-value: 0.002971012927467487
+	Likelihood Ratio Test for: L  : 0.01339474987733524  p-value: 0.9078620199966059
+	Likelihood Ratio Test for: V  : -8.673310958329239e-09  p-value: 1
+	Likelihood Ratio Test for: Y  : 1.778993569905865  p-value: 0.1822729588966275
+	Likelihood Ratio Test for: C  : 0.02453036165060496  p-value: 0.8755429875684093
+	Likelihood Ratio Test for: W  : -1.466545995754132e-09  p-value: 1
+	Likelihood Ratio Test for: G  : 0.08860120775725022  p-value: 0.7659630190562347
 Working on site 327
 Skipped site 327 because it is invariable
 Working on site 328
@@ -4867,10 +4867,10 @@ Working on site 328
 	Testing target residue G
 
 Tests for site 328
-	Likelihood Ratio Test for diversifying selection: 0.6774729763243315  p-value: 0.4104582561423381
+	Likelihood Ratio Test for diversifying selection: 0.6774212486428297  p-value: 0.4104761247046006
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: A  : 0.2437813745364608  p-value: 0.6214882477515186
-	Likelihood Ratio Test for: G  : 0.05359612655788482  p-value: 0.8169198817649352
+	Likelihood Ratio Test for: A  : 0.243774211712811  p-value: 0.6214933711906256
+	Likelihood Ratio Test for: G  : 0.05357961715400705  p-value: 0.8169475812531865
 Working on site 329
 	Testing target residue F
 	Testing target residue L
@@ -4895,11 +4895,11 @@ Working on site 329
 	Skipping unobserved target residue G
 
 Tests for site 329
-	Likelihood Ratio Test for diversifying selection: 1.612270182429  p-value: 0.2041729778886844
+	Likelihood Ratio Test for diversifying selection: 1.612101025257672  p-value: 0.2041967140948382
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 0.005516255848789342  p-value: 0.9407943533599834
-	Likelihood Ratio Test for: L  : 1.051731146617385e-09  p-value: 0.9999741242808253
-	Likelihood Ratio Test for: I  : 0.8249956669937859  p-value: 0.3637235873061258
+	Likelihood Ratio Test for: F  : 0.005516104516502196  p-value: 0.9407951639936125
+	Likelihood Ratio Test for: L  : 2.172555468860082e-10  p-value: 0.9999882395078006
+	Likelihood Ratio Test for: I  : 0.8248925433445535  p-value: 0.363753573527371
 Working on site 330
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -4924,11 +4924,11 @@ Working on site 330
 	Skipping unobserved target residue G
 
 Tests for site 330
-	Likelihood Ratio Test for diversifying selection: 0.5000230483955193  p-value: 0.4794899951401846
+	Likelihood Ratio Test for diversifying selection: 0.5000722466081413  p-value: 0.4794683794190023
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 0.1925960381076806  p-value: 0.6607646837569274
-	Likelihood Ratio Test for: I  : 0.5541966641442713  p-value: 0.4566079915245286
-	Likelihood Ratio Test for: V  : 2.621699134978272  p-value: 0.1054115115577102
+	Likelihood Ratio Test for: L  : 0.1925833487718052  p-value: 0.6607751601580223
+	Likelihood Ratio Test for: I  : 0.5541802007957131  p-value: 0.4566146789510239
+	Likelihood Ratio Test for: V  : 2.62165342916451  p-value: 0.1054145475607887
 Working on site 331
 	Skipping unobserved target residue F
 	Skipping unobserved target residue L
@@ -4953,10 +4953,10 @@ Working on site 331
 	Skipping unobserved target residue G
 
 Tests for site 331
-	Likelihood Ratio Test for diversifying selection: 0.6817928270741334  p-value: 0.4089700534630597
+	Likelihood Ratio Test for diversifying selection: 0.6817636946223473  p-value: 0.4089800631215232
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: H  : 0.1269025701857629  p-value: 0.7216654288701534
-	Likelihood Ratio Test for: N  : 0.0258539308064698  p-value: 0.87225756055368
+	Likelihood Ratio Test for: H  : 0.1268895996950405  p-value: 0.7216790617380683
+	Likelihood Ratio Test for: N  : 0.02586045211302235  p-value: 0.8722415892933306
 Working on site 332
 Skipped site 332 because it is invariable
 Working on site 333
@@ -4985,12 +4985,12 @@ Working on site 334
 	Skipping unobserved target residue G
 
 Tests for site 334
-	Likelihood Ratio Test for diversifying selection: 0.2951385295022533  p-value: 0.5869463010570908
+	Likelihood Ratio Test for diversifying selection: 0.2951194849172367  p-value: 0.5869583677755961
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: V  : 0.01102755013171475  p-value: 0.9163661734562146
-	Likelihood Ratio Test for: T  : 0.05260332649895361  p-value: 0.8185936687077869
-	Likelihood Ratio Test for: A  : 0.001986800594451665  p-value: 0.9644472325855142
-	Likelihood Ratio Test for: R  : 0.07882855302514713  p-value: 0.7788912405754282
+	Likelihood Ratio Test for: V  : 0.01102384443042581  p-value: 0.9163801752360318
+	Likelihood Ratio Test for: T  : 0.05259286000337227  p-value: 0.8186114026312423
+	Likelihood Ratio Test for: A  : 0.001986996258352747  p-value: 0.9644454831356878
+	Likelihood Ratio Test for: R  : 0.07883202965282976  p-value: 0.7788864915564662
 Working on site 335
 Skipped site 335 because it is invariable
 Working on site 336
@@ -5025,11 +5025,11 @@ Working on site 340
 	Skipping unobserved target residue G
 
 Tests for site 340
-	Likelihood Ratio Test for diversifying selection: 0.6515444585161276  p-value: 0.4195610360614505
+	Likelihood Ratio Test for diversifying selection: 0.65184825729213  p-value: 0.4194526535083503
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 1.427906567325905  p-value: 0.2321063918956793
-	Likelihood Ratio Test for: L  : 1.413147285749076  p-value: 0.2345346278435124
-	Likelihood Ratio Test for: A  : 6.49602828255388  p-value: 0.01081157453255477
+	Likelihood Ratio Test for: F  : 1.427826748394295  p-value: 0.2321194420258859
+	Likelihood Ratio Test for: L  : 1.413025566627766  p-value: 0.2345547807037753
+	Likelihood Ratio Test for: A  : 6.496298527061029  p-value: 0.01080993124142393
 Working on site 341
 Skipped site 341 because it is invariable
 Working on site 342
@@ -5058,12 +5058,12 @@ Working on site 343
 	Skipping unobserved target residue G
 
 Tests for site 343
-	Likelihood Ratio Test for diversifying selection: 0.1177707292932126  p-value: 0.7314650040924302
+	Likelihood Ratio Test for diversifying selection: 0.1176803926291683  p-value: 0.7315640359575222
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: F  : 3.13100959813076  p-value: 0.07681615529990882
-	Likelihood Ratio Test for: L  : 0.007650979171373251  p-value: 0.930298029273337
-	Likelihood Ratio Test for: S  : 0.01125138955517002  p-value: 0.9155247763786882
-	Likelihood Ratio Test for: A  : 0.1173151070034066  p-value: 0.7319649153242012
+	Likelihood Ratio Test for: F  : 3.131444457691103  p-value: 0.07679566895399903
+	Likelihood Ratio Test for: L  : 0.007650331229001495  p-value: 0.9303009732598337
+	Likelihood Ratio Test for: S  : 0.01125264165629858  p-value: 0.9155200937365829
+	Likelihood Ratio Test for: A  : 0.1173030054113156  p-value: 0.7319782080322927
 Working on site 344
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -5088,10 +5088,10 @@ Working on site 344
 	Skipping unobserved target residue G
 
 Tests for site 344
-	Likelihood Ratio Test for diversifying selection: 0.7964424741397664  p-value: 0.3721591443154131
+	Likelihood Ratio Test for diversifying selection: 0.7967047397801821  p-value: 0.3720804280016525
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 1.022844899912926  p-value: 0.3118451401613355
-	Likelihood Ratio Test for: M  : 3.473838521764335  p-value: 0.06234647628567402
+	Likelihood Ratio Test for: L  : 1.023107168778772  p-value: 0.3117831121792692
+	Likelihood Ratio Test for: M  : 3.473915624198987  p-value: 0.0623435707372838
 Working on site 345
 	Skipping unobserved target residue F
 	Testing target residue L
@@ -5116,8 +5116,8 @@ Working on site 345
 	Skipping unobserved target residue G
 
 Tests for site 345
-	Likelihood Ratio Test for diversifying selection: 0.1781972536291221  p-value: 0.6729270914866943
+	Likelihood Ratio Test for diversifying selection: 0.1780996957438532  p-value: 0.6730114437896773
 	Testing for directional selection againts null allowing positive selection in foreground
-	Likelihood Ratio Test for: L  : 3.359440058144031  p-value: 0.06682078528891999
-	Likelihood Ratio Test for: V  : 0.01908517047071712  p-value: 0.8901225911968427
-	Likelihood Ratio Test for: Q  : 1.248008226801247  p-value: 0.2639332364500674
+	Likelihood Ratio Test for: L  : 3.360763269193484  p-value: 0.06676711595752927
+	Likelihood Ratio Test for: V  : 0.01908420968513269  p-value: 0.8901253394061145
+	Likelihood Ratio Test for: Q  : 1.248562565206214  p-value: 0.2638271972688961

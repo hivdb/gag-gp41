@@ -51,7 +51,7 @@ Acid Sites Under Selection (2005). _Mol Biol Evol_ 22 (5): 1208-1222
 >Select a coding sequence alignment file (`/usr/local/lib/hyphy/TemplateBatchFiles/SelectionAnalyses/`) 
 
 >Please select a tree file for the data: (`/usr/local/lib/hyphy/TemplateBatchFiles/SelectionAnalyses/`) 
->Loaded a multiple sequence alignment with **56** sequences, **345** codons, and **1** partitions from `/app/data/fasta/gp41PIs.aln.fasta.txt`
+>Loaded a multiple sequence alignment with **56** sequences, **345** codons, and **1** partitions from `/app/internalFiles/fasta/gp41PIs.aln.fasta.txt`
 
 
 ####Choose the set of branches to test for selection
@@ -75,7 +75,7 @@ Acid Sites Under Selection (2005). _Mol Biol Evol_ 22 (5): 1208-1222
 >Select the p-value used to for perform the test at (permissible range = [0,1], default value = 0.1): 
 
 ### Branches to include in the FEL analysis
-Selected 28 branches to include in FEL calculations: `KT339971_8006_PIs_Post, KT339977_18380_PIs_Post, KY579943_39270_PIs_Post, KT339973_14728_PIs_Post, KT339995_56120_PIs_Post, KY579921_118860_PIs_Post, KY579947_118965_PIs_Post, KT339979_24950_PIs_Post, KY579941_118840_PIs_Post, KT339983_26307_PIs_Post, KY579927_118951_PIs_Post, KT339991_42654_PIs_Post, KY579933_118745_PIs_Post, KT339981_25082_PIs_Post, KT339989_42080_PIs_Post, KT339997MISMATCH_56141_PIs_Post, KT339999_57479_PIs_Post, KY579945_118856_PIs_Post, KT339984_38099_PIs_Post, KY579925_118899_PIs_Post, KY579935_118972_PIs_Post, KY579931_118973_PIs_Post, KY579937_118903_PIs_Post, KT339987_39143_PIs_Post, KY579929_118935_PIs_Post, KY579923_118910_PIs_Post, KT339975_14736_PIs_Post, KY579939_118846_PIs_Post`
+Selected 28 branches to include in FEL calculations: `KT339971_8006_PIs_Post, KT339977_18380_PIs_Post, KY579943_39270_PIs_Post, KT339973_14728_PIs_Post, KT339995_56120_PIs_Post, KY579921_118860_PIs_Post, KY579947_118965_PIs_Post, KT339979_24950_PIs_Post, KY579941_118840_PIs_Post, KT339983_26307_PIs_Post, KY579927_118951_PIs_Post, KT339991_42654_PIs_Post, KY579933_118745_PIs_Post, KT339981_25082_PIs_Post, KT339989_42080_PIs_Post, KT339997_56141_PIs_Post, KT339999_57479_PIs_Post, KY579945_118856_PIs_Post, KT339984_38099_PIs_Post, KY579925_118899_PIs_Post, KY579935_118972_PIs_Post, KY579931_118973_PIs_Post, KY579937_118903_PIs_Post, KT339987_39143_PIs_Post, KY579929_118935_PIs_Post, KY579923_118910_PIs_Post, KT339975_14736_PIs_Post, KY579939_118846_PIs_Post`
 
 
 ### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
@@ -84,45 +84,45 @@ Selected 28 branches to include in FEL calculations: `KT339971_8006_PIs_Post, KT
 ### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
 * Log(L) = -10038.52, AIC-c = 20328.67 (125 estimated parameters)
 * non-synonymous/synonymous rate ratio for *background* =   0.5902
-* non-synonymous/synonymous rate ratio for *test* =   0.4896
+* non-synonymous/synonymous rate ratio for *test* =   0.4892
 
 ### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
 * Log(L) = -10037.34
-* non-synonymous/synonymous rate ratio =   0.5672
+* non-synonymous/synonymous rate ratio =   0.5674
 
 ### For partition 1 these sites are significant at p <=0.1
 
 |     Codon      |   Partition    |     alpha      |      beta      |      LRT       |Selection detected?|
 |:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|:-----------------:|
-|       46       |       1        |        3.242   |        0.000   |        2.978   |  Neg. p = 0.0844  |
+|       46       |       1        |        3.242   |        0.000   |        2.977   |  Neg. p = 0.0845  |
 |       53       |       1        |        3.416   |        0.000   |        3.298   |  Neg. p = 0.0694  |
-|       55       |       1        |        0.000   |        3.806   |        5.462   |  Pos. p = 0.0194  |
-|       63       |       1        |        3.708   |        0.000   |        3.273   |  Neg. p = 0.0704  |
-|       83       |       1        |        4.074   |        0.000   |        3.958   |  Neg. p = 0.0466  |
-|       92       |       1        |        8.262   |        0.000   |        6.984   |  Neg. p = 0.0082  |
-|      101       |       1        |        0.000   |        3.286   |        6.159   |  Pos. p = 0.0131  |
-|      121       |       1        |        4.144   |        0.000   |        3.820   |  Neg. p = 0.0506  |
+|       55       |       1        |        0.000   |        3.807   |        5.462   |  Pos. p = 0.0194  |
+|       63       |       1        |        3.707   |        0.000   |        3.272   |  Neg. p = 0.0705  |
+|       83       |       1        |        4.075   |        0.000   |        3.958   |  Neg. p = 0.0466  |
+|       92       |       1        |        8.263   |        0.000   |        6.984   |  Neg. p = 0.0082  |
+|      101       |       1        |        0.000   |        3.287   |        6.159   |  Pos. p = 0.0131  |
+|      121       |       1        |        4.144   |        0.000   |        3.819   |  Neg. p = 0.0507  |
 |      122       |       1        |        0.410   |        3.543   |        3.096   |  Pos. p = 0.0785  |
-|      125       |       1        |        3.169   |        0.000   |        3.418   |  Neg. p = 0.0645  |
-|      139       |       1        |        8.814   |        0.000   |        6.161   |  Neg. p = 0.0131  |
-|      141       |       1        |        8.386   |        0.000   |        6.406   |  Neg. p = 0.0114  |
+|      125       |       1        |        3.170   |        0.000   |        3.418   |  Neg. p = 0.0645  |
+|      139       |       1        |        8.814   |        0.000   |        6.159   |  Neg. p = 0.0131  |
+|      141       |       1        |        8.384   |        0.000   |        6.402   |  Neg. p = 0.0114  |
 |      153       |       1        |        3.218   |        0.000   |        3.294   |  Neg. p = 0.0695  |
-|      157       |       1        |        0.730   |        4.813   |        3.026   |  Pos. p = 0.0819  |
-|      172       |       1        |        0.000   |        1.931   |        3.103   |  Pos. p = 0.0781  |
-|      223       |       1        |        0.000   |        1.713   |        2.988   |  Pos. p = 0.0839  |
-|      244       |       1        |        3.168   |        0.000   |        2.843   |  Neg. p = 0.0917  |
-|      248       |       1        |        9.207   |        0.000   |        8.988   |  Neg. p = 0.0027  |
-|      272       |       1        |        0.000   |        1.783   |        3.044   |  Pos. p = 0.0810  |
-|      273       |       1        |        0.000   |        4.060   |        5.702   |  Pos. p = 0.0169  |
-|      283       |       1        |        3.854   |        0.000   |        3.683   |  Neg. p = 0.0550  |
-|      294       |       1        |        0.000   |        2.034   |        3.214   |  Pos. p = 0.0730  |
-|      304       |       1        |        4.423   |        0.000   |        2.920   |  Neg. p = 0.0875  |
-|      305       |       1        |       12.525   |        0.000   |        8.643   |  Neg. p = 0.0033  |
-|      308       |       1        |        2.977   |        0.000   |        3.331   |  Neg. p = 0.0680  |
-|      313       |       1        |        4.497   |        0.000   |        4.159   |  Neg. p = 0.0414  |
-|      321       |       1        |        1.116   |        8.224   |        3.517   |  Pos. p = 0.0607  |
-|      325       |       1        |        0.494   |        4.619   |        3.164   |  Pos. p = 0.0753  |
-|      331       |       1        |        5.851   |        0.000   |        5.714   |  Neg. p = 0.0168  |
-|      341       |       1        |        0.000   |        1.926   |        3.096   |  Pos. p = 0.0785  |
+|      157       |       1        |        0.730   |        4.814   |        3.027   |  Pos. p = 0.0819  |
+|      172       |       1        |        0.000   |        1.932   |        3.104   |  Pos. p = 0.0781  |
+|      223       |       1        |        0.000   |        1.714   |        2.988   |  Pos. p = 0.0839  |
+|      244       |       1        |        3.169   |        0.000   |        2.843   |  Neg. p = 0.0918  |
+|      248       |       1        |        9.208   |        0.000   |        8.987   |  Neg. p = 0.0027  |
+|      272       |       1        |        0.000   |        1.783   |        3.045   |  Pos. p = 0.0810  |
+|      273       |       1        |        0.000   |        4.062   |        5.703   |  Pos. p = 0.0169  |
+|      283       |       1        |        3.853   |        0.000   |        3.681   |  Neg. p = 0.0550  |
+|      294       |       1        |        0.000   |        2.034   |        3.215   |  Pos. p = 0.0730  |
+|      304       |       1        |        4.424   |        0.000   |        2.920   |  Neg. p = 0.0875  |
+|      305       |       1        |       12.526   |        0.000   |        8.641   |  Neg. p = 0.0033  |
+|      308       |       1        |        2.978   |        0.000   |        3.331   |  Neg. p = 0.0680  |
+|      313       |       1        |        4.496   |        0.000   |        4.157   |  Neg. p = 0.0415  |
+|      321       |       1        |        1.116   |        8.226   |        3.518   |  Pos. p = 0.0607  |
+|      325       |       1        |        0.494   |        4.620   |        3.165   |  Pos. p = 0.0753  |
+|      331       |       1        |        5.851   |        0.000   |        5.713   |  Neg. p = 0.0168  |
+|      341       |       1        |        0.000   |        1.927   |        3.097   |  Pos. p = 0.0785  |
 
 ### ** Found _12_ sites under pervasive positive diversifying and _18_ sites under negative selection at p <= 0.1**

@@ -22,19 +22,19 @@
 |                | PIs (24)         | NNRTIs (16)      | P value   |
 |:---------------|:-----------------|:-----------------|:----------|
 | NA differences |                  |                  |           |
-| - All          | 1.1 (0.8-1.6%)   | 0.8 (0.5-1.3%)   | 0.16      |
-| - MA           | 0.4 (0.2-0.6%)   | 0.2 (0.1-0.6%)   | 0.17      |
-| - CTerminal    | 0.3 (0.2-0.7%)   | 0.3 (0.2-0.4%)   | 0.90      |
+| - All          | 1.1 (0.8-1.6%)   | 0.6 (0.5-1.3%)   | 0.06      |
+| - MA           | 0.4 (0.2-0.6%)   | 0.2 (0.1-0.6%)   | 0.11      |
+| - CTerminal    | 0.3 (0.2-0.7%)   | 0.3 (0.2-0.3%)   | 0.59      |
 | AA differences |                  |                  |           |
-| - All          | 1.4 (0.8-1.8%)   | 0.8 (0.6-1.4%)   | 0.21      |
-| - MA           | 0.6 (0.4-0.6%)   | 0.4 (0.4-1.2%)   | 0.97      |
-| - CTerminal    | 0.7 (0.2-1.0%)   | 0.6 (0.4-0.8%)   | 0.87      |
+| - All          | 1.4 (0.8-1.8%)   | 0.8 (0.6-1.2%)   | 0.11      |
+| - MA           | 0.6 (0.4-0.6%)   | 0.4 (0.4-0.9%)   | 1.00      |
+| - CTerminal    | 0.7 (0.2-1.0%)   | 0.4 (0.4-0.8%)   | 0.59      |
 | dN/dS ratio    |                  |                  |           |
-| - All          | 0.21 (0.08-0.48) | 0.35 (0.21-0.57) | 0.16      |
-| - MA           | 0.24 (0.00-0.68) | 0.73 (0.18-inf)  | 0.16      |
-| - CTerminal    | 0.46 (0.19-1.14) | 0.50 (0.23-0.99) | 0.89      |
+| - All          | 0.21 (0.08-0.48) | 0.35 (0.15-0.57) | 0.22      |
+| - MA           | 0.24 (0.00-0.68) | 0.79 (0.16-inf)  | 0.12      |
+| - CTerminal    | 0.46 (0.19-1.15) | 0.50 (0.24-1.05) | 0.94      |
 | % Ambiguities  |                  |                  |           |
-| Baseline       | 0.4 (0.1-0.8%)   | 0.1 (0.1-0.1%)   | 0.06      |
+| Baseline       | 0.4 (0.1-0.8%)   | 0.1 (0.1-0.1%)   | 0.05      |
 | Follow-up      | 0.0 (0.0-0.6%)   | 0.0 (0.0-0.1%)   | 0.18      |
 | P value        | 0.02             | 0.02             | -         |
 
@@ -78,34 +78,28 @@
 | PIs    | p6/PR           | 485, 486, 487, 490 | VXLXFPXITL     | VSFSFPQITL      |            1 |
 | PIs    | p6/PR           | 486                | VSVNFPQITL     | VSLNFPQITL      |            1 |
 | NNRTIs | MA/CA           | 132                | VSHNYPIVQN     | VSHNFPIVQN      |            1 |
-| NNRTIs | SP1/NC          | 373                | STAMMQ-RGN     | TTAMMQ-RGN      |            1 |
+| NNRTIs | SP1/NC          | 374                | NSTAMMQRGN     | NTTAMMQRGN      |            1 |
 | NNRTIs | SP1/NC          | 374                | PTTIMMQRGN     | PATIMMQRGN      |            1 |
 | NNRTIs | SP1/NC          | 375                | PAAIMMQRGN     | PATIMMQRGN      |            1 |
 | NNRTIs | SP1/NC          | 375                | SAAIMMQKGN     | SANIMMQKGN      |            1 |
 | NNRTIs | SP1/NC          | 375                | STAIMMQRGN     | STTIMMQRGN      |            1 |
 | NNRTIs | NC/SP2          | 429                | EKQANFLGRL     | ERQANFLGRL      |            1 |
 | NNRTIs | SP2/p6          | 453                | RPGNFPQSRL     | RPGNFPQSRP      |            1 |
-| NNRTIs | p6/PR           | 484, 485, 486      | ESF            | SFP             |            1 |
 | NNRTIs | p6/PR           | 487                | VSFSFPQITL     | VSFNFPQITL      |            1 |
-| NNRTIs | p6/PR           | 488                | VSFDLPQITL     | VSFDFPQITL      |            1 |
+| NNRTIs | p6/PR           | 488                | VSLDLPQITL     | VSLDFPQITL      |            1 |
 
 ## Positions with evidence for diversifying selection (FEL)
 
 | Group         |   Position |   P value |
 |:--------------|-----------:|----------:|
-| gag - PIs     |         67 |    0.0384 |
-| ~             |        115 |    0.0482 |
-| ~             |        223 |    0.0052 |
-| ~             |        468 |    0.0279 |
-| ~             |        469 |    0.0077 |
-| ~             |        474 |    0.0288 |
-| gag - NNRTIs  |         54 |    0.0479 |
-| ~             |         69 |    0.0384 |
-| ~             |        116 |    0.03   |
-| ~             |        173 |    0.0489 |
-| ~             |        375 |    0.036  |
-| ~             |        480 |    0.009  |
-| ~             |        484 |    0.0138 |
+| gag - PIs     |         67 |    0.0404 |
+| ~             |        223 |    0.0084 |
+| ~             |        468 |    0.0284 |
+| ~             |        469 |    0.008  |
+| ~             |        474 |    0.0289 |
+| gag - NNRTIs  |         54 |    0.0382 |
+| ~             |         69 |    0.029  |
+| ~             |        173 |    0.0403 |
 | gp41 - PIs    |         55 |    0.0194 |
 | ~             |        101 |    0.0131 |
 | ~             |        273 |    0.0169 |
@@ -123,13 +117,11 @@
 | ~             | ~          | Q=&gt;H  | 3            |
 | ~             | 370Y       | F=&gt;Y  | 1            |
 | ~             | 371N       | T=&gt;N  | 1            |
+| ~             | 471P       | T=&gt;P  | 1            |
 | gag - NNRTIs  | 79F        | Y=&gt;F  | 2            |
 | ~             | 110M       | K=&gt;M  | 1            |
-| ~             | 116A/Q     | A=&gt;Q  | 1            |
-| ~             | ~          | Q=&gt;A  | 1            |
 | ~             | 371T       | A=&gt;T  | 1            |
 | ~             | ~          | N=&gt;T  | 1            |
-| ~             | 480L       | D=&gt;L  | 1            |
 | gp41 - PIs    | 307I       | T=&gt;I  | 3            |
 | ~             | 325F       | I=&gt;F  | 1            |
 | ~             | ~          | L=&gt;F  | 1            |

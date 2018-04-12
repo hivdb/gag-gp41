@@ -46,8 +46,11 @@ The steps we took to align the raw sequences were:
 4. Click "OK" to align the sequence.
  
 Once the sequences were aligned by ClustalW, manual adjustment was applied
-to the alignments to correct the misplaced gaps. The knowledge of known gag
-cleavage sites was considered when we apply the adjustment.
+to the alignments to:
+
+1. Correct the misplaced gaps.
+2. Adjust alignment in known gag cleavage sites (be more conservative).
+3. Remove suspicious low quality trailing codons (e.g. stop codons).
 
 The Geneious working folder was saved into a file. You can download it from
 [this link](https://github.com/hivdb/gag-gp41/raw/master/internalFiles/gaggp41.geneious).

@@ -51,7 +51,7 @@ Acid Sites Under Selection (2005). _Mol Biol Evol_ 22 (5): 1208-1222
 >Select a coding sequence alignment file (`/usr/local/lib/hyphy/TemplateBatchFiles/SelectionAnalyses/`) 
 
 >Please select a tree file for the data: (`/usr/local/lib/hyphy/TemplateBatchFiles/SelectionAnalyses/`) 
->Loaded a multiple sequence alignment with **34** sequences, **345** codons, and **1** partitions from `/app/data/fasta/gp41NNRTIs.aln.fasta.txt`
+>Loaded a multiple sequence alignment with **34** sequences, **345** codons, and **1** partitions from `/app/internalFiles/fasta/gp41NNRTIs.aln.fasta.txt`
 
 
 ####Choose the set of branches to test for selection
