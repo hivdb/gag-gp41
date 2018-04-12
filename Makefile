@@ -10,7 +10,10 @@ build:
 shell:
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime /bin/bash
 
-basic:
+msa:
+	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/process-msa.sh
+
+basic: msa
 	@docker run -it --rm --volume `pwd`:/app hivdb/gaggp41-runtime scripts/run-basic.sh
 
 nj:

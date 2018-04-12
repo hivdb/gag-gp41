@@ -116,6 +116,20 @@ def translate_codon(nas):
     return aas
 
 
+def translate_codons(nas, ambiguous_x=True):
+    all_aas = []
+    for i in range(0, len(nas) // 3):
+        codon = nas[i * 3:i * 3 + 3]
+        aas = translate_codon(codon)
+        if len(aas) > 1:
+            if ambiguous_x:
+                aas = 'X'
+            else:
+                aas = '[{}]'.format(aas)
+        all_aas.append(aas)
+    return ''.join(all_aas)
+
+
 def get_codons(aa):
     return REVERSE_CODON_TABLE[aa]
 

@@ -20,7 +20,49 @@ repository:
 make
 ```
 
-### Step 1: basic
+### Step 1: alignment and process MSA
+
+The HIV virus samples from patients were sequenced by using Sanger sequencing
+method. Once the sequencing results were obtained, we used Geneious R11 to align
+the sequences, apply manual adjustments and output a FASTA file for each gene
+containing Multiple Sequence Alignment (MSA).
+
+The steps we took to align the raw sequences were:
+
+1. Select the raw sequence list, then open the multiple alignment dialog by
+   click Tools -> Align/Assemble -> Multiple Align
+2. In the opened dialog, click "Translation Align" tab.
+3. Use the default parameters of "ClustalW Alignment":
+   - Genetic code: Standard
+   - Translation frame: 1
+   - Translate start codon as 'M': checked
+   - Cost Matrix: BLOSUM
+   - Gap open cost: 10
+   - Gap extend cost: 0.1
+   - Free end gaps: unchecked
+   - Preserve original sequence order: checked
+   - Additional options: empty
+   - Custom ClustalW Executable: unchecked
+4. Click "OK" to align the sequence.
+ 
+Once the sequences were aligned by ClustalW, manual adjustments were applied
+to the alignments. Following are examples.
+
+TODO
+
+After finished the manual adjustments, the final alignments were exported into
+a single FASTA file using dash "-" to represent gap.
+
+The exported FASTA files were saved as `data/fasta/gagMSA.fas` and
+`data/fasta/gp41MSA.fas`. Following command will generate the trimed sequence
+files and insertions table:
+
+```sh
+make msa
+# The result will be wrote to data/fasta/*Aligned.fas and data/insertions.csv
+```
+
+### Step 2: basic
 
 This step generated three types of basic files for further analysis:
 
@@ -33,7 +75,7 @@ To run this step solely, type this command:
 make basic
 ```
 
-### Step 2: pairwise
+### Step 3: pairwise
 
 This step calculated the pairwise dN/dS ratio with HyPhy. The output files:
 
@@ -45,7 +87,7 @@ To run this step solely:
 make pairwise
 ```
 
-### Step 3: nj
+### Step 4: nj
 
 This step calculated the newick tree from the aligned sequences with HyPhy.
 The output files:
@@ -71,7 +113,7 @@ mainly caused by this step. In the manuscript we used an old version of HyPhy
 which has a slightly different approach of handling ambiguous DNA codes than
 the newer version of HyPhy (see https://github.com/veg/hyphy/issues/618).
 
-### Step 4a: fel
+### Step 5a: fel
 
 This step ran the FEL method analysis with HyPhy. The output files:
 
@@ -83,7 +125,7 @@ This step usually takes an hour or more. To run this step solely:
 make fel
 ```
 
-### Step 4b: meds
+### Step 5b: meds
 
 This step ran the MEDS method analysis with HyPhy. The output files:
 
@@ -97,7 +139,7 @@ This step usually takes an hour or more. To run this step solely:
 make meds
 ```
 
-### Step 5: final
+### Step 6: final
 
 This step cleaned the output of step 4. The output files:
 
@@ -109,7 +151,7 @@ To run this step solely:
 make final
 ```
 
-### Step 6: report
+### Step 7: report
 
 This step generated the automatical report. The output files:
 
