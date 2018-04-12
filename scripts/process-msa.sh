@@ -12,4 +12,4 @@ done
 
 cat $APPDIR/local/gagInsertions.csv > $APPDIR/data/insertions.csv
 tail -n +2 $APPDIR/local/gp41Insertions.csv >> $APPDIR/data/insertions.csv
-
+python $APPDIR/scripts/update-internal-sequences.py
