@@ -53,7 +53,7 @@ to the alignments to:
 3. Remove suspicious low quality trailing codons (e.g. stop codons).
 
 The Geneious working folder was saved into a file. You can download it from
-[this link](https://github.com/hivdb/gag-gp41/raw/master/internalFiles/gaggp41.geneious).
+[this link](https://github.com/hivdb/gag-gp41/raw/master/data/gag.geneious).
 The file includes the original raw sequences, the translation alignments made
 by ClustalW and the manually adjusted alignments. Manual adjustment was not
 performed for gp41 sequences since all the gaps were placed properly already.
